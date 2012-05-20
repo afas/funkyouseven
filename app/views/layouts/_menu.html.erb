@@ -1,0 +1,32 @@
+<ul class="menu_left">
+  <!--<li>-->
+  <!--<a href="/wear.html">Одежда</a>-->
+  <!--<ul style="display:none !important;">-->
+  <!--<li><a href="#">Верхняя одежда</a></li>-->
+  <!--<li><a href="#">Джинсы</a></li>-->
+  <!--<li><a href="#">Футболки</a></li>-->
+  <!--<li><a href="#">Поло</a></li>-->
+  <!--<li><a href="#">Обувь</a></li>-->
+  <!--<li><a href="#">Сумки</a></li>-->
+  <!--<li><a href="#">Аксессуары</a></li>-->
+  <!--<li><a href="#">Толстовки</a></li>-->
+  <!--<li><a href="#">Рубашки</a></li>-->
+  <!--</ul>-->
+  <!--</li>-->
+
+  <% @menu_left.each do |item| %>
+      <li <%= "class='current'" if !@shop_section.nil? && item == @shop_section %>>
+        <%= link_to item.name, "/shop/#{item.short_url}" %>
+      </li>
+  <% end %>
+</ul>
+
+<ul class="menu_right">
+  <% @menu_right.each do |item| %>
+      <li <%= "class='current'" if !@static.nil? && item == @static %>>
+        <%= link_to item.title, "/#{item.short_url}" %>
+      </li>
+  <% end %>
+</ul>
+
+<div class="line"></div>

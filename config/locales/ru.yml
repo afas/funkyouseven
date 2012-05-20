@@ -1,0 +1,121 @@
+ru:
+  site_name: "Funk You 7"
+
+  social_tools:
+    region: "ru_RU"
+    twitter:
+      follow: "Читать"
+      tweet: "Твитнуть"
+
+  time:
+    formats:
+      many_short: "%d.%m.%y"
+
+  paperclip:
+    errors:
+      presence: "должено быть задано"
+      content_type: "имеет неправильный тип"
+
+  backend:
+    actions:
+      are_you_sure: "Вы уверены?"
+      are_you_want_delete: "Вы уверены, что хотите удалить %{target} \"%{name}\"?"
+      back: "Назад"
+      destroy: "Удалить"
+      edit: "Изменить"
+      show: "Посмотреть"
+      please_select: "Выберите..."
+      success_create: "%{model} успешно создан."
+      success_update: "%{model} успешно обновлён."
+      success_destroy: "%{model} удалён."
+    titles:
+      creating: "Создание %{model}"
+      editing: "Изменение %{model}"
+      listing: "Список %{model}"
+
+  helpers:
+    submit:
+      create: "Создать"
+      update: "Сохранить"
+      submit: "Сохранить"
+      post: "Отправить"
+#      create: "Создать %{model}"
+#      update: "Сохранить %{model}"
+#      submit: "Сохранить %{model}"
+
+  errors:
+    messages:
+      cannot_be_blank: "не может быть пустым"
+      invalid_email: "некорректен"
+      invalid_url: "некорректна, должно быть что-то вроде http://your-site.com"
+      mismatch: "несовпадает"
+      must_be_zero_one: "должно быть больше нуля и меньше единицы"
+    template:
+      header:
+        one: "%{model}: сохранение не удалось из-за %{count} ошибки"
+        few: "%{model}: сохранение не удалось из-за %{count} ошибок"
+        many: "%{model}: сохранение не удалось из-за %{count} ошибок"
+        other: "%{model}: сохранение не удалось из-за %{count} ошибки"
+
+  activerecord:
+    capitalized_models:
+      user: "Пользователь"
+      unit: "Страница/Раздел"
+    models:
+      user: "пользователя"
+      unit: "страницу/раздел"
+    attributes:
+      user:
+        role: "Роль в системе"
+        email: "E-mail"
+        password: "Пароль"
+        password_confirmation: "Пароль ещё раз"
+        current_password: "Текущий пароль"
+        name: "Фамилия Имя"
+        photo: "Фотография"
+        about: "О себе"
+        phone: "Телефон"
+        fax: "Факс"
+        structural_division: "Структурное подразделение"
+        geographical_division: "Географическое подразделение"
+        position: "Должность"
+        users_list: "Список пользователей"
+      feedback:
+        name: "Ваше имя"
+        namer: "Имя заявителя"
+        phone: "Контактный телефон"
+        email: "E-Mail"
+        friend-email: "E-Mail получателя"
+        shassi: "Номер шасси (последние 7 цифр)"
+        reg_number: "Регистрационный номер"
+        quest: "Описание вопроса"
+        order: "Заявка"
+        message: "Ваше сообщение"
+        unit-description: "Краткое описание"
+        incoming: "Содержание заявки/сообщения"
+        site_mailer: "Сервис оповещений scaniamoscow.ru"
+      unit:
+        title: "Заголовок"
+        description: "Описание"
+        content: "Содержание"
+        created_at: "Добавлено"
+        parent: "Принадлежность к странице/разделу"
+        layout: "Шаблон отображения"
+        expand_in_menu: "Отображать список наследников в меню"
+        category: "Категория"
+        unit_order: "Порядок следования"
+        unit_type: "Тип сущности"
+        latitude: "Широта"
+        longitude: "Долгота"
+        sub_class: "Дочерний элемент(список)"
+        short_url: "Короткий урл"
+        seo_title: "SEO Title"
+        seo_keywords: "SEO Keywords"
+        seo_description: "SEO Description"
+        unit_image: "Фотографии/изображения"
+        unit_file: "Файлы"
+        preview: "Превью (Изображение в шапке или списке)"
+
+  simple_captcha:
+    message:
+      feedback: Неверно введена капча

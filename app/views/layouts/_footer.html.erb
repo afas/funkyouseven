@@ -1,0 +1,27 @@
+<div id="footer">
+  <%= link_to "", root_url, :class => "logo_footer" %>
+  <div class="line"></div>
+
+  <ul class="menu_left">
+    <% @menu_left.each do |item| %>
+        <li>
+          <%= link_to item.name, "/shop/#{item.short_url}" %>
+        </li>
+    <% end %>
+  </ul>
+
+  <ul class="menu_right">
+    <% @menu_right.each do |item| %>
+        <li>
+          <%= link_to item.title, "/#{item.short_url}" %>
+        </li>
+    <% end %>
+  </ul>
+
+  <p>
+    <%= "#{@welcome.mail} #{@welcome.phone}" %>
+    <a href="https://www.facebook.com/funkyouseven" target="_blank">Facebook</a>
+    <a href="https://twitter.com/funkyouseven" target="_blank">Twitter</a>
+    <a href="http://vk.com/funkyou7" target="_blank">Вконтакте</a>
+  </p>
+</div>

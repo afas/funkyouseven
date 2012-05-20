@@ -1,0 +1,19 @@
+<%= image_tag "big_img.png", :alt => "", :class => "big_img" %>
+<div class="center_item">
+  <%= link_to 'Edit', edit_post_path(@post) %>
+  <div class="main">
+    <h1><%= @post.title %></h1>
+
+    <div class="date"><%= raw "— #{@post.author.author_name}, " %><%= Russian::strftime(@post.created_at, "%d %B") %></div>
+    <span>
+      <%= @post.description%>
+    </span>
+
+    <%= raw @post.content %>
+    <!--<img src="images/big_img.png" width="637" height="428" alt="" class="big_img"/>-->
+  </div>
+
+  <img src="images/social.png" width="341" height="22" alt=""/>
+
+</div><!--end center_item-->
+<%= render "posts/side_bar" %>

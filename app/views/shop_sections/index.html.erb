@@ -1,0 +1,27 @@
+<h1>Listing shop_sections</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Short url</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @shop_sections.each do |shop_section| %>
+  <tr>
+    <td><%= shop_section.name %></td>
+    <td><%= shop_section.short_url %></td>
+    <td><%= shop_section.description %></td>
+    <td><%= link_to 'Show', shop_section %></td>
+    <td><%= link_to 'Edit', edit_shop_section_path(shop_section) %></td>
+    <td><%= link_to 'Destroy', shop_section, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Shop section', new_shop_section_path %>

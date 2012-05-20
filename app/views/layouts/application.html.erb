@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+  <title><%= yield(:title).blank? ? t('site_name') : "#{yield(:title)}" %></title>
+  <meta name="description" content="<%= yield(:description) %>">
+  <meta name="keywords" content="<%= yield(:keywords) %>">
+
+  <%= stylesheet_link_tag "application" %>
+
+  <!--[if IE 7]>
+        <%= stylesheet_link_tag "ie7" %>
+  <![endif]-->
+  <!--[if IE 8]>
+        <%= stylesheet_link_tag "ie8" %>
+  <![endif]-->
+
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
+
+<div class="wrapper">
+  <%= render "layouts/head" %>
+  <div id="content" class="">
+    <!-- TODO CLASS -->
+    <%= yield %>
+  </div>
+  <%= render "layouts/footer" %>
+</div>
+<%= yield :scripts %>
+</body>
+</html>

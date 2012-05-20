@@ -1,0 +1,12 @@
+<div class="block<%= " block_second" if second %>">
+  <div class="img_box">
+    <%= link_to raw("#{image_tag('slide-2.jpg', :alt => target.title, :width => 300, :height => 200)}<span>&nbsp;</span>"), post_path(target.short_url) %>
+    <!--TODO width="300" height="200" !!-->
+  </div>
+  <%= link_to raw("<span>#{target.author.author_name}:</span> #{target.title}"), post_path(target.short_url), :class => "block_title" %>
+  <p>
+    <%= raw target.description %>
+  </p>
+
+  <div class="date_journal"><%= Russian::strftime(target.created_at, "%d %B") %></div>
+</div>

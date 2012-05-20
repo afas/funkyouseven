@@ -1,0 +1,12 @@
+<div class="info">
+  <%= @welcome.mail %>
+  <br/>
+  <%= @welcome.phone %>
+
+  <% if user_signed_in? %>
+      <br/>
+      Привет <%= link_to current_user.name || current_user.email, "/users/edit" %>
+      <br/>
+      <%= link_to 'Edit', edit_welcome_path(@welcome) %>
+  <% end %>
+</div>
