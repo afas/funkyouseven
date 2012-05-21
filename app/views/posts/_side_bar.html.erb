@@ -4,7 +4,7 @@
   </div>
 
   <% @posts_side_bar.each do |post| %>
-      <%= render "posts/post_preview_item", :target => post, :second => false %>
+      <%= render "posts/post_preview_item", :target => post, :second => false, :show_date => false, :no_margin => false %>
   <% end %>
 
   <div class="block_second">

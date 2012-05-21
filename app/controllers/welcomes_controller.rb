@@ -4,6 +4,8 @@ class WelcomesController < ApplicationController
   def home
     #@welcome = Welcome.find(params[:id])
 
+    @journal_home = Post.journal_home
+
     respond_to do |format|
       format.html # home.html.erb
       format.json { render json: @welcome }

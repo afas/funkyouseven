@@ -1,0 +1,13 @@
+<div class="sidebar">
+  <div class="title_sidebar">
+    Журнал
+  </div>
+
+  <% @journal_home.each do |post| %>
+      <%= render "posts/post_preview_item", :target => post, :second => false, :show_date => false, :no_margin => false %>
+  <% end %>
+
+  <%= link_to "", "/journal", :class => "all" %>
+
+  <%= render "layouts/social_wigets" %>
+</div>

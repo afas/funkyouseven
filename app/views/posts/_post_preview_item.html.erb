@@ -1,4 +1,4 @@
-<div class="block<%= " block_second" if second %>">
+<div class="block<%= " block_second" if second %><%= " no_margin" if no_margin %>">
   <div class="img_box">
     <%= link_to raw("#{image_tag('slide-2.jpg', :alt => target.title, :width => 300, :height => 200)}<span>&nbsp;</span>"), post_path(target.short_url) %>
     <!--TODO width="300" height="200" !!-->
@@ -8,5 +8,7 @@
     <%= raw target.description %>
   </p>
 
-  <div class="date_journal"><%= Russian::strftime(target.created_at, "%d %B") %></div>
+  <% if show_date %>
+      <div class="date_journal"><%= Russian::strftime(target.created_at, "%d %B") %></div>
+  <% end %>
 </div>
