@@ -1,0 +1,30 @@
+<div id="file-uploader">
+  <noscript>
+    <p>Please enable JavaScript to use file uploader.</p>
+  </noscript>
+</div>
+
+<!--:post_id => @post.id, :init_uploader => true-->
+
+<% post.post_images.each do |attache| %>
+    <%= render :partial => 'post_images/preview', :locals => {:target => attache} %>
+<% end %>
+
+<script type="text/javascript">
+    function createUploader() {
+        var uploader = new qq.FileUploader({
+            element:document.getElementById('file-uploader'),
+            action:'/post_images/upload',
+            debug:false,
+            sizeLimit:20 * 1024 * 1024,
+            minSizeLimit:0,
+            allowedExtensions:['jpg', 'jpeg', 'png'],
+            params:{
+                post_id:'<%= post.get_id %>',
+                authenticity_token:'<%= form_authenticity_token %>'
+            }
+        });
+    }
+
+    createUploader();
+</script>

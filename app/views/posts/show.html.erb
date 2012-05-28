@@ -1,6 +1,6 @@
 <%= image_tag "big_img.png", :alt => "", :class => "big_img" %>
 <div class="center_item">
-  <%= link_to 'Edit', edit_post_path(@post) %>
+  <%= link_to '+Edit', edit_post_path(@post) %> <%= link_to '-Destroy', @post, confirm: 'Are you sure?', method: :delete %>
   <div class="main">
     <h1><%= @post.title %></h1>
 

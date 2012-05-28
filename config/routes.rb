@@ -1,5 +1,9 @@
 Funkyouseven::Application.routes.draw do
 
+  match '/post_images/destroy/:id' => 'post_images#destroy'
+  match '/post_images/upload' => 'post_images#upload'
+  resources :post_images
+
   match '/journal' => 'posts#index'
   match '/journal/:short_url' => 'posts#show', :as => :post
   resources :posts

@@ -38,7 +38,7 @@ class PostsController < ApplicationController
     @post = Post.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render layout: "editor" }
       format.json { render json: @post }
     end
   end
@@ -46,6 +46,7 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
+    render layout: "editor"
   end
 
   # POST /posts
@@ -74,7 +75,7 @@ class PostsController < ApplicationController
         format.html { redirect_to post_path(@post.short_url), notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "edit", layout: "editor" }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end

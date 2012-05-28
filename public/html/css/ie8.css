@@ -1,0 +1,12 @@
+.search_form [type="text"] {
+	line-height:25px;
+	}
+.padding_left p span.help{
+    position: absolute;
+    top: 33px;
+    width: 284px;
+    z-index: 999;
+}	
+.part form [type="text"] {
+	line-height:20px;
+	}

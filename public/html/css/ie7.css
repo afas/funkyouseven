@@ -1,0 +1,56 @@
+.search_form {
+	margin:18px 0 0 15px;
+	float:left;
+	}	
+.search_form [type="text"] {
+	line-height:25px;
+	}
+.menu {
+	position:absolute;
+	left:0;
+	top:72px;
+	z-index:20;
+	}
+.menu li a {
+	padding-bottom:15px;
+	}
+#header {
+	z-index:9999;
+	}
+#content {
+	z-index:0;
+	}	
+.slides_control {
+	padding-bottom:14px;
+	}
+#slides .prev {
+	left:50px;
+	}	
+#footer ul li {
+	display:inline;
+	}
+.paginator {
+	padding-bottom:30px;
+	}
+.padding_left p span {
+	z-index:2;
+}	
+.padding_left p span [type="checkbox"] {
+    float: none;
+	z-index:9999;
+	}
+.part form [type="text"] {
+	line-height:20px;
+	float:left;
+	margin-left:-20px;
+	}
+.part form label {
+	width:400px;
+	}
+#slider {
+    background: url("../images/slider.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 35px;
+    margin-bottom: 28px;
+    width: 81px;
+	}		
