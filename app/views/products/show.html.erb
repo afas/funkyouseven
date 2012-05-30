@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @product.title %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @product.price %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @product.description %>
+</p>
+
+<p>
+  <b>Color:</b>
+  <%= @product.color %>
+</p>
+
+<p>
+  <b>Composition:</b>
+  <%= @product.composition %>
+</p>
+
+<p>
+  <b>Brand:</b>
+  <%= @product.brand_id %>
+</p>
+
+<p>
+  <b>Sex:</b>
+  <%= @product.sex_id %>
+</p>
+
+<p>
+  <b>Career:</b>
+  <%= @product.career_id %>
+</p>
+
+<p>
+  <b>Shop section:</b>
+  <%= @product.shop_section_id %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @product.category_id %>
+</p>
+
+<p>
+  <b>Look:</b>
+  <%= @product.look_id %>
+</p>
+
+<p>
+  <b>Season:</b>
+  <%= @product.season %>
+</p>
+
+<p>
+  <b>Welcome position:</b>
+  <%= @product.welcome_position_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

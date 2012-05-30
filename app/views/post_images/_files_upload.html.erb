@@ -4,8 +4,6 @@
   </noscript>
 </div>
 
-<!--:post_id => @post.id, :init_uploader => true-->
-
 <% post.post_images.each do |attache| %>
     <%= render :partial => 'post_images/preview', :locals => {:target => attache} %>
 <% end %>
@@ -25,6 +23,5 @@
             }
         });
     }
-
     createUploader();
 </script>

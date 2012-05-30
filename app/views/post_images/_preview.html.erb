@@ -1,14 +1,11 @@
-<div id="<%= "post_image_#{target.id}" %>" class="attache_uploadet">
-  <%= target.image_file_name %>
-  <%= link_to t('actions.destroy'),  "/post_images/destroy/#{target.id}", :remote => true %>
-  <br/>
-  <%= image_tag target.image.url(:preview_item) %>
+<div id="<%= "post_image_#{target.id}" %>" class="image-upload-preview">
+  <%= hidden_field :post_id, target.post_id, :class => "upload_post_id" %>
+  <%= image_tag target.image.url(:preview_item), :class => "upload_preview" %><br/>
+  <%= label :title, "Заголовок фото" %><br/>
+  <%= text_field :title, target.title, :class => "upload_title" %><br/>
+  <%= label :cover, "Обложка" %><br/>
+  <%= check_box :cover, target.cover, :class => "upload_cover" %><br/>
+  <%= label :preview, "Превью (список)" %><br/>
+  <%= check_box :preview, target.preview, :class => "upload_preview" %><br/>
+  <%= link_to t('actions.destroy'), "/post_images/destroy/#{target.id}", :remote => true %>
 </div>
-
-
-<!--t.integer  "post_id"-->
-<!--t.string   "title"-->
-<!--t.boolean  "cover"-->
-<!--t.boolean  "preview"-->
-<!--t.integer  "image_order",        :default => 0-->
-<!--t.string   "image_file_name"-->

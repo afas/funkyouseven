@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  price: 1.5
+  description: MyText
+  color: MyString
+  composition: MyString
+  brand_id: 1
+  sex_id: 1
+  career_id: 1
+  shop_section_id: 1
+  category_id: 1
+  look_id: 1
+  season: 1
+  welcome_position_id: 1
+
+two:
+  title: MyString
+  price: 1.5
+  description: MyText
+  color: MyString
+  composition: MyString
+  brand_id: 1
+  sex_id: 1
+  career_id: 1
+  shop_section_id: 1
+  category_id: 1
+  look_id: 1
+  season: 1
+  welcome_position_id: 1

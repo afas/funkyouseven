@@ -507,12 +507,12 @@ qq.FileUploader = function(o){
                 '<span class="qq-upload-failed-text">Failed</span>' +
                 '<div class="image-upload-preview" style="display: none;">' +
                     '<input type="hidden" name="post_id" class="upload_post_id" />' +
-                    '<img class="upload_preview" src="" />' +
-                    '<input type="text" name="title" class="upload_title"/>' +
-                    '<input type="checkbox" name="cover" class="upload_cover"/>' +
-                    '<input type="checkbox" name="preview" class="upload_preview"/>' +
+                    '<img class="upload_preview" src="" /><br/>' +
+                    '<label>Заголовок фото</label><br/><input type="text" name="title" class="upload_title"/><br/>' +
+                    '<label>Обложка</label><input type="checkbox" name="cover" class="upload_cover"/> / ' +
+                    '<label>Превью (список)</label><input type="checkbox" name="preview" class="upload_preview"/> / ' +
                     '<a href="" data-remote="true" id="delete" class="upload_delete">delete</a><br />' +
-                '</div>'
+                '</div>' +
         '</li>',
 
         classes: {
@@ -633,27 +633,16 @@ qq.extend(qq.FileUploader.prototype, {
         qq.remove(this._find(item, 'spinner'));
 
         if (result.success){
-
-            '<div class="image-upload-preview" style="display: none;">' +
-                '<input type="hidden" name="post_id" class="upload_post_id" />' +
-                '<img class="upload_preview" src="" />' +
-                '<input type="text" name="title" class="upload_title"/>' +
-                '<input type="checkbox" name="cover" class="upload_cover"/>' +
-                '<input type="checkbox" name="preview" class="upload_preview"/>' +
-                '<a href="" data-remote="true" id="delete" class="upload_delete">delete</a><br />' +
-            '</div>'
-
             qq.addClass(item, this._classes.success);
-
             var div = $(item).children('div');
+            $(div).attr('id', 'post_image_' + result.id);
             $(div).children('img').attr('src', result.new_filename);
             $(div).children('.upload_post_id').attr('value', result.post_id);
             $(div).children('.upload_title').attr('value', result.title);
+            $(div).children('.upload_cover').attr('value', result.title);
+            $(div).children('.upload_prewiev').attr('value', result.title);
             $(div).children('.qq-upload-hidden').attr('value', result.id);
-
-//            $(div).children('a').attr('href', '/stuff_images/' + result.id);
-
-            $('#delete').attr('href', '/stuff_images/delete/' + result.id);
+            $('#delete').attr('href', '/post_images/destroy/' + result.id);
             $(div).show();
         } else {
             qq.addClass(item, this._classes.fail);

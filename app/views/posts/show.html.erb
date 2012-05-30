@@ -1,7 +1,8 @@
-<%= image_tag "big_img.png", :alt => "", :class => "big_img" %>
+<%= image_tag @post.post_images.first.image.url(:big), :alt => @post.post_images.first.title, :class => "big_img" %>
 <div class="center_item">
-  <%= link_to '+Edit', edit_post_path(@post) %> <%= link_to '-Destroy', @post, confirm: 'Are you sure?', method: :delete %>
   <div class="main">
+    <%= link_to '+Edit', edit_post_path(@post) %> <%= link_to '-Destroy', @post, confirm: 'Are you sure?', method: :delete %>
+
     <h1><%= @post.title %></h1>
 
     <div class="date"><%= raw "— #{@post.author.author_name}, " %><%= Russian::strftime(@post.created_at, "%d %B") %></div>
@@ -9,11 +10,13 @@
       <%= @post.description%>
     </span>
 
+    <%= image_tag @post.post_images.first.image.url(:album_normal), :alt => @post.post_images.first.title, :class => "big_img" %>
+
     <%= raw @post.content %>
-    <!--<img src="images/big_img.png" width="637" height="428" alt="" class="big_img"/>-->
+
   </div>
 
-  <img src="images/social.png" width="341" height="22" alt=""/>
+  <%= image_tag "social.png", :width => 341, :height => 22 %>
 
 </div><!--end center_item-->
 <%= render "posts/side_bar" %>
