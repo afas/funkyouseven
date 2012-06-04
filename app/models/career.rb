@@ -17,9 +17,9 @@ class Career
     list
   end
 
-  def self.include?(cut)
-    collection.each do |role|
-      return true if role.cut == cut
+  def self.by_code(code)
+    collection.each do |value|
+      return value.name if value.code == code
     end
     false
   end

@@ -1,11 +1,12 @@
+<!-- Put this script tag to the <head> of your page -->
+<script type="text/javascript" src="http://userapi.com/js/api/openapi.js?49"></script>
+
 <script type="text/javascript">
-<!--
-    VK.Share.button({
-        url:'<%= target.short_url %>',
-        title:'<%= target.title %>',
-        description:'<%= target.description %>',
-        image:'<%= target.preview.url(:preview) %>',
-        noparse:true
-    });
--->
+    VK.init({apiId: 2981617, onlyWidgets: true});
+</script>
+
+<!-- Put this div tag to the place, where the Like block will be -->
+<div id="vk_like"></div>
+<script type="text/javascript">
+    VK.Widgets.Like("vk_like", {type: "mini"});
 </script>

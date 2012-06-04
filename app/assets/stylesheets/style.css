@@ -551,6 +551,17 @@ a {
     line-height: 38px;
 }
 
+.main h3 {
+    font-family: 'FuturisCRegular';
+    font-weight: normal;
+    font-size: 35px;
+    color: #000000;
+    line-height: 38px;
+    margin-bottom: 30px;
+    text-align: center;
+    padding: 0 34px;
+}
+
 .date {
     float: left;
     width: 100%;

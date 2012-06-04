@@ -9,7 +9,7 @@ Funkyouseven::Application.routes.draw do
   resources :post_images
 
   match '/journal' => 'posts#index'
-  match '/journal/:short_url' => 'posts#show', :as => :post
+  match '/journal/:short_url' => 'posts#show', :as => :journal_post
   resources :posts
 
 

@@ -27,7 +27,7 @@
 
 <div class="wrapper">
   <%= render "layouts/head" %>
-  <div id="content" class="">
+  <div id="content" <%= 'class="content_item"' if controller_name == "products_controller" %>>
     <!-- TODO CLASS -->
     <%= yield %>
   </div>

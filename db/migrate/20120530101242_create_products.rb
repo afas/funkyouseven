@@ -17,5 +17,14 @@ class CreateProducts < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :products, :brand_id
+    add_index :products, :sex_id
+    add_index :products, :career_id
+    add_index :products, :shop_section_id
+    add_index :products, :category_id
+    add_index :products, :look_id
+    add_index :products, :welcome_position_id
+    add_index :products, :price
+
   end
 end

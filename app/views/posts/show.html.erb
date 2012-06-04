@@ -7,7 +7,7 @@
 
     <div class="date"><%= raw "— #{@post.author.author_name}, " %><%= Russian::strftime(@post.created_at, "%d %B") %></div>
     <span>
-      <%= @post.description%>
+      <%= @post.description %>
     </span>
 
     <%= image_tag @post.post_images.first.image.url(:album_normal), :alt => @post.post_images.first.title, :class => "big_img" %>
@@ -16,7 +16,13 @@
 
   </div>
 
-  <%= image_tag "social.png", :width => 341, :height => 22 %>
+  <div class="social-panel">
+    <%= render "service_partial/social_panel", :target => @post %>
+  </div>
+
+  <div class="fb-comments">
+    <%= render "service_partial/fb_comments" %>
+  </div>
 
 </div><!--end center_item-->
 <%= render "posts/side_bar" %>

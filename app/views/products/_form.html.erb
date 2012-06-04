@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :cols => 5, :rows => 34 %>
   </div>
   <div class="field">
     <%= f.label :color %><br />
@@ -33,35 +33,37 @@
   </div>
   <div class="field">
     <%= f.label :brand_id %><br />
-    <%= f.number_field :brand_id %>
+    <%= f.collection_select(:brand_id, Brand.all, :id, :title, :promt => true) %>
   </div>
   <div class="field">
     <%= f.label :sex_id %><br />
-    <%= f.number_field :sex_id %>
+    <%= f.collection_select(:sex_id, Sex.collection, :cut, :name, :promt => true) %>
   </div>
   <div class="field">
     <%= f.label :career_id %><br />
-    <%= f.number_field :career_id %>
+    <%= f.collection_select(:career_id, Career.collection, :cut, :name, :promt => true) %>
   </div>
   <div class="field">
     <%= f.label :shop_section_id %><br />
-    <%= f.number_field :shop_section_id %>
+    <%= f.collection_select(:shop_section_id, ShopSection.all, :id, :title, :promt => true) %>
   </div>
   <div class="field">
     <%= f.label :category_id %><br />
-    <%= f.number_field :category_id %>
+    <%= f.collection_select(:category_id, Category.all, :id, :title, :promt => true) %>
   </div>
-  <div class="field">
-    <%= f.label :look_id %><br />
-    <%= f.number_field :look_id %>
-  </div>
-  <div class="field">
-    <%= f.label :season %><br />
-    <%= f.number_field :season %>
-  </div>
+  <!--<div class="field">-->
+    <%#= f.label :look_id %>
+    <!--<br />-->
+    <%#= f.collection_select(:look_id, Look.all, :id, :title, :promt => true) %>
+  <!--</div>-->
+  <!--<div class="field">-->
+    <%#= f.label :season %>
+    <!--<br />-->
+    <%#= f.number_field :season %>
+  <!--</div>-->
   <div class="field">
     <%= f.label :welcome_position_id %><br />
-    <%= f.number_field :welcome_position_id %>
+    <%= f.collection_select(:welcome_position_id, ShopSection.all, :id, :title, :promt => true) %>
   </div>
   <div class="actions">
     <%= f.submit %>
