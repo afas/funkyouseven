@@ -8,8 +8,8 @@ Funkyouseven::Application.routes.draw do
 
   resources :section_categories
 
-  match '/shop/:shop_section/:section_category' => 'products#index', :as => :section_category_products
   match '/shop/:shop_section' => 'products#index', :as => :shop_section_products
+  match '/shop/:shop_section/:section_category' => 'products#index', :as => :section_category_products
 #  match '/shop/:short_url' => 'shop_sections#show'
 
   resources :products
