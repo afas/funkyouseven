@@ -12,14 +12,17 @@
     <% end %>
 
     <% if @brand.logo_file_name? %>
-        <div class="field">
-          <%= f.file_field :logo %>
-        </div>
+        <%= image_tag @brand.logo.url(:preview_item) %>
     <% end %>
+
     <div class="field">
-      <%= f.label :title %>
+      <%= f.file_field :logo %>
+    </div>
+
+    <div class="field">
+      <%= f.label :name %>
       <br/>
-      <%= f.text_field :title %>
+      <%= f.text_field :name %>
     </div>
     <div class="field">
       <%= f.label :description %>
@@ -30,6 +33,11 @@
       <%= f.label :short_url %>
       <br/>
       <%= f.text_field :short_url %>
+    </div>
+    <div class="field">
+      <%= f.label :site_url %>
+      <br/>
+      <%= f.text_field :site_url %>
     </div>
     <div class="actions">
       <%= f.submit %>

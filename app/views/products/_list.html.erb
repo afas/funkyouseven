@@ -1,0 +1,19 @@
+<%= link_to 'New Product', new_product_path %>
+
+<% @products.each do |product| %>
+    <%= product.title %>
+    <%= product.price %>
+    <%= product.description %>
+    <%= product.color %>
+    <%= product.composition %>
+    <%= product.brand_id %>
+    <%= product.sex_id %>
+    <%= product.career_id %>
+    <%= product.shop_section_id %>
+    <%= product.category_id %>
+    <%= product.look_id %>
+    <%= product.season %>
+    <%= product.welcome_position_id %>
+    <%= link_to 'Edit', edit_product_path(product) %>
+    <%= link_to 'Destroy', product, confirm: 'Are you sure?', method: :delete %>
+<% end %>

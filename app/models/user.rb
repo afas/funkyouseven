@@ -8,8 +8,20 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :avatar, :role, :nickname, :name, :surname, :career, :city, :address, :phone, :about
 
+  has_attached_file :avatar,
+                    :styles => {
+                        :small => "34x34#",
+                        :big => "300x370#"
+                    },
+#                    :default_url =>  "/user_avatar/default.png",
+                    :url =>  "/user_avatar/:id/:style_:basename.:extension"
 
-  def author_name
+#  validates_attachment_presence :avatar, :message => I18n.t("paperclip.errors.presence")
+  validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png', 'image/gif'], :message => I18n.t("paperclip.errors.content_type")
+
+  default_scope order(:surname, :name)
+
+  def full_name
     "#{self.name} #{self.surname}"
   end
 

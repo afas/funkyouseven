@@ -14,10 +14,24 @@
   <!--</ul>-->
   <!--</li>-->
 
-  <% @menu_left.each do |item| %>
-      <li <%= "class='current'" if !@shop_section.nil? && item == @shop_section %>>
-        <%= link_to item.name, "/shop/#{item.short_url}" %>
-      </li>
+  <% @menu_left.each do |shop_section| %>
+      <% if !@shop_section.nil? && shop_section == @shop_section %>
+          <li class="current">
+            <%= link_to shop_section.name, shop_section_products_path(shop_section.short_url) %>
+
+            <% if shop_section.section_categories.size > 0 %>
+                <ul>    1
+                  <% shop_section.section_categories.each do |section_category| %>
+                      <li><%= link_to section_category.name, section_category_products_path(shop_section.short_url, section_category.short_url) %></li>
+                  <% end %>
+                </ul>
+            <% end %>
+          </li>
+      <% else %>
+          <li>
+            <%= link_to shop_section.name, shop_section_products_path(shop_section.short_url) %>
+          </li>
+      <% end %>
   <% end %>
 </ul>
 

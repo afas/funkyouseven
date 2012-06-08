@@ -1,0 +1,35 @@
+<div class="title_journal title_basket">
+  <p><%= t("activerecord.attributes.basket.title") %></p>
+</div>
+<!--<div class="cat cat_item">-->
+<!--<a href="#" class="link_img"><img src="images/3.jpg" width="300" height="370" alt="" /></a>-->
+<!--<a href="#" class="title">Крепления сноубордические Union </a>-->
+<!--<span>1800p.</span>-->
+<!--<form action="" method="get">-->
+<!--<label>Колличество</label><input name="" type="text" />-->
+<!--<a href="#" class="delete">Удалить</a>-->
+<!--</form>-->
+<!--</div>&lt;!&ndash;end cat&ndash;&gt; -->
+<!--<div class="cat cat_item no_margin">-->
+<!--<a href="#" class="link_img"><img src="images/3.jpg" width="300" height="370" alt="" /></a>-->
+<!--<a href="#" class="title">Крепления сноубордические Union </a>-->
+<!--<span>1800p.</span>-->
+<!--<form action="" method="get">-->
+<!--<label>Колличество</label><input name="" type="text" />-->
+<!--<a href="#" class="delete">Удалить</a>-->
+<!--</form>-->
+<!--</div>&lt;!&ndash;end cat&ndash;&gt; -->
+<div class="sidebar">
+  <div id="order-price" class="basket">
+    <%= render "basket/order_price" %>
+  </div>
+
+  <div class="block">
+    <p><%= t("activerecord.attributes.order.info") %></p>
+  </div>
+
+  <div id="order">
+    <%= render "orders/form_basket" %>
+  </div>
+
+</div>

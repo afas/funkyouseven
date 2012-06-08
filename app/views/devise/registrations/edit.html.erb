@@ -1,25 +1,93 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="title_journal title_basket">
+  <p><%= current_user.full_name %></p>
+</div>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="center">
+  <h2>История покупок</h2>
+  <div class="my_orders">
+    <ul>
+      <% @my_orders.each do |order| %>
+          <li>
+            <%= link_to order.created_at, edit_order_path(order) %>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+  <br/>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <h2>Рекоммендуемые товары</h2>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
+  <p>Список последних, по виду спорта</p>
+  <br/>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <h2>Рекоммендуемые статьи</h2>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+  <p>Список последних, по виду спорта</p>
+</div>
 
-  <div><%= f.submit "Update" %></div>
-<% end %>
+<div class="sidebar">
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, :class => "feedback"}) do |f| %>
+      <%= devise_error_messages! %>
 
-<h3>Cancel my account</h3>
+      <% if current_user.avatar_file_name? %>
+          <%= image_tag current_user.avatar.url(:big), :alt => current_user.full_name %>
+      <% end %>
+      <label><%= t("activerecord.attributes.user.photo") %></label>
+      <%= f.file_field :avatar %>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+      <label><%= t("activerecord.attributes.user.name") %></label>
+      <%= f.text_field :name, :class => "input" %>
 
-<%= link_to "Back", :back %>
+      <label><%= t("activerecord.attributes.user.surname") %></label>
+      <%= f.text_field :surname, :class => "input" %>
+
+      <label><%= t("activerecord.attributes.user.nickname") %></label>
+      <%= f.text_field :nickname, :class => "input" %>
+
+      <label><%= t("activerecord.attributes.user.career") %></label>
+      <%= f.collection_select :career, Career.collection, :code, :name %>
+
+      <label><%= t("activerecord.attributes.user.city") %></label>
+      <%= f.text_field :city, :class => "input" %>
+
+      <label><%= t("activerecord.attributes.user.about") %></label>
+      <%= f.text_area :about %>
+
+      <label><%= t("activerecord.attributes.user.phone") %></label>
+      <%= f.text_field :phone, :class => "input" %>
+      <div class="info_block">
+        <p><span>*</span> <%= t("activerecord.attributes.user.phone_comment") %></p>
+      </div>
+
+      <label><%= t("activerecord.attributes.user.address") %></label>
+      <%= f.text_area :address %>
+      <div class="info_block">
+        <p><span>*</span> <%= t("activerecord.attributes.user.address_comment") %></p>
+      </div>
+
+      <label><%= t("activerecord.attributes.user.email") %></label>
+      <%= f.email_field :email, :class => "input", :editable => false %>
+
+      <label><%= t("activerecord.attributes.user.password_new") %></label>
+      <%= f.password_field :password, :class => "input" %>
+
+      <label><%= t("activerecord.attributes.user.password_confirmation") %></label>
+      <%= f.password_field :password_confirmation, :class => "input" %>
+
+      <label><span>*</span><%= t("activerecord.attributes.user.current_password") %></label>
+      <%= f.password_field :current_password, :class => "input" %>
+
+      <%= f.submit t("helpers.submit.submit"), :class => "submit" %>
+  <% end %>
+
+  <div class="block">
+    <h3><%= t("activerecord.attributes.user.delete_account") %></h3>
+
+    <p>
+      <%= t("activerecord.attributes.user.unhappy") %><br/>
+      <%= link_to t("activerecord.attributes.user.delete_account_action"), registration_path(resource_name), :confirm => t("backend.actions.are_you_sure"), :method => :delete %>
+      .
+    </p>
+  </div>
+</div>
+

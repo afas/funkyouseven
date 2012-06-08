@@ -5,7 +5,7 @@
 
     <h1><%= @post.title %></h1>
 
-    <div class="date"><%= raw "— #{@post.author.author_name}, " %><%= Russian::strftime(@post.created_at, "%d %B") %></div>
+    <div class="date"><%= raw "— #{@post.author.full_name}, " %><%= Russian::strftime(@post.created_at, "%d %B") %></div>
     <span>
       <%= @post.description %>
     </span>

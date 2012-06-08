@@ -21,14 +21,11 @@
 </head>
 
 <body>
-
-<p id="notice"><%= notice %></p>
-<p id="alert"><%= alert %></p>
-
 <div class="wrapper">
   <%= render "layouts/head" %>
   <div id="content" <%= 'class="content_item"' if controller_name == "products_controller" %>>
-    <!-- TODO CLASS -->
+    <p id="notice"><%= notice %></p>
+    <!--<p id="alert"><%#= alert %></p>-->
     <%= yield %>
   </div>
   <%= render "layouts/footer" %>

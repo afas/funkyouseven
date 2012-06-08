@@ -1,0 +1,27 @@
+<h1>Listing section_categories</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Section</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @section_categories.each do |section_category| %>
+  <tr>
+    <td><%= section_category.name %></td>
+    <td><%= section_category.description %></td>
+    <td><%= section_category.section_id %></td>
+    <td><%= link_to 'Show', section_category %></td>
+    <td><%= link_to 'Edit', edit_section_category_path(section_category) %></td>
+    <td><%= link_to 'Destroy', section_category, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Section category', new_section_category_path %>

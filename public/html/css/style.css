@@ -789,26 +789,26 @@ a {
 	float:left;
 	margin:2px 0 0;
 	}
-.baket {
+.basket {
 	width:100%;
 	float:left;
 	font-size:16px;
 	color:#000;
 	}
-.baket p {
+.basket p {
 	float:left;
 	margin-top:7px;
 	}
-.baket span {
+.basket span {
     font-family: 'BrushScriptStdRegular';
 	float:right;
 	font-size:30px;
 	}
-.baket span span {
+.basket span span {
 	font-size:18px;
 	margin:6px 0 5px; 
 	}	
-.baket .line {
+.basket .line {
 	margin:5px 0;
 	}	
 .feedback {

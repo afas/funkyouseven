@@ -1,6 +1,20 @@
 Funkyouseven::Application.routes.draw do
 
+  match '/basket' => 'basket#my_basket', :as => :my_basket
+  resources :orders
+
+  devise_for :users
+
+
+  resources :section_categories
+
+  match '/shop/:shop_section/:section_category' => 'products#index', :as => :section_category_products
+  match '/shop/:shop_section' => 'products#index', :as => :shop_section_products
+#  match '/shop/:short_url' => 'shop_sections#show'
+
   resources :products
+
+  resources :shop_sections
 
   resources :brands
 
@@ -16,14 +30,9 @@ Funkyouseven::Application.routes.draw do
   match '/access_denied' => 'error#access_denied', :as => :access_denied
   match '/not_found' => 'error#not_found', :as => :not_found
 
-  match '/shop/:short_url' => 'shop_sections#show'
-  resources :shop_sections
-
   match '/:short_url' => 'statics#show'
   resources :statics
   resources :welcomes
-
-  devise_for :users
 
   root :to => 'welcomes#home'
 

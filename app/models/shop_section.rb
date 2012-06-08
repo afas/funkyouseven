@@ -3,6 +3,9 @@ class ShopSection < ActiveRecord::Base
 
   scope :main_menu, order(:list_order)
 
-  default_scope order(:name)
+#  default_scope order(:name)
+
+  has_many :products
+  has_many :section_categories
 
 end

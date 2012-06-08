@@ -1,0 +1,25 @@
+<%= form_for(@order, :remote => true, :html => {:class => "feedback"}) do |f| %>
+    <% if @order.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+          <ul>
+            <% @order.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <label><%= t("activerecord.attributes.order.email") %><span>*</span></label>
+    <%= f.text_field :email, :class => "input" %>
+    <label><%= t("activerecord.attributes.order.name") %><span>*</span></label>
+    <%= f.text_field :name, :class => "input" %>
+    <label><%= t("activerecord.attributes.order.phone") %><span>*</span></label>
+    <%= f.text_field :phone, :class => "input" %>
+    <label><%= t("activerecord.attributes.order.address") %><span>*</span></label>
+    <%= f.text_area :address %>
+    <label><%= t("activerecord.attributes.order.comment") %></label>
+    <%= f.text_area :comment %>
+    <%= f.submit t("helpers.submit.order"), :class => "submit" %>
+<% end %>

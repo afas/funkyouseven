@@ -14,6 +14,12 @@ class ApplicationController < ActionController::Base
     @menu_left = ShopSection.main_menu
     @menu_right = Static.main_menu
 
+    puts controller_name
+
+    if controller_name == "registrations" && !current_user.nil?
+      @my_orders = Order.find_all_by_user_id(current_user.id)
+    end
+
   end
 
   def access_denied

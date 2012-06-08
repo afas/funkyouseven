@@ -2,6 +2,9 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    @shop_section = ShopSection.find_by_short_url(params[:shop_section]) unless params[:shop_section].nil?
+    @section_category = SectionCategory.find_by_shop_section_id_and_short_url(@shop_section.id, params[:section_category]) unless @shop_section.nil? && params[:section_category].nil?
+
     @products = Product.all
 
     respond_to do |format|

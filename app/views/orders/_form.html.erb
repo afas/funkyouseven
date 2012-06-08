@@ -1,0 +1,43 @@
+<%= form_for(@order) do |f| %>
+    <% if @order.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+          <ul>
+            <% @order.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label t("activerecord.attributes.order.user") %>
+      <br/>
+      <%= f.collection_select :user_id, User.all, :id, :email %>
+    </div>
+    <div class="field">
+      <%= f.label t("activerecord.attributes.order.address") %>
+      <br/>
+      <%= f.text_area :address, :rows => 3 %>
+    </div>
+    <div class="field">
+      <%= f.label t("activerecord.attributes.order.comment") %>
+      <br/>
+      <%= f.text_area :comment, :rows => 3 %>
+    </div>
+    <div class="field">
+      <%= f.label t("activerecord.attributes.order.order_status") %>
+      <br/>
+      <%= f.collection_select :order_status, OrderStatus.collection, :code, :name %>
+    </div>
+    <div class="field">
+      <%= f.label t("activerecord.attributes.order.pay_status") %>
+      <br/>
+      <%= f.collection_select :pay_status, PayStatus.collection, :code, :name %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit t("helpers.submit.update") %>
+    </div>
+<% end %>

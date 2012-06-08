@@ -56,6 +56,17 @@ input[type="submit"]::-moz-focus-inner {
 
 /*end reset*/
 
+form input[type="text"] {
+    border: 1px solid #D5D5D5;
+    font-size: 12px;
+    height: 28px;
+    line-height: 28px;
+    margin-bottom: 15px;
+    padding: 0 5px;
+    width: 100%;
+
+}
+
 @font-face {
     font-family: 'BrushScriptStdRegular';
     src: url('brushscriptstd-webfont.eot');
@@ -94,6 +105,12 @@ a {
     margin: 0 auto;
 }
 
+#notice {
+    font-size: 13pt;
+    padding: 13px 0;
+    text-align: center;
+}
+
 #header {
     width: 100%;
     float: left;
@@ -123,21 +140,33 @@ a {
 .info {
     font-size: 11px;
     color: #000000;
-    float: right;
+    float: left;
     line-height: 16px;
     margin: 20px 0 0;
+    height: 159px;
+    width: 245px;
+}
+
+.basket-icon {
+    background: url("basket.gif") no-repeat scroll center center transparent;
+    border: 1px dashed rgba(0, 0, 0, 0.1);
+    float: right;
+    height: 89px;
+    margin-top: 20px;
+    text-align: center;
+    width: 89px;
 }
 
 .menu_left {
     float: left;
-    margin: 111px 0 0;
+    /*margin: 111px 0 0;*/
     position: relative;
     z-index: 2;
 }
 
 .menu_right {
     float: right;
-    margin: 111px 0 0;
+    /*margin: 111px 0 0;*/
     position: relative;
     z-index: 2;
 }
@@ -193,7 +222,7 @@ a {
 }
 
 .menu_left li ul li a:hover, .menu_right li ul li a:hover {
-    font-weight: bold;
+/*font-weight: bold;*/
 }
 
 .line {
@@ -211,10 +240,10 @@ a {
 
 #content {
     float: left;
-    width: 100%;
     margin: -214px 0 0;
-    /*position: relative;*/
-    /*z-index: 999;*/
+    position: relative;
+    width: 100%;
+    z-index: 10000;
 }
 
 .content_item {
@@ -405,6 +434,12 @@ a {
     margin: 15px 0 20px 0;
 }
 
+.info_block {
+    width: 100%;
+    float: left;
+    margin: -13px 0 15px 0;
+}
+
 .img_box {
     float: left;
     width: 100%;
@@ -433,11 +468,11 @@ a {
     color: #006cff;
 }
 
-.block p {
+.block p, .info_block p, .field label span {
     font-size: 14px;
     line-height: 14px;
     color: #000;
-    margin-top: 5px;
+    /*margin-top: 5px;*/
 }
 
 .all {
@@ -448,13 +483,41 @@ a {
     margin: 15px 0 20px 94px;
 }
 
+form input[type="text"] {
+    border: 1px solid #D5D5D5;
+    font-size: 21px;
+    height: 28px;
+    line-height: 28px;
+    margin-bottom: 15px;
+    padding: 0 5px;
+    width: 100%;
+}
+
+form textarea {
+    border: 1px solid #D5D5D5;
+    font-size: 21px;
+    line-height: 28px;
+    margin-bottom: 15px;
+    padding: 0 3px;
+    width: 100%;
+}
+
+form .title {
+    color: #000000;
+    font-family: 'FuturisCBold';
+    font-size: 35px;
+    font-weight: normal;
+    line-height: 38px;
+    height: 80px;
+}
+
 .block_social {
     float: left;
     width: 100%;
     margin: 15px 0 0;
 }
 
-.twitter  {
+.twitter {
     padding: 13px 0 0 71px;
 }
 
@@ -685,7 +748,7 @@ a {
 }
 
 .cusel {
-    /* общий вид селекта включая стрелку справа */
+/* общий вид селекта включая стрелку справа */
     height: 24px;
     line-height: 24px;
     background-position: left top;
@@ -697,7 +760,7 @@ a {
 }
 
 .cuselFrameRight {
-    /* левая чсть селект. обыно скругление и левая граница */
+/* левая чсть селект. обыно скругление и левая граница */
     position: absolute;
     z-index: 2;
     top: 0;
@@ -708,7 +771,7 @@ a {
 }
 
 .cuselText {
-    /* контейнер для отображенного текста селект */
+/* контейнер для отображенного текста селект */
     height: 24px;
     cursor: pointer;
     overflow: hidden;
@@ -721,12 +784,12 @@ a {
 }
 
 * html .cuselText {
-    /* высота блока для текста для ие6 */
+/* высота блока для текста для ие6 */
     height: 24px;
 }
 
 .cusel span {
-    /* оформление оптиона */
+/* оформление оптиона */
     display: block;
     cursor: pointer;
     white-space: nowrap;
@@ -738,13 +801,13 @@ a {
 
 .cusel span:hover,
 .cusel .cuselOptHover {
-    /* реакция оптиона на наведение */
+/* реакция оптиона на наведение */
     background: #e1e1e1;
     color: #fff;
 }
 
 .cusel .cuselActive {
-    /* оформление активного оптиона в списке */
+/* оформление активного оптиона в списке */
     background: #000000;
     color: #fff;
     cursor: default;
@@ -784,7 +847,7 @@ a {
     styles for scrollbar
 */
 .cusel .cusel-scroll-wrap {
-    /* контейнер для блока с прокруткой */
+/* контейнер для блока с прокруткой */
     display: block;
     visibility: hidden;
     position: absolute;
@@ -804,7 +867,7 @@ a {
 }
 
 .cusel .jScrollPaneTrack {
-    /* трек для ползунка прокрутки */
+/* трек для ползунка прокрутки */
     height: 100%;
     width: 2px !important;
     background: #ccc;
@@ -814,7 +877,7 @@ a {
 }
 
 .cusel .jScrollPaneDrag {
-    /* ползунок */
+/* ползунок */
     position: absolute;
     background-position: -40px -24px;
     cursor: pointer;
@@ -838,7 +901,7 @@ a {
 }
 
 .cusel .jScrollArrowUp {
-    /* стрелка вверх */
+/* стрелка вверх */
     position: absolute;
     top: 0;
     right: 2px;
@@ -850,7 +913,7 @@ a {
 }
 
 .cusel .jScrollArrowDown {
-    /* стрелка вниз */
+/* стрелка вниз */
     width: 8px !important;
     height: 12px;
     position: absolute;
@@ -937,30 +1000,30 @@ a {
     margin: 2px 0 0;
 }
 
-.baket {
+.basket {
     width: 100%;
     float: left;
     font-size: 16px;
     color: #000;
 }
 
-.baket p {
+.basket p {
     float: left;
     margin-top: 7px;
 }
 
-.baket span {
+.basket span {
     font-family: 'BrushScriptStdRegular';
     float: right;
     font-size: 30px;
 }
 
-.baket span span {
+.basket span span {
     font-size: 18px;
     margin: 6px 0 5px;
 }
 
-.baket .line {
+.basket .line {
     margin: 5px 0;
 }
 
@@ -969,7 +1032,7 @@ a {
     width: 100%;
 }
 
-.feedback label {
+.feedback label, form label {
     font-size: 13px;
     color: #000000;
     float: left;
@@ -977,8 +1040,9 @@ a {
     margin-bottom: 5px;
 }
 
-.feedback label span {
+.feedback label span, .block span, .info_block span, .field label span {
     color: #ff0000;
+    width: auto;
 }
 
 .input {
@@ -993,7 +1057,7 @@ a {
 
 .feedback textarea {
     border: 1px solid #d5d5d5;
-    width: 288px;
+    width: 100%;
     padding: 5px;
     height: 77px;
     margin-bottom: 15px;

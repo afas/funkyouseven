@@ -12,6 +12,10 @@ ru:
         other: "%{resource}: сохранение не удалось из-за %{count} ошибки"
 
   devise:
+    actions:
+      sign_in: "Войти"
+      sign_up: "Зарегистрироваться"
+      sign_out: "Завершить работу"
     failure:
       already_authenticated: "Вы уже вошли в систему."
       unauthenticated: "Вам необходимо войти в систему или зарегистрироваться."
