@@ -1,4 +1,11 @@
 class ProductsController < ApplicationController
+
+  load_and_authorize_resource
+
+  def import_catalog
+    @products = Product.import()
+  end
+
   # GET /products
   # GET /products.json
   def index

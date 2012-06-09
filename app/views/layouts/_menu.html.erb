@@ -29,4 +29,5 @@
 </ul>
 
 <div class="line"></div>
-<%= render "layouts/admin_menu" %>
+
+<%= render "layouts/admin_menu" if can?(:manage, :all)%>
