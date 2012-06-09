@@ -7,13 +7,13 @@ module ApplicationHelper
 
 
   def admin_panel(target)
-    edit_path = send("edit_#{target.class.to_s.downcase}_path", target)
+    edit_path = send("edit_#{target.class.name.underscore}_path", target)
 
     output = nil
     output = "<li>" + link_to(t("backend.actions.edit"), edit_path) + "</li>" if can?(:edit, target)
-    output += "<li>" + link_to('Destroy', target, confirm: I18n.t("backend.actions.are_you_sure"), method: :delete) + "</li>" if can?(:edit, target)
+    output += "<li>" + link_to(t("backend.actions.destroy"), target, confirm: I18n.t("backend.actions.are_you_sure"), method: :delete) + "</li>" if can?(:edit, target)
 
-    output = '<div class="panel-admin">' + output + "</div>" unless output.nil?
+    output = '<div class="panel-admin"><ul>' + output + "</ul></div>" unless output.nil?
 
     raw output
   end

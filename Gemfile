@@ -4,7 +4,9 @@ gem 'rails', '3.2.3'
 
 gem 'cancan'
 gem 'devise'
-#gem "gmaps4rails"
+gem 'gmaps4rails'
+gem 'google-spreadsheet-ruby'
+gem "gmaps4rails"
 #gem 'omniauth'
 gem 'paperclip'
 gem 'russian'

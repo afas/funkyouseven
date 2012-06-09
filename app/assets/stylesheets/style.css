@@ -164,7 +164,12 @@ a {
     z-index: 2;
 }
 
-.menu_right {
+.admin_menu {
+    margin-top: 8px;
+}
+
+
+.menu_right, .admin_menu {
     float: right;
     /*margin: 111px 0 0;*/
     position: relative;
@@ -176,12 +181,13 @@ a {
     margin-right: 25px;
 }
 
-.menu_right li {
+.menu_right li,
+.admin_menu li {
     float: left;
     margin-left: 25px;
 }
 
-.menu_left li a, .menu_right li a {
+.menu_left li a, .menu_right li a, .admin_menu li a {
     font-size: 20px;
     float: left;
     color: #000000;
@@ -215,14 +221,10 @@ a {
     padding-right: 20px;
 }
 
-.menu_left li.current ul li a, .menu_left li:hover ul li a, .menu_left li ul li a {
+.menu_left li.current ul li a, .menu_left li:hover ul li a, .menu_left li ul li a , .admin_menu li a {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     background: none;
-}
-
-.menu_left li ul li a:hover, .menu_right li ul li a:hover {
-/*font-weight: bold;*/
 }
 
 .line {
@@ -483,7 +485,7 @@ a {
     margin: 15px 0 20px 94px;
 }
 
-form input[type="text"] {
+form input[type="text"], form input[type="number"] {
     border: 1px solid #D5D5D5;
     font-size: 21px;
     height: 28px;
@@ -500,6 +502,17 @@ form textarea {
     margin-bottom: 15px;
     padding: 0 3px;
     width: 100%;
+}
+
+.field .span {
+    color: #666666;
+    /*float: left;*/
+    font-size: 20px;
+    line-height: 24px;
+    /*margin-bottom: 50px;*/
+    width: 100%;
+    height: 144px;
+    font-family: 'FuturisCRegular';
 }
 
 form .title {
@@ -623,6 +636,10 @@ form .title {
     margin-bottom: 30px;
     text-align: center;
     padding: 0 34px;
+}
+
+.noborder {
+    border: none;
 }
 
 .date {
@@ -1045,6 +1062,10 @@ form .title {
     width: auto;
 }
 
+.field label span, .field select {
+    margin-bottom: 5px;
+}
+
 .input {
     border: 1px solid #d5d5d5;
     width: 288px;
@@ -1091,4 +1112,15 @@ form .title {
     display: block;
     height: 100%;
     width: 100%;
-}	
+}
+
+.panel-admin {
+    width: 100%;
+    height: 21px;
+}
+
+.panel-admin ul li {
+    list-style: none;
+    float: left;
+    padding-right: 8px;
+}

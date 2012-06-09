@@ -1,7 +1,7 @@
 <%= image_tag @post.post_images.first.image.url(:big), :alt => @post.title if @post.post_images.size > 0 %>
 
-<div class="center">
-  <div class="main">
+<div class="center_item">
+  <div class="main noborder">
     <%= render 'form' %>
   </div>
 

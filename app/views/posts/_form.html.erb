@@ -17,21 +17,14 @@
     </div>
 
     <div class="field">
-
-      <%= f.label :short_url %>
-      <%= f.text_field :short_url %>
-    </div>
-
-    <div class="field">
       <%= f.label :author_id %>
       <br/>
-      <% if @post.new_record? %>
+      <% if @post.new_record? && !current_user.nil? %>
           <%= f.collection_select(:author_id, User.all, :id, :email, :value => current_user.id, :promt => false) %>
       <% else %>
           <%= f.collection_select(:author_id, User.all, :id, :email, :promt => false) %>
       <% end %>
     </div>
-
     <div class="field">
       <%= f.label :created_at %>
       <br/>
@@ -40,7 +33,7 @@
     <div class="field">
       <%= f.label :description %>
       <br/>
-      <%= f.text_area :description, :cols => 58, :rows => 5 %>
+      <%= f.text_area :description, :class => "span" %>
     </div>
     <div class="field">
       <%= f.label :content %>
@@ -49,6 +42,11 @@
     </div>
     <div class="field">
       <%= render :partial => 'post_images/files_upload', :locals => {:post => @post} %>
+    </div>
+
+    <div class="field">
+      <%= f.label :short_url %>
+      <%= f.text_field :short_url %>
     </div>
 
     <%= f.hidden_field :preview_id %>

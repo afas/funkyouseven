@@ -33,7 +33,7 @@ class StaticsController < ApplicationController
     @static = Static.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render layout: "editor" }
       format.json { render json: @static }
     end
   end
@@ -41,6 +41,7 @@ class StaticsController < ApplicationController
   # GET /statics/1/edit
   def edit
     @static = Static.find(params[:id])
+    render layout: "editor"
   end
 
   # POST /statics
@@ -53,7 +54,7 @@ class StaticsController < ApplicationController
         format.html { redirect_to @static, notice: 'Static was successfully created.' }
         format.json { render json: @static, status: :created, location: @static }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", layout: "editor" }
         format.json { render json: @static.errors, status: :unprocessable_entity }
       end
     end
@@ -69,7 +70,7 @@ class StaticsController < ApplicationController
         format.html { redirect_to @static, notice: 'Static was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "edit", layout: "editor" }
         format.json { render json: @static.errors, status: :unprocessable_entity }
       end
     end

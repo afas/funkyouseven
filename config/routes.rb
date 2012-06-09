@@ -1,5 +1,7 @@
 Funkyouseven::Application.routes.draw do
 
+  resources :posts
+
   match '/basket' => 'basket#my_basket', :as => :my_basket
   resources :orders
 
@@ -8,6 +10,8 @@ Funkyouseven::Application.routes.draw do
 
   resources :section_categories
 
+  match '/shop/import_catalog' => 'products#import_catalog', :as => :shop_import_catalog
+  match '/shop/brands' => 'brands#index', :as => :shop_brands
   match '/shop/:shop_section' => 'products#index', :as => :shop_section_products
   match '/shop/:shop_section/:section_category' => 'products#index', :as => :section_category_products
 #  match '/shop/:short_url' => 'shop_sections#show'
@@ -24,7 +28,6 @@ Funkyouseven::Application.routes.draw do
 
   match '/journal' => 'posts#index'
   match '/journal/:short_url' => 'posts#show', :as => :journal_post
-  resources :posts
 
 
   match '/access_denied' => 'error#access_denied', :as => :access_denied

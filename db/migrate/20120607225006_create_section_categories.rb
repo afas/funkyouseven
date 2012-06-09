@@ -12,7 +12,20 @@ class CreateSectionCategories < ActiveRecord::Migration
     add_index :section_categories, :short_url
     add_index :section_categories, :shop_section_id
 
-    SectionCategory.create(:name => "Верхняя одежда", :short_url => "verhnijodezhd", :shop_section_id => 1)
+    Верхняя одежда
+    Джинсы
+    Футболки
+    Поло
+    Обувь
+    Сумки
+    Аксессуары
+    Толстовки
+    Рубашки
+
+
+
+    SectionCategory.create(:name => "Верхняя одежда", :short_url => "outerwear", :shop_section_id => 1)
+    SectionCategory.create(:name => "Джинсы", :short_url => "jeans", :shop_section_id => 1)
     SectionCategory.create(:name => "Джинсы", :short_url => "jeans", :shop_section_id => 1)
     SectionCategory.create(:name => "Футболки", :short_url => "futbolk", :shop_section_id => 1)
     SectionCategory.create(:name => "Обувь", :short_url => "obuv", :shop_section_id => 1)

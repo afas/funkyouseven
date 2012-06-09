@@ -1,18 +1,18 @@
 <%= image_tag @post.post_images.first.image.url(:big), :alt => @post.title if @post.post_images.size > 0 %>
 
 <div class="center_item">
-  <div class="main">
+  <div class="main noborder">
     <%= render 'form' %>
   </div>
 
   <div class="social-panel">
-    <%= render "service_partial/social_panel", :target => @post %>
+    <%#= render "service_partial/social_panel", :target => @post %>
   </div>
 
   <div class="fb-comments">
-    <%= render "service_partial/fb_comments" %>
+    <%#= render "service_partial/fb_comments" %>
   </div>
 
 </div>
 
-<%= render "posts/side_bar" %>
+<%#= render "posts/side_bar" %>

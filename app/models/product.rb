@@ -1,3 +1,4 @@
+require "google_spreadsheet"
 class Product < ActiveRecord::Base
   attr_accessible :title,
                   :brand_id,
@@ -25,5 +26,7 @@ class Product < ActiveRecord::Base
   def sex
     Sex.by_code(sex_id)
   end
+
+
 
 end

@@ -3,9 +3,5 @@
   <%= image_tag target.image.url(:preview_item), :class => "upload_preview" %><br/>
   <%= label :title, "Заголовок фото" %><br/>
   <%= text_field :title, target.title, :class => "upload_title" %><br/>
-  <%= label :cover, "Обложка" %><br/>
-  <%= check_box :cover, target.cover, :class => "upload_cover" %><br/>
-  <%= label :preview, "Превью (список)" %><br/>
-  <%= check_box :preview, target.preview, :class => "upload_preview" %><br/>
-  <%= link_to t('actions.destroy'), "/post_images/destroy/#{target.id}", :remote => true %>
+  <%= label :cover, "Обложка" %><%= check_box :cover, target.cover, :class => "upload_cover" %> ~ <%= label :preview, "Превью (список)" %> <%= check_box :preview, target.preview, :class => "upload_preview" %> ~ <%= link_to t('backend.actions.destroy'), "/post_images/destroy/#{target.id}", :remote => true %>
 </div>

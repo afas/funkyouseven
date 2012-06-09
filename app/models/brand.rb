@@ -1,7 +1,7 @@
 class Brand < ActiveRecord::Base
   attr_accessible :description, :short_url, :site_url, :name, :logo, :logo_content_type, :logo_file_name, :logo_file_size
 
-  default_scope order(:title)
+  default_scope order(:name)
 
   has_attached_file :logo,
                     :styles => {

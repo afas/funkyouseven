@@ -1,26 +1,11 @@
 <ul class="menu_left">
-  <!--<li>-->
-  <!--<a href="/wear.html">Одежда</a>-->
-  <!--<ul style="display:none !important;">-->
-  <!--<li><a href="#">Верхняя одежда</a></li>-->
-  <!--<li><a href="#">Джинсы</a></li>-->
-  <!--<li><a href="#">Футболки</a></li>-->
-  <!--<li><a href="#">Поло</a></li>-->
-  <!--<li><a href="#">Обувь</a></li>-->
-  <!--<li><a href="#">Сумки</a></li>-->
-  <!--<li><a href="#">Аксессуары</a></li>-->
-  <!--<li><a href="#">Толстовки</a></li>-->
-  <!--<li><a href="#">Рубашки</a></li>-->
-  <!--</ul>-->
-  <!--</li>-->
-
   <% @menu_left.each do |shop_section| %>
       <% if !@shop_section.nil? && shop_section == @shop_section %>
           <li class="current">
             <%= link_to shop_section.name, shop_section_products_path(shop_section.short_url) %>
 
             <% if shop_section.section_categories.size > 0 %>
-                <ul>    1
+                <ul>
                   <% shop_section.section_categories.each do |section_category| %>
                       <li><%= link_to section_category.name, section_category_products_path(shop_section.short_url, section_category.short_url) %></li>
                   <% end %>
@@ -44,3 +29,4 @@
 </ul>
 
 <div class="line"></div>
+<%= render "layouts/admin_menu" %>

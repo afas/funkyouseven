@@ -1,19 +1,15 @@
-<p id="notice"><%= notice %></p>
+<div class="center_item">
+  <div class="main noborder">
 
-<p>
-  <b>Title:</b>
-  <%= @static.title %>
-</p>
+    <%= admin_panel(@static) %>
 
-<p>
-  <b>Short url:</b>
-  <%= @static.short_url %>
-</p>
+    <h1><%= @static.title %></h1>
 
-<p>
-  <b>Content:</b>
-  <%= @static.content %>
-</p>
+    <%= image_tag @static.image.url(:album_normal), :alt => @static.title, :class => "big_img" %>
 
+    <%= raw @static.content %>
 
-<%= link_to 'Edit', edit_static_path(@static) %>
+  </div>
+
+</div>
+<%#= render "posts/side_bar" %>
