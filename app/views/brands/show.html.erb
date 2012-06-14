@@ -1,20 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%= @brand.title %>
-</p>
-
-<p>
-  <b>Description:</b>
+  <%= @brand.name %>
   <%= @brand.description %>
-</p>
-
-<p>
-  <b>Short url:</b>
   <%= @brand.short_url %>
-</p>
-
-
-<%= link_to 'Edit', edit_brand_path(@brand) %> |
-<%= link_to 'Back', brands_path %>
+  <%= @brand.site_url %>

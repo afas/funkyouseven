@@ -14,6 +14,7 @@
     Новое в магазине
   </div>
 
-  <%= render "products/product_preview_item", :new => false %>
-
+  <% @shop_new_sidebar.each do |product| %>
+      <%= render "products/product_preview_item", :product => product, :cat_item => false, :margin_top => false, :container_class => false %>
+  <% end %>
 </div>

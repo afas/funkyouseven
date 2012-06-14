@@ -1,13 +1,17 @@
 <div class="info">
   <% if user_signed_in? %>
-      Привет <%= link_to "#{current_user.full_name || current_user.email}", "/users/edit" %> ~ <%= link_to t("devise.actions.sign_out"), destroy_user_session_path, :method => :delete %>
-      <%= link_to raw('<br/>Редактировать контакты сайта'), edit_welcome_path(@welcome) if can?(:edit, Welcome) %>
-
+      Привет <%= link_to "#{current_user.full_name || current_user.email}", "/users/edit" %>
+      <br/>
+      <%= @welcome.mail %>
+      <br/>
+      <%= @welcome.phone %>
+      <br/>
+      <%= link_to "~#{t("devise.actions.sign_out")}", destroy_user_session_path, :method => :delete %>
   <% else %>
-      <%= link_to t("devise.actions.sign_in"), new_user_session_path %> ~ <%= link_to t("devise.actions.sign_up"), new_user_registration_path %>
+      <%= link_to t("devise.actions.sign_in"), new_user_session_path %> / <%= link_to t("devise.actions.sign_up"), new_user_registration_path %>
+      <br/>
+      <%= @welcome.mail %>
+      <br/>
+      <%= @welcome.phone %>
   <% end %>
-  <br/>
-  <%= @welcome.mail %>
-  <br/>
-  <%= @welcome.phone %>
 </div>

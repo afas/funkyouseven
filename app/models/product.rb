@@ -1,5 +1,8 @@
 require "google_spreadsheet"
 class Product < ActiveRecord::Base
+
+  self.per_page = 12
+
   attr_accessible :title,
                   :brand_id,
                   :shop_section_id,
@@ -19,6 +22,8 @@ class Product < ActiveRecord::Base
   belongs_to :shop_section
   belongs_to :section_category
 
+  scope :shop_new_sidebar, order("created_at DESC").limit(2)
+
   def career
     Career.by_code(career_id)
   end
@@ -37,21 +42,23 @@ class Product < ActiveRecord::Base
     worksheets = import_session.spreadsheet_by_key("0AicZb6Y8rwZzdDdDbjhlUmdUWUtyY1dMbmhCeVZiM0E").worksheets
 
     worksheets.each do |worksheet|
-      shop_section_id = ShopSection.find_by_name(worksheet.title.to_s).id
+      shop_section_id = ShopSection.find_by_name(worksheet.title.to_s.capitalize).id
       worksheet.rows.each do |row|
-        title = row[0].to_s
-        brand_id = Brand.find_or_create_by_name(row[1].to_s.upcase).id
-        title = row[2].to_s
-        title = row[3].to_s
-        title = row[4].to_s
-        title = row[5].to_s
+        title = row[0].to_s.capitalize
+        brand_id = Brand.find_or_create_by_name(row[1].to_s.capitalize).id
 
+        import_comment = ""
+        import_comment += row[2].to_s.capitalize + " /"
+        color = row[3].to_s.capitalize
+        composition = row[4].to_s.capitalize
+        composition += ", " + row[5].to_s.capitalize unless row[5].empty?
+        season = row[6].to_s.downcase unless row[6].empty?
+        sex_id = Sex.by_short_name(row[7].to_s.downcase) unless row[7].empty?
+        price = row[8].to_f
+        import_comment += row[9].to_s.capitalize + " /"
+        import_comment += row[10].to_s.capitalize + " /"
 
-#    puts shop_section_id
-
-#        import_comment
-#        row[1]
-#        user = User.find_or_create_by_screen_name("atog")
+        Product.create(:title => title, :brand_id => brand_id, :color => color, :composition => composition, :import_comment => import_comment, :season => season, :sex_id => sex_id, :price => price)
       end
     end
 
@@ -68,9 +75,7 @@ class Product < ActiveRecord::Base
 #    t.integer  "look_id"
 #    t.string   "season"
 #    t.integer  "welcome_position_id"
-#    t.datetime "created_at",          :null => false
-#    t.datetime "updated_at",          :null => false
-
+#    t.string   "import_comment"
 
   end
 

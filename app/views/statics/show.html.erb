@@ -1,15 +1,8 @@
 <div class="center_item">
   <div class="main noborder">
-
-    <%= admin_panel(@static) %>
-
     <h1><%= @static.title %></h1>
-
     <%= image_tag @static.image.url(:album_normal), :alt => @static.title, :class => "big_img" %>
-
     <%= raw @static.content %>
-
   </div>
-
 </div>
 <%#= render "posts/side_bar" %>

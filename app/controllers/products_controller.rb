@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
-
-  load_and_authorize_resource
+#  load_and_authorize_resource
 
   def import_catalog
     @products = Product.import()
@@ -9,21 +8,34 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    condition = ""
+
     @shop_section = ShopSection.find_by_short_url(params[:shop_section]) unless params[:shop_section].nil?
+    condition += "shop_section_id = #{@shop_section.id}" unless @shop_section.nil?
+
     @section_category = SectionCategory.find_by_shop_section_id_and_short_url(@shop_section.id, params[:section_category]) unless @shop_section.nil? && params[:section_category].nil?
+    condition += " and section_category_id = #{@section_category.id}" unless @section_category.nil?
 
-    @products = Product.all
+    @products = Product.where(condition).paginate(:page => params[:page])
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @products }
-    end
+        respond_to do |format|
+          format.html # index.html.erb
+          format.json { render json: @products }
+        end
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
+
+    @shop_section = @product.shop_section
+    @section_category = @product.section_category
+
+    @related_products = Product.all
+
+    @shop_section = @product.shop_section
+    @section_category = @product.section_category
 
     respond_to do |format|
       format.html # show.html.erb

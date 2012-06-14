@@ -3,11 +3,11 @@
     Журнал
   </div>
 
-  <% @journal_home.each do |post| %>
+  <% @magazine_home.each do |post| %>
       <%= render "posts/post_preview_item", :target => post, :second => false, :show_date => false, :no_margin => false %>
   <% end %>
 
-  <%= link_to "", "/journal", :class => "all" %>
+  <%= link_to "", "/magazine", :class => "all" %>
 
   <%= render "layouts/social_wigets" %>
 </div>

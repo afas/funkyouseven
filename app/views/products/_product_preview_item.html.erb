@@ -1,7 +1,5 @@
-<div class="cat<%= " new" if new %>">
-  <a href="#" class="link_img">
-    <%= image_tag "2.jpg", :alt => "", :width => 300, :height => 457 %>
-  </a>
-  <a href="#" class="title">Крепления сноубордические Union </a>
-  <span>1800p.</span>
+<div class="cat <%= "new" if margin_top %> <%= "cat_item" unless cat_item.nil? %> <%= container_class unless container_class.nil? %>">
+  <%= link_to image_tag("3.jpg", :alt => product.title, :width => 300, :height => 370), product, :class => "link_img" %>
+  <%= link_to product.title, product, :class => "title" %>
+  <span><%= product.price %>p.</span>
 </div>

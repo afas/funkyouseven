@@ -23,9 +23,12 @@
 <body>
 <div class="wrapper">
   <%= render "layouts/head" %>
-  <div id="content" <%= "class='content_item'" if controller_name == "products_controller" || !current_user.nil? && current_user.admin? %>>
-    <p id="notice"><%= notice %></p>
-    <!--<p id="alert"><%#= alert %></p>-->
+  <div id="content">
+
+    <% unless notice.nil? %>
+        <p id="notice"><%= notice %></p>
+    <% end %>
+
     <%= yield %>
   </div>
   <%= render "layouts/footer" %>

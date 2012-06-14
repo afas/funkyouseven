@@ -1,8 +1,11 @@
+#encoding: utf-8
+
 class BrandsController < ApplicationController
   # GET /brands
   # GET /brands.json
   def index
     @brands = Brand.all
+    @shop_section = ShopSection.find_by_short_url("brands")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -60,7 +63,7 @@ class BrandsController < ApplicationController
 
     respond_to do |format|
       if @brand.update_attributes(params[:brand])
-        format.html { redirect_to @brand, notice: 'Brand was successfully updated.' }
+        format.html { redirect_to @brand, notice: 'Успешно обновлена информация о производетеле.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

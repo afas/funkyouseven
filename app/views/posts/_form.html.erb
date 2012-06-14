@@ -20,9 +20,9 @@
       <%= f.label :author_id %>
       <br/>
       <% if @post.new_record? && !current_user.nil? %>
-          <%= f.collection_select(:author_id, User.all, :id, :email, :value => current_user.id, :promt => false) %>
+          <%= f.collection_select(:author_id, User.all, :id, :nickname || :name, :value => current_user.id, :promt => false) %>
       <% else %>
-          <%= f.collection_select(:author_id, User.all, :id, :email, :promt => false) %>
+          <%= f.collection_select(:author_id, User.all, :id, :nickname || :name, :promt => false) %>
       <% end %>
     </div>
     <div class="field">

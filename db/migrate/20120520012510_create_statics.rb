@@ -19,7 +19,7 @@ class CreateStatics < ActiveRecord::Migration
     add_index :statics, :short_url, :unique => true
 
     Static.create(:title => "O нас", :short_url => "about", :list_order => 0)
-    Static.create(:title => "Журнал", :short_url => "journal", :list_order => 1)
+    Static.create(:title => "Журнал", :short_url => "magazine", :list_order => 1)
     Static.create(:title => "Заказ и доставка", :short_url => "basket", :list_order => 2)
   end
 end

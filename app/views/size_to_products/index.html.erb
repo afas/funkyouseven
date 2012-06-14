@@ -1,0 +1,25 @@
+<h1>Listing size_to_products</h1>
+
+<table>
+  <tr>
+    <th>Product</th>
+    <th>Size</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @size_to_products.each do |size_to_product| %>
+  <tr>
+    <td><%= size_to_product.product_id %></td>
+    <td><%= size_to_product.size_id %></td>
+    <td><%= link_to 'Show', size_to_product %></td>
+    <td><%= link_to 'Edit', edit_size_to_product_path(size_to_product) %></td>
+    <td><%= link_to 'Destroy', size_to_product, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Size to product', new_size_to_product_path %>

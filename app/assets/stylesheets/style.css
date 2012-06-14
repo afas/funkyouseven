@@ -116,45 +116,78 @@ a {
     float: left;
     position: relative;
     z-index: 999;
+    height:250px;
 }
 
 .logo {
-    background: url(logo.png) no-repeat;
-    width: 184px;
-    height: 168px;
+    background: url(logos/logo.png) no-repeat;
+    width: 167px;
+    height: 160px;
     position: absolute;
     top: 20px;
     left: 415px;
 }
 
 .logo_part {
-    background: url(logo_part.png) no-repeat;
-    width: 57px;
-    height: 243px;
-    position: relative;
-    float: left;
-    z-index: 9999 !important;
-    margin: -21px 0 0 459px;
+    background: url("logos/logo.png") no-repeat scroll -57px -160px transparent;
+    height: 250px;
+    left: 472px;
+    position: absolute;
+    top: 180px;
+    width: 29px;
+    z-index: 10000;
+}
+
+.logo.mag {
+    background: url(logos/logo-orange.png) no-repeat;
+}
+
+.logo_part.mag {
+    background: url(logos/logo-orange.png) no-repeat scroll -57px -160px transparent;
+}
+
+.logo.shop {
+    background: url(logos/logo-shop.png) no-repeat;
+}
+
+.logo_part.shop {
+    background: url(logos/logo-shop.png) no-repeat scroll -57px -160px transparent;
 }
 
 .info {
-    font-size: 11px;
     color: #000000;
     float: left;
-    line-height: 16px;
-    margin: 20px 0 0;
+    font-size: 13px;
     height: 159px;
+    line-height: 18px;
+    margin: 20px 0 0;
     width: 245px;
 }
 
+.info a, .basket-icon a {
+    color: #11ff17;
+}
+
 .basket-icon {
-    background: url("basket.gif") no-repeat scroll center center transparent;
+    background: url("basket.png") no-repeat scroll center 21% transparent;
     border: 1px dashed rgba(0, 0, 0, 0.1);
     float: right;
-    height: 89px;
+    height: 56px;
     margin-top: 20px;
     text-align: center;
-    width: 89px;
+    width: 121px;
+    padding-top: 28px;
+}
+
+.basket-icon span {
+    font-family: 'BrushScriptStdRegular';
+    font-size: 21px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.basket-icon a {
+    font-size: 13px;
 }
 
 .menu_left {
@@ -165,7 +198,7 @@ a {
 }
 
 .admin_menu {
-    margin-top: 8px;
+    margin-top: 12px;
 }
 
 
@@ -193,10 +226,10 @@ a {
     color: #000000;
     padding-bottom: 10px;
     position: relative;
-    z-index: 9999 !important;
 }
 
-.menu_left li.current a, .menu_right li.current a {
+.menu_left li.current a,
+.menu_right li.current a {
     font-family: 'FuturisCBold';
     background: url(current.png) no-repeat bottom center;
 }
@@ -206,9 +239,8 @@ a {
     width: 980px;
     position: absolute;
     top: 15px;
-    padding-top: 23px;
+    padding-top: 30px;
     left: 0;
-    z-index: 9999 !important;
 }
 
 .menu_left li.current ul {
@@ -221,10 +253,30 @@ a {
     padding-right: 20px;
 }
 
-.menu_left li.current ul li a, .menu_left li:hover ul li a, .menu_left li ul li a , .admin_menu li a {
+.menu_left li.current ul li a,
+.menu_left li:hover ul li a,
+.menu_left li ul li a,
+.admin_menu li a {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     background: none;
+}
+li.current ul li.current a {
+    font-weight: bold;
+}
+
+.admin_control {
+    font-weight: bold;
+    margin-right: 0.5em !important;
+    margin-left: 0 !important;
+}
+
+.admin_control:hover {
+    text-decoration: underline;
+}
+
+.shop_filtration .cuselScrollArrows {
+    margin-top: -6px;
 }
 
 .line {
@@ -242,14 +294,9 @@ a {
 
 #content {
     float: left;
-    margin: -214px 0 0;
     position: relative;
     width: 100%;
-    z-index: 10000;
-}
-
-.content_item {
-    margin-top: -180px !important;
+    z-index: 0;
 }
 
 .center {
@@ -524,6 +571,43 @@ form .title {
     height: 80px;
 }
 
+form .welcome_description {
+    color: #000000;
+    font-family: 'FuturisCRegular';
+    font-size: 35px;
+    font-weight: normal;
+    line-height: 38px;
+    height: 330px;
+    width:300px;
+    text-align: center;
+}
+
+form .product_description {
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 5px;
+    height:230px;
+    width:100%;
+}
+
+form .price {
+    color: #000000;
+    font-family: 'BrushScriptStdRegular';
+    font-size: 30px;
+    font-weight: normal;
+    margin: 5px 0 10px;
+    height: 80px;
+}
+
+#cuselFrame-post_created_at_3i, #cuselFrame-post_created_at_2i, #cuselFrame-post_created_at_1i {
+    margin-right: 13px;
+}
+
+form .label {
+    width: 65px;
+    margin: 3px 0 0 0;
+}
+
 .block_social {
     float: left;
     width: 100%;
@@ -569,13 +653,19 @@ form .title {
     text-decoration: none;
 }
 
+
+
 .logo_footer {
-    background: url(logo_footer.png) no-repeat;
-    width: 118px;
+    background: url("logos/logo-b.png") no-repeat scroll 10px 0 #fff;
+    width: 110px;
     height: 100px;
     position: absolute;
     top: -40px;
-    left: 450px;
+    left: 435px;
+}
+
+.logo_footer.mag {
+    background: url("logos/logo-b-orange.png") no-repeat scroll 10px 0 #fff;
 }
 
 .cat_item {
@@ -596,7 +686,7 @@ form .title {
     text-align: center;
     line-height: 32px;
     float: left;
-    margin: 30px 0 103px 400px;
+    margin: 34px 0 34px 385px;
 }
 
 .big_img {
@@ -667,7 +757,7 @@ form .title {
     margin-bottom: 30px;
 }
 
-.date_journal {
+.date_magazine {
     float: left;
     width: 100%;
     color: #000000;
@@ -686,7 +776,11 @@ form .title {
     margin: 15px 0 30px 26px;
 }
 
-.title_journal {
+.no_margin_left {
+    margin-left: 0;
+}
+
+.title_magazine {
     width: 100%;
     float: left;
     color: #000000;
@@ -698,11 +792,11 @@ form .title {
     z-index: 999;
 }
 
-.title_journal p {
+.title_magazine p {
     font-family: 'FuturisCBold';
 }
 
-.title_journal span {
+.title_magazine span {
     font-size: 11px;
 }
 
@@ -748,36 +842,27 @@ form .title {
     font-family: 'FuturisCBold';
 }
 
-.redSelect .cusel,
-.redSelect .cuselFrameRight,
-.redSelect .jScrollPaneDrag,
-.redSelect .jScrollArrowUp,
-.redSelect .jScrollArrowDown {
-    background-image: url(selects-gree.png) !important;
-}
-
 .cusel,
 .cuselFrameRight,
 .jScrollPaneDrag,
 .jScrollArrowUp,
 .jScrollArrowDown {
-    background: url(selects-2.png) no-repeat;
+    background-image: url(selects-gree.png) !important;
 }
 
 .cusel {
-/* общий вид селекта включая стрелку справа */
+    background-position: left top;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
     height: 24px;
     line-height: 24px;
-    background-position: left top;
-    display: inline-block;
+    max-width: 190px;
     position: relative;
-    cursor: pointer;
-    font-size: 12px;
     z-index: 1;
 }
 
 .cuselFrameRight {
-/* левая чсть селект. обыно скругление и левая граница */
     position: absolute;
     z-index: 2;
     top: 0;
@@ -788,7 +873,6 @@ form .title {
 }
 
 .cuselText {
-/* контейнер для отображенного текста селект */
     height: 24px;
     cursor: pointer;
     overflow: hidden;
@@ -801,76 +885,46 @@ form .title {
 }
 
 * html .cuselText {
-/* высота блока для текста для ие6 */
     height: 24px;
 }
 
 .cusel span {
-/* оформление оптиона */
-    display: block;
+    background: none repeat scroll 0 0 #FFFFFF;
     cursor: pointer;
+    display: block;
+    height: 24px;
+    margin-bottom: 0;
+    padding: 0 15px 0 8px;
     white-space: nowrap;
-    padding: 2px 15px 2px 8px; /* паддинг справа - это отступ текста от ползунка */
-    zoom: 1;
-    height: auto;
-    line-height: normal !important;
 }
 
 .cusel span:hover,
 .cusel .cuselOptHover {
-/* реакция оптиона на наведение */
     background: #e1e1e1;
     color: #fff;
 }
 
 .cusel .cuselActive {
-/* оформление активного оптиона в списке */
     background: #000000;
     color: #fff;
     cursor: default;
-}
-
-/*
-	styles for focus and hover
-*/
-.cusel:hover,
-.cusel:hover .cuselFrameRight,
-.cusel:focus,
-.cusel:focus .cuselFrameRight,
-.cuselFocus,
-.cuselFocus .cuselFrameRight {
-    background-image: url(selects-focus.png);
 }
 
 .cuselOpen {
     z-index: 999;
 }
 
-/*
-	styles for disabled select
-*/
-.classDisCusel,
-.classDisCusel .cuselFrameRight {
-    background-image: url(selects-2-dis.png) !important;
-    cursor: default;
-    color: #ccc;
-}
-
 .classDisCusel .cuselText {
     cursor: default;
 }
 
-/*
-    styles for scrollbar
-*/
 .cusel .cusel-scroll-wrap {
-/* контейнер для блока с прокруткой */
     display: block;
     visibility: hidden;
     position: absolute;
     left: 2px;
     top: 100%;
-    background: #fff; /* фон выпадающего списка */
+    background: #fff;
     min-width: 100%;
     width: auto;
     font-size: 12px;
@@ -880,11 +934,10 @@ form .title {
     position: relative;
     overflow: hidden;
     z-index: 5;
-    border: 1px solid #999; /* границы выпадающего спиcка */
+    border: 1px solid #999;
 }
 
 .cusel .jScrollPaneTrack {
-/* трек для ползунка прокрутки */
     height: 100%;
     width: 2px !important;
     background: #ccc;
@@ -894,7 +947,6 @@ form .title {
 }
 
 .cusel .jScrollPaneDrag {
-/* ползунок */
     position: absolute;
     background-position: -40px -24px;
     cursor: pointer;
@@ -918,7 +970,6 @@ form .title {
 }
 
 .cusel .jScrollArrowUp {
-/* стрелка вверх */
     position: absolute;
     top: 0;
     right: 2px;
@@ -930,7 +981,6 @@ form .title {
 }
 
 .cusel .jScrollArrowDown {
-/* стрелка вниз */
     width: 8px !important;
     height: 12px;
     position: absolute;
@@ -942,8 +992,54 @@ form .title {
     overflow: hidden;
 }
 
+.cusel-scroll-pane {
+    columns: 150px auto;
+}
+
+.current ul li .cusel {
+    margin-top: -5px;
+}
+
+.product_selects {
+    min-height: 100px;
+    border: 1px dashed #D5D5D5;
+    width: 100%;
+    padding: 0 3px;
+}
+
+.product_selects label, .product_selects .cusel, .product_sizes label {
+    display: block;
+    float: left;
+    width: auto;
+}
+
+.product_selects .cusel {
+    margin: 13px 21px 0 0;
+}
+
+.product_selects label {
+    margin: 17px 5px 0 0;
+}
+
+.product_sizes {
+    min-height: 100px;
+    border: 1px dashed #D5D5D5;
+    width: 100%;
+    padding: 0 3px;
+}
+
+.product_sizes label {
+    margin: 3px 0 0 0;
+}
+
+.product_sizes input[type="checkbox"] {
+    display: block;
+    float: left;
+    margin-right: 13px;
+}
+
 .add {
-    background: url(basket.png) no-repeat;
+    background: url(button.png) no-repeat;
     width: 113px;
     height: 32px;
     line-height: 32px;
@@ -1086,8 +1182,8 @@ form .title {
     font-size: 12px;
 }
 
-.submit {
-    background: url(basket.png) no-repeat;
+.submit, .actions input[type='submit'] {
+    background: url(button.png) no-repeat;
     width: 113px;
     height: 32px;
     cursor: pointer;
@@ -1096,6 +1192,10 @@ form .title {
     font-size: 12px;
     color: #fff;
     margin: 0 0 0 95px;
+}
+
+.actions input[type='submit'] {
+    margin-left:0;
 }
 
 #fullover {
@@ -1114,13 +1214,47 @@ form .title {
     width: 100%;
 }
 
-.panel-admin {
-    width: 100%;
-    height: 21px;
+.admin_menu {
+    background: #ffffff;
 }
 
-.panel-admin ul li {
+.admin_menu li {
+    cursor: pointer;
     list-style: none;
     float: left;
-    padding-right: 8px;
+    margin: 0;
+}
+
+.admin_menu li.title {
+    margin-left:8px;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.admin_menu li.title ul {
+    display: none;
+}
+
+.admin_menu li.title:hover ul {
+    display: block;
+    position: absolute;
+}
+
+.admin_menu li.title ul li {
+    float: none;
+}
+
+.admin_menu li.title ul li a {
+    padding: 5px 0 0 0;
+    font-weight: normal;
+    background: #fff;
+}
+
+.parallax-viewport {
+    position: relative;     /* relative, absolute, fixed */
+    overflow: hidden;
+}
+.parallax-layer {
+    position: absolute;
 }

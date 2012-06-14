@@ -3,14 +3,27 @@
       <% if !@shop_section.nil? && shop_section == @shop_section %>
           <li class="current">
             <%= link_to shop_section.name, shop_section_products_path(shop_section.short_url) %>
-
-            <% if shop_section.section_categories.size > 0 %>
-                <ul>
-                  <% shop_section.section_categories.each do |section_category| %>
-                      <li><%= link_to section_category.name, section_category_products_path(shop_section.short_url, section_category.short_url) %></li>
+            <ul>
+              <% if @shop_section.short_url != "brands" %>
+                  <li>
+                    <%= collection_select(:sex, :id, Sex.collection, :code, :name, :promt => true) %>
+                  </li>
+                  <% if @shop_section.short_url != "wear" %>
+                      <li>
+                        <%= collection_select(:career, :id, Career.collection, :code, :name, :promt => true) %>
+                      </li>
                   <% end %>
-                </ul>
-            <% end %>
+                  <li>
+                    <%= collection_select(:brand, :id, Brand.all, :id, :name, :promt => true) %>
+                  </li>
+              <% end %>
+
+              <% if shop_section.section_categories.size > 0 %>
+                  <% shop_section.section_categories.each do |section_category| %>
+                      <li class="<%= 'current' if !@section_category.nil? && section_category == @section_category %>"><%= link_to section_category.name, section_category_products_path(shop_section.short_url, section_category.short_url) %></li>
+                  <% end %>
+              <% end %>
+            </ul>
           </li>
       <% else %>
           <li>
@@ -30,4 +43,4 @@
 
 <div class="line"></div>
 
-<%= render "layouts/admin_menu" if can?(:manage, :all)%>
+<%= render "layouts/admin_menu" if can?(:manage, :all) %>

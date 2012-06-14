@@ -3,9 +3,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.journal_list.paginate(:page => params[:page])
+    @posts = Post.magazine_list.paginate(:page => params[:page])
+    @magazine_numbers = Post.find_by_sql("SELECT DISTINCT strftime('%Y%m', created_at) created from posts ORDER BY created DESC")
 
-    @journal_numbers = Post.find_by_sql("SELECT DISTINCT strftime('%Y%m', created_at) created from posts ORDER BY created DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,6 +25,8 @@ class PostsController < ApplicationController
     raise NotFound unless @post
 
     @posts_side_bar = Post.all
+
+    @shop_new_sidebar = Product.shop_new_sidebar
 
     respond_to do |format|
       format.html # show.html.erb
@@ -96,7 +98,7 @@ class PostsController < ApplicationController
   private
 
   def find_static
-    @static = Static.find_by_short_url("journal")
+    @static = Static.find_by_short_url("magazine")
   end
 
 

@@ -1,71 +1,80 @@
-<%= form_for(@product) do |f| %>
-  <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<%= form_for(@product, :html => {:multipart => true}) do |f| %>
+    <% if @product.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-      <ul>
-      <% @product.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @product.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <label><span>*</span><%= t("activerecord.attributes.product.title") %></label>
+      <%= f.text_area :title, :class => "title" %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description, :cols => 5, :rows => 34 %>
-  </div>
-  <div class="field">
-    <%= f.label :color %><br />
-    <%= f.text_field :color %>
-  </div>
-  <div class="field">
-    <%= f.label :composition %><br />
-    <%= f.text_field :composition %>
-  </div>
-  <div class="field">
-    <%= f.label :brand_id %><br />
-    <%= f.collection_select(:brand_id, Brand.all, :id, :title, :promt => true) %>
-  </div>
-  <div class="field">
-    <%= f.label :sex_id %><br />
-    <%= f.collection_select(:sex_id, Sex.collection, :cut, :name, :promt => true) %>
-  </div>
-  <div class="field">
-    <%= f.label :career_id %><br />
-    <%= f.collection_select(:career_id, Career.collection, :cut, :name, :promt => true) %>
-  </div>
-  <div class="field">
-    <%= f.label :shop_section_id %><br />
-    <%= f.collection_select(:shop_section_id, ShopSection.all, :id, :title, :promt => true) %>
-  </div>
-  <div class="field">
-    <%= f.label :category_id %><br />
-    <%= f.collection_select(:category_id, Category.all, :id, :title, :promt => true) %>
-  </div>
-  <!--<div class="field">-->
+    <div class="field product_selects">
+      <%= f.label :brand_id %>
+      <%= f.collection_select(:brand_id, Brand.all, :id, :name, :promt => true) %>
+
+      <%= f.label :shop_section_id %>
+      <%= f.collection_select(:shop_section_id, ShopSection.all, :id, :name, :promt => true) %>
+
+      <%= f.label :section_category_id %>
+      <%= f.collection_select(:section_category_id, SectionCategory.all, :id, :name, :promt => true) %>
+
+      <%= f.label :sex_id %>
+      <%= f.collection_select(:sex_id, Sex.collection, :code, :name, :promt => true) %>
+
+      <%= f.label :career_id %>
+      <%= f.collection_select(:career_id, Career.collection, :code, :name, :promt => true) %>
+
+      <%= f.label :welcome_position_id %>
+      <%= f.collection_select(:welcome_position_id, WelcomePosition.collection, :code, :name, :promt => true) %>
+    </div>
+
+    <div class="field">
+      <label><span>*</span><%= t("activerecord.attributes.product.description") %></label>
+      <%= f.text_area :description, :class => "product_description" %>
+    </div>
+    <div class="field">
+      <label><span>*</span><%= t("activerecord.attributes.product.price") %></label>
+      <%= f.text_field :price, :class => "price" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :color %>
+      <br/>
+      <%= f.text_field :color %>
+    </div>
+    <div class="field">
+      <%= f.label :composition %>
+      <br/>
+      <%= f.text_field :composition %>
+    </div>
+    <!--<div class="field">-->
     <%#= f.label :look_id %>
     <!--<br />-->
     <%#= f.collection_select(:look_id, Look.all, :id, :title, :promt => true) %>
-  <!--</div>-->
-  <!--<div class="field">-->
-    <%#= f.label :season %>
-    <!--<br />-->
-    <%#= f.number_field :season %>
-  <!--</div>-->
-  <div class="field">
-    <%= f.label :welcome_position_id %><br />
-    <%= f.collection_select(:welcome_position_id, ShopSection.all, :id, :title, :promt => true) %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <!--</div>-->
+    <div class="field">
+      <%= f.label :season %>
+      <br/>
+      <%= f.text_field :season %>
+    </div>
+
+    <div class="field product_sizes">
+      <%= f.label :size %><br/>
+      <%= product_sizes(@product) %>
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="actions">
+      <br/>
+      <%= f.submit %>
+    </div>
 <% end %>

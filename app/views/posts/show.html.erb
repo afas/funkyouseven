@@ -1,8 +1,6 @@
 <%= image_tag @post.post_images.first.image.url(:big), :alt => @post.post_images.first.title, :class => "big_img" if @post.post_images.size > 0 %>
 <div class="center_item">
   <div class="main">
-    <%= link_to '+Edit', edit_post_path(@post) %> <%= link_to '-Destroy', @post, confirm: 'Are you sure?', method: :delete %>
-
     <h1><%= @post.title %></h1>
 
     <div class="date"><%= raw "— #{@post.author.full_name}, " %><%= Russian::strftime(@post.created_at, "%d %B") %></div>

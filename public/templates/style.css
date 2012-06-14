@@ -56,17 +56,6 @@ input[type="submit"]::-moz-focus-inner {
 
 /*end reset*/
 
-form input[type="text"] {
-    border: 1px solid #D5D5D5;
-    font-size: 12px;
-    height: 28px;
-    line-height: 28px;
-    margin-bottom: 15px;
-    padding: 0 5px;
-    width: 100%;
-
-}
-
 @font-face {
     font-family: 'BrushScriptStdRegular';
     src: url('brushscriptstd-webfont.eot');
@@ -95,4 +84,22 @@ body {
     background: #fff;
     font-family: 'FuturisCRegular';
     font-size: 1em;
+}
+
+p {
+    color: #000000;
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 30px;
+}
+
+h3 {
+    color: #000000;
+    font-family: 'FuturisCRegular';
+    font-size: 35px;
+    font-weight: normal;
+    line-height: 38px;
+    margin-bottom: 30px;
+    padding: 0 34px;
+    text-align: center;
 }

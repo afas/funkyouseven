@@ -1,6 +1,7 @@
 class BasketController < ApplicationController
   def my_basket
     @order = Order.new
+    @static = Static.find_by_short_url("basket")
 
     unless current_user.nil?
       @order.user_id = current_user.id

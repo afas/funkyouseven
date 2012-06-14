@@ -13,8 +13,8 @@ class Post < ActiveRecord::Base
   attr_reader :preview_id
 
   default_scope order("created_at DESC")
-  scope :journal_home, order("created_at DESC").limit(3)
-  scope :journal_list, order("created_at DESC")
+  scope :magazine_home, order("created_at DESC").limit(3)
+  scope :magazine_list, order("created_at DESC")
 
   before_save :generate_short_url
   after_create :update_attachements
