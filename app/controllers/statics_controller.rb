@@ -21,6 +21,9 @@ class StaticsController < ApplicationController
 
     raise NotFound unless @static
 
+    @articles_side_bar = Post.side_bar
+    @shop_side_bar = Product.shop_side_bar
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @static }

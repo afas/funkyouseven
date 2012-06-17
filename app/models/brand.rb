@@ -15,4 +15,18 @@ class Brand < ActiveRecord::Base
 
   has_many :products
 
+  before_save :generate_short_url
+
+
+  def site_link
+    "http://#{self.site_url}"
+  end
+
+  private
+
+  def generate_short_url
+    self.short_url = Russian.transliterate(self.name.downcase.gsub(' ', '-')) if self.short_url.blank? && !self.name.blank?
+  end
+
+
 end

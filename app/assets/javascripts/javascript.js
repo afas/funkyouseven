@@ -1,18 +1,24 @@
 $(document).ready(function () {
 
 
-    jQuery('.parallax-layer').parallax({
-        mouseport:jQuery("#parallax")
-    });
+//    jQuery('.parallax-layer').parallax({
+//        mouseport:jQuery("#parallax")
+//    });
 
     if ($("select").length > 0) {
         var params = {
             changedEl:"select",
-            visRows:5,
-            scrollArrows:true,
-            defaultVal:0
+            scrollArrows:false
+//            visRows:5
+//            defaultVal:0
         }
         cuSel(params);
+    }
+
+    if ($(".product_previews li").length > 0) {
+        $(".product_previews li div").click(function () {
+            $("#current_image").attr("src", $(this).attr("image_url"));
+        })
     }
 
     if ($(".slides").length > 0) {

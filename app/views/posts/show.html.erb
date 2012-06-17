@@ -8,10 +8,11 @@
       <%= @post.description %>
     </span>
 
-    <%= image_tag @post.post_images.last.image.url(:album_normal), :alt => @post.post_images.first.title, :class => "big_img" if @post.post_images.size > 0  %>
+    <%= render "posts/slider", :target => @post.post_images if @post.post_images.size > 1 %>
+
+    <%#= image_tag @post.post_images.last.image.url(:album_normal), :alt => @post.post_images.first.title, :class => "big_img" if @post.post_images.size > 0  %>
 
     <%= raw @post.content %>
-
   </div>
 
   <div class="social-panel">
@@ -23,4 +24,4 @@
   </div>
 
 </div><!--end center_item-->
-<%= render "posts/side_bar" %>
+<%= render "posts/side_bar", :articles => @articles_side_bar, :products => @shop_side_bar %>

@@ -15,6 +15,6 @@ class PostImage < ActiveRecord::Base
   validates_attachment_presence :image, :message => I18n.t("paperclip.errors.presence")
   validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/png', 'image/gif'], :message => I18n.t("paperclip.errors.content_type")
   
-  default_scope order("image_order, id DESC")
+  default_scope order("image_order, id")
 
 end

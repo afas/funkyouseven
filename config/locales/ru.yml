@@ -13,7 +13,7 @@ ru:
 
   paperclip:
     errors:
-      presence: "должено быть задано"
+      presence: "должно быть задано"
       content_type: "имеет неправильный тип"
 
   backend:
@@ -92,6 +92,12 @@ ru:
         content: "Содержание статьи"
         created_at: "Дата создания(публикации)"
         author_id: "Автор"
+        short_url: "Короткий адрес"
+      brand:
+        name: "Название"
+        logo: "Логотип"
+        description: "Описание"
+        site_url: "Адрес сайта"
         short_url: "Короткий адрес"
       product:
         title: "Название"

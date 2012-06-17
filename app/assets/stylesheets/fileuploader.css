@@ -101,7 +101,7 @@
 
 .qq-upload-spinner {
     display: inline-block;
-    background: url("preloader.gif");
+    background: url("preloader.gif") no-repeat scroll 0 0 transparent;
     width: 55px;
     height: 55px;
     vertical-align: text-bottom;

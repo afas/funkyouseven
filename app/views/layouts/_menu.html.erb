@@ -6,16 +6,16 @@
             <ul>
               <% if @shop_section.short_url != "brands" %>
                   <li>
-                    <%= collection_select(:sex, :id, Sex.collection, :code, :name, :promt => true) %>
+                    <%= collection_select(:sex, :id, Sex.collection, :code, :name, {:include_blank => "Пол"}) %>
                   </li>
                   <% if @shop_section.short_url != "wear" %>
                       <li>
-                        <%= collection_select(:career, :id, Career.collection, :code, :name, :promt => true) %>
+                        <%= collection_select(:career, :id, Career.collection, :code, :name, {:include_blank => "Вид спорта"}) %>
                       </li>
                   <% end %>
-                  <li>
-                    <%= collection_select(:brand, :id, Brand.all, :id, :name, :promt => true) %>
-                  </li>
+                  <!--<li>-->
+                    <!--<%#= collection_select(:brand, :id, Brand.all, :id, :name, {:include_blank => "Бренд"}) %>-->
+                  <!--</li>-->
               <% end %>
 
               <% if shop_section.section_categories.size > 0 %>
@@ -30,6 +30,9 @@
             <%= link_to shop_section.name, shop_section_products_path(shop_section.short_url) %>
           </li>
       <% end %>
+  <% end %>
+  <% if !current_user.nil? && current_user.admin? %>
+      <li><%= link_to "Без категории", shop_not_categoryzed_path %></li>
   <% end %>
 </ul>
 

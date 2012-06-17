@@ -3,8 +3,8 @@
     Читайте также
   </div>
 
-  <% @posts_side_bar.each do |post| %>
-      <%= render "posts/post_preview_item", :target => post, :second => false, :show_date => false, :no_margin => false %>
+  <% articles.each do |post| %>
+      <%= render "posts/post_preview_item", :target => post, :second => false, :show_date => true, :no_margin => false %>
   <% end %>
 
   <div class="block_second">
@@ -14,7 +14,7 @@
     Новое в магазине
   </div>
 
-  <% @shop_new_sidebar.each do |product| %>
-      <%= render "products/product_preview_item", :product => product, :cat_item => false, :margin_top => false, :container_class => false %>
+  <% products.each do |product| %>
+      <%= render "products/product_preview_item", :product => product, :cat_item => false, :margin_top => product == @shop_side_bar.first, :container_class => false %>
   <% end %>
 </div>

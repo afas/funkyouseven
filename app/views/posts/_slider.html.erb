@@ -1,0 +1,14 @@
+<div class="slider_box">
+  <div class="slides slide_second">
+    <div class="slides_container">
+      <% target.each do |image| %>
+          <div class="slide">
+            <%= image_tag image.image.url(:album_normal), :alt => image.title %>
+            <div class="post_image_caption">
+              <span><%= image.title %></span>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

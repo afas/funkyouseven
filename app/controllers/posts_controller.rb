@@ -3,9 +3,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.magazine_list.paginate(:page => params[:page])
     @magazine_numbers = Post.find_by_sql("SELECT DISTINCT strftime('%Y%m', created_at) created from posts ORDER BY created DESC")
-
+    @articles = Post.magazine_list.paginate(:page => params[:page])
+    @articles_sidebar = Post.side_bar
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,9 +24,8 @@ class PostsController < ApplicationController
 
     raise NotFound unless @post
 
-    @posts_side_bar = Post.all
-
-    @shop_new_sidebar = Product.shop_new_sidebar
+    @articles_side_bar = Post.article_side_bar(@post)
+    @shop_side_bar = Product.shop_side_bar
 
     respond_to do |format|
       format.html # show.html.erb
@@ -58,7 +57,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to post_path(@post.short_url), notice: 'Post was successfully created.' }
+        format.html { redirect_to magazine_post_path(@post.short_url), notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.html { render action: "new", layout: "editor" }
@@ -74,7 +73,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to post_path(@post.short_url), notice: 'Post was successfully updated.' }
+        format.html { redirect_to magazine_post_path(@post.short_url), notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit", layout: "editor" }
@@ -90,7 +89,7 @@ class PostsController < ApplicationController
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to posts_url }
+      format.html { redirect_to "/magazine" }
       format.json { head :no_content }
     end
   end

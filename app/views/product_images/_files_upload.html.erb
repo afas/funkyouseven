@@ -1,0 +1,27 @@
+<div id="file-uploader">
+  <noscript>
+    <p>Please enable JavaScript to use file uploader.</p>
+  </noscript>
+</div>
+
+<% product.product_images.each do |attache| %>
+    <%= render :partial => 'product_images/preview', :locals => {:target => attache} %>
+<% end %>
+
+<script type="text/javascript">
+    function createUploader() {
+        var uploader = new qq.FileUploader({
+            element:document.getElementById('file-uploader'),
+            action:'/product_images/upload',
+            debug:false,
+            sizeLimit:20 * 1024 * 1024,
+            minSizeLimit:0,
+            allowedExtensions:['jpg', 'jpeg', 'png'],
+            params:{
+                product_id:'<%= product.get_id %>',
+                authenticity_token:'<%= form_authenticity_token %>'
+            }
+        });
+    }
+    createUploader();
+</script>

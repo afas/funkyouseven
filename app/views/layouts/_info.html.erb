@@ -6,7 +6,7 @@
       <br/>
       <%= @welcome.phone %>
       <br/>
-      <%= link_to "~#{t("devise.actions.sign_out")}", destroy_user_session_path, :method => :delete %>
+      <%= link_to "#{t("devise.actions.sign_out")}", destroy_user_session_path, :method => :delete %>
   <% else %>
       <%= link_to t("devise.actions.sign_in"), new_user_session_path %> / <%= link_to t("devise.actions.sign_up"), new_user_registration_path %>
       <br/>

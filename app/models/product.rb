@@ -16,13 +16,48 @@ class Product < ActiveRecord::Base
                   :description,
                   :price,
                   :season,
-                  :import_comment
+                  :import_comment,
+                  :preview_id
+
+  attr_writer :preview_id
+  attr_reader :preview_id
 
   belongs_to :brand
   belongs_to :shop_section
   belongs_to :section_category
 
-  scope :shop_new_sidebar, order("created_at DESC").limit(2)
+  has_many :product_images
+  has_many :size_to_products
+
+  scope :shop_side_bar, order("created_at DESC").limit(2)
+  scope :not_categoryzed, where("shop_section_id IS NULL OR section_category_id IS NULL").order("created_at DESC")
+
+  after_create :update_attachements
+
+  def initialize(*args)
+    super
+    self.preview_id = rand(99999999)+99999999 if self.preview_id.nil? && self.new_record?
+  end
+
+  def get_cover
+    if self.product_images.size > 0
+      self.product_images.first
+    else
+      ProductImage.all.first
+    end
+  end
+
+  def get_preview
+    if self.product_images.size > 0
+      self.product_images.first
+    else
+      ProductImage.all.first
+    end
+  end
+
+  def get_id
+    self.id || self.preview_id
+  end
 
   def career
     Career.by_code(career_id)
@@ -35,7 +70,7 @@ class Product < ActiveRecord::Base
   def self.import()
 
     if Product.all.size > 0
-      last_post = Product.all.last.id
+      last_product_id = Product.all.last.id
     end
 
     import_session = GoogleSpreadsheet.login("anton@black-sheep.ru", "rfhnjirf")
@@ -77,6 +112,19 @@ class Product < ActiveRecord::Base
 #    t.integer  "welcome_position_id"
 #    t.string   "import_comment"
 
+  end
+
+
+  private
+
+  def update_attachements
+    unless self.preview_id.nil?
+      images = ProductImage.find_all_by_product_id(self.preview_id)
+      images.each do |image|
+        image.product_id = self.id
+        image.save
+      end
+    end
   end
 
 end

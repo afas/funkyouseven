@@ -5,4 +5,8 @@
     <%= raw @static.content %>
   </div>
 </div>
-<%#= render "posts/side_bar" %>
+
+<!--@articles_side_bar = Post.side_bar-->
+<!--@shop_side_bar = Product.shop_side_bar-->
+
+<%= render "statics/side_bar", :articles => @articles_side_bar, :products => @shop_side_bar %>

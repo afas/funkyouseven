@@ -18,22 +18,26 @@
 
     <div class="field product_selects">
       <%= f.label :brand_id %>
-      <%= f.collection_select(:brand_id, Brand.all, :id, :name, :promt => true) %>
+      <%= f.collection_select(:brand_id, Brand.all, :id, :name, {:include_blank => "не установлен"}) %>
 
       <%= f.label :shop_section_id %>
-      <%= f.collection_select(:shop_section_id, ShopSection.all, :id, :name, :promt => true) %>
+      <%= f.collection_select(:shop_section_id, ShopSection.all, :id, :name, {:include_blank => "не установлен"}) %>
 
       <%= f.label :section_category_id %>
-      <%= f.collection_select(:section_category_id, SectionCategory.all, :id, :name, :promt => true) %>
+      <%= f.collection_select(:section_category_id, SectionCategory.all, :id, :name, {:include_blank => "не установлен"}) %>
 
       <%= f.label :sex_id %>
-      <%= f.collection_select(:sex_id, Sex.collection, :code, :name, :promt => true) %>
+      <%= f.collection_select(:sex_id, Sex.collection, :code, :name, {:include_blank => "не установлен"}) %>
+
+      <br/>
+      <br/>
+      <br/>
 
       <%= f.label :career_id %>
-      <%= f.collection_select(:career_id, Career.collection, :code, :name, :promt => true) %>
+      <%= f.collection_select(:career_id, Career.collection, :code, :name, {:include_blank => "не установлен"}) %>
 
       <%= f.label :welcome_position_id %>
-      <%= f.collection_select(:welcome_position_id, WelcomePosition.collection, :code, :name, :promt => true) %>
+      <%= f.collection_select(:welcome_position_id, WelcomePosition.collection, :code, :name, {:include_blank => "не установлен"}) %>
     </div>
 
     <div class="field">
@@ -71,7 +75,11 @@
       <%= product_sizes(@product) %>
     </div>
 
-    <div class="clear"></div>
+    <div class="field">
+      <%= render :partial => 'product_images/files_upload', :locals => {:product => @product} %>
+    </div>
+
+    <!--<div class="clear"></div>-->
 
     <div class="actions">
       <br/>

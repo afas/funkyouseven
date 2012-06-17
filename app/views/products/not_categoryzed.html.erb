@@ -1,7 +1,3 @@
-<%= render "brands/brand_preview_item", :brand => @brand, :container_class => "no_margin" %>
-
-<div class="clear"></div>
-
 <% @products.each_with_index do |product, i| %>
     <%= render "products/product_preview_item", :product => product, :cat_item => true, :margin_top => false, :container_class => (i+1)%3 == 0 ? "no_margin" : "" %>
 <% end %>

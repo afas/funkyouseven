@@ -6,6 +6,8 @@ class MyColor
   def self.collection()
     [
         MyColor.new(:name => 'Зеленый', :code => '#00FF06'),
+        MyColor.new(:name => 'Синий', :code => '#006CFF'),
+        MyColor.new(:name => 'Красный', :code => '#006CFF'),
         MyColor.new(:name => 'Синий', :code => '#006CFF')
     ]
   end

@@ -1,0 +1,7 @@
+<div id="<%= "product_image_#{target.id}" %>" class="image-upload-preview">
+  <%= hidden_field :product_id, target.product_id, :class => "upload_product_id" %>
+  <%= image_tag target.image.url(:preview_item), :class => "upload_preview" %><br/>
+  <%= label :title, "Заголовок фото" %><br/>
+  <%= text_field :title, target.title, :class => "upload_title" %><br/>
+  <%= label :cover, "Обложка" %><%= check_box :cover, target.cover, :class => "upload_cover" %> ~ <%= label :preview, "Превью (список)" %> <%= check_box :preview, target.preview, :class => "upload_preview" %> ~ <%= link_to t('backend.actions.destroy'), "/product_images/destroy/#{target.id}", :remote => true %>
+</div>

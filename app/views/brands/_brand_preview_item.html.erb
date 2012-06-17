@@ -1,5 +1,6 @@
-<div class="cat cat_item <%= container_class %>">
-  <%= link_to image_tag("3.jpg", :alt => brand.name, :width => 300, :height => 370), brand, :class => "link_img" %>
+<div class="cat cat_item brand  <%= container_class %>">
+  <%= link_to image_tag(brand.logo.url(:preview_item), :alt => brand.name), brand, :class => "link_img" %>
   <%= link_to brand.name, brand, :class => "title" %>
-  <span><%= brand.site_url %></span>
+  <p><%= link_to brand.site_url, brand.site_link, :target => "_blank",:class => "site_url" %></p>
+  <p><%= brand.description %></p>
 </div>

@@ -98,6 +98,7 @@ body {
 
 a {
     text-decoration: none;
+    color: #11FF17;
 }
 
 .wrapper {
@@ -334,14 +335,22 @@ li.current ul li.current a {
 }
 
 .pagination {
+    /*margin: -23px auto 0;*/
+    /*width: 39px;*/
+    /*position: relative;*/
+    /*z-index: 9999;*/
+
+    display: block;
+    height: 11px;
     margin: -23px auto 0;
-    width: 39px;
     position: relative;
+    text-align: center;
+    width: 100%;
     z-index: 9999;
 }
 
 .pagination li {
-    float: left;
+    display: inline-block;
     margin: 0 1px;
 }
 
@@ -463,6 +472,21 @@ li.current ul li.current a {
     margin-top: 8px !important;
 }
 
+.slide_second .post_image_caption {
+    bottom: 0 !important;
+    height: 77px;
+    left: 34px;
+    position: absolute;
+    text-transform: uppercase;
+    width: 300px;
+    word-wrap: break-word;
+    z-index: 500;
+}
+
+.slide_second .post_image_caption span {
+    color: #0054ff !important;
+}
+
 .sidebar {
     width: 300px;
     float: right;
@@ -514,7 +538,7 @@ li.current ul li.current a {
 }
 
 .block_title span {
-    color: #006cff;
+    color: #006cff !important;
 }
 
 .block p, .info_block p, .field label span {
@@ -583,6 +607,14 @@ form .welcome_description {
 }
 
 form .product_description {
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 5px;
+    height:230px;
+    width:100%;
+}
+
+form .brand_description {
     font-size: 13px;
     line-height: 18px;
     margin-bottom: 5px;
@@ -677,6 +709,14 @@ form .label {
     margin-right: 0 !important;
 }
 
+.brand p {
+    margin-top: 5px;
+}
+
+.brand a.site_url {
+    color: #006cff;
+}
+
 .more {
     background: url(more.png) no-repeat;
     width: 213px;
@@ -722,11 +762,20 @@ form .label {
     font-weight: normal;
     font-size: 35px;
     color: #000000;
-    line-height: 38px;
-    margin-bottom: 30px;
+    line-height: 35px;
+    margin: 21px 0;
     text-align: center;
     padding: 0 34px;
 }
+
+.main h3:before {
+    content: '«';
+}
+
+.main h3:after {
+    content: '»';
+}
+
 
 .noborder {
     border: none;
@@ -747,14 +796,18 @@ form .label {
     color: #666666;
     float: left;
     width: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 21px;
+}
+
+.cusel-scroll-wrap span {
+    font-size: 12px!important;
 }
 
 .main p {
     font-size: 14px;
     line-height: 18px;
     color: #000000;
-    margin-bottom: 30px;
+    margin-bottom: 13px;
 }
 
 .date_magazine {
@@ -773,7 +826,7 @@ form .label {
 .block_second {
     width: 300px;
     float: left;
-    margin: 15px 0 30px 26px;
+    margin: 15px 0 0 26px;
 }
 
 .no_margin_left {
@@ -840,6 +893,31 @@ form .label {
 
 .description p span {
     font-family: 'FuturisCBold';
+}
+
+.product_previews {
+    position: absolute;
+    right: 34px;
+    top: 23px;
+}
+
+.product_previews li {
+    float: none;
+    height: 100px;
+}
+
+.product_previews li div {
+    -webkit-border-radius: 80px;
+    border-radius: 80px;
+    overflow: hidden;
+
+    -webkit-box-shadow: inset 0px 1px 2px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0px 1px 2px 1px rgba(0, 0, 0, 0.5);
+
+    height: 80px;
+    width: 80px;
+
+    cursor: pointer;
 }
 
 .cusel,
@@ -922,12 +1000,13 @@ form .label {
     display: block;
     visibility: hidden;
     position: absolute;
-    left: 2px;
+    left: 15px;
     top: 100%;
-    background: #fff;
+    background: url("drop-down-menu-top.png") no-repeat scroll right 0 transparent;
     min-width: 100%;
     width: auto;
-    font-size: 12px;
+    font-size: 12px!important;
+    padding-top: 7px;
 }
 
 .cusel .jScrollPaneContainer {
@@ -994,6 +1073,13 @@ form .label {
 
 .cusel-scroll-pane {
     columns: 150px auto;
+    overflow: hidden;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    border: 1px solid #000;
+
+    -webkit-box-shadow: 0px 5px 21px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 21px 1px rgba(0, 0, 0, 0.5);
 }
 
 .current ul li .cusel {

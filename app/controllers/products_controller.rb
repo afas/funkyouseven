@@ -5,6 +5,15 @@ class ProductsController < ApplicationController
     @products = Product.import()
   end
 
+  def not_categoryzed
+    @products = Product.not_categoryzed#.paginate(:page => params[:page])
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @products }
+    end
+  end
+
   # GET /products
   # GET /products.json
   def index
@@ -18,10 +27,10 @@ class ProductsController < ApplicationController
 
     @products = Product.where(condition).paginate(:page => params[:page])
 
-        respond_to do |format|
-          format.html # index.html.erb
-          format.json { render json: @products }
-        end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @products }
+    end
   end
 
   # GET /products/1
@@ -49,7 +58,7 @@ class ProductsController < ApplicationController
     @product = Product.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render layout: "editor" }
       format.json { render json: @product }
     end
   end
@@ -57,6 +66,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    render layout: "editor"
   end
 
   # POST /products
@@ -69,7 +79,7 @@ class ProductsController < ApplicationController
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render json: @product, status: :created, location: @product }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", layout: "editor" }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
@@ -85,7 +95,7 @@ class ProductsController < ApplicationController
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "edit", layout: "editor" }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end

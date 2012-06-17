@@ -3,7 +3,7 @@
     Журнал
   </div>
 
-  <% @magazine_home.each do |post| %>
+  <% @articles_sidebar.each do |post| %>
       <%= render "posts/post_preview_item", :target => post, :second => false, :show_date => false, :no_margin => false %>
   <% end %>
 

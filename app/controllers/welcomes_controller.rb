@@ -4,7 +4,7 @@ class WelcomesController < ApplicationController
   def home
     #@welcome = Welcome.find(params[:id])
 
-    @magazine_home = Post.magazine_home
+    @articles_sidebar = Post.side_bar
 
     respond_to do |format|
       format.html # home.html.erb

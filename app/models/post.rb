@@ -13,7 +13,10 @@ class Post < ActiveRecord::Base
   attr_reader :preview_id
 
   default_scope order("created_at DESC")
-  scope :magazine_home, order("created_at DESC").limit(3)
+  scope :side_bar, order("created_at DESC").limit(3)
+
+  scope :article_side_bar, lambda { |post| where("id <> ?", post.id).order("created_at DESC").limit(3) }
+
   scope :magazine_list, order("created_at DESC")
 
   before_save :generate_short_url
@@ -41,6 +44,6 @@ class Post < ActiveRecord::Base
   end
 
   def generate_short_url
-    self.short_url = Russian.transliterate(self.title.gsub(' ', '-')) if self.short_url.blank? && !self.title.blank?
+    self.short_url = Russian.transliterate(self.title.downcase.gsub(' ', '-')) if self.short_url.blank? && !self.title.blank?
   end
 end
