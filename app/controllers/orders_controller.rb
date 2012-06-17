@@ -44,6 +44,14 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
+
+        #@order.add_order_items_from_basket(@basket)
+        #OrderMailer.new_order(@order).deliver
+        #session[:basket] = nil
+
+        puts @order.user_created?
+        puts @order.user_id
+
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.js { render notice: 'Order was successfully created.' }
         format.json { render json: @order, status: :created, location: @order }

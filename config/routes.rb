@@ -5,7 +5,12 @@ Funkyouseven::Application.routes.draw do
 
   resources :size_to_products
 
+  match '/basket/add/:product_id/:size_id', :to => 'basket#add_product', :as => 'add_to_basket'
+  match '/basket/product_count/:product_id', :to => 'basket#set_count', :as => 'set_count'
+  match '/basket/remove/:product_id', :to => 'basket#remove_product', :as => 'remove_from_basket'
+  match '/empty_basket', :to => 'store#empty_basket', :as => 'empty_basket'
   match '/basket' => 'basket#my_basket', :as => :my_basket
+
   resources :orders
 
   devise_for :users

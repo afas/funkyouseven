@@ -2,11 +2,18 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :default_data
+  before_filter :find_cart, :except => :destroy
+
 
   rescue_from NotFound, :with => :not_found
   rescue_from ActiveRecord::RecordNotFound, :with => :not_found
 
   private
+
+  def find_cart
+    session[:basket] ||= Basket.new
+    @basket = session[:basket]
+  end
 
   def default_data
     @welcome = Welcome.first

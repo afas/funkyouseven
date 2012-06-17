@@ -3,7 +3,7 @@
     <form action="" method="get">
       <h1><%= @product.title %></h1>
 
-      <h2><%= @product.price %> p.</h2>
+      <h2><%= number_to_currency(@product.price.round, :precision => 0, :unit => "p.") %></h2>
 
       <p><%= @product.description %></p>
 
