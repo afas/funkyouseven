@@ -39,7 +39,6 @@ Funkyouseven::Application.routes.draw do
   match '/magazine' => 'posts#index'
   match '/magazine/:short_url' => 'posts#show', :as => :magazine_post
 
-
   match '/access_denied' => 'error#access_denied', :as => :access_denied
   match '/not_found' => 'error#not_found', :as => :not_found
 
@@ -48,7 +47,6 @@ Funkyouseven::Application.routes.draw do
   resources :welcomes
 
   root :to => 'welcomes#home'
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
