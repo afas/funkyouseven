@@ -1,4 +1,4 @@
 <div class="basket-icon">
-  <span>3</span>
+  <span><%= @basket.products_count %></span>
   <%= link_to t("activerecord.attributes.basket.go_order"), my_basket_path %>
 </div>

@@ -1166,7 +1166,7 @@ form .label {
 
 .cat_item form {
     width: 100%;
-    margin: 10px 0 0;
+    margin: 0;
     float: left;
 }
 
@@ -1177,15 +1177,15 @@ form .label {
 }
 
 .cat_item form input {
-    border: 1px solid #d5d5d5;
-    width: 29px;
+    border: 1px solid #D5D5D5;
+    color: #000000;
+    float: left;
+    font-size: 21px;
     height: 18px;
     line-height: 18px;
+    margin: 2px 8px 0 0;
     text-align: center;
-    font-size: 12px;
-    color: #000000;
-    margin-right: 18px;
-    float: left;
+    width: 34px;
 }
 
 .delete {

@@ -1,3 +1,11 @@
+function setSize(){
+    product_size = $("#product_size_id").val();
+    link = $("#add_product_button").attr("link") + product_size;
+    $("#add_product_button").attr("href", link);
+}
+
+//add_product_button
+
 $(document).ready(function () {
 
 
@@ -9,8 +17,6 @@ $(document).ready(function () {
         var params = {
             changedEl:"select",
             scrollArrows:false
-//            visRows:5
-//            defaultVal:0
         }
         cuSel(params);
     }

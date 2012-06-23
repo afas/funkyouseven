@@ -1,0 +1,10 @@
+<div class="cat <%= "new" if margin_top %> <%= "cat_item" unless cat_item.nil? %> <%= container_class unless container_class.nil? %>">
+  <%= link_to image_tag(basket_item.preview_url, :alt => basket_item.title), basket_item.product, :class => "link_img" %>
+  <%= link_to basket_item.product.title, basket_item.product, :class => "title" %>
+  <span><%= number_to_currency(basket_item.product.price.round, :precision => 0, :unit => "p.") %></span>
+  <form action="" method="get">
+  <label>Количество</label>
+    <%= text_field_tag :count, basket_item.product_count %>
+  <a href="#" class="delete">Удалить</a>
+  </form>
+</div>

@@ -142,6 +142,7 @@ ru:
         other: "Доставка"
         total: "Итого"
         go_order: "Оформить заказ"
+        to_basket: "В корзину"
       order:
         user: "Клиент"
         email: "Ваш e-mail"

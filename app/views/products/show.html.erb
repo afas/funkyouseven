@@ -13,9 +13,12 @@
 
       <p><span>Сезон:</span> <%= @product.season %></p>
 
-      <%= collection_select(:product_size, :id, ProductSize.collection("wear"), :code, :name, :promt => true) %>
+      <%= collection_select(:product_size, :id, ProductSize.collection("wear"), :code, :name, { :include_blank => "Размер" }, { :onchange => "setSize()" }) %>
       <div class="clear"></div>
-      <a href="#" class="add">В корзину</a>
+
+      <!--match '/basket/add/:product_id/:size_id', :to => 'basket#add_product', :as => :add_to_basket-->
+
+      <%= link_to t("activerecord.attributes.basket.to_basket"), "#", :id => "add_product_button", :link => add_to_basket_path(@product.id, ""), :remote => true, :class => "add" %>
 
       <div class="clear"></div>
       <%= link_to "Все вещи #{@product.brand.name}", @product.brand, :class => "all_w" unless @product.brand.nil? %>

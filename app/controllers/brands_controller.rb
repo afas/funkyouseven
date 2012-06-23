@@ -1,5 +1,4 @@
 #encoding: utf-8
-
 class BrandsController < ApplicationController
   # GET /brands
   # GET /brands.json

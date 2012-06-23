@@ -48,8 +48,8 @@ module ApplicationHelper
         output += admin_partial(@static, "static")
       when "welcomes"
         output += "<li class='title'>#{t("activerecord.attributes.admin_menu.welcome")}<ul><li>" + link_to("Изменить", edit_welcome_path(@welcome)) + "</li></ul></li>" if can?(:edit, Welcome) && !@welcome.nil?
-      else
-        puts "oO"
+#      else
+#        puts "oO"
     end
 
     raw output unless output.empty?

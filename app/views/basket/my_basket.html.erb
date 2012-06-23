@@ -1,24 +1,11 @@
 <div class="title_magazine title_basket">
   <p><%= t("activerecord.attributes.basket.title") %></p>
 </div>
-<!--<div class="cat cat_item">-->
-<!--<a href="#" class="link_img"><img src="images/3.jpg" width="300" height="370" alt="" /></a>-->
-<!--<a href="#" class="title">Крепления сноубордические Union </a>-->
-<!--<span>1800p.</span>-->
-<!--<form action="" method="get">-->
-<!--<label>Колличество</label><input name="" type="text" />-->
-<!--<a href="#" class="delete">Удалить</a>-->
-<!--</form>-->
-<!--</div>&lt;!&ndash;end cat&ndash;&gt; -->
-<!--<div class="cat cat_item no_margin">-->
-<!--<a href="#" class="link_img"><img src="images/3.jpg" width="300" height="370" alt="" /></a>-->
-<!--<a href="#" class="title">Крепления сноубордические Union </a>-->
-<!--<span>1800p.</span>-->
-<!--<form action="" method="get">-->
-<!--<label>Колличество</label><input name="" type="text" />-->
-<!--<a href="#" class="delete">Удалить</a>-->
-<!--</form>-->
-<!--</div>&lt;!&ndash;end cat&ndash;&gt; -->
+
+<% @basket.items.each_with_index do |basket_item, i| %>
+    <%= render "products/product_basket_item", :basket_item => basket_item, :cat_item => true, :margin_top => false, :container_class => (i+1)%3 == 0 ? "no_margin" : "" %>
+<% end %>
+
 <div class="sidebar">
   <div id="order-price" class="basket">
     <%= render "basket/order_price" %>

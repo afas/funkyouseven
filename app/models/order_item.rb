@@ -8,7 +8,7 @@ class OrderItem < ActiveRecord::Base
     order_item = self.new
     order_item.product = basket_item.product
     order_item.product_count = basket_item.count
-    order_item.product_size = basket_item.size
+    order_item.product_size = basket_item.product_size
     order_item
   end
 

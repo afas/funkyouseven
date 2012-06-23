@@ -1,26 +1,30 @@
 class BasketItem
-  attr_reader :product, :count, :size
+  attr_reader :product, :product_count, :product_size
 
-  def initialize(product, size)
+  def initialize(product, size_id)
     @product = product
-    @size = size
-    @count = 1
+    @product_size = size_id
+    @product_count = 1
   end
 
   def increment_count
-    @count += 1
+    @product_count += 1
   end
 
   def decrement_count
-    @count -= 1
+    @product_count -= 1
+  end
+
+  def preview_url
+    product.get_preview.image.url(:preview_item)
   end
 
   def title
-    @product.name
+    product.name
   end
 
-  def price
-    @product.price * @count
-  end
-
+#  def price
+#    @product.price * @count
+#  end
+#
 end
