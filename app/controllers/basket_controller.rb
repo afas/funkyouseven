@@ -17,7 +17,7 @@ class BasketController < ApplicationController
 
 
   def add_product
-#    session[:basket] = nil
+    session[:basket] = nil
     product = Product.find(params[:product_id])
     @basket.add_product(product, params[:size_id])
     render :layout => false
