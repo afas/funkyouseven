@@ -8,7 +8,7 @@ class Sex
     [
         Sex.new(:name => 'Мужской', :code => 0, :short_name => "муж"),
         Sex.new(:name => 'Женский', :code => 1, :short_name => "жен"),
-        Sex.new(:name => 'Унисекс', :code => 2, :short_name => "унис")
+        Sex.new(:name => 'Унисекс', :code => 2, :short_name => "уни")
         #Sex.new(:name => 'Детский', :code => 3, :short_name => "дет")
     ]
   end
