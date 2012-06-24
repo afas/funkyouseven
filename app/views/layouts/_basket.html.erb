@@ -1,4 +1,4 @@
-<div class="basket-icon">
+<div class="basket-icon <%= "hidden" if @basket.products_count == 0 %>">
   <span><%= @basket.products_count %></span>
   <%= link_to t("activerecord.attributes.basket.go_order"), my_basket_path %>
 </div>

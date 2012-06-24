@@ -11,7 +11,7 @@ class ProductImage < ActiveRecord::Base
                         :full => "645x623#",
                         :slider => "638x422#"
                     },
-                    :default_url =>  "/product_images/default.png",
+                    :default_url =>  "/product_images/default.jpg",
                     :url =>  "/product_images/:id/:style_:basename.:extension"
 
   validates_attachment_presence :image, :message => I18n.t("paperclip.errors.presence")

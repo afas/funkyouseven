@@ -1,0 +1,12 @@
+<% if @basket.products_count == 0 %>
+    $(".basket-icon").hide();
+    $("#order-price").hide();
+    $(".cat_item").hide();
+<% else %>
+    $(".basket-icon span").html("<%= @basket.products_count %>");
+    $("#order-price").html("<%= escape_javascript(render(:partial => "basket/order_price")) %>");
+    <% unless @current_item.nil? %>
+        $("<%= "#counter-#{@current_item.product.id}-#{@current_item.product_size}" %>").focus();
+        $("<%= "#counter-#{@current_item.product.id}-#{@current_item.product_size}" %>").select();
+    <% end %>
+<% end %>

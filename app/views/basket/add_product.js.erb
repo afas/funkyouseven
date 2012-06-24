@@ -1,1 +1,4 @@
 $(".basket-icon span").html(<%= @basket.products_count %>);
+<% if @basket.products_count == 1 %>
+    $(".basket-icon").show();
+<% end %>

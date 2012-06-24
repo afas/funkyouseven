@@ -1,0 +1,7 @@
+$("#<%= @basket_item_id %>").remove();
+<% if @basket.products_count == 0 %>
+    $(".basket-icon").hide();
+    $(".order-price").hide();
+<% else %>
+    $('#order-price').html('<%= escape_javascript(render(:partial => 'basket/order_price')) %>');
+<% end %>

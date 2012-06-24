@@ -85,7 +85,11 @@ ru:
         product: "Продукты"
         shop_section: "Разделы"
         section_category: "Категории"
-        import_products: "Импортировать проекты"
+        import_products: "Импортировать продукты"
+      welcome:
+        title: "Заголовок"
+        description: "Мини эбаут на главной"
+        phone: "Телефон"
       post:
         title: "Заголовок"
         description: "Анонс"
@@ -153,20 +157,6 @@ ru:
         order_status: "Статус заказа"
         pay_status: "Статус платежа"
         info: "Доставка осуществляется по Москве и ближайшему Подмосковью курьером в течение 3 дней со дня принятия заказа. О доставке в другие регионы уточняйте у менеджера."
-      feedback:
-        name: "Ваше имя"
-        namer: "Имя заявителя"
-        phone: "Контактный телефон"
-        email: "E-Mail"
-        friend-email: "E-Mail получателя"
-        shassi: "Номер шасси (последние 7 цифр)"
-        reg_number: "Регистрационный номер"
-        quest: "Описание вопроса"
-        order: "Заявка"
-        message: "Ваше сообщение"
-        unit-description: "Краткое описание"
-        incoming: "Содержание заявки/сообщения"
-        site_mailer: "Сервис оповещений scaniamoscow.ru"
 
   simple_captcha:
     message:

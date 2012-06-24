@@ -11,20 +11,24 @@ class BasketItem
     @product_count += 1
   end
 
-  def decrement_count
-    @product_count -= 1
+  def set_count(product_count)
+    @product_count = product_count.to_i
   end
 
   def preview_url
-    product.get_preview.image.url(:preview_item)
+    @product.get_preview.image.url(:preview_item)
   end
 
   def title
-    product.name
+    @product.title
   end
 
-#  def price
-#    @product.price * @count
-#  end
-#
+  def price
+    @product.price
+  end
+
+  def sum
+    @product.price * @product_count
+  end
+
 end

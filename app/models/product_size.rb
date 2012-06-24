@@ -6,7 +6,7 @@ class ProductSize
 
    def self.collection(type)
     list = []
-    if type == "wear"
+    if type == "wear" || type == "all"
       list += [
           ProductSize.new(:name => 'XS', :code => 0, :type => 0),
           ProductSize.new(:name => 'S', :code => 1, :type => 0),
@@ -15,8 +15,7 @@ class ProductSize
           ProductSize.new(:name => 'XL', :code => 4, :type => 0)
       ]
     end
-
-    if type == "shoes"
+    if type == "shoes" || type == "all"
       list += [
           ProductSize.new(:name => '36', :code => 5, :type => 1),
           ProductSize.new(:name => '37', :code => 6, :type => 1),
@@ -34,8 +33,8 @@ class ProductSize
     list
   end
 
-  def self.name_by_code(code)
-    collection.each do |value|
+  def self.by_code(code)
+    collection("all").each do |value|
       return value.name if value.code == code
     end
     false

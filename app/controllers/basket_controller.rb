@@ -15,23 +15,29 @@ class BasketController < ApplicationController
     end
   end
 
-
   def add_product
-    session[:basket] = nil
-    product = Product.find(params[:product_id])
-    @basket.add_product(product, params[:size_id])
+    product = Product.find(params[:product_id].to_i)
+    @basket.add_product(product, params[:size_id].to_i)
     render :layout => false
   end
 
   def set_count
-
+    product = Product.find(params[:product_id].to_i)
+    @current_item = @basket.set_count(params[:product_count].to_i, product, params[:size_id].to_i)
+    render :layout => false
   end
 
-
   def remove_product
+    @basket_item_id = ""
+    product = Product.find(params[:product_id].to_i)
+    basket_item = @basket.remove_product(product, params[:size_id].to_i)
+    @basket_item_id = "#{product.id}-#{params[:size_id]}" if basket_item.nil?
+    render :layout => false
   end
 
   def empty
+    session[:basket] = nil
+    render :layout => false
   end
 
 end

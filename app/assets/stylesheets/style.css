@@ -91,6 +91,10 @@ form input[type="text"] {
     font-style: normal;
 }
 
+.hidden {
+    display: none;
+}
+
 body {
     background: #fff;
     font-family: 'FuturisCRegular';
@@ -302,7 +306,12 @@ li.current ul li.current a {
 
 .center {
     float: left;
-    width: 638px;
+    width: 640px;
+}
+
+.my_basket div.cat:nth-child(even)
+{
+    margin-right: 0px !important;
 }
 
 .slider_box {
@@ -1172,20 +1181,21 @@ form .label {
 
 .cat_item form label {
     font-size: 12px;
-    margin: 4px 10px 0 0;
+    margin: 6px 10px 0 0;
     float: left;
+    width: auto;
 }
 
 .cat_item form input {
     border: 1px solid #D5D5D5;
     color: #000000;
     float: left;
-    font-size: 21px;
+    font-size: 15px;
     height: 18px;
     line-height: 18px;
     margin: 2px 8px 0 0;
     text-align: center;
-    width: 34px;
+    width: 21px;
 }
 
 .delete {

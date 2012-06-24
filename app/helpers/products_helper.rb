@@ -1,6 +1,10 @@
 #encoding: utf-8
 module ProductsHelper
 
+  def format_price(price)
+    number_to_currency(price, :precision => 0, :unit => "p.")
+  end
+
   def product_sizes(product)
     wear = ProductSize.collection("wear")
     shoes = ProductSize.collection("shoes")
