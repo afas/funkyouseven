@@ -1,9 +1,7 @@
-$(".basket-icon span").html(<%= @basket.products_count %>);
 <% if @basket.products_count == 1 %>
-//    $(".basket-icon").show();
-
-    speed = 233;
-    options = { to:".basket-icon", className:"main_item" };
-    $("#search-panel").effect("transfer", options, speed, callbackEffect()).hide();
-
+    $(".basket-icon").css("opacity", "0").css("display", "block");
 <% end %>
+
+options = { to:"#basket-icon", className:"current_image" };
+$("#current_image").toggle("transfer", options, 800, function (){ $(".basket-icon").css("opacity", "1"); $(".basket-icon span").html(<%= @basket.products_count %>); });
+
