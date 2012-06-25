@@ -57,11 +57,16 @@ class DeviseCreateUsers < ActiveRecord::Migration
     add_index :users, :reset_password_token, :unique => true
 
     add_index :users, :role
+    add_index :users, :nickname
+    add_index :users, :surname
     add_index :users, :career
+
     # add_index :users, :confirmation_token,   :unique => true
     # add_index :users, :unlock_token,         :unique => true
     # add_index :users, :authentication_token, :unique => true
 
-    User.create( :email => "root@funkyou7.ru", :password => "funk7you", :nickname => "V1s", :name => "Илья", :surname => "Весельницкий", :role => 0 )
+    User.create( :email => "anton@black-sheep.ru", :password => "enlightenment", :nickname => "afas", :name => "Антон", :surname => "Фарфоров", :role => 0 )
+    User.create( :email => "v1s1684@gmail.com", :password => "funk7you", :nickname => "v1s", :name => "Илья", :surname => "Весельницкий", :role => 0 )
+    User.create( :email => "13slavynochka@gmail.com", :password => "funk7you", :nickname => "", :name => "Женя", :surname => "Слободянюк", :role => 0 )
   end
 end

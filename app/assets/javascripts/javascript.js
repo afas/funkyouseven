@@ -60,6 +60,13 @@ $(document).ready(function () {
     }
 });
 
+function checkHref(){
+    href = $("#add_product_button").attr("href");
+    if (href == "#") {
+        $("#cuselFrame-product_size_id").toggle( "shake", {distance: 8}, 144 );
+    }
+}
+
 function onKeyUp(e, product_id, product_size) {
     var keynum
     if (window.event) // IE

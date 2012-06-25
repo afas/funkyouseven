@@ -2,6 +2,6 @@
 //= require jquery_ujs
 
 //= require jquery.slides
-//= require jquery.parallax.min
 //= require jquery.cusel
+//= require jquery.ui
 //= require javascript

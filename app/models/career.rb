@@ -12,7 +12,7 @@ class Career
         Career.new(:name => 'Ролики', :code => 4),
         Career.new(:name => 'Велосипед', :code => 5),
         Career.new(:name => 'Мотоцикл', :code => 6),
-        Career.new(:name => 'другой ...', :code => 7)
+        Career.new(:name => 'другой ...', :code => 55)
     ]
     list
   end

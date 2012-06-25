@@ -1,3 +1,4 @@
+#encoding: utf-8
 class CreateWelcomes < ActiveRecord::Migration
   def change
     create_table :welcomes do |t|
@@ -9,6 +10,10 @@ class CreateWelcomes < ActiveRecord::Migration
       t.timestamps
     end
 
-    Welcome.create( :title => "Wear, Boards, Bikes", :description => "FunkYou7 official site v1.0<br/>Wear, Boards, Bikes<br/>Build your style", :mail => "shop@funkyou7.ru", :phone => "+7 903 530 30 43" )
+    Welcome.create( :title => "Wear, Boards, Bikes",
+                    :description => "<p>Мы решили сделать этот проект потому что нам нехватало определенных вещей в нашей жизни. Так вышло что мы узнали что тех же вещей нехватает нашим друзьям а также у нас есть знакомые дизайнеры которые нам очень нравятся, они делают отличные вещи и мы хотели бы собрать их здесь , может они понравятся и вам.</p><span> Женя и Илья</span>",
+                    :mail => "shop@funkyou7.ru",
+                    :phone => "+7 903 530 30 43"
+    )
   end
 end

@@ -1,13 +1,13 @@
 <div class="sidebar">
-  <div class="title_sidebar">
-    Журнал
-  </div>
-
-  <% @articles_sidebar.each do |post| %>
-      <%= render "posts/post_preview_item", :target => post, :second => false, :show_date => false, :no_margin => false %>
+  <% if @articles_sidebar.size > 0 %>
+      <div class="title_sidebar">
+        Журнал
+      </div>
+      <% @articles_sidebar.each do |post| %>
+          <%= render "posts/post_preview_item", :target => post, :second => false, :show_date => false, :no_margin => false %>
+      <% end %>
+      <%= link_to "", "/magazine", :class => "all" %>
   <% end %>
-
-  <%= link_to "", "/magazine", :class => "all" %>
 
   <%= render "layouts/social_wigets" %>
 </div>

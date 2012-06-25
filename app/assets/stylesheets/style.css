@@ -652,7 +652,7 @@ form .label {
 .block_social {
     float: left;
     width: 100%;
-    margin: 15px 0 0;
+    margin: 0 0 15px 0;
 }
 
 .twitter {
@@ -947,6 +947,11 @@ form .label {
     max-width: 190px;
     position: relative;
     z-index: 1;
+}
+
+.flash {
+    -webkit-box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.3);
 }
 
 .cuselFrameRight {

@@ -10,16 +10,15 @@ class Brand < ActiveRecord::Base
                     :default_url => "/brand_logos/default.png",
                     :url => "/brand_logos/:id/:style_:basename.:extension"
 
-  validates_attachment_presence :logo, :message => I18n.t("paperclip.errors.presence")
+  #validates_attachment_presence :logo, :message => I18n.t("paperclip.errors.presence")
   validates_attachment_content_type :logo, :content_type => ['image/jpeg', 'image/png', 'image/gif'], :message => I18n.t("paperclip.errors.content_type")
 
   has_many :products
 
   before_save :generate_short_url
 
-
   def site_link
-    "http://#{self.site_url}"
+    "#{self.site_url}"
   end
 
   private
@@ -27,6 +26,5 @@ class Brand < ActiveRecord::Base
   def generate_short_url
     self.short_url = Russian.transliterate(self.name.downcase.gsub(' ', '-')) if self.short_url.blank? && !self.name.blank?
   end
-
 
 end

@@ -1,4 +1,9 @@
 $(".basket-icon span").html(<%= @basket.products_count %>);
 <% if @basket.products_count == 1 %>
-    $(".basket-icon").show();
+//    $(".basket-icon").show();
+
+    speed = 233;
+    options = { to:".basket-icon", className:"main_item" };
+    $("#search-panel").effect("transfer", options, speed, callbackEffect()).hide();
+
 <% end %>
