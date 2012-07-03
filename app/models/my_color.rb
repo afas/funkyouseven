@@ -5,10 +5,10 @@ class MyColor
 
   def self.collection()
     [
-        MyColor.new(:name => 'Зеленый', :code => '#00FF06'),
-        MyColor.new(:name => 'Синий', :code => '#006CFF'),
-        MyColor.new(:name => 'Красный', :code => '#006CFF'),
-        MyColor.new(:name => 'Синий', :code => '#006CFF')
+        MyColor.new(:name => 'Черный', :code => 'black'),
+        MyColor.new(:name => 'Красный', :code => 'red'),
+        MyColor.new(:name => 'Зеленый', :code => 'green'),
+        MyColor.new(:name => 'Синий', :code => 'blue')
     ]
   end
 

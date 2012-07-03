@@ -1,9 +1,11 @@
 Funkyouseven::Application.routes.draw do
 
+  match '/size_to_product_count/:product_id/:size_id/:product_count', :to => 'size_to_products#size_to_product_count', :as => :size_to_product_count
+  #resources :size_to_products
+
   resources :posts
   resources :products
 
-  resources :size_to_products
 
   match '/basket/remove/:product_id/:size_id', :to => 'basket#remove_product', :as => :remove_from_basket
   match '/basket/add/:product_id/:size_id', :to => 'basket#add_product', :as => :add_to_basket
@@ -28,6 +30,7 @@ Funkyouseven::Application.routes.draw do
 
   resources :brands
 
+  match '/product_images/update/:id/:cover/:preview/:title' => 'product_images#update'
   match '/product_images/destroy/:id' => 'product_images#destroy'
   match '/product_images/upload' => 'product_images#upload'
   resources :product_images

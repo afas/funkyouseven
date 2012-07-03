@@ -1,7 +1,7 @@
 <div class="main_item">
   <div class="description">
     <form action="" method="get">
-      <h1><%= @product.title %></h1>
+      <h1><%= product_title(@product) %></h1>
 
       <%= raw "<h2>" + number_to_currency(@product.price.round, :precision => 0, :unit => "p.") + "</h2>" unless @product.price.nil? %>
 

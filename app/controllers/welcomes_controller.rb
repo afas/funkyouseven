@@ -5,6 +5,8 @@ class WelcomesController < ApplicationController
     #@welcome = Welcome.find(params[:id])
 
     @articles_sidebar = Post.side_bar
+    @top_slider = Product.where(:welcome_position_id => 0).order("updated_at DESC").limit(5).all
+    @bottom_slider = Product.where(:welcome_position_id => 3).order("updated_at DESC").limit(5).all
 
     respond_to do |format|
       format.html # home.html.erb

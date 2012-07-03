@@ -4,6 +4,12 @@ $(document).ready(function () {
 //        mouseport:jQuery("#parallax")
 //    });
 
+    if ( $(".size_unit").length > 0 ) {
+        $(".size_unit input[type=text]").click(function() {
+            $(this).select();
+        });
+    }
+
     if ( $(".cat_item form input[type=text]").length > 0 ) {
         $(".cat_item form input[type=text]").click(function() {
             $(this).select();
@@ -63,7 +69,17 @@ $(document).ready(function () {
 function checkHref(){
     href = $("#add_product_button").attr("href");
     if (href == "#") {
-        $("#cuselFrame-product_size_id").toggle( "shake", {distance: 8}, 144 );
+        $("#cuselFrame-product_size_id .cuselText")
+            .animate({color:'#ff0000'}, 330)
+            .animate({color:'#000000'}, 330)
+            .animate({color:'#ff0000'}, 330)
+            .animate({color:'#000000'}, 330);
+
+//        $("#cuselFrame-product_size_id").toggle( "shake", {distance: 8}, 144 );
+//        $("#cuselFrame-product_size_id .cuselText").addClass("attention");
+//        setTimeout(function(){
+//            $("#cuselFrame-product_size_id .cuselText").removeClass("attention");
+//        }, 1000);
         return false;
     }
 }
@@ -87,6 +103,33 @@ function onKeyUp(e, product_id, product_size) {
             $("#" + product_id + "-" + product_size).remove();
         }
         $.get("/basket/" + product_count + "/" + product_id + "/" + product_size);
+    }
+}
+
+function updateProductImage(product_image_id) {
+    title = $("#product_image_" + product_image_id + " input[type='text']").val();
+    cover = $("#product_image_" + product_image_id + " upload_cover").val();
+    preview = $("#product_image_" + product_image_id + " upload_preview").val();
+
+    $.get("/product_images/update/" + product_image_id + "/" + cover + "/" + preview + "/" + title);
+}
+
+function onKeyUpSizeCount(e, product_id, size_code) {
+    var keynum
+    if (window.event) // IE
+    {
+        keynum = e.keyCode
+    }
+    else if (e.which) // Netscape/Firefox/Opera
+    {
+        keynum = e.which
+    }
+
+    product_count = "";
+    product_count = parseInt($("#size_to_product_count-" + product_id + "-" + size_code).val());
+
+    if ( (keynum > 47 && keynum < 58 || keynum > 95 && keynum < 106) && product_count >= 0) {
+        $.get("/size_to_product_count/" + product_id+ "/" + size_code + "/"  + product_count);
     }
 }
 

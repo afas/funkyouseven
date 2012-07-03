@@ -112,6 +112,7 @@ ru:
         career_id: "Вид спорта"
         sex_id: "Пол"
         welcome_position_id: "Позиция на главной"
+        title_color: "Подсветка заголовка"
         color: "Цвет(а)"
         composition: "Состав"
         description: "Описание"

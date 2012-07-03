@@ -973,7 +973,7 @@ form .label {
     height: 24px;
     cursor: pointer;
     overflow: hidden;
-    position: relative;
+    /*position: relative;*/
     z-index: 1;
     position: absolute;
     top: 0;
@@ -1127,20 +1127,23 @@ form .label {
 }
 
 .product_sizes {
-    min-height: 100px;
+    /*min-height: 121px;*/
     border: 1px dashed #D5D5D5;
     width: 100%;
-    padding: 0 3px;
+    padding: 5px 3px;
 }
 
 .product_sizes label {
     margin: 3px 0 0 0;
 }
 
-.product_sizes input[type="checkbox"] {
-    display: block;
+.product_sizes input[type="text"] {
+    width: 34px;
+    margin: 3px 13px 13px 5px;
+}
+
+.size_unit {
     float: left;
-    margin-right: 13px;
 }
 
 .add {

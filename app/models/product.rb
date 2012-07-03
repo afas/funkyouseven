@@ -11,6 +11,7 @@ class Product < ActiveRecord::Base
                   :career_id,
                   :sex_id,
                   :welcome_position_id, #!!!
+                  :title_color,
                   :color,
                   :composition,
                   :description,
@@ -30,7 +31,7 @@ class Product < ActiveRecord::Base
   has_many :size_to_products
 
   scope :shop_side_bar, order("created_at DESC").limit(2)
-  scope :not_categoryzed, where("shop_section_id IS NULL OR section_category_id IS NULL").order("created_at DESC")
+  scope :not_categorized, where("shop_section_id IS NULL OR section_category_id IS NULL").order("created_at DESC")
 
   after_create :update_attachements
 
@@ -39,11 +40,21 @@ class Product < ActiveRecord::Base
     self.preview_id = rand(99999999)+99999999 if self.preview_id.nil? && self.new_record?
   end
 
+  def count_by_size_id(size_id)
+    size_to_product = SizeToProduct.find_by_product_id_and_size_id(self.id, size_id)
+
+    unless size_to_product.nil?
+      return size_to_product.product_count
+    else
+      return 0
+    end
+  end
+
   def get_cover
     if self.product_images.size > 0
       self.product_images.first
     else
-      ProductImage.all.first
+      ProductImage.new
     end
   end
 
@@ -51,7 +62,7 @@ class Product < ActiveRecord::Base
     if self.product_images.size > 0
       self.product_images.first
     else
-      ProductImage.all.first
+      ProductImage.new
     end
   end
 

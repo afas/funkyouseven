@@ -1,5 +1,5 @@
 <div class="center">
-  <%= render "welcomes/slider" %>
+  <%= render "welcomes/slider", :target => @top_slider unless @top_slider.empty? %>
   <div class="column">
     <div class="cat">
       <a href="#" class="link_img"><img src="assets/1.jpg" width="300" height="344" alt=""/></a>
@@ -27,7 +27,7 @@
   </div>
   <!--end column-->
 
-  <%= render "welcomes/slider" %>
+  <%= render "welcomes/slider", :target => @bottom_slider unless @bottom_slider.empty? %>
 
   <div class="column">
     <div class="cat">

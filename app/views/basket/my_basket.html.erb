@@ -3,7 +3,7 @@
 </div>
 
 <div class="center my_basket">
-  <% @basket.items.each_with_index do |basket_item, i| %>
+  <% @basket.items.each_with_index do |basket_item| %>
       <%= render "products/product_basket_item", :basket_item => basket_item, :cat_item => true, :margin_top => false, :container_class => "" %>
   <% end %>
 </div>

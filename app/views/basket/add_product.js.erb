@@ -2,6 +2,8 @@
     $(".basket-icon").css("opacity", "0").css("display", "block");
 <% end %>
 
+$(".ui-effects-transfer").css("background", "url(" + $("#current_image").attr("src") + ") no-repeat scroll 0 0 transparent");
+
 options = { to:"#basket-icon", className:"current_image" };
 $("#current_image").toggle("transfer", options, 800, function (){ $(".basket-icon").css("opacity", "1"); $(".basket-icon span").html(<%= @basket.products_count %>); });
 

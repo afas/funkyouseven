@@ -25,4 +25,20 @@ class ProductImagesController < ApplicationController
     #raise CanCan::AccessDenied unless can?(:destroy_upload, @stuff_image.object) unless @stuff_image.object.nil?
     @image.delete
   end
+
+  def update
+    #/product_images/update/:id/:cover/:preview/:description
+
+    image = ProductImage.find(params[:id])
+
+    unless image.nil?
+      image.cover = params[:cover]
+      image.preview = params[:preview]
+      image.title = params[:title]
+      image.save
+    end
+
+    render :text => "Ok"
+  end
+
 end

@@ -69,6 +69,25 @@ class SizeToProductsController < ApplicationController
     end
   end
 
+  def size_to_product_count
+    product_id = params[:product_id]
+    size_id = params[:size_id]
+    product_count = params[:product_count]
+    
+    size_to_product = SizeToProduct.find_by_product_id_and_size_id(product_id, size_id)
+
+    unless size_to_product.nil?
+      if product_count == 0
+        size_to_product.destroy
+      else
+        size_to_product.product_count = product_count
+        size_to_product.save
+      end
+    else
+      size_to_product = SizeToProduct.create(:product_id => product_id, :size_id => size_id, :product_count => product_count)
+    end
+  end
+
   # DELETE /size_to_products/1
   # DELETE /size_to_products/1.json
   def destroy

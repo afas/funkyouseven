@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   end
 
   def not_categoryzed
-    @products = Product.not_categoryzed#.paginate(:page => params[:page])
+    @products = Product.not_categorized#.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
