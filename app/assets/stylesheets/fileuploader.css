@@ -6,7 +6,7 @@
 .qq-upload-button, .qq-upload-button-hover, .qq-upload-button-focus, .qq-upload-drop-area {
     /*background: url("upload-area-bg.png") repeat scroll 0 0 transparent;*/
     /*border: 1px solid #DDDDDD;*/
-    background-color: #;
+    background-color: #CCCCCC;
     border: 1px dashed #D5D5D5;
     color: #69FF00;
     display: block;
