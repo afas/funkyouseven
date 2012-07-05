@@ -1,4 +1,16 @@
-<!--gmaps4rails-->
+<%= gmaps({
+                  :map_options => {
+                          :auto_zoom => false,
+                          :zoom => 13,
+                          :do_clustering => true
+                  },
+                  :markers => {
+                          :data => @map_point
+                  }
+
+          })
+%>
+
 <div class="center_item">
   <div class="main noborder">
     <%= render 'form' %>

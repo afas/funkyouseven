@@ -5,15 +5,14 @@ class Role
 
   def self.collection(admin)
     list = [
-        Role.new(:name => 'Покупатель', :code => 2),
-        Role.new(:name => 'Читатель', :code => 3),
+        Role.new(:name => 'Покупатель', :code => 3),
+        Role.new(:name => 'Читатель', :code => 4),
     ]
-
     list = [
         Role.new(:name => 'Администратор', :code => 0),
-        Role.new(:name => 'Редактор', :code => 1)
+        Role.new(:name => 'Редактор', :code => 1),
+        Role.new(:name => 'Курьер', :code => 2)
     ] + list if admin
-
     list
   end
 

@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   before_filter :default_data
   before_filter :find_cart, :except => :destroy
 
-
   rescue_from NotFound, :with => :not_found
   rescue_from ActiveRecord::RecordNotFound, :with => :not_found
 
@@ -21,8 +20,11 @@ class ApplicationController < ActionController::Base
     @menu_left = ShopSection.main_menu
     @menu_right = Static.main_menu
 
-    if controller_name == "registrations" && !current_user.nil?
-      @my_orders = Order.find_all_by_user_id(current_user.id)
+    if controller_name == "registrations"
+       unless current_user.nil?
+         @my_orders = Order.where("user_id = ?", current_user.id).order("created_at DESC").all
+         @my_orders = Order.order("created_at DESC").all if current_user.admin?
+       end
     end
 
   end

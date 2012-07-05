@@ -117,11 +117,12 @@ a {
 }
 
 #header {
-    width: 100%;
     float: left;
+    margin-bottom: 7px;
+    min-height: 221px;
     position: relative;
+    width: 100%;
     z-index: 999;
-    height:250px;
 }
 
 #fullover {
@@ -190,11 +191,13 @@ a {
 }
 
 .basket-icon {
+    position: absolute;
+    right: 0;
+    top: 20px;
+    z-index: 5;
     background: url("basket.png") no-repeat scroll center 21% transparent;
     border: 1px dashed rgba(0, 0, 0, 0.1);
-    float: right;
     height: 56px;
-    margin-top: 20px;
     text-align: center;
     width: 121px;
     padding-top: 28px;
@@ -218,16 +221,16 @@ a {
     z-index: 2;
 }
 
-.admin_menu {
-    margin-top: 12px;
-}
-
-
 .menu_right, .admin_menu {
     float: right;
     /*margin: 111px 0 0;*/
     position: relative;
     z-index: 2;
+}
+
+.admin_menu {
+    margin-top: 20px;
+    z-index: 1000;
 }
 
 .menu_left li {
@@ -241,7 +244,7 @@ a {
     margin-left: 25px;
 }
 
-.menu_left li a, .menu_right li a, .admin_menu li a {
+.menu_left li a, .menu_right li a, .admin_menu li a, .sub_menu li a {
     font-size: 20px;
     float: left;
     color: #000000;
@@ -268,7 +271,7 @@ a {
     display: block;
 }
 
-.menu_left li ul li {
+.sub_menu li {
     background: #fff;
     margin: 0;
     padding-right: 20px;
@@ -277,11 +280,12 @@ a {
 .menu_left li.current ul li a,
 .menu_left li:hover ul li a,
 .menu_left li ul li a,
-.admin_menu li a {
+.admin_menu li a, .sub_menu li a {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     background: none;
 }
+
 li.current ul li.current a {
     font-weight: bold;
 }
@@ -325,8 +329,7 @@ li.current ul li.current a {
     width: 640px;
 }
 
-.my_basket div.cat:nth-child(even)
-{
+.my_basket div.cat:nth-child(even) {
     margin-right: 0px !important;
 }
 
@@ -627,7 +630,7 @@ form .welcome_description {
     font-weight: normal;
     line-height: 38px;
     height: 330px;
-    width:300px;
+    width: 300px;
     text-align: center;
 }
 
@@ -635,16 +638,16 @@ form .product_description {
     font-size: 13px;
     line-height: 18px;
     margin-bottom: 5px;
-    height:230px;
-    width:100%;
+    height: 230px;
+    width: 100%;
 }
 
 form .brand_description {
     font-size: 13px;
     line-height: 18px;
     margin-bottom: 5px;
-    height:230px;
-    width:100%;
+    height: 230px;
+    width: 100%;
 }
 
 form .price {
@@ -709,8 +712,6 @@ form .label {
 #footer p a:hover {
     text-decoration: none;
 }
-
-
 
 .logo_footer {
     background: url("logos/logo-b.png") no-repeat scroll 10px 0 #fff;
@@ -801,7 +802,6 @@ form .label {
     content: '»';
 }
 
-
 .noborder {
     border: none;
 }
@@ -825,7 +825,7 @@ form .label {
 }
 
 .cusel-scroll-wrap span {
-    font-size: 12px!important;
+    font-size: 12px !important;
 }
 
 .main p {
@@ -957,7 +957,7 @@ form .label {
     background-position: left top;
     cursor: pointer;
     display: inline-block;
-    font-size: 12px;
+    font-size: 13px;
     height: 24px;
     line-height: 24px;
     max-width: 190px;
@@ -989,12 +989,13 @@ form .label {
     height: 24px;
     cursor: pointer;
     overflow: hidden;
-    /*position: relative;*/
+    position: relative;
     z-index: 1;
     position: absolute;
     top: 0;
     padding-left: 10px;
     left: 0;
+    font-size: 13px;
 }
 
 * html .cuselText {
@@ -1040,7 +1041,7 @@ form .label {
     background: url("drop-down-menu-top.png") no-repeat scroll right 0 transparent;
     min-width: 100%;
     width: auto;
-    font-size: 12px!important;
+    font-size: 12px !important;
     padding-top: 7px;
 }
 
@@ -1119,6 +1120,10 @@ form .label {
 
 .current ul li .cusel {
     margin-top: -5px;
+}
+
+.current ul li {
+    padding-bottom: 34px;
 }
 
 .product_selects {
@@ -1325,25 +1330,44 @@ form .label {
 }
 
 .actions input[type='submit'] {
-    margin-left:0;
+    margin-left: 0;
 }
 
-.admin_menu {
+.admin_menu, .sub_menu {
     background: #ffffff;
 }
 
-.admin_menu li {
+.admin_menu li, .sub_menu li {
     cursor: pointer;
     list-style: none;
     float: left;
     margin: 0;
 }
 
-.admin_menu li.title {
-    margin-left:8px;
-    font-family: Arial,Helvetica,sans-serif;
-    font-size: 12px;
+.sub_menu {
+    float: left;
+    padding-top: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.sub_menu li .cusel {
+    margin-top: -6px;
+}
+
+.sub_menu li.current a {
     font-weight: bold;
+}
+
+.admin_menu li.title, .admin_menu li.title ul li a {
+    font-size: 12px;
+    font-weight: normal;
+    margin-left: 8px;
+    font-family: 'FuturisCRegular';
+}
+
+.admin_menu li.title ul li a {
+    margin-left: 0;
 }
 
 .admin_menu li.title ul {
@@ -1365,10 +1389,19 @@ form .label {
     background: #fff;
 }
 
+#order_address {
+    height: 55px;
+}
+
 .parallax-viewport {
-    position: relative;     /* relative, absolute, fixed */
+    position: relative; /* relative, absolute, fixed */
     overflow: hidden;
 }
+
 .parallax-layer {
     position: absolute;
+}
+
+.my_orders ul li {
+    margin-bottom: 5px;
 }

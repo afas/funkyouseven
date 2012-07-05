@@ -9,10 +9,11 @@
   <%= link_to "", root_url, :class => "logo #{LogoClass.class_by_controller(controller_name)}" %>
   <span class="<%= "logo_part #{LogoClass.class_by_controller(controller_name)}" %>"></span>
 
+
   <%= render "layouts/info" %>
+
+  <%= render "layouts/admin_menu" if can?(:manage, :all) %>
   <%= render "layouts/basket" %>
-
   <div class="clear"></div>
-
   <%= render "layouts/menu" %>
 </div>

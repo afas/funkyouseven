@@ -75,12 +75,13 @@ $(document).ready(function () {
 function checkHref() {
     href = $("#add_product_button").attr("href");
     if (href == "#") {
+//        $("#cuselFrame-product_size_id").toggle("shake", {distance:8}, 144);
         $("#cuselFrame-product_size_id .cuselText")
             .animate({color:'#ff0000'}, 330)
             .animate({color:'#000000'}, 330)
             .animate({color:'#ff0000'}, 330)
             .animate({color:'#000000'}, 330);
-//        $("#cuselFrame-product_size_id").toggle( "shake", {distance: 8}, 144 );
+
 //        $("#cuselFrame-product_size_id .cuselText").addClass("attention");
 //        setTimeout(function(){
 //            $("#cuselFrame-product_size_id .cuselText").removeClass("attention");

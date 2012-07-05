@@ -12,35 +12,45 @@
     <% end %>
 
     <div class="field">
-      <%= f.label t("activerecord.attributes.order.user") %>
+      <%= f.label t("activerecord.attributes.order.order_status") %>
       <br/>
-      <%= f.collection_select :user_id, User.all, :id, :email %>
+      <%= f.collection_select :order_status_id, OrderStatus.collection, :code, :name if current_user.courier? %>
+      <%= OrderStatus.by_code(@order.order_status_id) unless current_user.courier? %>
     </div>
+
+    <br/>
+    <div class="field">
+      <%= f.label t('activerecord.attributes.order.user') %><br/>
+      <%= text_field_tag :user, @order.user.full_name, :disabled => true %>
+    </div>
+
     <div class="field">
       <%= f.label t("activerecord.attributes.order.address") %>
       <br/>
-      <%= f.text_area :address, :class => "span" %>
+      <%= f.text_area :address, :class => "span", :disabled => @order.order_status_id != 0 %>
     </div>
-    <div class="field">
-      <%= f.label t("activerecord.attributes.order.internal_comment") %>
-      <br/>
-      <%= f.text_area :internal_comment %>
-    </div>
+
     <div class="field">
       <%= f.label t("activerecord.attributes.order.comment") %>
       <br/>
       <%= f.text_area :comment, :class => "span" %>
     </div>
-    <div class="field">
-      <%= f.label t("activerecord.attributes.order.order_status") %>
-      <br/>
-      <%= f.collection_select :order_status_id, OrderStatus.collection, :code, :name %>
-    </div>
-    <div class="field">
-      <%= f.label t("activerecord.attributes.order.pay_status") %>
-      <br/>
-      <%= f.collection_select :pay_status_id, PayStatus.collection, :code, :name %>
-    </div>
+
+    <!--<div class="field">-->
+      <%#= f.label t("activerecord.attributes.order.pay_status") %>
+      <!--<br/>-->
+      <%#= f.collection_select :pay_status_id, PayStatus.collection, :code, :name %>
+    <!--</div>-->
+
+    <!--<hr>-->
+
+    <% if current_user.courier? %>
+        <div class="field">
+          <%= f.label t("activerecord.attributes.order.internal_comment") %>
+          <br/>
+          <%= f.text_area :internal_comment, :class => "span" %>
+        </div>
+    <% end %>
 
     <div class="actions">
       <%= f.submit t("helpers.submit.update") %>

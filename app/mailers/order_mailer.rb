@@ -3,7 +3,8 @@ class OrderMailer < ActionMailer::Base
 
   def new_order(order)
     @order = order
-    mail(:to => "#{order.user.email}, shop@funkyou7.ru",
+    mail(:to => order.user.email,
+         :bcc => "shop@funkyou7.ru",
          :subject => I18n.t("activerecord.attributes.order_mailer.new_order_subject")
     )
   end

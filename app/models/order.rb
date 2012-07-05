@@ -1,13 +1,13 @@
 #encoding: utf-8
 class Order < ActiveRecord::Base
-  #acts_as_gmappable
+  acts_as_gmappable
 
   self.per_page = 12
 
-  attr_accessible :address, :comment, :order_status_id, :pay_status_id, :user_id, :email, :name, :phone, :latitude, :longitude, :gmaps
+  attr_accessible :address, :comment, :internal_comment, :order_status_id, :pay_status_id, :user_id, :email, :name, :phone, :latitude, :longitude, :gmaps, :user_create
 
-  attr_reader :email, :name, :phone
-  attr_writer :email, :name, :phone
+  attr_reader :email, :name, :phone, :user_create
+  attr_writer :email, :name, :phone, :user_create
 
   belongs_to :user
   has_many :order_items
@@ -19,10 +19,11 @@ class Order < ActiveRecord::Base
   before_save :check_user_registration
 
   def gmaps4rails_address
-    self.address || "Москва, Красная площадь"
+    self.address
   end
 
   def gmaps4rails_infowindow
+    #"<h3>#{self.user.full_name}</h3><p><b>Создан:</b> #{self.created_at}<br/></p>"
     "<h3>#{self.user.full_name}</h3><p><b>Создан:</b> #{self.created_at}<br/><b>Изменен:</b> #{self.updated_at}<br/><b>Статус: </b> #{OrderStatus.by_code(self.order_status_id)}<br/><b>Телефон:</b> #{self.user.phone}<br/><b>Адрес доставки:</b> #{self.address}</p>"
   end
 
@@ -53,10 +54,12 @@ class Order < ActiveRecord::Base
                            :name => self.name,
                            :phone => self.phone,
                            :address => self.address,
-                           :role => 2
+                           :role => 3
         )
+        self.user_create = true
       end
-      self.user_id = user.id
+
+      self.user = user
     end
   end
 end

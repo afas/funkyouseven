@@ -1,15 +1,15 @@
 class BasketController < ApplicationController
 
   def my_basket
-    @order = Order.new
+    @order = Order.new#(:current_user => current_user.id)
     @static = Static.find_by_short_url("basket")
 
     unless current_user.nil?
       @order.user_id = current_user.id
       @order.email = current_user.email
-      @order.name = current_user.full_name unless current_user.full_name.empty?
-      @order.phone = current_user.phone unless current_user.phone?
-      @order.address = current_user.address unless current_user.address?
+      @order.name = current_user.full_name
+      @order.phone = current_user.phone
+      @order.address = current_user.address
     end
   end
 

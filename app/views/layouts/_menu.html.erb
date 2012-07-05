@@ -1,35 +1,8 @@
 <ul class="menu_left">
   <% @menu_left.each do |shop_section| %>
-      <% if !@shop_section.nil? && shop_section == @shop_section %>
-          <li class="current">
-            <%= link_to shop_section.name, shop_section_products_path(shop_section.short_url) %>
-            <ul>
-              <% if @shop_section.short_url != "brands" %>
-                  <li>
-                    <%= collection_select(:sex, :id, Sex.collection, :code, :name, {:include_blank => "Пол"}) %>
-                  </li>
-                  <% if @shop_section.short_url != "wear" %>
-                      <li>
-                        <%= collection_select(:career, :id, Career.collection, :code, :name, {:include_blank => "Вид спорта"}) %>
-                      </li>
-                  <% end %>
-                  <!--<li>-->
-                    <!--<%#= collection_select(:brand, :id, Brand.all, :id, :name, {:include_blank => "Бренд"}) %>-->
-                  <!--</li>-->
-              <% end %>
-
-              <% if shop_section.section_categories.size > 0 %>
-                  <% shop_section.section_categories.each do |section_category| %>
-                      <li class="<%= 'current' if !@section_category.nil? && section_category == @section_category %>"><%= link_to section_category.name, section_category_products_path(shop_section.short_url, section_category.short_url) %></li>
-                  <% end %>
-              <% end %>
-            </ul>
-          </li>
-      <% else %>
-          <li>
-            <%= link_to shop_section.name, shop_section_products_path(shop_section.short_url) %>
-          </li>
-      <% end %>
+      <li class="<%= 'current' if !@shop_section.nil? && shop_section == @shop_section %>">
+        <%= link_to shop_section.name, shop_section_products_path(shop_section.short_url) %>
+      </li>
   <% end %>
   <% if !current_user.nil? && current_user.admin? %>
       <li><%= link_to "Новые", shop_not_publish_path %></li>
@@ -43,7 +16,25 @@
       </li>
   <% end %>
 </ul>
-
 <div class="line"></div>
 
-<%= render "layouts/admin_menu" if can?(:manage, :all) %>
+<% unless @shop_section.nil? %>
+    <ul class="sub_menu">
+      <% if @shop_section.short_url != "brands" %>
+          <li>
+            <%= collection_select(:sex, :id, Sex.collection, :code, :name, {:include_blank => "Пол"}) %>
+          </li>
+          <% if @shop_section.short_url != "wear" %>
+              <li>
+                <%= collection_select(:career, :id, Career.collection, :code, :name, {:include_blank => "Вид спорта"}) %>
+              </li>
+          <% end %>
+      <% end %>
+
+      <% @shop_section.section_categories.each do |section_category| %>
+          <li class="<%= 'current' if !@section_category.nil? && section_category == @section_category %>">
+            <%= link_to section_category.name, section_category_products_path(@shop_section.short_url, section_category.short_url) %>
+          </li>
+      <% end unless @shop_section.section_categories.empty? %>
+    </ul>
+<% end %>
