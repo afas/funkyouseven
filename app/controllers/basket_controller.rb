@@ -4,8 +4,6 @@ class BasketController < ApplicationController
     @order = Order.new
     @static = Static.find_by_short_url("basket")
 
-    logger.info session.inspect
-
     unless current_user.nil?
       @order.user_id = current_user.id
       @order.email = current_user.email

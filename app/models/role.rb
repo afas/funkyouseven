@@ -5,8 +5,8 @@ class Role
 
   def self.collection(admin)
     list = [
-        Role.new(:name => 'Фанат', :code => 2),
-        Role.new(:name => 'Пользователь', :code => 3),
+        Role.new(:name => 'Покупатель', :code => 2),
+        Role.new(:name => 'Читатель', :code => 3),
     ]
 
     list = [

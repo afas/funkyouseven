@@ -6,8 +6,8 @@ class OrderStatus
   def self.collection
     list = [
         OrderStatus.new(:name => 'Новый', :code => 0),
-        OrderStatus.new(:name => 'Формируется', :code => 1),
-        OrderStatus.new(:name => 'Осуществляется доставка', :code => 2),
+        OrderStatus.new(:name => 'Комплектуется', :code => 1),
+        OrderStatus.new(:name => 'Доставка', :code => 2),
         OrderStatus.new(:name => 'Успешно выполнен', :code => 3),
         OrderStatus.new(:name => 'Troubles', :code => 4)
     ]

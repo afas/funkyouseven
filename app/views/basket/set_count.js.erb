@@ -6,6 +6,8 @@
     $(".basket-icon span").html("<%= @basket.products_count %>");
     $("#order-price").html("<%= escape_javascript(render(:partial => "basket/order_price")) %>");
     <% unless @current_item.nil? %>
+        $("<%= "#counter-#{@current_item.product.id}-#{@current_item.product_size}" %>").prev().html("<%= raw params[:product_count].to_i > @current_item.product_count ? "Количество <b>[max]</b>" : "Количество" %>");
+        $("<%= "#counter-#{@current_item.product.id}-#{@current_item.product_size}" %>").val(<%= @current_item.product_count %>);
         $("<%= "#counter-#{@current_item.product.id}-#{@current_item.product_size}" %>").focus();
         $("<%= "#counter-#{@current_item.product.id}-#{@current_item.product_size}" %>").select();
     <% end %>

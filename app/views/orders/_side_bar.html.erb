@@ -1,0 +1,20 @@
+<div class="sidebar">
+  <div class="title_sidebar">
+    Читайте также
+  </div>
+
+  <% articles.each do |post| %>
+      <%= render "posts/post_preview_item", :target => post, :second => false, :show_date => true, :no_margin => false %>
+  <% end %>
+
+  <div class="block_second">
+  </div>
+
+  <div class="title_sidebar">
+    Новое в магазине
+  </div>
+
+  <% products.each do |product| %>
+      <%= render "products/product_preview_item", :product => product, :cat_item => false, :margin_top => product == @shop_side_bar.first, :container_class => false %>
+  <% end %>
+</div>

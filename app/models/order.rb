@@ -1,18 +1,30 @@
+#encoding: utf-8
 class Order < ActiveRecord::Base
-  attr_accessible :address, :comment, :order_status, :pay_status, :user_id, :email, :name, :phone, :user_created
+  #acts_as_gmappable
 
-  attr_reader :email, :name, :phone, :user_created
-  attr_writer :email, :name, :phone, :user_created
+  self.per_page = 12
 
-#  validates_presence_of :user_id, :address
+  attr_accessible :address, :comment, :order_status_id, :pay_status_id, :user_id, :email, :name, :phone, :latitude, :longitude, :gmaps
+
+  attr_reader :email, :name, :phone
+  attr_writer :email, :name, :phone
 
   belongs_to :user
   has_many :order_items
 
   scope :by_created, order(:created_at)
   scope :by_updated, order(:updated_at)
+  scope :by_order_status, lambda { |order_status_id| where(:order_status_id, order_status_id).order("created_at DESC") }
 
-  before_create :check_user_registration
+  before_save :check_user_registration
+
+  def gmaps4rails_address
+    self.address || "Москва, Красная площадь"
+  end
+
+  def gmaps4rails_infowindow
+    "<h3>#{self.user.full_name}</h3><p><b>Создан:</b> #{self.created_at}<br/><b>Изменен:</b> #{self.updated_at}<br/><b>Статус: </b> #{OrderStatus.by_code(self.order_status_id)}<br/><b>Телефон:</b> #{self.user.phone}<br/><b>Адрес доставки:</b> #{self.address}</p>"
+  end
 
   def add_order_items_from_basket(basket)
     basket.items.each do |item|
@@ -28,30 +40,23 @@ class Order < ActiveRecord::Base
   private
 
   def check_user_registration
-    puts current_user.nil?
+    #пользователь не установлен
+    unless self.user_id
+      user = User.find_by_email(self.email)
+      #пользователь не авторизован
+      if self.user.nil?
+        password = Devise.friendly_token.first(7)
 
-    user ||= User.new
-
-    if user.new_record?
-      not_auth_user = User.find_by_email(self.email)
-      if not_auth_user.nil?
-        password = Devise.friendly_token.first(8)
-
-        #user = User.create!(:email => self.email,
-        #                    :password => password,
-        #                    :password_confirmation => password,
-        #                    :name => self.name,
-        #                    :phone => self.phone,
-        #                    :address => self.address
-        #)
-
-        self.user_created = true
+        user = User.create(:email => self.email,
+                           :password => password,
+                           :password_confirmation => password,
+                           :name => self.name,
+                           :phone => self.phone,
+                           :address => self.address,
+                           :role => 2
+        )
       end
-    else
-      self.user_created = false
+      self.user_id = user.id
     end
-
-    self.user_id = user.id
   end
-
 end

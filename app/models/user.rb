@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
 
   default_scope order(:surname, :name)
 
+  after_create :welcome_message
+
   def full_name
     "#{self.name} #{self.surname}"
   end
@@ -31,6 +33,12 @@ class User < ActiveRecord::Base
     else
       return false
     end
+  end
+
+  private
+
+  def welcome_message
+    UserMailer.new_user_from_order(self).deliver
   end
 
 end

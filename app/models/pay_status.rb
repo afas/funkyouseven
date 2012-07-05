@@ -7,7 +7,7 @@ class PayStatus
     list = [
         PayStatus.new(:name => 'Оплачен', :code => 123),
         PayStatus.new(:name => 'Срок дествия платежного инструмента истек', :code => 456),
-        PayStatus.new(:name => 'Недостаточно средств', :code => 654)
+        PayStatus.new(:name => 'Недостаточно средств', :code => 789)
     ]
     list
   end

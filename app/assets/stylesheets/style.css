@@ -1227,6 +1227,11 @@ form .label {
     width: 21px;
 }
 
+.my_basket .cat_item form label b {
+    color: #ff0000;
+    font-weight: normal;
+}
+
 .delete {
     background: url(delete.png) no-repeat;
     width: 68px;

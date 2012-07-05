@@ -1,5 +1,4 @@
 class Post < ActiveRecord::Base
-
   self.per_page = 12
 
   belongs_to :author, :class_name => 'User'
@@ -9,18 +8,18 @@ class Post < ActiveRecord::Base
   validates_uniqueness_of :title, :short_url
 
   attr_accessible :author_id, :content, :description, :short_url, :title, :created_at, :preview_id, :video_emb
+
   attr_writer :preview_id
   attr_reader :preview_id
 
   default_scope order("created_at DESC")
   scope :side_bar, order("created_at DESC").limit(3)
-
   scope :article_side_bar, lambda { |post| where("id <> ?", post.id).order("created_at DESC").limit(3) }
-
   scope :magazine_list, order("created_at DESC")
 
   before_save :generate_short_url
-  after_create :update_attachements
+
+  after_create :update_attachements, :check_video_emb
   after_update :check_video_emb
 
 

@@ -155,6 +155,12 @@ class Product < ActiveRecord::Base
         image.product_id = self.id
         image.save
       end
+
+      size_to_products = SizeToProduct.find_all_by_product_id(self.preview_id)
+      size_to_products.each do |size_to_product|
+        size_to_product.product_id = self.id
+        size_to_product.save
+      end
     end
   end
 

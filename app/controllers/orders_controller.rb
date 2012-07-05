@@ -46,13 +46,13 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-
         @order.add_order_items_from_basket(@basket)
-        #OrderMailer.new_order(@order).deliver
-        session[:basket] = nil
 
-        #puts @order.user_created?
-        #puts @order.user_id
+        unless current_user.nil?
+          OrderMailer.new_order(@order).deliver
+        end
+
+        session[:basket] = nil
 
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.js { render notice: 'Order was successfully created.' }

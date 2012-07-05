@@ -32,6 +32,9 @@ class Basket
   def set_count(product_count, product, size_id)
     current_item = @items.find { |item| item.product == product and item.product_size == size_id }
     if current_item
+      size_to_product = SizeToProduct.find_by_product_id_and_size_id(product.id, size_id)
+      product_count = size_to_product.product_count if size_to_product && product_count > size_to_product.product_count
+
       current_item.set_count(product_count)
       if current_item.product_count == 0
         @items.delete current_item
