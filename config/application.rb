@@ -56,6 +56,6 @@ module Funkyouseven
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    config.assets.precompile += ['editor.js','ie7.css', 'ie8.css']
+    config.assets.precompile += ['editor.js','editor.css' ,'ie7.css', 'ie8.css']
   end
 end

@@ -28,6 +28,8 @@ class Order < ActiveRecord::Base
   private
 
   def check_user_registration
+    puts current_user.nil?
+
     user ||= User.new
 
     if user.new_record?
