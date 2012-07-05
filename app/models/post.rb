@@ -9,8 +9,8 @@ class Post < ActiveRecord::Base
 
   attr_accessible :author_id, :content, :description, :short_url, :title, :created_at, :preview_id, :video_emb
 
-  attr_writer :preview_id
-  attr_reader :preview_id
+  attr_writer :preview_id, :emb_checked
+  attr_reader :preview_id, :emb_checked
 
   default_scope order("created_at DESC")
   scope :side_bar, order("created_at DESC").limit(3)
@@ -66,9 +66,9 @@ class Post < ActiveRecord::Base
   end
 
   def check_video_emb
-    unless self.check_emb.nil?
-      self.check_emb = true
-      self.check_video_emb = self.content.include?("</iframe>") || self.content.include?("</object>")
+    if self.emb_checked.nil?
+      self.emb_checked = true
+      self.video_emb = self.content.include?("</iframe>") || self.content.include?("</object>")
     end
   end
 
