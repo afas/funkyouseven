@@ -16,7 +16,7 @@ gem 'will_paginate'
 gem 'therubyracer'
 gem 'execjs'
 
-gem 'proxylocal'
+#gem 'proxylocal'
 
 group :assets do
   gem 'sass-rails'
