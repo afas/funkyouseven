@@ -31,11 +31,18 @@ class ProductSize
       ]
     end
     list
-  end
+   end
 
   def self.by_code(code)
     collection("all").each do |value|
       return value.name if value.code == code
+    end
+    false
+  end
+
+  def self.get_product_size_by_code(code)
+    collection("all").each do |value|
+      return value if value.code == code
     end
     false
   end

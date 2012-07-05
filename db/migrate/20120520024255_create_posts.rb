@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration
       t.integer :author_id
       t.text :description
       t.text :content
+      t.boolean :video_emb, :default => false
 
       t.timestamps
     end

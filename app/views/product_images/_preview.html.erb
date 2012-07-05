@@ -2,6 +2,6 @@
   <%= hidden_field_tag :product_id, target.product_id, :class => "upload_product_id" %>
   <%= image_tag target.image.url(:preview_item), :class => "upload_preview" %><br/>
   <%= label :title, "Заголовок фото" %><br/>
-  <%= text_field_tag :title, target.title, :class => "upload_title", :onkeyup => "updateProductImage(#{target.id})" %><br/>
-  <%= label :cover, "Обложка" %><%= check_box_tag :cover, target.cover, target.cover, :class => "upload_cover", :onchange => "updateProductImage(#{target.id})" %> / <%= label :preview, "Превью (список)" %> <%= check_box_tag :preview, target.preview, target.preview, :class => "upload_preview", :onchange => "updateProductImage(#{target.id})" %> / <%= link_to t('backend.actions.destroy'), "/product_images/destroy/#{target.id}", :remote => true %>
+  <%= text_field_tag :title, target.title, :class => "upload_title", :onkeyup => "updateStuffImage(#{target.id}, 'product')" %><br/>
+  <%= label :cover, "Обложка" %><%= check_box_tag :cover, target.cover, target.cover, :class => "upload_cover", :onchange => "updateStuffImage(#{target.id}, 'product')" %> / <%= label :preview, "Превью (список)" %> <%= check_box_tag :preview, target.preview, target.preview, :class => "upload_preview", :onchange => "updateStuffImage(#{target.id}, 'product')" %> / <%= link_to t('backend.actions.destroy'), "/product_images/destroy/#{target.id}", :remote => true %>
 </div>

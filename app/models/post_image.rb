@@ -9,7 +9,7 @@ class PostImage < ActiveRecord::Base
                         :album_normal => "637x428#",
                         :big => "979x614#"
                     },
-                    :default_url =>  "/post_images/default.png",
+                    :default_url =>  "/post_images/default.jpg",
                     :url =>  "/post_images/:id/:style_:basename.:extension"
 
   validates_attachment_presence :image, :message => I18n.t("paperclip.errors.presence")

@@ -4,14 +4,20 @@ $(document).ready(function () {
 //        mouseport:jQuery("#parallax")
 //    });
 
-    if ( $(".size_unit").length > 0 ) {
-        $(".size_unit input[type=text]").click(function() {
+    if ($("#fullover").length > 0) {
+        $("#fullover > a").click(function () {
+            $("#fullover").hide();
+        });
+    }
+
+    if ($(".size_unit").length > 0) {
+        $(".size_unit input[type=text]").click(function () {
             $(this).select();
         });
     }
 
-    if ( $(".cat_item form input[type=text]").length > 0 ) {
-        $(".cat_item form input[type=text]").click(function() {
+    if ($(".cat_item form input[type=text]").length > 0) {
+        $(".cat_item form input[type=text]").click(function () {
             $(this).select();
         });
     }
@@ -66,7 +72,7 @@ $(document).ready(function () {
     }
 });
 
-function checkHref(){
+function checkHref() {
     href = $("#add_product_button").attr("href");
     if (href == "#") {
         $("#cuselFrame-product_size_id .cuselText")
@@ -74,7 +80,6 @@ function checkHref(){
             .animate({color:'#000000'}, 330)
             .animate({color:'#ff0000'}, 330)
             .animate({color:'#000000'}, 330);
-
 //        $("#cuselFrame-product_size_id").toggle( "shake", {distance: 8}, 144 );
 //        $("#cuselFrame-product_size_id .cuselText").addClass("attention");
 //        setTimeout(function(){
@@ -82,6 +87,16 @@ function checkHref(){
 //        }, 1000);
         return false;
     }
+}
+
+function setSize() {
+    product_size = $("#product_size_id").val();
+    if (product_size == "") {
+        link = "#"
+    } else {
+        link = $("#add_product_button").attr("link") + product_size;
+    }
+    $("#add_product_button").attr("href", link);
 }
 
 function onKeyUp(e, product_id, product_size) {
@@ -98,7 +113,7 @@ function onKeyUp(e, product_id, product_size) {
     product_count = "";
     product_count = parseInt($("#counter-" + product_id + "-" + product_size).val());
 
-    if ( (keynum > 47 && keynum < 58 || keynum > 95 && keynum < 106) && product_count >= 0) {
+    if ((keynum > 47 && keynum < 58 || keynum > 95 && keynum < 106) && product_count >= 0) {
         if (parseInt(product_count) == 0) {
             $("#" + product_id + "-" + product_size).remove();
         }
@@ -106,12 +121,16 @@ function onKeyUp(e, product_id, product_size) {
     }
 }
 
-function updateProductImage(product_image_id) {
-    title = $("#product_image_" + product_image_id + " input[type='text']").val();
-    cover = $("#product_image_" + product_image_id + " upload_cover").val();
-    preview = $("#product_image_" + product_image_id + " upload_preview").val();
+function updateStuffImage(stuff_image_id, classname) {
+    title = $("#" + classname + "_image_" + stuff_image_id + " input[type='text']").val();
+    cover = $("#" + classname + "_image_" + stuff_image_id + " .upload_cover").is(':checked');
+    preview = $("#" + classname + "_image_" + stuff_image_id + " .upload_preview").is(':checked');
 
-    $.get("/product_images/update/" + product_image_id + "/" + cover + "/" + preview + "/" + title);
+    if (title == '') {
+        title = 'empty'
+    }
+
+    $.get("/" + classname + "_images/update/" + stuff_image_id + "/" + cover + "/" + preview + "/" + title);
 }
 
 function onKeyUpSizeCount(e, product_id, size_code) {
@@ -128,13 +147,7 @@ function onKeyUpSizeCount(e, product_id, size_code) {
     product_count = "";
     product_count = parseInt($("#size_to_product_count-" + product_id + "-" + size_code).val());
 
-    if ( (keynum > 47 && keynum < 58 || keynum > 95 && keynum < 106) && product_count >= 0) {
-        $.get("/size_to_product_count/" + product_id+ "/" + size_code + "/"  + product_count);
+    if ((keynum > 47 && keynum < 58 || keynum > 95 && keynum < 106) && product_count >= 0) {
+        $.get("/size_to_product_count/" + product_id + "/" + size_code + "/" + product_count);
     }
-}
-
-function setSize(){
-    product_size = $("#product_size_id").val();
-    link = $("#add_product_button").attr("link") + product_size;
-    $("#add_product_button").attr("href", link);
 }

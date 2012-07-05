@@ -1,46 +1,14 @@
-<h1>Listing of imported products</h1>
+<div class="center_item">
+  <div class="main noborder">
+    <h1><%= t("activerecord.attributes.product.import_results") %></h1>
+    <span>
+      <%= raw "#{@wear_imported} #{t("activerecord.attributes.product.addet_to_shop_section")} Одежда<br/>" if @wear_imported > 0 %>
+      <%= raw "#{@gear_imported} #{t("activerecord.attributes.product.addet_to_shop_section")} Снаряжение<br/>" if @gear_imported > 0 %>
+      <%= raw "#{@equipment_imported} #{t("activerecord.attributes.product.addet_to_shop_section")} Экипировка<br/>" if @equipment_imported > 0 %>
+      <%= raw t("activerecord.attributes.product.import_ok_message") if @equipment_imported > 0 || @wear_imported > 0 || @gear_imported > 0 %>
+      <%= raw t("activerecord.attributes.product.import_fail_message") if @equipment_imported == 0 && @wear_imported == 0 && @gear_imported == 0 %>
+    </span>
+  </div>
+</div>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Price</th>
-    <th>Description</th>
-    <th>Color</th>
-    <th>Composition</th>
-    <th>Brand</th>
-    <th>Sex</th>
-    <th>Career</th>
-    <th>Shop section</th>
-    <th>Category</th>
-    <th>Look</th>
-    <th>Season</th>
-    <th>Welcome position</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @products.each do |product| %>
-  <tr>
-    <td><%= product.title %></td>
-    <td><%= product.price %></td>
-    <td><%= product.description %></td>
-    <td><%= product.color %></td>
-    <td><%= product.composition %></td>
-    <td><%= product.brand_id %></td>
-    <td><%= product.sex_id %></td>
-    <td><%= product.career_id %></td>
-    <td><%= product.shop_section_id %></td>
-    <td><%= product.category_id %></td>
-    <td><%= product.look_id %></td>
-    <td><%= product.season %></td>
-    <td><%= product.welcome_position_id %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', product, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br/>
-
-<%= link_to 'New Product', new_product_path %>
+<%= render "statics/side_bar", :articles => @articles_side_bar, :products => @shop_side_bar %>

@@ -1,4 +1,6 @@
 class SizeToProductsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /size_to_products
   # GET /size_to_products.json
   def index

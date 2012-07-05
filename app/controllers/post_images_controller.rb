@@ -25,4 +25,22 @@ class PostImagesController < ApplicationController
     #raise CanCan::AccessDenied unless can?(:destroy_upload, @stuff_image.object) unless @stuff_image.object.nil?
     @image.delete
   end
+
+  def update
+    image = PostImage.find(params[:id])
+
+    unless image.nil?
+      image.cover = params[:cover]
+      image.preview = params[:preview]
+      if params[:title] == 'empty'
+        image.title = ''
+      else
+        image.title = params[:title]
+      end
+      image.save
+    end
+
+    render :text => "Ok"
+  end
+
 end

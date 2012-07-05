@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   before_filter :find_static
   # GET /posts
   # GET /posts.json

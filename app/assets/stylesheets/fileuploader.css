@@ -4,15 +4,17 @@
 }
 
 .qq-upload-button, .qq-upload-button-hover, .qq-upload-button-focus, .qq-upload-drop-area {
-    background: url("upload-area-bg.png") repeat scroll 0 0 transparent;
-    border: 1px solid #DDDDDD;
+    /*background: url("upload-area-bg.png") repeat scroll 0 0 transparent;*/
+    /*border: 1px solid #DDDDDD;*/
+    background-color: #;
+    border: 1px dashed #D5D5D5;
     color: #69FF00;
     display: block;
     float: left;
     font-size: 14px;
     margin: 15px 0;
-    min-height: 96px;
-    padding-top: 79px;
+    min-height: 55px;
+    padding-top: 45px;
     text-align: center;
     width: 100%;
 
@@ -40,7 +42,7 @@
     left: 0;
     width: 100%;
     /*height: 100%;*/
-    min-height: 96px;
+    min-height: 55px;
     z-index: 2;
     background: url("upload-area-bg.png") repeat scroll 0 0 rgba(255,255,255,0.3);
     color: #ccc;

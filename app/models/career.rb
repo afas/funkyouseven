@@ -24,6 +24,13 @@ class Career
     false
   end
 
+  def self.by_name(name)
+    collection.each do |value|
+      return value.code if value.name == name
+    end
+    false
+  end
+
   def initialize(hash)
     self.name = hash[:name]
     self.code = hash[:code]

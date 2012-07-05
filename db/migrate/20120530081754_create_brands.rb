@@ -32,7 +32,7 @@ class CreateBrands < ActiveRecord::Migration
     Brand.create(:name => "Dragon", :short_url => "Dragon", :site_url => "http://dragon.com")
     Brand.create(:name => "Fencherch", :short_url => "Fencherch", :site_url => "http://fencherch.com")
     Brand.create(:name => "Fiction", :short_url => "Fiction", :site_url => "http://fiction.com")
-    Brand.create(:name => "FY7", :short_url => "FY7", :site_url => "http://fy7.com")
+    Brand.create(:name => "Funk You 7", :short_url => "fu7", :site_url => "http://funkyou7.ru")
     Brand.create(:name => "Gravis", :short_url => "Gravis", :site_url => "http://gravis.com")
     Brand.create(:name => "Grenade", :short_url => "Grenade", :site_url => "http://grenade.com")
     Brand.create(:name => "Independent", :short_url => "Independent", :site_url => "http://independent.com")

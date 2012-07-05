@@ -7,8 +7,8 @@ class MyColor
     [
         MyColor.new(:name => 'Черный', :code => 'black'),
         MyColor.new(:name => 'Красный', :code => 'red'),
-        MyColor.new(:name => 'Зеленый', :code => 'green'),
-        MyColor.new(:name => 'Синий', :code => 'blue')
+        MyColor.new(:name => 'Зеленый', :code => '#11FF17'),
+        MyColor.new(:name => 'Синий', :code => '#0054FF')
     ]
   end
 

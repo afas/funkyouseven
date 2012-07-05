@@ -124,6 +124,22 @@ a {
     height:250px;
 }
 
+#fullover {
+    background: url(coming-soon.png) no-repeat scroll 50% 50% rgba(255, 255, 255, 0.89);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+#fullover a {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
 .logo {
     background: url(logos/logo.png) no-repeat;
     width: 167px;
@@ -532,8 +548,8 @@ li.current ul li.current a {
 
 .img_box span {
     background: url(video.png) no-repeat;
-    width: 300px;
-    height: 200px;
+    width: 300px !important;
+    height: 200px !important;
     position: absolute;
     top: 0;
     left: 0;
@@ -651,8 +667,8 @@ form .label {
 
 .block_social {
     float: left;
+    margin: 0 0 15px;
     width: 100%;
-    margin: 0 0 15px 0;
 }
 
 .twitter {
@@ -1305,22 +1321,6 @@ form .label {
 
 .actions input[type='submit'] {
     margin-left:0;
-}
-
-#fullover {
-    background: url("fy7.png") no-repeat scroll 50% 50% rgba(255, 255, 255, 0.89);
-    height: 100%;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 10000;
-}
-
-#fullover a {
-    display: block;
-    height: 100%;
-    width: 100%;
 }
 
 .admin_menu {

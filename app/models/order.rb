@@ -16,6 +16,10 @@ class Order < ActiveRecord::Base
 
   def add_order_items_from_basket(basket)
     basket.items.each do |item|
+      size_to_product = SizeToProduct.find_by_product_id_and_size_id(item.product.id, item.product_size)
+      size_to_product.product_count -= item.product_count
+      size_to_product.save
+
       order_item = OrderItem.from_basket_item(item)
       order_items << order_item
     end

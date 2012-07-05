@@ -1,5 +1,5 @@
 <div id="<%= "#{basket_item.product.id}-#{basket_item.product_size}" %>" class="cat <%= "new" if margin_top %> <%= "cat_item" unless cat_item.nil? %> <%= container_class unless container_class.nil? %>">
-  <%= link_to image_tag(basket_item.preview_url, :alt => basket_item.title), basket_item.product, :class => "link_img" %>
+  <%= link_to image_tag(basket_item.preview_url, :alt => basket_item.title, :width => 300), basket_item.product, :class => "link_img" %>
   <%= link_to raw(product_title(basket_item.product) + " (" + ProductSize.by_code(basket_item.product_size) + ")"), basket_item.product, :class => "title" %>
   <span><%= format_price(basket_item.product.price.round) %></span>
   <form action="" method="get">

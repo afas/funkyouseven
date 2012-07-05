@@ -6,7 +6,6 @@ Funkyouseven::Application.routes.draw do
   resources :posts
   resources :products
 
-
   match '/basket/remove/:product_id/:size_id', :to => 'basket#remove_product', :as => :remove_from_basket
   match '/basket/add/:product_id/:size_id', :to => 'basket#add_product', :as => :add_to_basket
   match '/basket/empty', :to => 'basket#empty', :as => 'empty_basket', :as => :empty_basket
@@ -19,7 +18,7 @@ Funkyouseven::Application.routes.draw do
 
   resources :section_categories
 
-  match '/shop/not_categoryzed' => 'products#not_categoryzed', :as => :shop_not_categoryzed
+  match '/shop/not_publish' => 'products#not_publish', :as => :shop_not_publish
   match '/shop/import_catalog' => 'products#import_catalog', :as => :shop_import_catalog
   match '/shop/brands' => 'brands#index', :as => :shop_brands
   match '/shop/:shop_section' => 'products#index', :as => :shop_section_products
@@ -35,6 +34,7 @@ Funkyouseven::Application.routes.draw do
   match '/product_images/upload' => 'product_images#upload'
   resources :product_images
 
+  match '/post_images/update/:id/:cover/:preview/:title' => 'post_images#update'
   match '/post_images/destroy/:id' => 'post_images#destroy'
   match '/post_images/upload' => 'post_images#upload'
   resources :post_images

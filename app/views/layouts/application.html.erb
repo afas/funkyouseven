@@ -21,6 +21,13 @@
 </head>
 
 <body>
+
+<% unless can?(:manage, :all) %>
+    <div id="fullover">
+      <a href="#" title="Coming soon ..."></a>
+    </div>
+<% end %>
+
 <div class="wrapper">
   <%= render "layouts/head" %>
   <div id="content">

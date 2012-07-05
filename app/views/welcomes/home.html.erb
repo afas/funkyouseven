@@ -1,53 +1,25 @@
 <div class="center">
   <%= render "welcomes/slider", :target => @top_slider unless @top_slider.empty? %>
+
   <div class="column">
-    <div class="cat">
-      <a href="#" class="link_img"><img src="assets/1.jpg" width="300" height="344" alt=""/></a>
-      <a href="#" class="title">Поло Quiksilver</a>
-      <span>1800p.</span>
-    </div>
-    <!--end cat-->
-    <div class="cat">
-      <a href="#" class="link_img"><img src="assets/3.jpg" width="300" height="370" alt=""/></a>
-      <a href="#" class="title">Крепления сноубордические Union </a>
-      <span>1800p.</span>
-    </div>
-    <!--end cat-->
+    <%= render "products/product_preview_item", :product => @about_left[rand(@about_left.size)], :cat_item => false, :margin_top => false, :container_class => "" unless @about_left.empty? %>
+    <%= render "products/product_preview_item", :product => @about_bottom[rand(@about_bottom.size)], :cat_item => false, :margin_top => false, :container_class => "" unless @about_bottom.empty? %>
   </div>
-  <!--end column-->
 
   <div class="column column_second">
     <%= render "welcomes/inside" %>
-    <div class="cat">
-      <a href="#" class="link_img"><img src="assets/2.jpg" width="300" height="457" alt=""/></a>
-      <a href="#" class="title">Ботинки сноубордические VANS</a>
-      <span>1800p.</span>
-    </div>
-    <!--end cat-->
+    <%= render "products/product_preview_item", :product => @about_bottom[rand(@about_bottom.size)], :cat_item => false, :margin_top => false, :container_class => "" unless @about_bottom.empty? %>
   </div>
-  <!--end column-->
 
   <%= render "welcomes/slider", :target => @bottom_slider unless @bottom_slider.empty? %>
 
   <div class="column">
-    <div class="cat">
-      <a href="#" class="link_img"><img src="assets/2.jpg" width="300" height="457" alt=""/></a>
-      <a href="#" class="title">Крепления сноубордические Union </a>
-      <span>1800p.</span>
-    </div>
-    <!--end cat-->
+    <%= render "products/product_preview_item", :product => @last[rand(@last.size)], :cat_item => false, :margin_top => false, :container_class => "" unless @last.empty? %>
   </div>
-  <!--end column-->
-  <div class="column column_second">
-    <div class="cat">
-      <a href="#" class="link_img"><img src="assets/2.jpg" width="300" height="457" alt=""/></a>
-      <a href="#" class="title">Ботинки сноубордические VANS</a>
-      <span>1800p.</span>
-    </div>
-    <!--end cat-->
-  </div>
-  <!--end column-->
-</div>
 
+  <div class="column column_second">
+    <%= render "products/product_preview_item", :product => @last[rand(@last.size)], :cat_item => false, :margin_top => false, :container_class => "" unless @last.empty? %>
+  </div>
+</div>
 
 <%= render "welcomes/side_bar" %>

@@ -1,12 +1,23 @@
 class ProductsController < ApplicationController
-#  load_and_authorize_resource
+  load_and_authorize_resource
 
   def import_catalog
-    @products = Product.import()
+    wear_last_product_number = ShopSection.find_by_short_url("wear").last_product_number
+    gear_last_product_number = ShopSection.find_by_short_url("gear").last_product_number
+    equipment_last_product_number = ShopSection.find_by_short_url("equipment").last_product_number
+
+    Product.import()
+
+    @wear_imported = ShopSection.find_by_short_url("wear").last_product_number - wear_last_product_number
+    @gear_imported = ShopSection.find_by_short_url("gear").last_product_number - gear_last_product_number
+    @equipment_imported = ShopSection.find_by_short_url("equipment").last_product_number - equipment_last_product_number
+
+    @articles_side_bar = Post.side_bar
+    @shop_side_bar = Product.shop_side_bar
   end
 
-  def not_categoryzed
-    @products = Product.not_categorized#.paginate(:page => params[:page])
+  def not_publish
+    @products = Product.not_publish#.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +36,7 @@ class ProductsController < ApplicationController
     @section_category = SectionCategory.find_by_shop_section_id_and_short_url(@shop_section.id, params[:section_category]) unless @shop_section.nil? && params[:section_category].nil?
     condition += " and section_category_id = #{@section_category.id}" unless @section_category.nil?
 
-    @products = Product.where(condition).paginate(:page => params[:page])
+    @products = Product.valid_products.where(condition)#.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,7 +52,7 @@ class ProductsController < ApplicationController
     @shop_section = @product.shop_section
     @section_category = @product.section_category
 
-    @related_products = Product.all
+    @related_products = Product.valid_products.all
 
     @shop_section = @product.shop_section
     @section_category = @product.section_category

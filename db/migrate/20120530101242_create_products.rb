@@ -14,7 +14,6 @@ class CreateProducts < ActiveRecord::Migration
       t.integer :look_id
       t.string :season
       t.integer :welcome_position_id
-      t.string :import_comment
 
       t.timestamps
     end

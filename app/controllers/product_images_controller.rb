@@ -27,14 +27,16 @@ class ProductImagesController < ApplicationController
   end
 
   def update
-    #/product_images/update/:id/:cover/:preview/:description
-
     image = ProductImage.find(params[:id])
 
     unless image.nil?
       image.cover = params[:cover]
       image.preview = params[:preview]
-      image.title = params[:title]
+      if params[:title] == 'empty'
+        image.title = ''
+      else
+        image.title = params[:title]
+      end
       image.save
     end
 

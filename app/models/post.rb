@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   validates_presence_of :title, :description, :content, :author_id
   validates_uniqueness_of :title, :short_url
 
-  attr_accessible :author_id, :content, :description, :short_url, :title, :created_at, :preview_id
+  attr_accessible :author_id, :content, :description, :short_url, :title, :created_at, :preview_id, :video_emb
   attr_writer :preview_id
   attr_reader :preview_id
 
@@ -21,6 +21,8 @@ class Post < ActiveRecord::Base
 
   before_save :generate_short_url
   after_create :update_attachements
+  after_update :check_video_emb
+
 
   def initialize(*args)
     super
@@ -31,6 +33,27 @@ class Post < ActiveRecord::Base
     self.id || self.preview_id
   end
 
+  def get_cover
+    cover_images = PostImage.find_all_by_post_id_and_cover(self.id, true)
+
+    unless cover_images.empty?
+      cover_images[rand(cover_images.size())]
+    else
+      PostImage.find_by_post_id(self.id) || PostImage.new
+    end
+  end
+
+  def get_preview
+    preview_images = PostImage.find_all_by_post_id_and_preview(self.id, true)
+
+    unless preview_images.empty?
+      preview_images[rand(preview_images.size())]
+    else
+      PostImage.find_by_post_id(self.id) || PostImage.new
+    end
+  end
+
+
   private
 
   def update_attachements
@@ -40,6 +63,13 @@ class Post < ActiveRecord::Base
         image.post_id = self.id
         image.save
       end
+    end
+  end
+
+  def check_video_emb
+    unless self.check_emb.nil?
+      self.check_emb = true
+      self.check_video_emb = self.content.include?("</iframe>") || self.content.include?("</object>")
     end
   end
 

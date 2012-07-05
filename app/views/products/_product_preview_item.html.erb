@@ -1,5 +1,5 @@
 <div class="cat <%= "new" if margin_top %> <%= "cat_item" unless cat_item.nil? %> <%= container_class unless container_class.nil? %>">
-  <%= link_to image_tag(product.get_preview.image.url(:preview_item), :alt => product.title), product, :class => "link_img" %>
+  <%= link_to image_tag(product.get_preview.image.url(:preview_item), :alt => product.title, :width => 300), product, :class => "link_img" %>
   <%= link_to product_title(product), product, :class => "title" %>
-  <span><%= number_to_currency(product.price.round, :precision => 0, :unit => "p.") %></span>
+  <span><%= number_to_currency(product.price.round, :precision => 0, :unit => "p.") unless product.price.nil? %></span>
 </div>

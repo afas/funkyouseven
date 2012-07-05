@@ -1,3 +1,4 @@
+#encoding: utf-8
 require "google_spreadsheet"
 class Product < ActiveRecord::Base
 
@@ -17,7 +18,6 @@ class Product < ActiveRecord::Base
                   :description,
                   :price,
                   :season,
-                  :import_comment,
                   :preview_id
 
   attr_writer :preview_id
@@ -30,14 +30,24 @@ class Product < ActiveRecord::Base
   has_many :product_images
   has_many :size_to_products
 
-  scope :shop_side_bar, order("created_at DESC").limit(2)
-  scope :not_categorized, where("shop_section_id IS NULL OR section_category_id IS NULL").order("created_at DESC")
+  scope :valid_products, includes(:size_to_products).where("size_to_products.product_count > 0 AND products.price NOT NULL")
+  #joins(:product_images).
+  scope :shop_side_bar, valid_products.order("created_at DESC").limit(2)
+  scope :not_publish, where("price IS NULL OR shop_section_id IS NULL OR section_category_id IS NULL").order("created_at DESC")
 
   after_create :update_attachements
 
   def initialize(*args)
     super
     self.preview_id = rand(99999999)+99999999 if self.preview_id.nil? && self.new_record?
+  end
+
+  def available_sizes
+    available_sizes = []
+    self.size_to_products.each do |size_to_product|
+      available_sizes << ProductSize.get_product_size_by_code(size_to_product.size_id) if (size_to_product.product_count > 0)
+    end
+    available_sizes
   end
 
   def count_by_size_id(size_id)
@@ -51,18 +61,22 @@ class Product < ActiveRecord::Base
   end
 
   def get_cover
-    if self.product_images.size > 0
-      self.product_images.first
+    cover_images = ProductImage.find_all_by_product_id_and_cover(self.id, true)
+
+    unless cover_images.empty?
+      cover_images[rand(cover_images.size())]
     else
-      ProductImage.new
+      ProductImage.find_by_product_id(self.id) || ProductImage.new
     end
   end
 
   def get_preview
-    if self.product_images.size > 0
-      self.product_images.first
+    preview_images = ProductImage.find_all_by_product_id_and_preview(self.id, true)
+
+    unless preview_images.empty?
+      preview_images[rand(preview_images.size())]
     else
-      ProductImage.new
+      ProductImage.find_by_product_id(self.id) || ProductImage.new
     end
   end
 
@@ -79,52 +93,58 @@ class Product < ActiveRecord::Base
   end
 
   def self.import()
-
-    if Product.all.size > 0
-      last_product_id = Product.all.last.id
-    end
+    current_shop_section = nil
 
     import_session = GoogleSpreadsheet.login("anton@black-sheep.ru", "rfhnjirf")
     worksheets = import_session.spreadsheet_by_key("0AicZb6Y8rwZzdDdDbjhlUmdUWUtyY1dMbmhCeVZiM0E").worksheets
 
-    worksheets.each do |worksheet|
-      shop_section_id = ShopSection.find_by_name(worksheet.title.to_s.capitalize).id
-      worksheet.rows.each do |row|
-        title = row[0].to_s.capitalize
-        brand_id = Brand.find_or_create_by_name(row[1].to_s.capitalize).id
-
-        import_comment = ""
-        import_comment += row[2].to_s.capitalize + " /"
-        color = row[3].to_s.capitalize
-        composition = row[4].to_s.capitalize
-        composition += ", " + row[5].to_s.capitalize unless row[5].empty?
-        season = row[6].to_s.downcase unless row[6].empty?
-        sex_id = Sex.by_short_name(row[7].to_s.downcase) unless row[7].empty?
-        price = row[8].to_f
-        import_comment += row[9].to_s.capitalize + " /"
-        import_comment += row[10].to_s.capitalize + " /"
-
-        Product.create(:title => title, :brand_id => brand_id, :color => color, :composition => composition, :import_comment => import_comment, :season => season, :sex_id => sex_id, :price => price)
+    worksheets.each_with_index do |worksheet, worksheet_number|
+      current_shop_section = ShopSection.find_by_name(worksheet.title.mb_chars.capitalize.to_s)
+      unless current_shop_section.nil?
+        shop_section_id = current_shop_section.id
+        last_product_number = current_shop_section.last_product_number
       end
+
+      worksheet.rows.each_with_index do |row, row_number|
+        if row_number > last_product_number
+          description = ""
+          title = row[0].mb_chars.capitalize.to_s unless row[0].empty?
+          description += "#{row[1].mb_chars.capitalize.to_s}. " unless row[1].empty?
+          section_category_id = SectionCategory.find_or_create_by_name_and_shop_section_id(row[2].to_s, shop_section_id).id unless row[2].empty?
+          brand_id = Brand.find_or_create_by_name(row[3].to_s).id unless row[3].empty?
+          career_id = Career.by_name(row[4].mb_chars.capitalize.to_s) unless row[4].empty?
+          sex_id = Sex.by_short_name(row[5].mb_chars.downcase.to_s) unless row[5].empty?
+          color = row[6].mb_chars.capitalize.to_s unless row[6].empty?
+          description += "Текстура #{row[9].mb_chars.downcase.to_s}. " unless row[9].empty?
+          description += "Дизайнер #{row[7].mb_chars.titleize.to_s}. " unless row[7].empty?
+          description += "Модель #{row[12].mb_chars.titleize.to_s}. " unless row[12].empty?
+          composition = row[8].mb_chars.capitalize.to_s unless row[8].empty?
+          season = row[10].mb_chars.downcase.to_s unless row[10].empty?
+          price = row[11].to_f unless row[11].empty?
+          welcome_position_id = rand(4) - 1 + shop_section_id
+
+          product = Product.create(:title => title,
+                                   :description => description,
+                                   :shop_section_id => shop_section_id,
+                                   :section_category_id => section_category_id,
+                                   :brand_id => brand_id,
+                                   :career_id => career_id,
+                                   :color => color,
+                                   :composition => composition,
+                                   :season => season,
+                                   :sex_id => sex_id,
+                                   :welcome_position_id => welcome_position_id,
+                                   :price => price)
+
+
+          unless product.nil?
+            current_shop_section.last_product_number = row_number
+            current_shop_section.save
+          end
+        end
+      end if worksheet_number < 3 && !current_shop_section.nil?
     end
-
-#    t.string   "title"
-#    t.float    "price"
-#    t.text     "description"
-#    t.string   "color"
-#    t.string   "composition"
-#    t.integer  "brand_id"
-#    t.integer  "sex_id"
-#    t.integer  "career_id"
-#    t.integer  "shop_section_id"
-#    t.integer  "section_category_id"
-#    t.integer  "look_id"
-#    t.string   "season"
-#    t.integer  "welcome_position_id"
-#    t.string   "import_comment"
-
   end
-
 
   private
 

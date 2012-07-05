@@ -5,6 +5,7 @@ class CreateShopSections < ActiveRecord::Migration
       t.string :name, :null => false, :unique => true
       t.string :short_url, :null => false, :unique => true
       t.integer :list_order, :default => 0
+      t.integer :last_product_number, :default => 0
       t.text :description
 
       t.timestamps

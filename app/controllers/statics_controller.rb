@@ -1,4 +1,6 @@
 class StaticsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /statics
   # GET /statics.json
   def index

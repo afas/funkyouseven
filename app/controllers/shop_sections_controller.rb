@@ -1,4 +1,6 @@
 class ShopSectionsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /shop_sections
   # GET /shop_sections.json
   def index

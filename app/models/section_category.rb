@@ -5,4 +5,12 @@ class SectionCategory < ActiveRecord::Base
   has_many :products
   #default_scope order(:name)
 
+  before_save :generate_short_url
+
+  private
+
+  def generate_short_url
+    self.short_url = Russian.transliterate(self.name.downcase.gsub(' ', '-')) if self.short_url.blank? && !self.name.blank?
+  end
+
 end
