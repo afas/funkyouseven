@@ -9,12 +9,14 @@
 
   <%= stylesheet_link_tag :editor %>
 
-  <!--[if IE 7]>
-        <%= stylesheet_link_tag "ie7" %>
-  <![endif]-->
-  <!--[if IE 8]>
-        <%= stylesheet_link_tag "ie8" %>
-  <![endif]-->
+  <!--[if IE]>
+     <![if lte IE 7]>
+            <%= stylesheet_link_tag "ie7" %>
+        <![endif]>
+        <![if lte IE 8]>
+            <%= stylesheet_link_tag "ie8" %>
+        <![endif]>
+    <![endif]-->
 
   <%= javascript_include_tag :editor %>
   <%= csrf_meta_tags %>
@@ -24,7 +26,6 @@
 <div class="wrapper">
   <%= render "layouts/head" %>
   <div id="content" class="content_item">
-    <!-- TODO CLASS -->
     <%= yield %>
   </div>
   <%= render "layouts/footer" %>
