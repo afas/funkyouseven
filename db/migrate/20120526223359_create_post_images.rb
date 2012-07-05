@@ -12,6 +12,7 @@ class CreatePostImages < ActiveRecord::Migration
 
       t.timestamps
     end
+
     add_index :post_images, :image_order
     add_index :post_images, :post_id
     add_index :post_images, :cover

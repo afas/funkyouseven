@@ -1,4 +1,4 @@
-class CreateProductImage < ActiveRecord::Migration
+class CreateProductImages < ActiveRecord::Migration
   def change
     create_table :product_images do |t|
       t.integer :product_id
@@ -12,6 +12,7 @@ class CreateProductImage < ActiveRecord::Migration
 
       t.timestamps
     end
+
     add_index :product_images, :image_order
     add_index :product_images, :product_id
     add_index :product_images, :cover
