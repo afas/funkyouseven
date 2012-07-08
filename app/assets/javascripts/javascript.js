@@ -1,8 +1,45 @@
-$(document).ready(function () {
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-31898771-1']);
+_gaq.push(['_trackPageview']);
 
-//    jQuery('.parallax-layer').parallax({
-//        mouseport:jQuery("#parallax")
-//    });
+(function () {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+})();
+
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=423133141046951";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+!function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }
+}(document, "script", "twitter-wjs");
+
+//========================================================================
+
+$(document).ready(function () {
+    if ($("#notice").length > 0) {
+        setTimeout(function () {
+            $("#notice").animate({top:-144}, 555, function () {
+                $("#notice").remove();
+            });
+        }, 3500);
+    }
 
     if ($("#fullover").length > 0) {
         $("#fullover > a").click(function () {
@@ -75,17 +112,7 @@ $(document).ready(function () {
 function checkHref() {
     href = $("#add_product_button").attr("href");
     if (href == "#") {
-//        $("#cuselFrame-product_size_id").toggle("shake", {distance:8}, 144);
-        $("#cuselFrame-product_size_id .cuselText")
-            .animate({color:'#ff0000'}, 330)
-            .animate({color:'#000000'}, 330)
-            .animate({color:'#ff0000'}, 330)
-            .animate({color:'#000000'}, 330);
-
-//        $("#cuselFrame-product_size_id .cuselText").addClass("attention");
-//        setTimeout(function(){
-//            $("#cuselFrame-product_size_id .cuselText").removeClass("attention");
-//        }, 1000);
+        $("#cuselFrame-product_size_id").toggle("shake", {distance:8, times:1}, 300);
         return false;
     }
 }

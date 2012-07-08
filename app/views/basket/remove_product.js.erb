@@ -1,7 +1,12 @@
-$("#<%= @basket_item_id %>").remove();
+$("#<%= @basket_item_id %>").toggle("shake", {distance:13, times:2}, 300, function () {
+    $("#<%= @basket_item_id %>").animate({marginLeft:-1000}, 800, function () {
+        $("#<%= @basket_item_id %>").remove();
+    });
+});
+
 <% if @basket.products_count == 0 %>
-    $(".basket-icon").hide();
-    $("#order-price").hide();
+$(".basket-icon").hide();
+$("#order-price").hide();
 <% else %>
-    $('#order-price').html('<%= escape_javascript(render(:partial => 'basket/order_price')) %>');
+$('#order-price').html('<%= escape_javascript(render(:partial => 'basket/order_price')) %>');
 <% end %>

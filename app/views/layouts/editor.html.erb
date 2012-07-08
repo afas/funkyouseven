@@ -22,7 +22,13 @@
   <%= csrf_meta_tags %>
 </head>
 
-<body>
+<body class="body_editor">
+<div id="fb-root"></div>
+
+<% unless notice.nil? %>
+    <p id="notice"><%= notice %></p>
+<% end %>
+
 <div class="wrapper">
   <%= render "layouts/head" %>
   <div id="content" class="content_item">

@@ -25,6 +25,10 @@ body {
     line-height: 1;
 }
 
+.body_editor {
+    background: url(bgeditor.png) repeat scroll 50% 50% #EEEEEE;
+}
+
 blockquote, q {
     quotes: none;
 }
@@ -112,8 +116,33 @@ a {
 
 #notice {
     font-size: 13pt;
-    padding: 13px 0;
+    padding: 34px 0;
+    background: url("bgeditor.png") repeat scroll 50% 50% #EEEEEE;
+    /*background: none repeat scroll 0 0 rgba(255, 255, 255, 0.89);*/
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: #000000;
+
+    text-shadow: 0px 1px 1px #11FF17;
+    filter: dropshadow(color=#11FF17, offx=0, offy=1);
+
+    left:51%;
+    margin-left: -210px;
+
+    /*top: 55px;*/
+    top: 50%;
+    margin-top: -34px;
+
+    position: absolute;
     text-align: center;
+    width: 400px;
+    z-index: 1000;
+
+    -webkit-border-radius: 47px;
+    -moz-border-radius: 47px;
+    border-radius: 47px;
+
+    -webkit-box-shadow: 2px 5px 8px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 5px 8px 5px rgba(0, 0, 0, 0.3);
 }
 
 #header {
@@ -191,10 +220,11 @@ a {
 }
 
 .basket-icon {
+    position: relative;
+    z-index: 5555;
     position: absolute;
     right: 0;
     top: 20px;
-    z-index: 5;
     background: url("basket.png") no-repeat scroll center 21% transparent;
     border: 1px dashed rgba(0, 0, 0, 0.1);
     height: 56px;
@@ -223,14 +253,13 @@ a {
 
 .menu_right, .admin_menu {
     float: right;
-    /*margin: 111px 0 0;*/
     position: relative;
     z-index: 2;
 }
 
 .admin_menu {
     margin-top: 20px;
-    z-index: 1000;
+    z-index: 6000;
 }
 
 .menu_left li {
@@ -571,7 +600,7 @@ li.current ul li.current a {
 
 .block p, .info_block p, .field label span {
     font-size: 14px;
-    line-height: 14px;
+    line-height: 21px;
     color: #000;
     /*margin-top: 5px;*/
 }
@@ -587,11 +616,12 @@ li.current ul li.current a {
 form input[type="text"], form input[type="number"] {
     border: 1px solid #D5D5D5;
     font-size: 21px;
-    height: 28px;
+    height: 34px;
     line-height: 28px;
     margin-bottom: 15px;
     padding: 0 5px;
     width: 100%;
+    box-sizing: border-box;
 }
 
 form textarea {
@@ -601,6 +631,7 @@ form textarea {
     margin-bottom: 15px;
     padding: 0 3px;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .field .span {
@@ -609,9 +640,10 @@ form textarea {
     font-size: 20px;
     line-height: 24px;
     /*margin-bottom: 50px;*/
-    width: 100%;
     height: 144px;
     font-family: 'FuturisCRegular';
+    width: 100%;
+    box-sizing: border-box;
 }
 
 form .title {
@@ -621,6 +653,7 @@ form .title {
     font-weight: normal;
     line-height: 38px;
     height: 80px;
+    box-sizing: border-box;
 }
 
 form .welcome_description {
@@ -637,7 +670,7 @@ form .welcome_description {
 form .product_description {
     font-size: 13px;
     line-height: 18px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     height: 230px;
     width: 100%;
 }
@@ -657,10 +690,6 @@ form .price {
     font-weight: normal;
     margin: 5px 0 10px;
     height: 80px;
-}
-
-#cuselFrame-post_created_at_3i, #cuselFrame-post_created_at_2i, #cuselFrame-post_created_at_1i {
-    margin-right: 13px;
 }
 
 form .label {
@@ -765,14 +794,14 @@ form .label {
     width: 660px;
     float: left;
     border-right: 1px solid #cccccc;
-    min-height: 1800px;
+    /*min-height: 1800px;*/
 }
 
 .main {
-    width: 637px;
     border-bottom: 1px solid #000000;
-    margin-bottom: 15px;
     float: left;
+    padding-bottom: 15px;
+    width: 637px;
 }
 
 .main h1 {
@@ -824,10 +853,6 @@ form .label {
     margin-bottom: 21px;
 }
 
-.cusel-scroll-wrap span {
-    font-size: 12px !important;
-}
-
 .main p {
     font-size: 14px;
     line-height: 18px;
@@ -851,7 +876,7 @@ form .label {
 .block_second {
     width: 300px;
     float: left;
-    margin: 15px 0 0 26px;
+    margin: 15px 40px 0 0;
 }
 
 .no_margin_left {
@@ -945,6 +970,25 @@ form .label {
     cursor: pointer;
 }
 
+.flash {
+    -webkit-box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.3);
+}
+
+.ui-effects-transfer {
+    border: 2px dashed rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 3000;
+}
+
+#cuselFrame-post_created_at_3i, #cuselFrame-post_created_at_2i, #cuselFrame-post_created_at_1i {
+    margin-right: 13px;
+}
+
+.cusel-scroll-wrap span {
+    font-size: 12px !important;
+}
+
 .cusel,
 .cuselFrameRight,
 .jScrollPaneDrag,
@@ -963,16 +1007,7 @@ form .label {
     max-width: 190px;
     position: relative;
     z-index: 1;
-}
-
-.flash {
-    -webkit-box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.3);
-}
-
-.ui-effects-transfer {
-    border: 2px dashed rgba(0, 0, 0, 0.3);
-    z-index: 100;
+    float: left;
 }
 
 .cuselFrameRight {
@@ -1130,7 +1165,10 @@ form .label {
     min-height: 100px;
     border: 1px dashed #D5D5D5;
     width: 100%;
-    padding: 0 3px;
+    box-sizing: border-box;
+    padding: 0 5px;
+    margin-bottom: 13px;
+    background-color: #FFFFFF;
 }
 
 .product_selects label, .product_selects .cusel, .product_sizes label {
@@ -1151,16 +1189,22 @@ form .label {
     /*min-height: 121px;*/
     border: 1px dashed #D5D5D5;
     width: 100%;
-    padding: 5px 3px;
+    box-sizing: border-box;
+    padding: 0px 5px;
+    background-color: #FFFFFF;
 }
 
 .product_sizes label {
+    margin: 8px 0 3px;
+}
+
+.size_unit label {
     margin: 3px 0 0 0;
 }
 
 .product_sizes input[type="text"] {
-    width: 34px;
-    margin: 3px 13px 13px 5px;
+    width: 45px;
+    margin: 3px 10px 13px 5px;
 }
 
 .size_unit {
@@ -1177,6 +1221,7 @@ form .label {
     text-align: center;
     float: left;
     margin-top: 8px;
+    clear: left;
 }
 
 .all_w {
@@ -1282,10 +1327,15 @@ form .label {
 
 .feedback label, form label {
     font-size: 13px;
+    font-weight: bold;
     color: #000000;
     float: left;
     width: 100%;
     margin-bottom: 5px;
+}
+
+form label {
+    margin-bottom: 0;
 }
 
 .feedback label span, .block span, .info_block span, .field label span {
@@ -1310,11 +1360,17 @@ form .label {
 .feedback textarea {
     border: 1px solid #d5d5d5;
     width: 100%;
+    box-sizing: border-box;
     padding: 5px;
     height: 77px;
     margin-bottom: 15px;
-    resize: none;
+    resize: vertical;
     font-size: 12px;
+    line-height: 18px;
+}
+
+.actions {
+    text-align: center;
 }
 
 .submit, .actions input[type='submit'] {
@@ -1323,7 +1379,7 @@ form .label {
     height: 32px;
     cursor: pointer;
     border: 0;
-    float: left;
+    /*float: left;*/
     font-size: 12px;
     color: #fff;
     margin: 0 0 0 95px;
@@ -1367,7 +1423,7 @@ form .label {
 }
 
 .admin_menu li.title ul li a {
-    margin-left: 0;
+    margin-left: -8px;
 }
 
 .admin_menu li.title ul {
@@ -1384,9 +1440,14 @@ form .label {
 }
 
 .admin_menu li.title ul li a {
-    padding: 5px 0 0 0;
+    background: none repeat scroll 0 0 #FFFFFF;
     font-weight: normal;
-    background: #fff;
+    padding: 5px 8px 0;
+    min-width: 51px;
+}
+
+.admin_menu li:last-child {
+    margin-right: 8px;
 }
 
 #order_address {
@@ -1405,3 +1466,18 @@ form .label {
 .my_orders ul li {
     margin-bottom: 5px;
 }
+
+.social-panel, .fb-comments {
+    overflow:hidden;
+    padding-top:15px;
+    float: left;
+}
+
+.social-panel .fb-like,
+.social-panel .social-vk,
+.social-panel .twitter-share-button {
+    float:left;
+    margin-right:20px;
+    display:inline;
+}
+

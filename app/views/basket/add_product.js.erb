@@ -1,9 +1,14 @@
 <% if @basket.products_count == 1 %>
-    $(".basket-icon").css("opacity", "0").css("display", "block");
+$(".basket-icon").css("opacity", "0").css("display", "block");
 <% end %>
 
-$(".ui-effects-transfer").css("background", "url(" + $("#current_image").attr("src") + ") no-repeat scroll 0 0 transparent");
+image_src = $("#current_image").attr("src");
+
+$("head").append("<style> .ui-effects-transfer {background: url(" + image_src + ") 100% 100% no-repeat; background-size: cover;}</style>");
 
 options = { to:"#basket-icon", className:"current_image" };
-$("#current_image").toggle("transfer", options, 800, function (){ $(".basket-icon").css("opacity", "1"); $(".basket-icon span").html(<%= @basket.products_count %>); });
+$("#current_image").toggle("transfer", options, 610, function () {
+    $(".basket-icon").css("opacity", "1");
+    $(".basket-icon span").html(<%= @basket.products_count %>);
+});
 

@@ -52,7 +52,6 @@ class Post < ActiveRecord::Base
     end
   end
 
-
   private
 
   def update_attachements
