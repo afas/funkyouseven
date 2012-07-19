@@ -38,7 +38,8 @@
     width: 100%;
     min-height: 55px;
     z-index: 2;
-    background: url("upload-area-bg.png") repeat scroll 0 0 rgba(255,255,255,0.3);
+    background: none repeat scroll 0 0 #FFFFFF;
+    /*background: url("upload-area-bg.png") repeat scroll 0 0 rgba(255,255,255,0.3);*/
     color: #ccc;
     text-align: center;
     font-size: 21px;
