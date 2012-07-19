@@ -37,7 +37,7 @@ class Product < ActiveRecord::Base
   scope :valid_products, with_images.not_archive_or_positive_count.where("products.price NOT NULL").order("products.updated_at DESC")
 
   scope :not_publish, includes(:size_to_products).where("products.price IS NULL OR products.shop_section_id IS NULL OR products.section_category_id IS NULL OR size_to_products.product_count IS NULL").order("created_at DESC")
-  scope :shop_side_bar, valid_products.order("created_at DESC").limit(2)
+  scope :shop_side_bar, valid_products.order("products.created_at DESC").limit(2)
 
 
   after_create :update_attachements
