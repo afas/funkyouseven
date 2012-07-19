@@ -8,6 +8,7 @@ class Product < ActiveRecord::Base
                   :brand_id,
                   :shop_section_id,
                   :section_category_id,
+                  :archive,
                   :look_id, #!!!
                   :career_id,
                   :sex_id,
@@ -30,10 +31,14 @@ class Product < ActiveRecord::Base
   has_many :product_images
   has_many :size_to_products
 
-  scope :valid_products, includes(:size_to_products).where("size_to_products.product_count > 0 AND products.price NOT NULL")
-  #joins(:product_images).
+  scope :with_images, joins(:product_images).group("product_images.product_id").where("product_images.id != 0")
+
+  scope :not_archive_or_positive_count, includes(:size_to_products).where("products.archive = ? OR size_to_products.product_count > 0 AND products.archive = ?", false, true)
+  scope :valid_products, with_images.not_archive_or_positive_count.where("products.price NOT NULL").order("products.updated_at DESC")
+
+  scope :not_publish, includes(:size_to_products).where("products.price IS NULL OR products.shop_section_id IS NULL OR products.section_category_id IS NULL OR size_to_products.product_count IS NULL").order("created_at DESC")
   scope :shop_side_bar, valid_products.order("created_at DESC").limit(2)
-  scope :not_publish, where("price IS NULL OR shop_section_id IS NULL OR section_category_id IS NULL").order("created_at DESC")
+
 
   after_create :update_attachements
 

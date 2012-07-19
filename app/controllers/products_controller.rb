@@ -35,7 +35,7 @@ class ProductsController < ApplicationController
 
     @section_category = SectionCategory.find_by_shop_section_id_and_short_url(@shop_section.id, params[:section_category]) unless @shop_section.nil? && params[:section_category].nil?
     condition += " and section_category_id = #{@section_category.id}" unless @section_category.nil?
-    @products = Product.where(condition).valid_products.all #.paginate(:page => params[:page])
+    @products = Product.where(condition).valid_products #.paginate(:page => params[:page])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }

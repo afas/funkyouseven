@@ -1162,7 +1162,7 @@ form .label {
 }
 
 .product_selects {
-    min-height: 100px;
+    min-height: 135px;
     border: 1px dashed #D5D5D5;
     width: 100%;
     box-sizing: border-box;
@@ -1177,7 +1177,7 @@ form .label {
     width: auto;
 }
 
-.product_selects .cusel {
+.product_selects .cusel, .product_selects input[type="checkbox"]  {
     margin: 13px 21px 0 0;
 }
 

@@ -41,6 +41,13 @@
 
       <%= f.label :welcome_position_id %>
       <%= f.collection_select(:welcome_position_id, WelcomePosition.collection, :code, :name, {:include_blank => "не установлен"}) %>
+
+      <br/>
+      <br/>
+      <br/>
+
+      <%= f.label :archive %>
+      <%= f.check_box :archive %>
     </div>
 
     <div class="field">

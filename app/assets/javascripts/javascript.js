@@ -38,7 +38,7 @@ $(document).ready(function () {
             $("#notice").animate({top:-144}, 555, function () {
                 $("#notice").remove();
             });
-        }, 3500);
+        }, 2000);
     }
 
     if ($("#fullover").length > 0) {
@@ -76,7 +76,7 @@ $(document).ready(function () {
     if ($(".slides").length > 0) {
         $('.slides').slides({
             preload:true,
-            preloadImage:'images/loading.gif',
+            preloadImage:'assets/preloader.gif',
             play:5000,
             pause:2500,
             hoverPause:true,

@@ -1,4 +1,7 @@
 Funkyouseven::Application.routes.draw do
+  #списки не опубликованных шмоток
+  #скорость работы!!
+  #срет в лог ФАВИКОН
 
   match '/size_to_product_count/:product_id/:size_id/:product_count', :to => 'size_to_products#size_to_product_count', :as => :size_to_product_count
   #resources :size_to_products
