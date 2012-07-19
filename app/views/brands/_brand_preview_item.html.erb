@@ -2,5 +2,5 @@
   <%= link_to image_tag(brand.logo.url(:preview_item), :alt => brand.name), brand, :class => "link_img" %>
   <%= link_to brand.name, brand, :class => "title" %>
   <p><%= link_to brand.site_url, brand.site_link, :target => "_blank",:class => "site_url" %></p>
-  <p><%= brand.description %></p>
+  <%= raw "<p>#{brand.description}</p>" if with_description %>
 </div>

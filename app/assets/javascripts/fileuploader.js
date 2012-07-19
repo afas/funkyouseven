@@ -627,7 +627,6 @@ qq.extend(qq.FileUploader.prototype, {
     _onComplete: function(id, fileName, result){
         qq.FileUploaderBasic.prototype._onComplete.apply(this, arguments);
 
-        // mark completed
         var item = this._getItemByFileId(id);
         qq.remove(this._find(item, 'cancel'));
         qq.remove(this._find(item, 'spinner'));
@@ -635,14 +634,14 @@ qq.extend(qq.FileUploader.prototype, {
         if (result.success){
             qq.addClass(item, this._classes.success);
             var div = $(item).children('div');
-            $(div).attr('id', 'post_image_' + result.id);
+            $(div).attr('id', result.parent_class_name + '_image_' + result.id);
             $(div).children('img').attr('src', result.new_filename);
-            $(div).children('.upload_post_id').attr('value', result.post_id);
+            $(div).children('.upload_' + result.parent_class_name + '_id').attr('value', result.id);
             $(div).children('.upload_title').attr('value', result.title);
             $(div).children('.upload_cover').attr('value', result.title);
             $(div).children('.upload_prewiev').attr('value', result.title);
             $(div).children('.qq-upload-hidden').attr('value', result.id);
-            $('#delete').attr('href', '/post_images/destroy/' + result.id);
+            $('#delete').attr('href', '/' + result.parent_class_name + '_images/destroy/' + result.id);
             $(div).show();
         } else {
             qq.addClass(item, this._classes.fail);

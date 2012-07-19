@@ -1,4 +1,4 @@
 <% @brands.each_with_index do |brand, i| %>
-    <%= render "brands/brand_preview_item", :brand => brand, :container_class => (i+1)%3 == 0 ? "no_margin" : "" %>
+    <%= render "brands/brand_preview_item", :brand => brand, :container_class => (i+1)%3 == 0 ? "no_margin" : "", :with_description => false %>
 <% end %>
 

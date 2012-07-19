@@ -1,7 +1,4 @@
 Funkyouseven::Application.routes.draw do
-  #списки не опубликованных шмоток
-  #скорость работы!!
-  #срет в лог ФАВИКОН
 
   match '/size_to_product_count/:product_id/:size_id/:product_count', :to => 'size_to_products#size_to_product_count', :as => :size_to_product_count
   #resources :size_to_products
@@ -26,8 +23,6 @@ Funkyouseven::Application.routes.draw do
   match '/shop/brands' => 'brands#index', :as => :shop_brands
   match '/shop/:shop_section' => 'products#index', :as => :shop_section_products
   match '/shop/:shop_section/:section_category' => 'products#index', :as => :section_category_products
-#  match '/shop/:short_url' => 'shop_sections#show'
-
   resources :shop_sections
 
   resources :brands
