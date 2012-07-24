@@ -40,7 +40,7 @@ module ApplicationHelper
         output += admin_partial(@section_category, "section_category")
         output += admin_partial(@brand, "brand")
         output += admin_partial(@product, "product")
-        output += admin_partial(@look, "look")
+        #output += admin_partial(@look, "look")
       #when "brands"
       #  output += admin_partial(@product, "product")
       when "posts"
