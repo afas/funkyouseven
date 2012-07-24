@@ -5,8 +5,9 @@ $("#<%= @basket_item_id %>").toggle("shake", {distance:13, times:2}, 300, functi
 });
 
 <% if @basket.products_count == 0 %>
-$(".basket-icon").hide();
-$("#order-price").hide();
+    $(".basket-icon").hide();
+    $("#order-price").hide();
+    $("#order_comment").val("");
 <% else %>
-$('#order-price').html('<%= escape_javascript(render(:partial => 'basket/order_price')) %>');
+    $('#order-price').html('<%= escape_javascript(render(:partial => 'basket/order_price')) %>');
 <% end %>

@@ -2,7 +2,7 @@
 require "google_spreadsheet"
 class Product < ActiveRecord::Base
 
-  self.per_page = 12
+  self.per_page = 3
 
   attr_accessible :title,
                   :brand_id,
@@ -50,9 +50,30 @@ class Product < ActiveRecord::Base
   def available_sizes
     available_sizes = []
     self.size_to_products.each do |size_to_product|
-      available_sizes << ProductSize.get_product_size_by_code(size_to_product.size_id) if (size_to_product.product_count > 0)
+      available_sizes << ProductSize.get_product_size_by_code(size_to_product.size_id) if (size_to_product.product_count > 0 && size_to_product.size_id != 55)
     end
+    available_sizes << ProductSize.collection("order").first
+
     available_sizes
+  end
+
+  def self.all_sizes(product_id)
+    all_sizes = []
+    size_to_products = SizeToProduct.find_all_by_product_id(product_id)
+    unless size_to_products.empty?
+      sizes_by_type = ProductSize.collection_by_type_size_id(size_to_products.first.size_id)
+      sizes_by_type.each do |size|
+        includet_size = size
+        size_to_products.each do |excludet_size|
+          includet_size = nil if size.code == excludet_size.size_id
+        end
+        all_sizes << includet_size unless includet_size.nil?
+      end
+      all_sizes += ProductSize.collection("order")
+    else
+      all_sizes += ProductSize.collection("all")
+    end
+    all_sizes
   end
 
   def count_by_size_id(size_id)

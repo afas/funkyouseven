@@ -1,21 +1,24 @@
 <div class="main_item">
   <div class="description">
-    <form action="" method="get">
-      <h1><%= product_title(@product) %></h1>
+    <form>
+      <h1><%= raw product_title(@product, "span") %></h1>
       <%= raw "<h2>" + number_to_currency(@product.price.round, :precision => 0, :unit => "p.") + "</h2>" unless @product.price.nil? %>
       <%= raw "<p>#{@product.description}</p>" unless @product.description.nil? || @product.description.empty? %>
+      <%= raw "<p><span>Производитель:</span> #{@product.brand.name}</p>" unless @product.brand.nil? %>
+      <%= raw "<p><span>Пол:</span> #{Sex.by_code(@product.sex_id)}</p>" unless @product.sex_id.nil? %>
       <%= raw "<p><span>Цвет:</span> #{@product.color}</p>" unless @product.color.nil? || @product.color.empty? %>
       <%= raw "<p><span>Состав:</span> #{@product.composition}</p>" unless @product.composition.nil? || @product.composition.empty? %>
       <%= raw "<p><span>Сезон:</span> #{@product.season}</p>" unless @product.season.nil? || @product.season.empty? %>
       <%= collection_select(:product_size, :id, @product.available_sizes, :code, :name, {:include_blank => "Размер"}, {:onchange => "setSize()"}) %>
       <div class="clear"></div>
-      <%= link_to t("activerecord.attributes.basket.to_basket"), "#", :id => "add_product_button", :link => add_to_basket_path(@product.id, ""), :remote => true, :class => "add", :onclick => "checkHref()" %>
+      <span id="add_product_button" class="add" href="#" onclick="checkHref()" link="<%= add_to_basket_path(@product.id, "") %>"><%= t("activerecord.attributes.basket.to_basket") %></span>
+      <%#= t("activerecord.attributes.basket.to_basket"), "#", :id => "add_product_button", :link => add_to_basket_path(@product.id, ""), :class => "add",  %>
       <div class="clear"></div>
       <%= link_to "Все вещи #{@product.brand.name}", @product.brand, :class => "all_w" unless @product.brand.nil? %>
     </form>
   </div>
 
-  <%= image_tag @product.get_cover.image.url(:full), :alt => @product.title, :id => :current_image, :class => :current_image, :width => 645 %>
+  <%= image_tag @product.get_cover.image.url(:full), :alt => @product.title, :id => :current_image, :class => :current_image, :width => 645, :height => 623 %>
   <ul class="product_previews">
     <% @product.product_images.each do |image| %>
         <li>

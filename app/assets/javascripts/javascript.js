@@ -109,12 +109,37 @@ $(document).ready(function () {
     }
 });
 
+function setSex() {
+    sex = $("#sex_id").val();
+    if (sex == '') {
+        sex = 'empty'
+    }
+    $.get('/products/sex/' + sex);
+}
+
+function setCareer() {
+    career = $("#career_id").val();
+    if (career == '') {
+        career = 'empty'
+    }
+    $.get('/products/career/' + career);
+}
+
 function checkHref() {
     href = $("#add_product_button").attr("href");
     if (href == "#") {
         $("#cuselFrame-product_size_id").toggle("shake", {distance:8, times:1}, 300);
         return false;
+    } else {
+        $.get(href);
     }
+}
+
+function setMySize(product_id, product_size) {
+    new_size = $("#size_" + product_id + "-" + product_size).val();
+    product_count = $("#counter-" + product_id + "-" + product_size).val();
+
+    $.get("/basket/update_size/" + product_count + "/" + product_id + "/" + new_size)
 }
 
 function setSize() {
@@ -138,14 +163,25 @@ function onKeyUp(e, product_id, product_size) {
         keynum = e.which
     }
 
+    if ($("#size_" + product_id + "-" + product_size).length > 0) {
+        new_size = $("#size_" + product_id + "-" + product_size).val();
+    } else {
+        new_size = product_size
+    }
+
     product_count = "";
     product_count = parseInt($("#counter-" + product_id + "-" + product_size).val());
 
     if ((keynum > 47 && keynum < 58 || keynum > 95 && keynum < 106) && product_count >= 0) {
         if (parseInt(product_count) == 0) {
-            $("#" + product_id + "-" + product_size).remove();
+            $("#" + product_id + "-" + product_size).toggle("shake", {distance:13, times:2}, 300, function () {
+                $("#" + product_id + "-" + product_size).animate({marginLeft:-1000}, 800, function () {
+                    $("#" + product_id + "-" + product_size).remove();
+                });
+            });
+
         }
-        $.get("/basket/" + product_count + "/" + product_id + "/" + product_size);
+        $.get("/basket/" + product_count + "/" + product_id + "/" + new_size);
     }
 }
 

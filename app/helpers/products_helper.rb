@@ -19,6 +19,7 @@ module ProductsHelper
   def product_sizes(product)
     wear = ProductSize.collection("wear")
     shoes = ProductSize.collection("shoes")
+    order = ProductSize.collection("order")
 
     output = ""
 
@@ -32,7 +33,6 @@ module ProductsHelper
     shoes.each do |size|
       output += "<div class='size_unit'><label>#{size.name}</label>" + text_field_tag("size_to_product_count-#{product.get_id}-#{size.code}", product.count_by_size_id(size.code), :onkeyup => "onKeyUpSizeCount(event, #{product.get_id}, #{size.code});") + "</div>"
     end
-
     raw output
   end
 end

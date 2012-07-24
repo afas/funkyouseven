@@ -1,6 +1,11 @@
 class ProductsController < ApplicationController
   load_and_authorize_resource
 
+  before_filter :user_settings, :except => :destroy
+
+  rescue_from NotFound, :with => :not_found
+  rescue_from ActiveRecord::RecordNotFound, :with => :not_found
+
   def import_catalog
     wear_last_product_number = ShopSection.find_by_short_url("wear").last_product_number
     gear_last_product_number = ShopSection.find_by_short_url("gear").last_product_number
@@ -17,7 +22,7 @@ class ProductsController < ApplicationController
   end
 
   def not_publish
-    @products = Product.not_publish #.paginate(:page => params[:page])
+    @products = Product.not_publish
 
     respond_to do |format|
       format.html # index.html.erb
@@ -30,16 +35,152 @@ class ProductsController < ApplicationController
   def index
     condition = ""
 
-    @shop_section = ShopSection.find_by_short_url(params[:shop_section]) unless params[:shop_section].nil?
-    condition += "shop_section_id = #{@shop_section.id}" unless @shop_section.nil?
+    unless params[:shop_section].nil?
+      @shop_section = ShopSection.find_by_short_url(params[:shop_section])
+      unless @shop_section.nil?
+        condition = "products.shop_section_id = #{@shop_section.id}"
+        @user_settings["shop_section"] = @shop_section.id
+        @user_settings.delete("section_category")
+        @user_settings.delete("brand")
+      end
+    end
 
-    @section_category = SectionCategory.find_by_shop_section_id_and_short_url(@shop_section.id, params[:section_category]) unless @shop_section.nil? && params[:section_category].nil?
-    condition += " and section_category_id = #{@section_category.id}" unless @section_category.nil?
-    @products = Product.where(condition).valid_products #.paginate(:page => params[:page])
+    unless @shop_section.nil? && params[:section_category].nil?
+      @section_category = SectionCategory.find_by_shop_section_id_and_short_url(@shop_section.id, params[:section_category])
+      unless @section_category.nil?
+        condition += " and products.section_category_id = #{@section_category.id}"
+        @user_settings["section_category"] = @section_category.id
+      end
+    end
+
+    unless @user_settings["sex"].nil?
+      condition += " and products.sex_id = #{@user_settings['sex']}"
+    end
+
+    unless @user_settings["career"].nil?
+      condition += " and products.career_id = #{@user_settings['career']}"
+    end
+
+    @page = (params[:page] || 1).to_i
+
+    @products = Product.where(condition).valid_products.paginate(:page => @page)
+    @more_products = Product.where(condition).valid_products.all.size() - Product.per_page * @page
+    @more_products = nil if @more_products <= 0
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }
     end
+  end
+
+  def page
+    condition = "0 = 0"
+
+    unless @user_settings["shop_section"].nil? || @user_settings["brand"]
+      @shop_section = ShopSection.find(@user_settings["shop_section"])
+      condition += " and products.shop_section_id = #{@shop_section.id}"
+    end
+
+    if !@shop_section.nil? && !@user_settings["section_category"].nil?
+      @section_category = SectionCategory.find(@user_settings["section_category"])
+      unless @section_category.nil?
+        condition += " and products.section_category_id = #{@section_category.id}"
+      end
+    end
+
+    unless @user_settings["sex"].nil?
+      condition += " and products.sex_id = #{@user_settings["sex"]}"
+    end
+
+    unless @user_settings["career"].nil?
+      condition += " and products.career_id = #{@user_settings["career"]}"
+    end
+
+    unless @user_settings["brand"].nil?
+      condition += " and products.brand_id = #{@user_settings["brand"]}"
+    end
+
+    @page = (params[:page] || 1).to_i
+
+    @products = Product.where(condition).valid_products.paginate(:page => @page)
+    @more_products = Product.where(condition).valid_products.all.size() - Product.per_page * @page
+    @more_products = nil if @more_products <= 0
+
+    render :layout => false
+  end
+
+  def sex
+    condition = "0 = 0"
+
+    unless @user_settings["shop_section"].nil?
+      @shop_section = ShopSection.find(@user_settings["shop_section"])
+      condition += " and products.shop_section_id = #{@shop_section.id}"
+    end
+
+    if !@shop_section.nil? && !@user_settings["section_category"].nil?
+      @section_category = SectionCategory.find(@user_settings["section_category"])
+      unless @section_category.nil?
+        condition += " and products.section_category_id = #{@section_category.id}"
+      end
+    end
+
+    unless @user_settings["career"].nil?
+      condition += " and products.career_id = #{@user_settings["career"]}"
+    end
+
+    unless params[:sex].nil?
+      if params[:sex] == "empty"
+        @user_settings.delete("sex")
+      else
+        condition += " and products.sex_id = #{params[:sex]}"
+        @user_settings["sex"] = params[:sex]
+      end
+    end
+
+    @page = 1
+
+    @products = Product.where(condition).valid_products.paginate(:page => @page)
+    @more_products = Product.where(condition).valid_products.all.size() - Product.per_page * @page
+    @more_products = nil if @more_products <= 0
+
+    render :layout => false, :action => "selectors"
+  end
+
+  def career
+    condition = "0 = 0"
+
+    unless @user_settings["shop_section"].nil?
+      @shop_section = ShopSection.find(@user_settings["shop_section"])
+      condition += " and products.shop_section_id = #{@shop_section.id}"
+    end
+
+    if !@shop_section.nil? && !@user_settings["section_category"].nil?
+      @section_category = SectionCategory.find(@user_settings["section_category"])
+      unless @section_category.nil?
+        condition += " and products.section_category_id = #{@section_category.id}"
+      end
+    end
+
+    unless @user_settings["sex"].nil?
+      condition += " and products.sex_id = #{@user_settings["sex"]}"
+    end
+
+    unless params[:career].nil?
+      if params[:career] == "empty"
+        @user_settings.delete("career")
+      else
+        condition += " and products.career_id = #{params[:career]}"
+        @user_settings["career"] = params[:career]
+      end
+    end
+
+    @page = 1
+
+    @products = Product.where(condition).valid_products.paginate(:page => @page)
+    @more_products = Product.where(condition).valid_products.all.size() - Product.per_page * @page
+    @more_products = nil if @more_products <= 0
+
+    render :layout => false, :action => "selectors"
   end
 
   # GET /products/1
@@ -121,4 +262,12 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def user_settings
+    session[:user_settings] ||= Hash.new()
+    @user_settings = session[:user_settings]
+  end
+
 end

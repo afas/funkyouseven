@@ -1,0 +1,1 @@
+(<%= ProductSize.by_code(@current_item.product_size) + (@current_item.initial_size != @current_item.product_size ? " / #{ProductSize.by_code(@current_item.initial_size)}" : "") %>)

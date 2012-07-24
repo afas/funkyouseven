@@ -4,7 +4,7 @@ class ProductSize
   attr_accessor :code
   attr_accessor :type
 
-   def self.collection(type)
+  def self.collection(type)
     list = []
     if type == "wear" || type == "all"
       list += [
@@ -30,19 +30,50 @@ class ProductSize
           ProductSize.new(:name => '46', :code => 15, :type => 1)
       ]
     end
+    if type == "order" || type == "all"
+      list += [ProductSize.new(:name => 'под заказ', :code => 55, :type => 2)]
+    end
+
     list
-   end
+  end
+
+  def self.collection_by_used_size_id(code)
+    collection("all").each do |value|
+      if value.code == code
+        type = value.type
+        return collection("wear") if type == 0
+        return collection("shoes") if type == 1
+        return collection("order") if type == 2
+      end
+    end
+  end
+
+  def self.collection_by_type_size_id(code)
+    collection("all").each do |value|
+      if value.code == code
+        type = value.type
+        return collection("wear") if type == 0
+        return collection("shoes") if type == 1
+        return collection("order") if type == 2
+      end
+    end
+  end
 
   def self.by_code(code)
     collection("all").each do |value|
       return value.name if value.code == code
     end
-    false
   end
 
   def self.get_product_size_by_code(code)
     collection("all").each do |value|
       return value if value.code == code
+    end
+  end
+
+  def self.get_type_by_code(code)
+    collection("all").each do |value|
+      return type if value.code == code
     end
     false
   end

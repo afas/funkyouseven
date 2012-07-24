@@ -16,8 +16,9 @@ class Ability
       end
     end
     can :home, Welcome
-    can :read, :all
     can :create, Order
+    can [:page, :sex, :career], Product
+    can :read, :all
 
   end
 end

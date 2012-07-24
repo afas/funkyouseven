@@ -1,13 +1,17 @@
 Funkyouseven::Application.routes.draw do
 
   match '/size_to_product_count/:product_id/:size_id/:product_count', :to => 'size_to_products#size_to_product_count', :as => :size_to_product_count
-  #resources :size_to_products
 
   resources :posts
+
+  match '/products/sex/:sex', :to => "products#sex", :as => :products_by_sex
+  match '/products/career/:career', :to => "products#career", :as => :products_by_career
+  match '/products/page/:page', :to => "products#page", :as => :products_by_page
   resources :products
 
   match '/basket/remove/:product_id/:size_id', :to => 'basket#remove_product', :as => :remove_from_basket
   match '/basket/add/:product_id/:size_id', :to => 'basket#add_product', :as => :add_to_basket
+  match '/basket/update_size/:product_count/:product_id/:size_id', :to => 'basket#update_size', :as => :update_size
   match '/basket/empty', :to => 'basket#empty', :as => 'empty_basket', :as => :empty_basket
   match '/basket/:product_count/:product_id/:size_id', :to => 'basket#set_count', :as => :set_count
   match '/basket' => 'basket#my_basket', :as => :my_basket

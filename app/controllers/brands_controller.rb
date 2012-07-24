@@ -5,8 +5,8 @@ class BrandsController < ApplicationController
   # GET /brands
   # GET /brands.json
   def index
-    @brands = Brand.all
     @shop_section = ShopSection.find_by_short_url("brands")
+    @brands = Brand.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,8 +17,31 @@ class BrandsController < ApplicationController
   # GET /brands/1
   # GET /brands/1.json
   def show
+    session[:user_settings] ||= Hash.new()
+    @user_settings = session[:user_settings]
+
+    @shop_section = ShopSection.find_by_short_url("brands")
+
+    @user_settings.delete("shop_section")
+
     @brand = Brand.find(params[:id])
-    @products = Product.find_all_by_brand_id(@brand.id)
+    @user_settings["brand"] = @brand.id
+
+    condition = "products.brand_id = #{@brand.id}"
+
+    unless @user_settings["sex"].nil?
+      condition += " and products.sex_id = #{@user_settings["sex"]}"
+    end
+
+    unless @user_settings["career"].nil?
+      condition += " and products.career_id = #{@user_settings["career"]}"
+    end
+
+    @page = (params[:page] || 1).to_i
+
+    @products = Product.where(condition).valid_products.paginate(:page => @page)
+    @more_products = Product.where(condition).valid_products.all.size() - Product.per_page * @page
+    @more_products = nil if @more_products <= 0
 
     respond_to do |format|
       format.html # show.html.erb

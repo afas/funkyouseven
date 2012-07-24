@@ -23,8 +23,7 @@ class Order < ActiveRecord::Base
   end
 
   def gmaps4rails_infowindow
-    #"<h3>#{self.user.full_name}</h3><p><b>Создан:</b> #{self.created_at}<br/></p>"
-    "<h3>#{self.user.full_name}</h3><p><b>Создан:</b> #{self.created_at}<br/><b>Изменен:</b> #{self.updated_at}<br/><b>Статус: </b> #{OrderStatus.by_code(self.order_status_id)}<br/><b>Телефон:</b> #{self.user.phone}<br/><b>Адрес доставки:</b> #{self.address}</p>"
+    "<h3>#{self.user.full_name}</h3><p><b>Статус: </b> #{OrderStatus.by_code(self.order_status_id)}<br/><b>Создан:</b> #{self.created_at}<br/><b>Обновлен:</b> #{self.updated_at}<br/><b>Телефон:</b> #{self.user.phone}<br/><b>Адрес доставки:</b> #{self.address}</p>"
   end
 
   def add_order_items_from_basket(basket)

@@ -1,9 +1,14 @@
 <div id="<%= "#{basket_item.product.id}-#{basket_item.product_size}" %>" class="cat <%= "new" if margin_top %> <%= "cat_item" unless cat_item.nil? %> <%= container_class unless container_class.nil? %>">
   <%= link_to image_tag(basket_item.preview_url, :alt => basket_item.title, :width => 300), basket_item.product, :class => "link_img" %>
-  <%= link_to raw(product_title(basket_item.product) + " (" + ProductSize.by_code(basket_item.product_size) + ")"), basket_item.product, :class => "title" %>
+  <% if basket_item.initial_size == 55 %>
+      <%= link_to product_title(basket_item.product), basket_item.product, :class => "title", :title => product_title(basket_item.product) %>
+      <%= collection_select(:size, "#{basket_item.product.id}-#{basket_item.product_size}", basket_item.all_sizes, :code, :name, {:selected => basket_item.product_size}, {:onchange => "setMySize(#{basket_item.product.id}, #{basket_item.product_size})"}) %>
+  <% else %>
+      <%= link_to raw(product_title(basket_item.product) + " (" + ProductSize.by_code(basket_item.product_size) + (basket_item.initial_size != basket_item.product_size ? " / #{ProductSize.by_code(basket_item.initial_size)}" : "") + ")"), basket_item.product, :class => "title", :title => product_title(basket_item.product) %>
+<% end %>
   <span><%= format_price(basket_item.product.price.round) %></span>
-  <form action="" method="get">
-  <label>Количество</label>
+  <form>
+    <label>Количество</label>
     <%= text_field_tag "counter-#{basket_item.product.id}-#{basket_item.product_size}", basket_item.product_count, :onkeyup => "onKeyUp(event, #{basket_item.product.id}, #{basket_item.product_size});" %>
     <%= link_to t("backend.actions.destroy"), remove_from_basket_path(basket_item.product.id, basket_item.product_size), :remote => true, :class => "delete" %>
   </form>

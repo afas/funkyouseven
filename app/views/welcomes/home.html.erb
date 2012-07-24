@@ -8,7 +8,7 @@
 
   <div class="column column_second">
     <%= render "welcomes/inside" %>
-    <%= render "products/product_preview_item", :product => @about_bottom[rand(@about_bottom.size)], :cat_item => false, :margin_top => false, :container_class => "" unless @about_bottom.empty? %>
+    <%= render "products/product_preview_item", :product => @about_bottom[rand(@about_bottom.size)], :cat_item => true, :margin_top => false, :container_class => "" unless @about_bottom.empty? %>
   </div>
 
   <%= render "welcomes/slider", :target => @bottom_slider unless @bottom_slider.empty? %>

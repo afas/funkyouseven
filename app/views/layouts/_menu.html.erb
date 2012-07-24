@@ -1,6 +1,6 @@
 <ul class="menu_left">
   <% @menu_left.each do |shop_section| %>
-      <li class="<%= 'current' if !@shop_section.nil? && shop_section == @shop_section %>">
+      <li <%= "class='current' shop_section_id='#{shop_section.id}'" if !@shop_section.nil? && shop_section == @shop_section %>>
         <%= link_to shop_section.name, shop_section_products_path(shop_section.short_url) %>
       </li>
   <% end %>
@@ -22,19 +22,31 @@
     <ul class="sub_menu">
       <% if @shop_section.short_url != "brands" %>
           <li>
-            <%= collection_select(:sex, :id, Sex.collection, :code, :name, {:include_blank => "Пол"}) %>
+            <%= collection_select(:sex, :id, Sex.collection, :code, :name, {:include_blank => "Пол", :selected => (@user_settings["sex"])}, {:onchange => "setSex()"}) %>
           </li>
           <% if @shop_section.short_url != "wear" %>
               <li>
-                <%= collection_select(:career, :id, Career.collection, :code, :name, {:include_blank => "Вид спорта"}) %>
+                <%= collection_select(:career, :id, Career.collection, :code, :name, {:include_blank => "Вид спорта", :selected => (@user_settings["career"])}, {:onchange => "setCareer()"}) %>
               </li>
           <% end %>
       <% end %>
 
       <% @shop_section.section_categories.each do |section_category| %>
-          <li class="<%= 'current' if !@section_category.nil? && section_category == @section_category %>">
+          <li <%= "class='current' section_category_id='#{section_category.id}'" if !@section_category.nil? && section_category == @section_category %>>
             <%= link_to section_category.name, section_category_products_path(@shop_section.short_url, section_category.short_url) %>
           </li>
       <% end unless @shop_section.section_categories.empty? %>
     </ul>
 <% end %>
+
+<% unless @brand.nil? %>
+    <ul class="sub_menu">
+      <li>
+        <%= collection_select(:sex, :id, Sex.collection, :code, :name, {:include_blank => "Пол", :selected => (@user_settings["sex"])}, {:onchange => "setSex()"}) %>
+      </li>
+      <li>
+        <%= collection_select(:career, :id, Career.collection, :code, :name, {:include_blank => "Вид спорта", :selected => (@user_settings["career"])}, {:onchange => "setCareer()"}) %>
+      </li>
+    </ul>
+<% end %>
+
