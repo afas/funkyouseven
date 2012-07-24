@@ -18,7 +18,7 @@
     </form>
   </div>
 
-  <%= image_tag @product.get_cover.image.url(:full), :alt => @product.title, :id => :current_image, :class => :current_image, :width => 645, :height => 623 %>
+  <%= image_tag @product.get_cover.image.url(:full), :alt => @product.title, :id => :current_image, :class => :current_image %>
   <ul class="product_previews">
     <% @product.product_images.each do |image| %>
         <li>

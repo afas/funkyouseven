@@ -8,7 +8,8 @@ class ProductImage < ActiveRecord::Base
                         :preview_circle => "80x80#",
                         :preview_item => "300x370#",
                         :preview_item_higher => "300x460#",
-                        :full => "645x623#",
+                        #:full => "645x623#",
+                        :full => "980x623#",
                         :slider => "638x422#"
                     },
                     :default_url =>  "/product_images/default.jpg",

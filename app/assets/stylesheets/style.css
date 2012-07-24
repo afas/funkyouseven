@@ -21,10 +21,6 @@ img {
     border: none;
 }
 
-body {
-    line-height: 1;
-}
-
 .body_editor {
     background: url(bgeditor.png) repeat scroll 50% 50% #EEEEEE;
 }
@@ -78,21 +74,21 @@ form input[type="text"] {
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'FuturisCBold';
-    src: url('futurisc-bold-webfont.eot');
-    src: url('futurisc-bold-webfont.eot?#iefix') format('embedded-opentype'), url('futurisc-bold-webfont.woff') format('woff'), url('futurisc-bold-webfont.ttf') format('truetype'), url('futurisc-bold-webfont.svg#FuturisCBold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
+/*@font-face {*/
+/*font-family: 'FuturisCBold';*/
+/*src: url('futurisc-bold-webfont.eot');*/
+/*src: url('futurisc-bold-webfont.eot?#iefix') format('embedded-opentype'), url('futurisc-bold-webfont.woff') format('woff'), url('futurisc-bold-webfont.ttf') format('truetype'), url('futurisc-bold-webfont.svg#FuturisCBold') format('svg');*/
+/*font-weight: normal;*/
+/*font-style: normal;*/
+/*}*/
 
-@font-face {
-    font-family: 'FuturisCRegular';
-    src: url('futurisc-webfont.eot');
-    src: url('futurisc-webfont.eot?#iefix') format('embedded-opentype'), url('futurisc-webfont.woff') format('woff'), url('futurisc-webfont.ttf') format('truetype'), url('futurisc-webfont.svg#FuturisCRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
+/*@font-face {*/
+/*font-family: 'FuturisCRegular';*/
+/*src: url('futurisc-webfont.eot');*/
+/*src: url('futurisc-webfont.eot?#iefix') format('embedded-opentype'), url('futurisc-webfont.woff') format('woff'), url('futurisc-webfont.ttf') format('truetype'), url('futurisc-webfont.svg#FuturisCRegular') format('svg');*/
+/*font-weight: normal;*/
+/*font-style: normal;*/
+/*}*/
 
 .hidden {
     display: none;
@@ -100,7 +96,11 @@ form input[type="text"] {
 
 body {
     background: #fff;
-    font-family: 'FuturisCRegular';
+
+    line-height: 1;
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
+
+    /*font-family: 'FuturisCRegular';*/
 }
 
 a {
@@ -122,9 +122,9 @@ a {
     color: #000000;
 
     text-shadow: 0px 1px 1px #11FF17;
-    filter: dropshadow(color=#11FF17, offx=0, offy=1);
+    filter: dropshadow(color = #11FF17, offx = 0, offy = 1);
 
-    left:51%;
+    left: 51%;
     margin-left: -210px;
 
     /*top: 55px;*/
@@ -282,12 +282,15 @@ a {
 
 .menu_left li.current a,
 .menu_right li.current a {
-    font-family: 'FuturisCBold';
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
+    font-weight: bold;
+
+    /*font-family: 'FuturisCBold';*/
     background: url(current.png) no-repeat bottom center;
 }
 
 .menu_left li.current ul {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
     width: 980px;
     position: absolute;
     top: 15px;
@@ -309,7 +312,7 @@ a {
 .menu_left li:hover ul li a,
 .menu_left li ul li a,
 .admin_menu li a, .sub_menu li a {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
     font-size: 12px;
     background: none;
 }
@@ -391,11 +394,6 @@ li.current ul li.current a {
 }
 
 .pagination {
-    /*margin: -23px auto 0;*/
-    /*width: 39px;*/
-    /*position: relative;*/
-    /*z-index: 9999;*/
-
     display: block;
     height: 11px;
     margin: -23px auto 0;
@@ -429,7 +427,10 @@ li.current ul li.current a {
 }
 
 .caption {
-    font-family: 'FuturisCBold';
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
+    font-weight: bold;
+
+    /*font-family: 'FuturisCBold';*/
     font-size: 50px;
     line-height: 40px;
     width: 400px;
@@ -477,7 +478,10 @@ li.current ul li.current a {
 }
 
 .title {
-    font-family: 'FuturisCBold';
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
+    font-weight: bold;
+
+    /*font-family: 'FuturisCBold';*/
     font-size: 20px;
     color: #000000;
     line-height: 21px;
@@ -494,15 +498,19 @@ li.current ul li.current a {
 }
 
 .cat .cusel span {
-    font-family: 'FuturisCRegular';
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
+
+    /*font-family: 'FuturisCRegular';*/
 }
 
 .cat .cusel {
-    font-family: 'FuturisCRegular';
+    line-height: 1;
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
+
+    /*font-family: 'FuturisCRegular';*/
     float: right;
     margin-right: 8px;
 }
-
 
 .column_second {
     float: right;
@@ -524,7 +532,10 @@ li.current ul li.current a {
 }
 
 .about span {
-    font-family: 'FuturisCBold';
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
+    font-weight: bold;
+
+    /*font-family: 'FuturisCBold';*/
     font-size: 14px;
 }
 
@@ -600,7 +611,10 @@ li.current ul li.current a {
 }
 
 .block_title {
-    font-family: 'FuturisCBold';
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
+    font-weight: bold;
+
+    /*font-family: 'FuturisCBold';*/
     font-size: 18px;
     line-height: 20px;
     color: #000;
@@ -653,16 +667,24 @@ form textarea {
     line-height: 24px;
     /*margin-bottom: 50px;*/
     height: 144px;
-    font-family: 'FuturisCRegular';
+
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
+    font-weight: bold;
+
+    /*font-family: 'FuturisCRegular';*/
     width: 100%;
     box-sizing: border-box;
 }
 
 form .title {
     color: #000000;
-    font-family: 'FuturisCBold';
+
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
+    font-weight: bold;
+    /*font-weight: normal;*/
+    /*font-family: 'FuturisCBold';*/
+
     font-size: 35px;
-    font-weight: normal;
     line-height: 38px;
     height: 80px;
     box-sizing: border-box;
@@ -670,7 +692,9 @@ form .title {
 
 form .welcome_description {
     color: #000000;
-    font-family: 'FuturisCRegular';
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
+
+    /*font-family: 'FuturisCRegular';*/
     font-size: 35px;
     font-weight: normal;
     line-height: 38px;
@@ -733,7 +757,9 @@ form .label {
 
 #footer  .menu_left li:hover a, #footer  .menu_right li:hover a {
     background: none;
-    font-family: 'FuturisCRegular';
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
+
+    /*font-family: 'FuturisCRegular';*/
 }
 
 #footer p {
@@ -817,16 +843,21 @@ form .label {
 }
 
 .main h1 {
-    font-family: 'FuturisCBold';
-    font-weight: normal;
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
+    font-weight: bold;
+    /*font-family: 'FuturisCBold';*/
+    /*font-weight: normal;*/
     font-size: 35px;
     color: #000000;
     line-height: 38px;
 }
 
 .main h3 {
-    font-family: 'FuturisCRegular';
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
     font-weight: normal;
+    /*font-weight: bold;*/
+    /*font-family: 'FuturisCRegular';*/
+
     font-size: 35px;
     color: #000000;
     line-height: 35px;
@@ -908,7 +939,9 @@ form .label {
 }
 
 .title_magazine p {
-    font-family: 'FuturisCBold';
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
+    font-weight: bold;
+    /*font-family: 'FuturisCBold';*/
 }
 
 .title_magazine span {
@@ -921,6 +954,7 @@ form .label {
     border-bottom: 1px solid #000000;
     float: left;
     margin-bottom: 20px;
+    min-height: 623px;
 }
 
 .description {
@@ -932,10 +966,13 @@ form .label {
 }
 
 .description h1 {
-    font-family: 'FuturisCBold';
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
+    font-weight: bold;
+    /*font-weight: normal;*/
+    /*font-family: 'FuturisCBold';*/
+
     font-size: 36px;
     line-height: 32px;
-    font-weight: normal;
     color: #000000;
 }
 
@@ -954,7 +991,10 @@ form .label {
 }
 
 .description p span {
-    font-family: 'FuturisCBold';
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
+    font-weight: bold;
+
+    /*font-family: 'FuturisCBold';*/
 }
 
 .product_previews {
@@ -1036,7 +1076,6 @@ form .label {
     height: 24px;
     cursor: pointer;
     overflow: hidden;
-    position: relative;
     z-index: 1;
     position: absolute;
     top: 0;
@@ -1189,7 +1228,7 @@ form .label {
     width: auto;
 }
 
-.product_selects .cusel, .product_selects input[type="checkbox"]  {
+.product_selects .cusel, .product_selects input[type="checkbox"] {
     margin: 13px 21px 0 0;
 }
 
@@ -1198,7 +1237,6 @@ form .label {
 }
 
 .product_sizes {
-    /*min-height: 121px;*/
     border: 1px dashed #D5D5D5;
     width: 100%;
     box-sizing: border-box;
@@ -1247,11 +1285,18 @@ form .label {
 }
 
 .main_item img {
-    float: left;
+    /*float: left;*/
+    position:absolute;
+    left:0;
+    top:0;
+    margin:0;
 }
 
 .relaited {
-    font-family: 'FuturisCBold';
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
+    font-weight: bold;
+
+    /*font-family: 'FuturisCBold';*/
     float: left;
     width: 100%;
     text-align: center;
@@ -1295,10 +1340,12 @@ form .label {
 }
 
 .cat_item form .cusel span {
-    font-family: 'FuturisCRegular' !important;
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
     margin: 0;
-}
 
+    /*font-weight: bold;*/
+    /*font-family: 'FuturisCRegular' !important;*/
+}
 
 .my_basket .cat_item form label b {
     color: #ff0000;
@@ -1440,9 +1487,13 @@ form label {
 
 .admin_menu li.title, .admin_menu li.title ul li a {
     font-size: 12px;
-    font-weight: normal;
     margin-left: 8px;
-    font-family: 'FuturisCRegular';
+
+    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
+    font-weight: bold;
+    /*font-weight: normal;*/
+    /*font-family: 'FuturisCRegular';*/
+
     width: auto;
 }
 
@@ -1492,16 +1543,16 @@ form label {
 }
 
 .social-panel, .fb-comments {
-    overflow:hidden;
-    padding-top:15px;
+    overflow: hidden;
+    padding-top: 15px;
     float: left;
 }
 
 .social-panel .fb-like,
 .social-panel .social-vk,
 .social-panel .twitter-share-button {
-    float:left;
-    margin-right:20px;
-    display:inline;
+    float: left;
+    margin-right: 20px;
+    display: inline;
 }
 
