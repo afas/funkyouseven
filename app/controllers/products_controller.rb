@@ -58,7 +58,12 @@ class ProductsController < ApplicationController
     end
 
     unless @user_settings["career"].nil?
-      condition += " and products.career_id = #{@user_settings['career']}"
+
+      unless @shop_section.nil?
+        condition += " and products.career_id = #{@user_settings['career']}" if @shop_section.short_url != "wear"
+      else
+        condition += " and products.career_id = #{@user_settings['career']}"
+      end
     end
 
     @page = (params[:page] || 1).to_i

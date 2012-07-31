@@ -39,7 +39,7 @@
     </ul>
 <% end %>
 
-<% unless @brand.nil? %>
+<% if !@brand.nil? && controller.action_name != "edit" %>
     <ul class="sub_menu">
       <li>
         <%= collection_select(:sex, :id, Sex.collection, :code, :name, {:include_blank => "Пол", :selected => (@user_settings["sex"])}, {:onchange => "setSex()"}) %>

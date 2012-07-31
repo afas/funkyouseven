@@ -20,10 +20,12 @@
 
   <%= image_tag @product.get_cover.image.url(:full), :alt => @product.title, :id => :current_image, :class => :current_image %>
   <ul class="product_previews">
-    <% @product.product_images.each do |image| %>
-        <li>
-          <div image_url="<%= image.image.url(:full) %>" style="background: url(<%= image.image.url(:preview_circle) %>) no-repeat scroll 0 0 transparent;"></div>
-        </li>
+    <% @product.product_images.each_with_index do |image, i| %>
+        <% if i < 6 %>
+            <li>
+              <div image_url="<%= image.image.url(:full) %>" style="background: url(<%= image.image.url(:preview_circle) %>) no-repeat scroll 0 0 transparent;"></div>
+            </li>
+        <% end %>
     <% end %>
   </ul>
 </div>
