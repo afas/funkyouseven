@@ -196,10 +196,12 @@ class ProductsController < ApplicationController
     @shop_section = @product.shop_section
     @section_category = @product.section_category
 
-    @related_products = Product.valid_products.all
+    @related_products = Product.valid_products.limit(6)
 
     @shop_section = @product.shop_section
     @section_category = @product.section_category
+
+    @more_looks = Product.more_looks(@product.id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -221,6 +223,8 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    @looks = Product.all_looks
+
     render layout: "editor"
   end
 
@@ -228,6 +232,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(params[:product])
+    @looks = Product.looks
 
     respond_to do |format|
       if @product.save

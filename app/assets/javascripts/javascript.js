@@ -73,41 +73,68 @@ $(document).ready(function () {
         })
     }
 
-    if ($(".slides").length > 0) {
-        $('.slides').slides({
-            preload:true,
-            preloadImage:'assets/preloader.gif',
-            play:5000,
-            pause:2500,
-            hoverPause:true,
-            animationStart:function (current) {
-                $('.caption').animate({
-                    bottom:-35
-                }, 100);
-                if (window.console && console.log) {
-                    // example return of current slide number
-                    console.log('animationStart on slide: ', current);
-                }
-                ;
-            },
-            animationComplete:function (current) {
-                $('.caption').animate({
-                    bottom:0
-                }, 200);
-                if (window.console && console.log) {
-                    // example return of current slide number
-                    console.log('animationComplete on slide: ', current);
-                }
-                ;
-            },
-            slidesLoaded:function () {
-                $('.caption').animate({
-                    bottom:0
-                }, 200);
-            }
-        });
+    if ($("#slider").length > 0) {
+
+        initSlider();
+
+//        $('.slides').slides({
+//            preload:true,
+//            preloadImage:'assets/preloader.gif',
+//            play:5000,
+//            pause:2500,
+//            hoverPause:true,
+//            animationStart:function (current) {
+//                $('.caption').animate({
+//                    bottom:-35
+//                }, 100);
+//                if (window.console && console.log) {
+//                    // example return of current slide number
+//                    console.log('animationStart on slide: ', current);
+//                }
+//                ;
+//            },
+//            animationComplete:function (current) {
+//                $('.caption').animate({
+//                    bottom:0
+//                }, 200);
+//                if (window.console && console.log) {
+//                    // example return of current slide number
+//                    console.log('animationComplete on slide: ', current);
+//                }
+//                ;
+//            },
+//            slidesLoaded:function () {
+//                $('.caption').animate({
+//                    bottom:0
+//                }, 200);
+//            }
+//        });
     }
+
 });
+
+function updateProductLook(look_id) {
+    look = $("#product_look").is(':checked');
+
+    if (look) {
+        $(".for_look").show();
+        $(".not_for_look").hide();
+    } else {
+        $(".for_look").hide();
+        $(".not_for_look").show();
+    }
+}
+
+function split(val) {
+    return val.split(/,\s*/);
+}
+function extractLast(term) {
+    return split(term).pop();
+}
+function processProductToLook(product_id, look_id) {
+    yes = $("#" + product_id + "-" + look_id).is(':checked');
+    $.get('/product_to_look/' + product_id + "/" + look_id + "/" + yes);
+}
 
 function setSex() {
     sex = $("#sex_id").val();
@@ -214,4 +241,32 @@ function onKeyUpSizeCount(e, product_id, size_code) {
     if ((keynum > 47 && keynum < 58 || keynum > 95 && keynum < 106) && product_count >= 0) {
         $.get("/size_to_product_count/" + product_id + "/" + size_code + "/" + product_count);
     }
+}
+
+function initSlider() {
+    $("#slider").chopSlider({
+        loaderIndex:100,
+        slide:".slide",
+        nextTrigger:"a#slide-next",
+        prevTrigger:"a#slide-prev",
+        hideTriggers:true,
+        sliderPagination:".pagination",
+        useCaptions:true,
+        everyCaptionIn:".super_caption",
+        showCaptionIn:".caption_container",
+        captionTransform:"scale(0) translate(-600px,0px) rotate(45deg)",
+        autoplay:true,
+        autoplayDelay:5000,
+        t2D:csTransitions['slide'][3],
+//        t2D:csTransitions['multi'][17],
+        t3D:csTransitions['3DBlocks'][0]
+//        onStart:function () {
+//            $("body").attr("scroll", "no");
+//            $("body").css("overflow", "hidden");
+//        },
+//        onEnd:function () {
+//            $("body").css("overflow", "");
+//            $("body").attr("scroll", "");
+//        }
+    });
 }

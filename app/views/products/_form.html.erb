@@ -17,11 +17,24 @@
     </div>
 
     <div class="field product_selects">
+      <%= f.label :look %>
+      <%= f.check_box :look, :onchange => "updateProductLook(#{@product.id});" %>
+
+      <%= f.label :archive %>
+      <%= f.check_box :archive %>
+
+      <div class="clear-8"></div>
+
       <%= f.label :title_color %>
       <%= f.collection_select(:title_color, MyColor.collection, :code, :name) %>
 
       <%= f.label :brand_id %>
       <%= f.collection_select(:brand_id, Brand.all, :id, :name, {:include_blank => "не установлен"}) %>
+
+      <%= f.label :career_id %>
+      <%= f.collection_select(:career_id, Career.collection, :code, :name, {:include_blank => "не установлен"}) %>
+
+      <div class="clear-8"></div>
 
       <%= f.label :shop_section_id %>
       <%= f.collection_select(:shop_section_id, ShopSection.all, :id, :name, {:include_blank => "не установлен"}) %>
@@ -29,30 +42,24 @@
       <%= f.label :section_category_id %>
       <%= f.collection_select(:section_category_id, SectionCategory.all, :id, :name, {:include_blank => "не установлен"}) %>
 
-      <br/>
-      <br/>
-      <br/>
+      <div class="clear-8"></div>
 
       <%= f.label :sex_id %>
       <%= f.collection_select(:sex_id, Sex.collection, :code, :name, {:include_blank => "не установлен"}) %>
 
-      <%= f.label :career_id %>
-      <%= f.collection_select(:career_id, Career.collection, :code, :name, {:include_blank => "не установлен"}) %>
-
       <%= f.label :welcome_position_id %>
       <%= f.collection_select(:welcome_position_id, WelcomePosition.collection, :code, :name, {:include_blank => "не установлен"}) %>
 
-      <br/>
-      <br/>
-      <br/>
-
-      <%= f.label :archive %>
-      <%= f.check_box :archive %>
     </div>
 
     <div class="field">
       <label><span>*</span><%= t("activerecord.attributes.product.description") %></label>
       <%= f.text_area :description, :class => "product_description" %>
+    </div>
+
+    <div class="field for_look <%= "hidden" unless @product.look %>">
+      <label><span>*</span><%= t("activerecord.attributes.product.discount") %></label>
+      <%= f.text_field :discount, :class => "title" %>
     </div>
 
     <div class="field">
@@ -65,16 +72,41 @@
       <br/>
       <%= f.text_field :color %>
     </div>
+
+    <div class="field product_sizes not_for_look <%= "hidden" if @product.look %>">
+      <%= label :look, t("activerecord.attributes.product.products_into_look") %>
+      <div class="clear-8"></div>
+      <% @looks.each do |look| %>
+          <div class="looks">
+            <%= image_tag look.get_cover.image.url(:preview_circle) %>
+            <%= image_tag look.get_preview.image.url(:preview_circle) %>
+            <br/>
+            <%= check_box :look, :product, :id => "#{@product.id}-#{look.id}", :checked => @product.into_look(look), :onchange => "processProductToLook(#{@product.id}, #{look.id})" %>
+            <%= raw product_title(look, "span") %>
+          </div>
+      <% end %>
+    </div>
+
+    <div class="field product_sizes for_look <%= "hidden" unless @product.look %>">
+      <%= label :look, t("activerecord.attributes.product.products_to_look") %>
+      <div class="clear-8"></div>
+      <% @product.products.each do |product| %>
+          <div class="looks">
+            <%= image_tag product.get_cover.image.url(:preview_circle) %>
+            <%= image_tag product.get_preview.image.url(:preview_circle) %>
+            <br/>
+            <%= check_box :product, :look, :id => "#{product.id}-#{@product.id}", :checked => @product.has_product(product), :onchange => "processProductToLook(#{product.id}, #{@product.id})" %>
+            <%= raw product_title(product, "span") %>
+          </div>
+      <% end %>
+    </div>
+
     <div class="field">
       <%= f.label :composition %>
       <br/>
       <%= f.text_field :composition %>
     </div>
-    <!--<div class="field">-->
-    <%#= f.label :look_id %>
-    <!--<br />-->
-    <%#= f.collection_select(:look_id, Look.all, :id, :title, :promt => true) %>
-    <!--</div>-->
+
     <div class="field">
       <%= f.label :season %>
       <br/>

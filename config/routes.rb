@@ -9,6 +9,8 @@ Funkyouseven::Application.routes.draw do
   match '/products/page/:page', :to => "products#page", :as => :products_by_page
   resources :products
 
+  match '/product_to_look/:product_id/:look_id/:yes', :to => 'product_to_looks#check'
+
   match '/basket/remove/:product_id/:size_id', :to => 'basket#remove_product', :as => :remove_from_basket
   match '/basket/add/:product_id/:size_id', :to => 'basket#add_product', :as => :add_to_basket
   match '/basket/update_size/:product_count/:product_id/:size_id', :to => 'basket#update_size', :as => :update_size

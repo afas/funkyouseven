@@ -2,19 +2,21 @@
   <div class="description">
     <form>
       <h1><%= raw product_title(@product, "span") %></h1>
-      <%= raw "<h2>" + number_to_currency(@product.price.round, :precision => 0, :unit => "p.") + "</h2>" unless @product.price.nil? %>
+      <%= raw "<h2>" + number_to_currency(@product.price.round, :precision => 0, :unit => "p.") + (@product.look && !@product.discount.nil? ? "(-" + @product.discount.to_s + "%)" : "") + "</h2>" unless @product.price.nil? %>
       <%= raw "<p>#{@product.description}</p>" unless @product.description.nil? || @product.description.empty? %>
       <%= raw "<p><span>Производитель:</span> #{@product.brand.name}</p>" unless @product.brand.nil? %>
       <%= raw "<p><span>Пол:</span> #{Sex.by_code(@product.sex_id)}</p>" unless @product.sex_id.nil? %>
       <%= raw "<p><span>Цвет:</span> #{@product.color}</p>" unless @product.color.nil? || @product.color.empty? %>
       <%= raw "<p><span>Состав:</span> #{@product.composition}</p>" unless @product.composition.nil? || @product.composition.empty? %>
       <%= raw "<p><span>Сезон:</span> #{@product.season}</p>" unless @product.season.nil? || @product.season.empty? %>
+      <%#= raw "<p><span>В составе сета:</span> " + link_to( product_title(@product.looks.first), @product.looks.first) + "</p>" unless @product.looks.empty? || @product.look %>
       <%= collection_select(:product_size, :id, @product.available_sizes, :code, :name, {:include_blank => "Размер"}, {:onchange => "setSize()"}) %>
       <div class="clear"></div>
       <span id="add_product_button" class="add" href="#" onclick="checkHref()" link="<%= add_to_basket_path(@product.id, "") %>"><%= t("activerecord.attributes.basket.to_basket") %></span>
       <%#= t("activerecord.attributes.basket.to_basket"), "#", :id => "add_product_button", :link => add_to_basket_path(@product.id, ""), :class => "add",  %>
       <div class="clear"></div>
       <%= link_to "Все вещи #{@product.brand.name}", @product.brand, :class => "all_w" unless @product.brand.nil? %>
+      <%= link_to " ", @product.looks.first, :class => "all_w" unless @product.looks.empty? %>
     </form>
   </div>
 
@@ -34,11 +36,22 @@
 <%#= @product.sex_id %>
 <%#= @product.career_id %>
 
+<% if @product.look %>
+    <div class="relaited">Товары в сете</div>
+    <% @product.products.each_with_index do |product, i| %>
+        <%= render "products/product_preview_item", :product => product, :cat_item => true, :margin_top => false, :container_class => (i+1)%3 == 0 ? "no_margin" : "" %>
+    <% end %>
+    <div class="clear"></div>
+
+    <div class="relaited">Еще сеты</div>
+    <% @more_looks.each_with_index do |product, i| %>
+        <%= render "products/product_preview_item", :product => product, :cat_item => true, :margin_top => false, :container_class => (i+1)%3 == 0 ? "no_margin" : "" %>
+    <% end %>
+    <div class="clear"></div>
+<% end %>
+
 <div class="relaited">Похожие товары</div>
 <% @related_products.each_with_index do |product, i| %>
     <%= render "products/product_preview_item", :product => product, :cat_item => true, :margin_top => false, :container_class => (i+1)%3 == 0 ? "no_margin" : "" %>
 <% end %>
-
 <div class="clear"></div>
-
-<!--<a class="more" href="#">Показать еще 25 из 100</a>-->

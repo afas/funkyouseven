@@ -106,6 +106,10 @@ ru:
         short_url: "Короткий адрес"
       product:
         title: "Название"
+        look: "Сет"
+        discount: "Скидка %"
+        products_into_look: "Входит в состав сетов:"
+        products_to_look: "Товары в сете:"
         brand_id: "Производитель"
         shop_section_id: "Раздел"
         section_category_id: "Категория"

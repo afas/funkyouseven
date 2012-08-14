@@ -1,14 +1,23 @@
-<div class="slider_box">
-  <div class="slides slide_second">
-    <div class="slides_container">
-      <% target.each do |product| %>
-          <div class="slide">
-            <%= image_tag product.get_cover.image(:slider), :alt => product.get_cover.title %>
-            <div class="caption">
-              <%= link_to raw(product_title(product, "span") + "<p>" + format_price(product.price) + "</p>"), product %>
-            </div>
-          </div>
-      <% end %>
-    </div>
-  </div>
+<div id="slider" class="slider_box">
+  <% target.each_with_index do |product, i| %>
+      <div class="slide<%= " cs-activeSlide" if i == 0 %>">
+        <%= image_tag product.get_cover.image(:slider), :alt => product.get_cover.title %>
+      </div>
+  <% end %>
 </div>
+<div class="slider_captions">
+  <% target.each_with_index do |product| %>
+      <div class="super_caption">
+        <div class="caption">
+          <%= link_to raw(product_title(product, "span") + "<p>" + format_price(product.price) + "</p>"), product %>
+        </div>
+      </div>
+  <% end %>
+</div>
+<div class="caption_container"></div>
+
+<!--<ul class="pagination">-->
+  <%# target.each do |product| %>
+     <!--<li class="slider-pagination"></li>-->
+  <%# end %>
+<!--</ul>-->

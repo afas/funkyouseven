@@ -19,7 +19,9 @@ class Product < ActiveRecord::Base
                   :description,
                   :price,
                   :season,
-                  :preview_id
+                  :preview_id,
+                  :look,
+                  :discount
 
   attr_writer :preview_id
   attr_reader :preview_id
@@ -31,6 +33,12 @@ class Product < ActiveRecord::Base
   has_many :product_images
   has_many :size_to_products
 
+  has_many :product_to_looks
+
+  #has_many :look_products, :through => :product_to_looks, :source => 'looks'
+  #has_many :looks, :class_name => 'ProductToLook', :foreign_key => 'look_id'
+  #has_many :product_looks, :through => :looks, :source => :product
+
   scope :with_images, joins(:product_images).group("product_images.product_id").where("product_images.id != 0")
 
   scope :not_archive_or_positive_count, includes(:size_to_products).where("products.archive = ? OR size_to_products.product_count > 0 AND products.archive = ?", false, true)
@@ -39,12 +47,30 @@ class Product < ActiveRecord::Base
   scope :not_publish, includes(:size_to_products).where("products.price IS NULL OR products.shop_section_id IS NULL OR products.section_category_id IS NULL OR size_to_products.product_count IS NULL").order("created_at DESC")
   scope :shop_side_bar, valid_products.order("products.created_at DESC").limit(2)
 
+  scope :all_looks, where("look = ?", true).order("products.updated_at DESC").limit(21)
+  scope :more_looks, lambda { |current_id| where("look = ? AND id <> ?", true, current_id).order("products.updated_at DESC").limit(21) }
 
   after_create :update_attachements
 
   def initialize(*args)
     super
     self.preview_id = rand(99999999)+99999999 if self.preview_id.nil? && self.new_record?
+  end
+
+  def into_look(look_id)
+     ProductToLook.find_all_by_product_id_and_look_id(self.id, look_id).size > 0
+  end
+
+  def has_product(product_id)
+     ProductToLook.find_all_by_product_id_and_look_id(product_id, self.id).size > 0
+  end
+
+  def looks
+    Product.joins(:product_to_looks).where("product_to_looks.product_id = ?", self.id)
+  end
+
+  def products
+    Product.joins(:product_to_looks).where("product_to_looks.look_id = ?", self.id)
   end
 
   def available_sizes
@@ -55,6 +81,16 @@ class Product < ActiveRecord::Base
     available_sizes << ProductSize.collection("order").first
 
     available_sizes
+  end
+
+  def reprocess_price
+    self.price = 0
+    self.products.each do |product|
+      self.price += product.price
+    end
+
+    self.price *= (100 - self.discount).to_f / 100
+    self.save
   end
 
   def self.all_sizes(product_id)
