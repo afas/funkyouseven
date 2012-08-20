@@ -84,7 +84,7 @@
             <%= check_box :look, :product, :id => "#{@product.id}-#{look.id}", :checked => @product.into_look(look), :onchange => "processProductToLook(#{@product.id}, #{look.id})" %>
             <%= raw product_title(look, "span") %>
           </div>
-      <% end %>
+      <% end unless @looks.nil? %>
     </div>
 
     <div class="field product_sizes for_look <%= "hidden" unless @product.look %>">
