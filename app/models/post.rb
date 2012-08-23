@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  self.per_page = 12
+  self.per_page = 34
 
   belongs_to :author, :class_name => 'User'
   has_many :post_images

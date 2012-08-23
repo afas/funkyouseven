@@ -10,3 +10,5 @@
       <div class="date_magazine"><%= Russian::strftime(target.created_at, "%d %B") %></div>
   <% end %>
 </div>
+
+<%= raw "<div class='clear'></div>" if no_margin %>

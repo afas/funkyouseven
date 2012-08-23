@@ -257,9 +257,9 @@ function initSlider() {
         captionTransform:"scale(0) translate(-600px,0px) rotate(45deg)",
         autoplay:true,
         autoplayDelay:5000,
-        t2D:csTransitions['slide'][3],
-//        t2D:csTransitions['multi'][17],
-        t3D:csTransitions['3DBlocks'][0]
+//        t2D:csTransitions['slide'][3]
+        t2D:csTransitions['multi'][17]
+//        t3D:csTransitions['3DBlocks'][0]
 //        onStart:function () {
 //            $("body").attr("scroll", "no");
 //            $("body").css("overflow", "hidden");
