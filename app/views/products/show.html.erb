@@ -41,6 +41,9 @@
     <% @product.products.each_with_index do |product, i| %>
         <%= render "products/product_preview_item", :product => product, :cat_item => true, :margin_top => false, :container_class => (i+1)%3 == 0 ? "no_margin" : "" %>
     <% end %>
+    <% if @product.products.empty? %>
+        <p><%= t("activerecord.attributes.product.products_empty") %></p>
+    <% end %>
     <div class="clear"></div>
 
     <div class="relaited">Еще сеты</div>

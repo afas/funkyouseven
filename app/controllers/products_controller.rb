@@ -213,6 +213,7 @@ class ProductsController < ApplicationController
   # GET /products/new.json
   def new
     @product = Product.new
+    @looks = Product.all_looks
 
     respond_to do |format|
       format.html { render layout: "editor" }
@@ -232,10 +233,10 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(params[:product])
-    @looks = Product.looks
 
     respond_to do |format|
       if @product.save
+        @looks = @product.looks
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render json: @product, status: :created, location: @product }
       else
