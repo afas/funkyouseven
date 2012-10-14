@@ -18,7 +18,7 @@
 </ul>
 <div class="line"></div>
 
-<% unless @shop_section.nil? %>
+<% unless @shop_section.nil? || action_name == "new" %>
     <ul class="sub_menu">
       <% if @shop_section.short_url != "brands" %>
           <li>

@@ -1088,7 +1088,7 @@ form .label {
 .cusel {
     background-position: left top;
     cursor: pointer;
-    display: inline-block;
+    /*display: inline-block;*/
     font-size: 13px;
     height: 24px;
     line-height: 24px !important;

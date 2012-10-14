@@ -2,7 +2,7 @@
 require "google_spreadsheet"
 class Product < ActiveRecord::Base
 
-  self.per_page = 3
+  self.per_page = 6
 
   attr_accessible :title,
                   :brand_id,
