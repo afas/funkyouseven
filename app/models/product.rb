@@ -44,7 +44,8 @@ class Product < ActiveRecord::Base
   scope :not_archive_or_positive_count, includes(:size_to_products).where("products.archive = ? OR size_to_products.product_count > 0 AND products.archive = ?", false, true)
   scope :valid_products, with_images.not_archive_or_positive_count.where("products.price NOT NULL").order("products.updated_at DESC")
 
-  scope :not_publish, includes(:size_to_products).where("products.price IS NULL OR products.shop_section_id IS NULL OR products.section_category_id IS NULL OR size_to_products.product_count IS NULL").order("created_at DESC")
+  scope :not_publish, order("products.updated_at DESC").limit(8)
+  #scope :not_publish, includes(:size_to_products).where("products.price IS NULL OR products.shop_section_id IS NULL OR products.section_category_id IS NULL OR size_to_products.product_count IS NULL").order("created_at DESC")
   scope :shop_side_bar, valid_products.order("products.created_at DESC").limit(2)
 
   scope :all_looks, where("look = ?", true).order("products.updated_at DESC").limit(21)

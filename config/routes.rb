@@ -7,6 +7,7 @@ Funkyouseven::Application.routes.draw do
   match '/products/sex/:sex', :to => "products#sex", :as => :products_by_sex
   match '/products/career/:career', :to => "products#career", :as => :products_by_career
   match '/products/page/:page', :to => "products#page", :as => :products_by_page
+  match '/products/funk_yoo_shot' => "products#funk_yoo_shot", :via => :get
   resources :products
 
   match '/product_to_look/:product_id/:look_id/:yes', :to => 'product_to_looks#check'

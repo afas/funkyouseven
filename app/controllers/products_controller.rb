@@ -30,6 +30,14 @@ class ProductsController < ApplicationController
     end
   end
 
+  def funk_yoo_shot
+    @products = Product.not_publish
+
+    respond_to do |format|
+      format.json { render json: @products }
+    end
+  end
+
   # GET /products
   # GET /products.json
   def index

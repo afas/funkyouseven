@@ -17,7 +17,7 @@ class Ability
     end
     can :home, Welcome
     can :create, Order
-    can [:page, :sex, :career], Product
+    can [:page, :sex, :career, :funk_yoo_shot], Product
     can :read, :all
 
   end
