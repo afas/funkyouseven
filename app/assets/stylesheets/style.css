@@ -1088,11 +1088,12 @@ form .label {
 .cusel {
     background-position: left top;
     cursor: pointer;
-    /*display: inline-block;*/
+    display: inline-block;
     font-size: 13px;
     height: 24px;
     line-height: 24px !important;
-    max-width: 190px;
+    /*max-width: 190px;*/
+    /*min-width: 50px;*/
     position: relative;
     z-index: 1;
     float: left;

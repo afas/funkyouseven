@@ -31,80 +31,6 @@ _gaq.push(['_trackPageview']);
 }(document, "script", "twitter-wjs");
 
 
-
-(function($){
-
-    // Click speed threshold, defaults to 500.
-    $.tripleclickThreshold = 500;
-
-    // Special event definition.
-    $.event.special.tripleclick = {
-        setup: function( data ) {
-            // When the event is first bound, bind the "click" event handler that
-            // will be used to power the custom "tripleclick" event.
-            $(this).bind( 'click', click_handler );
-        },
-        teardown: function() {
-            // When the last event is unbound, unbind the "click" event handler.
-            $(this).unbind( 'click', click_handler );
-        },
-        add: function( handleObj ){
-            // The event handler being bound to the event.
-            var old_handler = handleObj.handler,
-
-            // Initialize this handler's clicks counter and last-clicked
-            // timestamp.
-                clicks = 0,
-                last = 0;
-
-            // When the event is triggered, instead of executing the bound
-            // handler directly, `handleObj.handler` will be called, which will
-            // then call the original `old_handler` function. Notice that an extra
-            // argument is being passed to the new_handler function, see the
-            // `click_handler` function for more information.
-            handleObj.handler = function( event, timestamp ) {
-                // Ignore all handler calls due to bubbling.
-                if ( this !== event.target ) { return; }
-
-                var elem = $(this),
-
-                // Use the specified threshold, otherwise use the global value.
-                    threshold = handleObj.data || $.tripleclickThreshold;
-
-                // If more than `threshold` time has passed since the last click,
-                // reset the clicks counter.
-                if ( timestamp - last > threshold ) {
-                    clicks = 0;
-                }
-
-                // Update this handler's last-clicked timestamp.
-                last = timestamp;
-
-                // Increment the clicks counter. If the counter has reached 3,
-                // trigger the "tripleclick" event and reset the clicks counter.
-                if ( ++clicks === 3 ) {
-                    old_handler.apply( this, arguments );
-                    clicks = 0;
-                }
-            };
-        }
-    };
-
-    // This function is executed every time an element is clicked.
-    function click_handler( event ) {
-        // Trigger the "tripleclick" event, passing in the click event's
-        // `timeStamp` property as `extraParameters`.
-        $(this).triggerHandler( 'tripleclick', [ event.timeStamp ] );
-    };
-
-})(jQuery);
-
-//========================================================================
-
-
-
-
-
 $(document).ready(function () {
     if ($("#notice").length > 0) {
         setTimeout(function () {
@@ -148,40 +74,40 @@ $(document).ready(function () {
 
     if ($("#slider").length > 0) {
 
-        initSlider();
+//        initSlider();
 
-//        $('.slides').slides({
-//            preload:true,
-//            preloadImage:'assets/preloader.gif',
-//            play:5000,
-//            pause:2500,
-//            hoverPause:true,
-//            animationStart:function (current) {
-//                $('.caption').animate({
-//                    bottom:-35
-//                }, 100);
-//                if (window.console && console.log) {
-//                    // example return of current slide number
-//                    console.log('animationStart on slide: ', current);
-//                }
-//                ;
-//            },
-//            animationComplete:function (current) {
-//                $('.caption').animate({
-//                    bottom:0
-//                }, 200);
-//                if (window.console && console.log) {
-//                    // example return of current slide number
-//                    console.log('animationComplete on slide: ', current);
-//                }
-//                ;
-//            },
-//            slidesLoaded:function () {
-//                $('.caption').animate({
-//                    bottom:0
-//                }, 200);
-//            }
-//        });
+        $('.slides').slides({
+            preload:true,
+            preloadImage:'assets/preloader.gif',
+            play:5000,
+            pause:2500,
+            hoverPause:true,
+            animationStart:function (current) {
+                $('.caption').animate({
+                    bottom:-35
+                }, 100);
+                if (window.console && console.log) {
+                    // example return of current slide number
+                    console.log('animationStart on slide: ', current);
+                }
+                ;
+            },
+            animationComplete:function (current) {
+                $('.caption').animate({
+                    bottom:0
+                }, 200);
+                if (window.console && console.log) {
+                    // example return of current slide number
+                    console.log('animationComplete on slide: ', current);
+                }
+                ;
+            },
+            slidesLoaded:function () {
+                $('.caption').animate({
+                    bottom:0
+                }, 200);
+            }
+        });
     }
 
 });
@@ -201,9 +127,11 @@ function updateProductLook(look_id) {
 function split(val) {
     return val.split(/,\s*/);
 }
+
 function extractLast(term) {
     return split(term).pop();
 }
+
 function processProductToLook(product_id, look_id) {
     yes = $("#" + product_id + "-" + look_id).is(':checked');
     $.get('/product_to_look/' + product_id + "/" + look_id + "/" + yes);
@@ -316,30 +244,30 @@ function onKeyUpSizeCount(e, product_id, size_code) {
     }
 }
 
-function initSlider() {
-    $("#slider").chopSlider({
-        loaderIndex:100,
-        slide:".slide",
-        nextTrigger:"a#slide-next",
-        prevTrigger:"a#slide-prev",
-        hideTriggers:true,
-        sliderPagination:".pagination",
-        useCaptions:true,
-        everyCaptionIn:".super_caption",
-        showCaptionIn:".caption_container",
-        captionTransform:"scale(0) translate(-600px,0px) rotate(45deg)",
-        autoplay:true,
-        autoplayDelay:5000,
-//        t2D:csTransitions['slide'][3]
-        t2D:csTransitions['multi'][17]
-//        t3D:csTransitions['3DBlocks'][0]
-//        onStart:function () {
-//            $("body").attr("scroll", "no");
-//            $("body").css("overflow", "hidden");
-//        },
-//        onEnd:function () {
-//            $("body").css("overflow", "");
-//            $("body").attr("scroll", "");
-//        }
-    });
-}
+//function initSlider() {
+//    $("#slider").chopSlider({
+//        loaderIndex:100,
+//        slide:".slide",
+//        nextTrigger:"a#slide-next",
+//        prevTrigger:"a#slide-prev",
+//        hideTriggers:true,
+//        sliderPagination:".pagination",
+//        useCaptions:true,
+//        everyCaptionIn:".super_caption",
+//        showCaptionIn:".caption_container",
+//        captionTransform:"scale(0) translate(-600px,0px) rotate(45deg)",
+//        autoplay:true,
+//        autoplayDelay:5000,
+////        t2D:csTransitions['slide'][3]
+//        t2D:csTransitions['multi'][17]
+////        t3D:csTransitions['3DBlocks'][0]
+////        onStart:function () {
+////            $("body").attr("scroll", "no");
+////            $("body").css("overflow", "hidden");
+////        },
+////        onEnd:function () {
+////            $("body").css("overflow", "");
+////            $("body").attr("scroll", "");
+////        }
+//    });
+//}
