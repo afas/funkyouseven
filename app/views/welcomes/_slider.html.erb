@@ -3,8 +3,8 @@
     <div class="slides_container">
       <% target.each do |product| %>
           <div class="slide">
-            <%= image_tag "slide.jpg", :alt => product.get_cover.title %>
-            <%#= image_tag product.get_cover.image(:slider), :alt => product.get_cover.title %>
+            <%#= image_tag "slide.jpg", :alt => product.get_cover.title %>
+            <%= image_tag product.get_cover.image(:slider), :alt => product.get_cover.title %>
             <div class="caption">
               <%= link_to raw(product_title(product, "span") + "<p>" + format_price(product.price) + "</p>"), product %>
             </div>
