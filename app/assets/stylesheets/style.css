@@ -372,6 +372,7 @@ li.current ul li.current a {
     margin-right: 0px !important;
 }
 
+
 .slider_box {
     position: relative;
     float: left;
@@ -380,24 +381,13 @@ li.current ul li.current a {
     margin-bottom: 20px;
 }
 
-.caption_container {
-    position: absolute;
-    left: 0;
-    top: 450px;
-}
-
-.pagination {
-    position: absolute !important;
-    left: 0;
-    top: 433px;
-}
-
 .slides {
     float: left;
 }
 
 .slides_container {
     width: 638px;
+    height: 422px;
     overflow: hidden;
     position: relative;
     display: none;
@@ -416,39 +406,37 @@ li.current ul li.current a {
 .pagination {
     display: block;
     height: 11px;
-    margin: -23px auto 0;
-    /*position: relative;*/
+    margin: -34px auto 0;
+    position: relative;
     text-align: center;
-    width: 640px;
+    width: 100%;
     z-index: 9999;
 }
 
 .pagination li {
     display: inline-block;
     margin: 0 1px;
+}
 
+.pagination li a {
     background: url(pagination.png) -16px 0;
-    /*display: block;*/
+    display: block;
     width: 11px;
     height: 11px;
     float: left;
     overflow: hidden;
     text-indent: -9999px;
-
 }
 
 .pagination li a:hover {
     background-position: 0 0px;
 }
 
-.pagination li.current {
+.pagination li.current a {
     background-position: 0 0px;
 }
 
 .caption {
-    /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
-    /*font-weight: bold;*/
-
     font-family: 'FuturisCBold';
     font-size: 50px;
     line-height: 40px;

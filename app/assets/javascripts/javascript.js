@@ -41,7 +41,7 @@ $(document).ready(function () {
     }
 
     if ($("#fullover").length > 0) {
-        $("#fullover > a").bind( 'tripleclick', 1000, function() {
+        $("#fullover > a").bind('tripleclick', 1000, function () {
             $("#fullover").hide();
         });
     }
@@ -72,13 +72,10 @@ $(document).ready(function () {
         })
     }
 
-    if ($("#slider").length > 0) {
-
-//        initSlider();
-
+    if ($(".slider_box").length > 0) {
         $('.slides').slides({
             preload:true,
-            preloadImage:'assets/preloader.gif',
+            preloadImage:'images/loading.gif',
             play:5000,
             pause:2500,
             hoverPause:true,
@@ -271,3 +268,77 @@ function onKeyUpSizeCount(e, product_id, size_code) {
 ////        }
 //    });
 //}
+
+
+(function ($) {
+
+    // Click speed threshold, defaults to 500.
+    $.tripleclickThreshold = 500;
+
+    // Special event definition.
+    $.event.special.tripleclick = {
+        setup:function (data) {
+            // When the event is first bound, bind the "click" event handler that
+            // will be used to power the custom "tripleclick" event.
+            $(this).bind('click', click_handler);
+        },
+        teardown:function () {
+            // When the last event is unbound, unbind the "click" event handler.
+            $(this).unbind('click', click_handler);
+        },
+        add:function (handleObj) {
+            // The event handler being bound to the event.
+            var old_handler = handleObj.handler,
+
+            // Initialize this handler's clicks counter and last-clicked
+            // timestamp.
+                clicks = 0,
+                last = 0;
+
+            // When the event is triggered, instead of executing the bound
+            // handler directly, `handleObj.handler` will be called, which will
+            // then call the original `old_handler` function. Notice that an extra
+            // argument is being passed to the new_handler function, see the
+            // `click_handler` function for more information.
+            handleObj.handler = function (event, timestamp) {
+                // Ignore all handler calls due to bubbling.
+                if (this !== event.target) {
+                    return;
+                }
+
+                var elem = $(this),
+
+                // Use the specified threshold, otherwise use the global value.
+                    threshold = handleObj.data || $.tripleclickThreshold;
+
+                // If more than `threshold` time has passed since the last click,
+                // reset the clicks counter.
+                if (timestamp - last > threshold) {
+                    clicks = 0;
+                }
+
+                // Update this handler's last-clicked timestamp.
+                last = timestamp;
+
+                // Increment the clicks counter. If the counter has reached 3,
+                // trigger the "tripleclick" event and reset the clicks counter.
+                if (++clicks === 3) {
+                    old_handler.apply(this, arguments);
+                    clicks = 0;
+                }
+            };
+        }
+    };
+
+    // This function is executed every time an element is clicked.
+    function click_handler(event) {
+        // Trigger the "tripleclick" event, passing in the click event's
+        // `timeStamp` property as `extraParameters`.
+        $(this).triggerHandler('tripleclick', [ event.timeStamp ]);
+    }
+
+    ;
+
+})(jQuery);
+
+//========================================================================
