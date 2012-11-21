@@ -3,9 +3,9 @@
     <div class="slides_container">
       <% target.each do |image| %>
           <div class="slide">
-            <%= image_tag image.get_cover.image(:slider), :alt => image.get_cover.title %>
-            <div class="caption">
-              <%=  %>
+            <%= image_tag image.image(:album_normal), :alt => image.title %>
+            <div class="post_image_caption">
+              <span><%= image.title %></span>
             </div>
           </div>
       <% end %>
