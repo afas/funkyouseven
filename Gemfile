@@ -19,7 +19,7 @@ gem 'execjs'
 
 group :assets do
   gem 'sass-rails'
-  #gem 'coffee-rails'
+  gem 'coffee-rails'
   gem 'uglifier'
 end
 
