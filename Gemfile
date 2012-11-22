@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2'
+gem 'rails', '3.2.8'
 
 #gem 'omniauth'
 #gem 'proxylocal'
@@ -19,7 +19,7 @@ gem 'execjs'
 
 group :assets do
   gem 'sass-rails'
-  gem 'coffee-rails'
+  #gem 'coffee-rails'
   gem 'uglifier'
 end
 

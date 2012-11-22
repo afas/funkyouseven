@@ -2,6 +2,6 @@
 //= require jquery_ujs
 
 //= require jquery.slides
-//= require jquery.cusel
 //= require jquery.ui
+//= require jquery.cusel
 //= require javascript
