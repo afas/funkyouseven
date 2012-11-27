@@ -53,11 +53,12 @@ $(document).ready(function () {
     }
 
     if ($("select").length > 0) {
-        var params = {
-            changedEl:"select",
-            scrollArrows:false
-        }
-        cuSel(params);
+//        var params = {
+//            changedEl:"select",
+//            scrollArrows:false
+//        }
+//        cuSel(params);
+        $("select").selectBox();
     }
 
     if ($(".product_previews li").length > 0) {
@@ -147,7 +148,7 @@ function setCareer() {
 function checkHref() {
     href = $("#add_product_button").attr("href");
     if (href == "#") {
-        $("#cuselFrame-product_size_id").toggle("shake", {distance:8, times:1}, 300);
+        $("a.product_size").toggle("shake", {distance:8, times:1}, 300);
         return false;
     } else {
         $.get(href);

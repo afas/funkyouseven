@@ -286,7 +286,6 @@ a {
 .menu_right li.current a {
     /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
     /*font-weight: bold;*/
-
     font-family: 'FuturisCBold';
     background: url(current.png) no-repeat bottom center;
 }
@@ -334,9 +333,9 @@ li.current ul li.current a {
     text-decoration: underline;
 }
 
-.shop_filtration .cuselScrollArrows {
-    margin-top: -6px;
-}
+/*.shop_filtration .cuselScrollArrows {*/
+    /*margin-top: -6px;*/
+/*}*/
 
 .line {
     background: #000000;
@@ -504,19 +503,19 @@ li.current ul li.current a {
     margin: 5px 0 0;
 }
 
-.cat .cusel span {
+/*.cat .cusel span {*/
     /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
-    font-family: 'FuturisCRegular';
-}
+    /*font-family: 'FuturisCRegular';*/
+/*}*/
 
-.cat .cusel {
-    line-height: 1;
+/*.cat .cusel {*/
+    /*line-height: 1;*/
     /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
 
-    font-family: 'FuturisCRegular';
-    float: right;
-    margin-right: 8px;
-}
+    /*font-family: 'FuturisCRegular';*/
+    /*float: right;*/
+    /*margin-right: 8px;*/
+/*}*/
 
 .column_second {
     float: right;
@@ -1057,181 +1056,181 @@ form .label {
     z-index: 3000;
 }
 
-#cuselFrame-post_created_at_3i, #cuselFrame-post_created_at_2i, #cuselFrame-post_created_at_1i {
-    margin-right: 13px;
-}
+/*#cuselFrame-post_created_at_3i, #cuselFrame-post_created_at_2i, #cuselFrame-post_created_at_1i {*/
+    /*margin-right: 13px;*/
+/*}*/
 
-.cusel-scroll-wrap span {
-    font-size: 12px !important;
-}
+/*.cusel-scroll-wrap span {*/
+    /*font-size: 12px !important;*/
+/*}*/
 
-.cusel,
-.cuselFrameRight,
-.jScrollPaneDrag,
-.jScrollArrowUp,
-.jScrollArrowDown {
-    background-image: url(selects-gree.png) !important;
-}
+/*.cusel,*/
+/*.cuselFrameRight,*/
+/*.jScrollPaneDrag,*/
+/*.jScrollArrowUp,*/
+/*.jScrollArrowDown {*/
+    /*background-image: url(selects-gree.png) !important;*/
+/*}*/
 
-.cusel {
-    background-position: left top;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 13px;
-    height: 24px;
-    line-height: 24px !important;
+/*.cusel {*/
+    /*background-position: left top;*/
+    /*cursor: pointer;*/
+    /*display: inline-block;*/
+    /*font-size: 13px;*/
+    /*height: 24px;*/
+    /*line-height: 24px !important;*/
     /*max-width: 190px;*/
     /*min-width: 50px;*/
-    position: relative;
-    z-index: 1;
-    float: left;
-}
+    /*position: relative;*/
+    /*z-index: 1;*/
+    /*float: left;*/
+/*}*/
 
-.cuselFrameRight {
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    right: -9px;
-    height: 100%;
-    width: 38px;
-    background-position: right top;
-}
+/*.cuselFrameRight {*/
+    /*position: absolute;*/
+    /*z-index: 2;*/
+    /*top: 0;*/
+    /*right: -9px;*/
+    /*height: 100%;*/
+    /*width: 38px;*/
+    /*background-position: right top;*/
+/*}*/
 
-.cuselText {
-    height: 24px;
-    cursor: pointer;
-    overflow: hidden;
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    padding-left: 10px;
-    left: 0;
-    font-size: 12px;
-}
+/*.cuselText {*/
+    /*height: 24px;*/
+    /*cursor: pointer;*/
+    /*overflow: hidden;*/
+    /*z-index: 1;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*padding-left: 10px;*/
+    /*left: 0;*/
+    /*font-size: 12px;*/
+/*}*/
 
-* html .cuselText {
-    height: 24px;
-}
+/** html .cuselText {*/
+    /*height: 24px;*/
+/*}*/
 
-.cusel span {
-    background: none repeat scroll 0 0 #FFFFFF;
-    cursor: pointer;
-    display: block;
-    height: 24px;
-    margin: 0;
-    padding: 0 15px 0 8px;
-    white-space: nowrap;
-}
+/*.cusel span {*/
+    /*background: none repeat scroll 0 0 #FFFFFF;*/
+    /*cursor: pointer;*/
+    /*display: block;*/
+    /*height: 24px;*/
+    /*margin: 0;*/
+    /*padding: 0 15px 0 8px;*/
+    /*white-space: nowrap;*/
+/*}*/
 
-.cusel span:hover,
-.cusel .cuselOptHover {
-    background: #e1e1e1;
-    color: #fff;
-}
+/*.cusel span:hover,*/
+/*.cusel .cuselOptHover {*/
+    /*background: #e1e1e1;*/
+    /*color: #fff;*/
+/*}*/
 
-.cusel .cuselActive {
-    background: #000000;
-    color: #fff;
-    cursor: default;
-}
+/*.cusel .cuselActive {*/
+    /*background: #000000;*/
+    /*color: #fff;*/
+    /*cursor: default;*/
+/*}*/
 
-.cuselOpen {
-    z-index: 999;
-}
+/*.cuselOpen {*/
+    /*z-index: 999;*/
+/*}*/
 
-.classDisCusel .cuselText {
-    cursor: default;
-}
+/*.classDisCusel .cuselText {*/
+    /*cursor: default;*/
+/*}*/
 
-.cusel .cusel-scroll-wrap {
-    display: block;
-    visibility: hidden;
-    position: absolute;
-    left: 15px;
-    top: 100%;
-    background: url("drop-down-menu-top.png") no-repeat scroll right 0 transparent;
-    min-width: 100%;
-    width: auto;
-    font-size: 12px !important;
-    padding-top: 7px;
-}
+/*.cusel .cusel-scroll-wrap {*/
+    /*display: block;*/
+    /*visibility: hidden;*/
+    /*position: absolute;*/
+    /*left: 15px;*/
+    /*top: 100%;*/
+    /*background: url("drop-down-menu-top.png") no-repeat scroll right 0 transparent;*/
+    /*min-width: 100%;*/
+    /*width: auto;*/
+    /*font-size: 12px !important;*/
+    /*padding-top: 7px;*/
+/*}*/
 
-.cusel .jScrollPaneContainer {
-    position: relative;
-    overflow: hidden;
-    z-index: 5;
-    border: 1px solid #999;
-}
+/*.cusel .jScrollPaneContainer {*/
+    /*position: relative;*/
+    /*overflow: hidden;*/
+    /*z-index: 5;*/
+    /*border: 1px solid #999;*/
+/*}*/
 
-.cusel .jScrollPaneTrack {
-    height: 100%;
-    width: 2px !important;
-    background: #ccc;
-    position: absolute;
-    top: 0;
-    right: 4px;
-}
+/*.cusel .jScrollPaneTrack {*/
+    /*height: 100%;*/
+    /*width: 2px !important;*/
+    /*background: #ccc;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*right: 4px;*/
+/*}*/
 
-.cusel .jScrollPaneDrag {
-    position: absolute;
-    background-position: -40px -24px;
-    cursor: pointer;
-    width: 10px !important;
-    height: 18px !important;
-    right: -4px;
-}
+/*.cusel .jScrollPaneDrag {*/
+    /*position: absolute;*/
+    /*background-position: -40px -24px;*/
+    /*cursor: pointer;*/
+    /*width: 10px !important;*/
+    /*height: 18px !important;*/
+    /*right: -4px;*/
+/*}*/
 
-.cusel .jScrollPaneDragTop {
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-}
+/*.cusel .jScrollPaneDragTop {*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*overflow: hidden;*/
+/*}*/
 
-.cusel .jScrollPaneDragBottom {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-}
+/*.cusel .jScrollPaneDragBottom {*/
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
+    /*overflow: hidden;*/
+/*}*/
 
-.cusel .jScrollArrowUp {
-    position: absolute;
-    top: 0;
-    right: 2px;
-    width: 7px !important;
-    height: 12px;
-    cursor: pointer;
-    background-position: -2px -26px;
-    overflow: hidden;
-}
+/*.cusel .jScrollArrowUp {*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*right: 2px;*/
+    /*width: 7px !important;*/
+    /*height: 12px;*/
+    /*cursor: pointer;*/
+    /*background-position: -2px -26px;*/
+    /*overflow: hidden;*/
+/*}*/
 
-.cusel .jScrollArrowDown {
-    width: 8px !important;
-    height: 12px;
-    position: absolute;
-    top: auto;
-    bottom: 0;
-    right: 3px;
-    cursor: pointer;
-    background-position: -21px -26px;
-    overflow: hidden;
-}
+/*.cusel .jScrollArrowDown {*/
+    /*width: 8px !important;*/
+    /*height: 12px;*/
+    /*position: absolute;*/
+    /*top: auto;*/
+    /*bottom: 0;*/
+    /*right: 3px;*/
+    /*cursor: pointer;*/
+    /*background-position: -21px -26px;*/
+    /*overflow: hidden;*/
+/*}*/
 
-.cusel-scroll-pane {
-    columns: 150px auto;
-    overflow: hidden;
-    -webkit-border-radius: 8px;
-    border-radius: 8px;
-    border: 1px solid #000;
+/*.cusel-scroll-pane {*/
+    /*columns: 150px auto;*/
+    /*overflow: hidden;*/
+    /*-webkit-border-radius: 8px;*/
+    /*border-radius: 8px;*/
+    /*border: 1px solid #000;*/
 
-    -webkit-box-shadow: 0px 5px 21px 1px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 5px 21px 1px rgba(0, 0, 0, 0.5);
-}
+    /*-webkit-box-shadow: 0px 5px 21px 1px rgba(0, 0, 0, 0.5);*/
+    /*box-shadow: 0px 5px 21px 1px rgba(0, 0, 0, 0.5);*/
+/*}*/
 
-.current ul li .cusel {
-    margin-top: -5px;
-}
+/*.current ul li .cusel {*/
+    /*margin-top: -5px;*/
+/*}*/
 
 .current ul li {
     padding-bottom: 34px;
@@ -1247,16 +1246,22 @@ form .label {
     background-color: #FFFFFF;
 }
 
-.product_selects label, .product_selects .cusel, .product_sizes label {
+.product_selects label,
+/*.product_selects .cusel, */
+.product_sizes label {
     display: block;
     float: left;
     width: auto;
 }
 
-.product_selects .cusel, .product_selects input[type="checkbox"] {
+/*.product_selects .cusel, */
+
+.product_selects input[type="checkbox"] {
     margin: 13px 21px 0 0;
 
-}.product_selects input[type="checkbox"] {
+}
+
+.product_selects input[type="checkbox"] {
     margin: 18px 21px 0 0;
     float: left;
 }
@@ -1374,16 +1379,16 @@ form .looks {
     width: 34px;
 }
 
-.cat_item form .cusel {
-    margin-right: 16px;
-}
+/*.cat_item form .cusel {*/
+    /*margin-right: 16px;*/
+/*}*/
 
-.cat_item form .cusel span {
+/*.cat_item form .cusel span {*/
     /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
-    margin: 0;
-    font-weight: bold;
-    font-family: 'FuturisCRegular' !important;
-}
+    /*margin: 0;*/
+    /*font-weight: bold;*/
+    /*font-family: 'FuturisCRegular' !important;*/
+/*}*/
 
 .my_basket .cat_item form label b {
     color: #ff0000;
@@ -1515,7 +1520,7 @@ form label {
     z-index: 1;
 }
 
-.sub_menu li .cusel {
+.sub_menu li .selectBox {
     margin-top: -6px;
 }
 

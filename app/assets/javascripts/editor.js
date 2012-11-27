@@ -1,7 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 
-//= require jquery.cusel
+//= require selectBox
 //= require javascript
 
 //= require gmaps4rails/gmaps4rails.base.js
@@ -10,6 +10,8 @@
 //= require gmaps4rails/gmaps4rails.openlayers.js
 
 //= require fileuploader
+
+//= require selectBox
 
 //= require jquery.markitup
 //= require jquery.markitup.set

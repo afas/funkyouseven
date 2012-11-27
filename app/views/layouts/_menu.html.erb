@@ -21,11 +21,11 @@
 <% unless @shop_section.nil? || action_name == "new" %>
     <ul class="sub_menu">
       <% if @shop_section.short_url != "brands" %>
-          <li>
+          <li class="select-box-item">
             <%= collection_select(:sex, :id, Sex.collection, :code, :name, {:include_blank => "Пол", :selected => (@user_settings["sex"])}, {:onchange => "setSex()"}) %>
           </li>
           <% if @shop_section.short_url != "wear" %>
-              <li>
+              <li class="select-box-item">
                 <%= collection_select(:career, :id, Career.collection, :code, :name, {:include_blank => "Вид спорта", :selected => (@user_settings["career"])}, {:onchange => "setCareer()"}) %>
               </li>
           <% end %>
@@ -41,10 +41,10 @@
 
 <% if !@brand.nil? && controller.action_name != "edit" && controller.action_name != "new" %>
     <ul class="sub_menu">
-      <li>
+      <li class="select-box-item">
         <%= collection_select(:sex, :id, Sex.collection, :code, :name, {:include_blank => "Пол", :selected => (@user_settings["sex"])}, {:onchange => "setSex()"}) %>
       </li>
-      <li>
+      <li class="select-box-item">
         <%= collection_select(:career, :id, Career.collection, :code, :name, {:include_blank => "Вид спорта", :selected => (@user_settings["career"])}, {:onchange => "setCareer()"}) %>
       </li>
     </ul>
