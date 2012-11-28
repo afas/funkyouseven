@@ -3,5 +3,5 @@
 
 //= require jquery.slides
 //= require jquery.ui
-//= require selectBox
+//= require jquery.cusel
 //= require javascript

@@ -32,6 +32,7 @@ _gaq.push(['_trackPageview']);
 
 
 $(document).ready(function () {
+
     if ($("#notice").length > 0) {
         setTimeout(function () {
             $("#notice").animate({top:-144}, 555, function () {
@@ -53,12 +54,11 @@ $(document).ready(function () {
     }
 
     if ($("select").length > 0) {
-//        var params = {
-//            changedEl:"select",
-//            scrollArrows:false
-//        }
-//        cuSel(params);
-        $("select").selectBox();
+        var params = {
+            changedEl:"select",
+            scrollArrows:false
+        }
+        cuSel(params);
     }
 
     if ($(".product_previews li").length > 0) {
@@ -129,26 +129,39 @@ function processProductToLook(product_id, look_id) {
     $.get('/product_to_look/' + product_id + "/" + look_id + "/" + yes);
 }
 
+var shop = ["wear", "gear", "equipment"];
+
 function setSex() {
+    if ($.inArray(window.location.pathname.split("/").pop(), shop) < 0) {
+        section = 'brands'
+    } else {
+        section = 'shop'
+    }
+
     sex = $("#sex_id").val();
     if (sex == '') {
         sex = 'empty'
     }
-    $.get('/products/sex/' + sex);
+    $.get('/products/section/' + section + '/sex/' + sex);
 }
 
 function setCareer() {
+    if ($.inArray(window.location.pathname.split("/").pop(), shop) < 0) {
+        section = 'brands'
+    } else {
+        section = 'shop'
+    }
     career = $("#career_id").val();
     if (career == '') {
         career = 'empty'
     }
-    $.get('/products/career/' + career);
+    $.get('/products/section/' + section + '/career/' + career);
 }
 
 function checkHref() {
     href = $("#add_product_button").attr("href");
     if (href == "#") {
-        $("a.product_size").toggle("shake", {distance:8, times:1}, 300);
+        $("#cuselFrame-product_size_id").toggle("shake", {distance:8, times:1}, 300);
         return false;
     } else {
         $.get(href);

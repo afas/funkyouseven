@@ -27,6 +27,8 @@ class BrandsController < ApplicationController
     @brand = Brand.find(params[:id])
     @user_settings["brand"] = @brand.id
 
+    @section = :brands
+
     condition = "products.brand_id = #{@brand.id}"
 
     unless @user_settings["sex"].nil?

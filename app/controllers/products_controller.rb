@@ -38,9 +38,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  # GET /products
-  # GET /products.json
   def index
+    @section = :shop
+
     condition = ""
 
     unless params[:shop_section].nil?
@@ -66,7 +66,6 @@ class ProductsController < ApplicationController
     end
 
     unless @user_settings["career"].nil?
-
       unless @shop_section.nil?
         condition += " and products.career_id = #{@user_settings['career']}" if @shop_section.short_url != "wear"
       else
@@ -87,6 +86,8 @@ class ProductsController < ApplicationController
   end
 
   def page
+    @section = params[:section]
+
     condition = "0 = 0"
 
     unless @user_settings["shop_section"].nil? || @user_settings["brand"]
@@ -106,11 +107,15 @@ class ProductsController < ApplicationController
     end
 
     unless @user_settings["career"].nil?
-      condition += " and products.career_id = #{@user_settings["career"]}"
+      unless @shop_section.nil?
+        condition += " and products.career_id = #{@user_settings["career"]}" unless @shop_section.short_url == "wear"
+      else
+        condition += " and products.career_id = #{@user_settings["career"]}"
+      end
     end
 
     unless @user_settings["brand"].nil?
-      condition += " and products.brand_id = #{@user_settings["brand"]}"
+      condition += " and products.brand_id = #{@user_settings["brand"]}" if @section == 'brands'
     end
 
     @page = (params[:page] || 1).to_i
@@ -123,6 +128,8 @@ class ProductsController < ApplicationController
   end
 
   def sex
+    @section = params[:section]
+
     condition = "0 = 0"
 
     unless @user_settings["shop_section"].nil?
@@ -138,7 +145,15 @@ class ProductsController < ApplicationController
     end
 
     unless @user_settings["career"].nil?
-      condition += " and products.career_id = #{@user_settings["career"]}"
+      unless @shop_section.nil?
+        condition += " and products.career_id = #{@user_settings["career"]}" unless @shop_section.short_url == "wear"
+      else
+        condition += " and products.career_id = #{@user_settings["career"]}"
+      end
+    end
+
+    unless @user_settings["brand"].nil?
+      condition += " and products.brand_id = #{@user_settings["brand"]}" if @section == "brands"
     end
 
     unless params[:sex].nil?
@@ -160,6 +175,8 @@ class ProductsController < ApplicationController
   end
 
   def career
+    @section = params[:section]
+
     condition = "0 = 0"
 
     unless @user_settings["shop_section"].nil?
@@ -176,6 +193,10 @@ class ProductsController < ApplicationController
 
     unless @user_settings["sex"].nil?
       condition += " and products.sex_id = #{@user_settings["sex"]}"
+    end
+
+    unless @user_settings["brand"].nil?
+      condition += " and products.brand_id = #{@user_settings["brand"]}" if @section == "brands"
     end
 
     unless params[:career].nil?

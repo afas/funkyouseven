@@ -10,7 +10,7 @@
       <%= raw "<p><span>Состав:</span> #{@product.composition}</p>" unless @product.composition.nil? || @product.composition.empty? %>
       <%= raw "<p><span>Сезон:</span> #{@product.season}</p>" unless @product.season.nil? || @product.season.empty? %>
       <%#= raw "<p><span>В составе сета:</span> " + link_to( product_title(@product.looks.first), @product.looks.first) + "</p>" unless @product.looks.empty? || @product.look %>
-      <%= collection_select(:product_size, :id, @product.available_sizes, :code, :name, {:include_blank => "Размер"}, {:onchange => "setSize()", :class => "product_size"}) %>
+      <%= collection_select(:product_size, :id, @product.available_sizes, :code, :name, {:include_blank => "Размер"}, {:onchange => "setSize()"}) %>
       <div class="clear"></div>
       <span id="add_product_button" class="add" href="#" onclick="checkHref()" link="<%= add_to_basket_path(@product.id, "") %>"><%= t("activerecord.attributes.basket.to_basket") %></span>
       <%#= t("activerecord.attributes.basket.to_basket"), "#", :id => "add_product_button", :link => add_to_basket_path(@product.id, ""), :class => "add",  %>
