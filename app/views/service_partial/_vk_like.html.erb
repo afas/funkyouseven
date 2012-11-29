@@ -2,15 +2,15 @@
    cover = "http://funkyou7.ru/assets/logos/fy7-small.png"
 
    unless @post.nil?
-     cover = @post.get_cover.image.url(:preview_item)
+     cover = request.host + @post.get_cover.image.url(:preview_item)
    end
 
    unless @product.nil?
-     cover = @product.get_cover.image.url(:preview_item)
+     cover = request.host + @product.get_cover.image.url(:preview_item)
    end
 
    unless @brand.nil?
-     cover = @post.logo.image.url(:preview_item)
+     cover = request.host + @post.logo.image.url(:preview_item)
    end
 %>
 
