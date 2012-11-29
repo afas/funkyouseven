@@ -1,16 +1,20 @@
 <%
    cover = "funkyou7.ru/assets/logos/fy7-small.png"
+   title = t('site_name')
 
    unless @post.nil?
      cover = request.host + @post.get_cover.image.url(:preview_item)
+     title = @post.title
    end
 
    unless @product.nil?
      cover = request.host + @product.get_cover.image.url(:preview_item)
+     title = product_title(@product.title)
    end
 
    unless @brand.nil?
      cover = request.host + @post.logo.image.url(:preview_item)
+     title = @brand.name
    end
 %>
 
@@ -25,5 +29,5 @@
 <!-- Put this div tag to the place, where the Like block will be -->
 <div id="vk_like"></div>
 <script type="text/javascript">
-    VK.Widgets.Like("vk_like", {type:"mini", page_id:"<%= target_url %>", pageImage: 'http://<%= cover %>'});
+    VK.Widgets.Like("vk_like", {type:"mini", page_id:"<%= target_url %>", pageTitle: '<%= title %>', pageImage: 'http://<%= cover %>'});
 </script>
