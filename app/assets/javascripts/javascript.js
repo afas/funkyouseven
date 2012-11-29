@@ -70,7 +70,7 @@ $(document).ready(function () {
     if ($(".slider_box").length > 0) {
         $('.slides').slides({
             preload:true,
-            preloadImage:'images/loading.gif',
+            preloadImage:'assets/preloader.gif',
             play:5000,
             pause:2500,
             hoverPause:true,
