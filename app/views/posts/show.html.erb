@@ -1,3 +1,5 @@
+<%= meta_tags (@post) %>
+
 <%= image_tag @post.get_cover.image.url(:big), :alt => @post.get_cover.title, :class => "big_img" %>
 <div class="center_item">
   <div class="main">

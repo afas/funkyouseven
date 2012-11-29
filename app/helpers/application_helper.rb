@@ -1,9 +1,29 @@
 #encoding: utf-8
 module ApplicationHelper
+
   def meta_tags(unit)
-    content_for(:title) { unit.seo_title.blank? ? "#{unit.title} :: #{t('site_name')}" : unit.seo_title }
-    content_for(:description) { unit.seo_description.blank? ? "#{unit.title} ~ #{t('site_name')}" : unit.seo_description }
-    content_for(:keywords) { unit.seo_keywords.blank? ? "#{unit.title} ~ #{t('site_name')}" : unit.seo_keywords }
+    case unit.class.to_s
+      when "Product"
+        title = product_title(unit) + " — #{t('site_name')} — Shop"
+        description = unit.description.blank? ? t('site_description') : "#{unit.description}"
+        keywords = product_title(unit) + ", #{t('site_keywords')}"
+      when "Post"
+        title = "#{unit.title} — #{t('site_name')} — Magazine"
+        description = unit.description.blank? ? t('site_description') : "#{unit.description}"
+        keywords = "#{unit.title}, #{t('site_keywords')}"
+      when "Brand"
+        title = "#{unit.name} — #{t('site_name')} — Shop"
+        description = unit.description.blank? ? t('site_description') : "#{unit.description}"
+        keywords = "#{unit.name}, #{t('site_keywords')}"
+      else
+        title = t('site_name')
+        description = t('site_description')
+        keywords = "#{unit.title}, #{t('site_keywords')}"
+    end
+
+    content_for(:title) { title }
+    content_for(:keywords) { keywords }
+    content_for(:description) { description }
   end
 
   def admin_partial(object, classname)
@@ -27,7 +47,7 @@ module ApplicationHelper
 
     links += "<li>" + link_to("Импорт", shop_import_catalog_path, :title => "Запустить импорт") + "</li>" if classname == "product"
 
-    links +=  "</ul></li>"
+    links += "</ul></li>"
 
     raw links
   end
@@ -40,7 +60,7 @@ module ApplicationHelper
         output += admin_partial(@section_category, "section_category")
         output += admin_partial(@brand, "brand")
         output += admin_partial(@product, "product")
-        #output += admin_partial(@look, "look")
+      #output += admin_partial(@look, "look")
       #when "brands"
       #  output += admin_partial(@product, "product")
       when "posts"
@@ -49,8 +69,8 @@ module ApplicationHelper
         output += admin_partial(@static, "static")
       when "welcomes"
         output += "<li class='title'>#{t("activerecord.attributes.admin_menu.welcome")}<ul><li>" + link_to("Изменить", edit_welcome_path(@welcome)) + "</li></ul></li>" if can?(:edit, Welcome) && !@welcome.nil?
-#      else
-#        puts "oO"
+      #      else
+      #        puts "oO"
     end
 
     raw output unless output.empty?

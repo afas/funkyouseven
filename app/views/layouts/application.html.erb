@@ -22,6 +22,9 @@
     <![endif]-->
 
   <%= javascript_include_tag "application" %>
+
+  <%= yield(:head) %>
+
   <%= csrf_meta_tags %>
 </head>
 
