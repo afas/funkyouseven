@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :shop_section_id %><br />
-    <%= f.collection_select :shop_section_id, ShopSection.all, :name, :id, :promt => false %>
+    <%= f.collection_select :shop_section_id, ShopSection.all, :id, :name, :promt => false %>
   </div>
   <div class="actions">
     <%= f.submit %>
