@@ -6,7 +6,7 @@
   <% else %>
       <%= link_to raw(product_title(basket_item.product) + " (" + ProductSize.by_code(basket_item.product_size) + (basket_item.initial_size != basket_item.product_size ? " / #{ProductSize.by_code(basket_item.initial_size)}" : "") + ")"), basket_item.product, :class => "title", :title => product_title(basket_item.product) %>
 <% end %>
-  <span><%= format_price(basket_item.product.price.round) %></span>
+  <span class="stuff-price"><%= format_price(basket_item.product.price.round) %></span>
   <form>
     <label>Количество</label>
     <%= text_field_tag "counter-#{basket_item.product.id}-#{basket_item.product_size}", basket_item.product_count, :onkeyup => "onKeyUp(event, #{basket_item.product.id}, #{basket_item.product_size});" %>

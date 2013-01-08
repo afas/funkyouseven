@@ -26,10 +26,40 @@
   <%= yield(:head) %>
 
   <%= csrf_meta_tags %>
+  <noscript>
+    <style>
+        .step {
+            width: 100%;
+            position: relative;
+        }
+
+        .step:not(.active) {
+            opacity: 1;
+            filter: alpha(opacity = 99);
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=99)";
+        }
+
+        .step:not(.active) a.jms-link {
+            opacity: 1;
+            margin-top: 40px;
+        }
+    </style>
+  </noscript>
+
 </head>
 
 <body>
-<div id="fb-root"></div>
+<%= render "layouts/admin_menu" %>
+
+<div class="page-content">
+  <div class="wrapper">
+    <%= render "layouts/head" %>
+    <div id="content">
+      <%= yield %>
+    </div>
+    <%= render "layouts/footer" %>
+  </div>
+</div>
 
 <% unless notice.nil? %>
     <p id="notice"><%= notice %></p>
@@ -41,13 +71,8 @@
     </div>
 <% end %>
 
-<div class="wrapper">
-  <%= render "layouts/head" %>
-  <div id="content">
-    <%= yield %>
-  </div>
-  <%= render "layouts/footer" %>
-</div>
+<div id="fb-root"></div>
+
 <%= yield :scripts %>
 </body>
 </html>

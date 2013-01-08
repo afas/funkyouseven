@@ -26,19 +26,20 @@
 </head>
 
 <body class="body_editor">
-<div id="fb-root"></div>
-
+<%= render "layouts/admin_menu" if can?(:create, :Post) %>
+<div class="page-content">
+  <div class="wrapper">
+    <%= render "layouts/head" %>
+    <div id="content" class="content_item">
+      <%= yield %>
+    </div>
+    <%= render "layouts/footer" %>
+  </div>
+</div>
 <% unless notice.nil? %>
     <p id="notice"><%= notice %></p>
 <% end %>
-
-<div class="wrapper">
-  <%= render "layouts/head" %>
-  <div id="content" class="content_item">
-    <%= yield %>
-  </div>
-  <%= render "layouts/footer" %>
-</div>
+<div id="fb-root"></div>
 <%= yield :scripts %>
 </body>
 </html>

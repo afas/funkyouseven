@@ -1,3 +1,64 @@
+$(document).ready(function () {
+
+    if ($("#notice").length > 0) {
+        setTimeout(function () {
+            $("#notice").animate({top:-144}, 555, function () {
+                $("#notice").remove();
+            });
+        }, 2000);
+    }
+
+    if ($(".menu-top").length > 0) {
+        var menu = Meny.create({
+            menuElement:document.querySelector('.menu-top'),
+            contentsElement:document.querySelector('.page-content'),
+            position:Meny.getQuery().p || 'left',
+            height:144,
+            width:480,
+            threshold:21
+        });
+    }
+
+    var jmpressOpts = {
+        animation:{ transitionDuration:'0.8s' }
+    };
+
+    $("#jms-slideshow").jmslideshow($.extend(true, { jmpressOpts:jmpressOpts }, {
+        autoplay:true,
+        height:422,
+        width:630,
+        bgColorSpeed:'0.8s',
+        arrows:false
+    }));
+
+    if ($(".size_unit").length > 0) {
+        $(".size_unit input[type=text]").click(function () {
+            $(this).select();
+        });
+    }
+
+    if ($(".cat_item form input[type=text]").length > 0) {
+        $(".cat_item form input[type=text]").click(function () {
+            $(this).select();
+        });
+    }
+
+    if ($("select").length > 0) {
+        var params = {
+            changedEl:"select",
+            scrollArrows:false
+        }
+        cuSel(params);
+    }
+
+    if ($(".product_previews li").length > 0) {
+        $(".product_previews li div").click(function () {
+            $("#current_image").attr("src", $(this).attr("image_url"));
+        })
+    }
+});
+
+
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-31898771-1']);
 _gaq.push(['_trackPageview']);
@@ -30,79 +91,6 @@ _gaq.push(['_trackPageview']);
     }
 }(document, "script", "twitter-wjs");
 
-
-$(document).ready(function () {
-
-    if ($("#notice").length > 0) {
-        setTimeout(function () {
-            $("#notice").animate({top:-144}, 555, function () {
-                $("#notice").remove();
-            });
-        }, 2000);
-    }
-
-    if ($(".size_unit").length > 0) {
-        $(".size_unit input[type=text]").click(function () {
-            $(this).select();
-        });
-    }
-
-    if ($(".cat_item form input[type=text]").length > 0) {
-        $(".cat_item form input[type=text]").click(function () {
-            $(this).select();
-        });
-    }
-
-    if ($("select").length > 0) {
-        var params = {
-            changedEl:"select",
-            scrollArrows:false
-        }
-        cuSel(params);
-    }
-
-    if ($(".product_previews li").length > 0) {
-        $(".product_previews li div").click(function () {
-            $("#current_image").attr("src", $(this).attr("image_url"));
-        })
-    }
-
-    if ($(".slider_box").length > 0) {
-        $('.slides').slides({
-            preload:true,
-            preloadImage:'assets/preloader.gif',
-            play:5000,
-            pause:2500,
-            hoverPause:true,
-            animationStart:function (current) {
-                $('.caption').animate({
-                    bottom:-35
-                }, 100);
-                if (window.console && console.log) {
-                    // example return of current slide number
-                    console.log('animationStart on slide: ', current);
-                }
-                ;
-            },
-            animationComplete:function (current) {
-                $('.caption').animate({
-                    bottom:0
-                }, 200);
-                if (window.console && console.log) {
-                    // example return of current slide number
-                    console.log('animationComplete on slide: ', current);
-                }
-                ;
-            },
-            slidesLoaded:function () {
-                $('.caption').animate({
-                    bottom:0
-                }, 200);
-            }
-        });
-    }
-
-});
 
 function updateProductLook(look_id) {
     look = $("#product_look").is(':checked');
@@ -161,7 +149,7 @@ function setCareer() {
 function checkHref() {
     href = $("#add_product_button").attr("href");
     if (href == "#") {
-        $("#cuselFrame-product_size_id").toggle("shake", {distance:8, times:1}, 300);
+        $("#cuselFrame-product_size_id").toggle("shake", {distance:34, times:2}, 300);
         return false;
     } else {
         $.get(href);

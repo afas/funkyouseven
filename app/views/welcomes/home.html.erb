@@ -13,15 +13,15 @@
     <%= render "products/product_preview_item", :product => @about_bottom[rand(@about_bottom.size)], :cat_item => true, :margin_top => false, :container_class => "" unless @about_bottom.empty? %>
   </div>
 
-  <%= render "welcomes/slider", :target => @bottom_slider unless @bottom_slider.empty? %>
+  <%#= render "welcomes/slider", :target => @bottom_slider unless @bottom_slider.empty? %>
 
-  <div class="column">
-    <%= render "products/product_preview_item", :product => @last[rand(@last.size)], :cat_item => false, :margin_top => false, :container_class => "" unless @last.empty? %>
-  </div>
+  <!--<div class="column">-->
+    <%#= render "products/product_preview_item", :product => @last[rand(@last.size)], :cat_item => false, :margin_top => false, :container_class => "" unless @last.empty? %>
+  <!--</div>-->
 
-  <div class="column column_second">
-    <%= render "products/product_preview_item", :product => @last[rand(@last.size)], :cat_item => false, :margin_top => false, :container_class => "" unless @last.empty? %>
-  </div>
+  <!--<div class="column column_second">-->
+    <%#= render "products/product_preview_item", :product => @last[rand(@last.size)], :cat_item => false, :margin_top => false, :container_class => "" unless @last.empty? %>
+  <!--</div>-->
 </div>
 
 <%= render "welcomes/side_bar" %>

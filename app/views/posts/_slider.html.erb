@@ -1,14 +1,10 @@
-<div class="slider_box">
-  <div class="slides slide_second">
-    <div class="slides_container">
-      <% target.each do |image| %>
-          <div class="slide">
-            <%= image_tag image.image(:album_normal), :alt => image.title %>
-            <div class="post_image_caption">
-              <span><%= image.title %></span>
-            </div>
-          </div>
-      <% end %>
-    </div>
-  </div>
-</div>
+<section id="jms-slideshow" class="jms-slideshow jms-post">
+<% target.each do |image| %>
+      <div class="step" data-x="<%= rand(620)-320 unless target.first == image %>" data-z="<%= rand(200)-100 unless target.first == image %>"  data-y="<%= rand(422)-211 unless target.first == image %>" data-rotate="<%= rand(120)-60 unless target.first == image %>">
+        <div class="jms-content">
+          <p><%= image.title %></p>
+        </div>
+        <%= image_tag image.image(:album_normal), :alt => image.title %>
+      </div>
+  <% end %>
+</section>

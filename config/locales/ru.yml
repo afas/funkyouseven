@@ -90,7 +90,7 @@ ru:
         import_products: "Импортировать продукты"
       welcome:
         title: "Заголовок"
-        description: "Мини эбаут на главной"
+        description: "Инсайд фулл"
         phone: "Телефон"
       post:
         title: "Заголовок"

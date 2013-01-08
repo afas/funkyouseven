@@ -258,11 +258,6 @@ a {
 
 }
 
-.admin_menu {
-    margin-top: 20px;
-    z-index: 6000;
-}
-
 .menu_left li {
     float: left;
     margin-right: 25px;
@@ -309,6 +304,7 @@ a {
     background: #fff;
     margin: 0;
     padding-right: 20px;
+    float: left;
 }
 
 .menu_left li.current ul li a,
@@ -370,97 +366,6 @@ li.current ul li.current a {
 
 .my_basket div.cat:nth-child(even) {
     margin-right: 0px !important;
-}
-
-
-.slider_box {
-    position: relative;
-    float: left;
-    width: 638px;
-    height: 422px;
-    margin-bottom: 20px;
-}
-
-.slides {
-    float: left;
-}
-
-.slides_container {
-    width: 638px;
-    height: 422px;
-    overflow: hidden;
-    position: relative;
-    display: none;
-}
-
-.slides_container div.slide {
-    width: 638px;
-    height: 422px;
-    display: block;
-}
-
-.slides .prev, .slides .next {
-    background: none;
-}
-
-.pagination {
-    display: block;
-    height: 11px;
-    margin: -34px auto 0;
-    position: relative;
-    text-align: center;
-    width: 100%;
-    z-index: 9999;
-}
-
-.pagination li {
-    display: inline-block;
-    margin: 0 1px;
-}
-
-.pagination li a {
-    background: url(pagination.png) -16px 0;
-    display: block;
-    width: 11px;
-    height: 11px;
-    float: left;
-    overflow: hidden;
-    text-indent: -9999px;
-}
-
-.pagination li a:hover {
-    background-position: 0 0px;
-}
-
-.pagination li.current a {
-    background-position: 0 0px;
-}
-
-.caption {
-    font-family: 'FuturisCBold';
-    font-size: 50px;
-    line-height: 40px;
-    width: 400px;
-    word-wrap: break-word;
-    height: 190px;
-    z-index: 500;
-    position: absolute;
-    bottom: 0px !important;
-    left: 50px;
-    text-transform: uppercase;
-}
-
-.caption a {
-    color: #000000;
-}
-
-.caption a span {
-    color: #00ff06;
-}
-
-.caption a p {
-    font-family: 'BrushScriptStdRegular';
-    font-size: 30px;
 }
 
 .column {
@@ -916,7 +821,7 @@ form .label {
     line-height: 24px;
     color: #666666;
     float: left;
-    width: 100%;
+    /*width: 100%;*/
     margin-bottom: 21px;
 }
 
@@ -1109,6 +1014,10 @@ form .label {
     font-size: 12px;
 }
 
+/*.ui-effects-transfer .cuselText {*/
+    /*color: red !important;*/
+/*}*/
+
 * html .cuselText {
     height: 24px;
 }
@@ -1256,7 +1165,9 @@ form .label {
 .product_selects .cusel, .product_selects input[type="checkbox"] {
     margin: 13px 21px 0 0;
 
-}.product_selects input[type="checkbox"] {
+}
+
+.product_selects input[type="checkbox"] {
     margin: 18px 21px 0 0;
     float: left;
 }
@@ -1497,16 +1408,16 @@ form label {
     margin-left: 0;
 }
 
-.admin_menu, .sub_menu {
-    background: #ffffff;
-}
+/*.admin_menu, .sub_menu {*/
+/*background: #ffffff;*/
+/*}*/
 
-.admin_menu li, .sub_menu li {
-    cursor: pointer;
-    list-style: none;
-    float: left;
-    margin: 0;
-}
+/*.admin_menu li, .sub_menu li {*/
+/*cursor: pointer;*/
+/*list-style: none;*/
+/*float: left;*/
+/*margin: 0;*/
+/*}*/
 
 .sub_menu {
     float: left;
@@ -1523,44 +1434,107 @@ form label {
     font-weight: bold;
 }
 
-.admin_menu li.title, .admin_menu li.title ul li a {
-    font-size: 12px;
-    margin-left: 8px;
+.admin_menu li.title {
+    width: 100%;
+}
 
-    /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
-    /*font-weight: bold;*/
-    font-weight: normal;
+li.title ul li {
+    float: right;
+}
+
+.admin_menu li.title, .menu-top h2 {
+    color: #006CFF;
     font-family: 'FuturisCRegular';
-
-    width: auto;
+    font-size: 21px;
+    font-weight: normal;
+    margin: 21px 0 34px;
+    text-align: right;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
 }
 
-.admin_menu li.title ul li a {
-    margin-left: -8px;
+.stuff-title {
+    line-height: 47px;
 }
 
-.admin_menu li.title ul {
-    display: none;
+.admin_menu li.title {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 0;
+    padding-bottom: 13px;
 }
 
-.admin_menu li.title:hover ul {
-    display: block;
-    position: absolute;
+.my_basket {
+    float: right;
+}
+
+#content .my_basket {
+    float: left;
+    padding-top: 13px;
+}
+
+.my_basket .cat_item {
+    margin-right: 0;
+}
+
+.stuff-price {
+    float: right !important;
+    line-height: 13px;
+    width: auto !important;
+}
+
+.my_basket form input[type="text"] {
+    color: #006CFF;
+}
+
+.my_basket form label {
+    line-height: 13px;
+
+}
+
+.admin_menu .my_basket .cat_item {
+    float: right;
+    background: url("bgeditor.png") repeat scroll 50% 50% #EEEEEE;
+    padding: 21px 0 8px 21px;
 }
 
 .admin_menu li.title ul li {
-    float: none;
+    float: right;
 }
 
-.admin_menu li.title ul li a {
-    background: none repeat scroll 0 0 #FFFFFF;
+.admin_menu li.title ul li a, li.title .basket span {
+    color: #006CFF;
+    font-family: 'FuturisCRegular';
+    font-size: 15px;
     font-weight: normal;
-    padding: 5px 8px 0;
-    min-width: 51px;
+    line-height: 21px;
+    padding: 13px 0 0;
+    text-shadow: none;
 }
 
-.admin_menu li:last-child {
-    margin-right: 8px;
+.basket span {
+    color: #000000;
+}
+
+#order-price span {
+    color: #11FF17;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.admin_menu li.title ul li a:after {
+    color: #006CFF;
+    content: " ›";
+    font-size: 15px;
+    font-weight: 600;
+    text-shadow: 1px 0px 1px #CCC;
+    text-transform: uppercase;
+}
+
+.admin_menu li.title ul li a:hover {
+    border-bottom: 1px solid #006CFF;
+    padding: 12px 0 0;
+}
+
+.admin_menu li.title ul li a:hover {
+    /*padding: 4px 0 0;*/
 }
 
 #order_address {
@@ -1621,7 +1595,7 @@ form label {
 }
 
 /*#cuselFrame-sex_id {*/
-    /*min-width: 55px !important;*/
+/*min-width: 55px !important;*/
 /*}*/
 /**/
 #cuselFrame-career_id, #cuselFrame-user_career, #cuselFrame-product_size_id {

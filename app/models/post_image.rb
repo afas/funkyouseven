@@ -6,7 +6,7 @@ class PostImage < ActiveRecord::Base
   has_attached_file :image,
                     :styles => {
                         :preview_item => "300x200#",
-                        :album_normal => "637x428#",
+                        :album_normal => "638x422#",
                         :big => "979x614#"
                     },
                     :default_url =>  "/post_images/default.jpg",

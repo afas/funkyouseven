@@ -158,7 +158,7 @@ class Product < ActiveRecord::Base
   def self.import()
     current_shop_section = nil
 
-    import_session = GoogleSpreadsheet.login("anton@black-sheep.ru", "rfhnjirf")
+    import_session = GoogleSpreadsheet.login("anton@black-sheep.ru", "blacksheepforever")
     worksheets = import_session.spreadsheet_by_key("0AicZb6Y8rwZzdDdDbjhlUmdUWUtyY1dMbmhCeVZiM0E").worksheets
 
     worksheets.each_with_index do |worksheet, worksheet_number|

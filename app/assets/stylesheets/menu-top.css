@@ -1,0 +1,40 @@
+.menu-top {
+    display: none;
+    padding: 55px;
+    overflow: auto;
+
+    background: #EEEEEE;
+    color: #eee;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body.meny-active .menu-top {
+    -webkit-box-shadow: 13px 13px 21px 5px rgba(0, 0, 0, 0.8);
+    box-shadow: 13px 13px 21px 5px rgba(0, 0, 0, 0.8);
+}
+
+body.meny-active, body.meny-active wrapper.div {
+    overflow-y: auto;
+    background: url(bg_dotted.png) repeat scroll 50% 50% #EEEEEE;
+}
+
+.page-content {
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.welcome-description .markItUp {
+    width: 321px;
+    margin: 5px auto;
+}
+
+#welcome_description {
+    padding: 13px 0;
+    width: 300px;
+}

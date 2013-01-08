@@ -8,7 +8,7 @@ class Ability
     #can :import_catalog, Product
 
     unless user.new_record?
-      can [:edit, :destroy], Post do |post|
+      can [:create, :edit, :destroy], Post do |post|
         post.author_id == user.id
       end
       can :edit, Order do |order|
