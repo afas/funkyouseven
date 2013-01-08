@@ -1,6 +1,6 @@
 <section id="jms-slideshow" class="jms-slideshow">
   <% target.each do |product| %>
-      <div class="step" data-x="<%= rand(620)-320 unless target.first == product %>" data-z="<%= rand(200)-100 unless target.first == product %>"  data-y="<%= rand(422)-211 unless target.first == product %>" data-rotate="<%= rand(120)-60 unless target.first == product %>">
+      <div class="step" data-x="<%= rand(620)-320 unless target.first == product %>" data-z="<%= rand(200)-100 unless target.first == product %>">
         <div class="jms-content">
           <%= link_to raw(product_title(product, "span") + "<p>" + format_price(product.price) + "</p>"), product %>
           <!--<p>From fairest creatures we desire increase, that thereby beauty's rose might never die</p>-->
