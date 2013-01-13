@@ -27,7 +27,7 @@
     <% @product.product_images.each_with_index do |image, i| %>
         <% if i < 6 %>
             <li>
-              <div image_url="<%= image.image.url(:full) %>" style="background: url(<%= image.image.url(:preview_circle) %>) no-repeat scroll 0 0 transparent;"></div>
+              <div image_url="<%= image.image.url(:full) %>" style="background: url('<%= image.image.url(:preview_circle) %>') no-repeat scroll 0 0 transparent;"></div>
             </li>
         <% end %>
     <% end %>

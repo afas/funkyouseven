@@ -21,7 +21,7 @@ ru:
   backend:
     actions:
       are_you_sure: "Вы уверены?"
-      are_you_want_delete: "Вы уверены, что хотите удалить %{target} \"%{name}\"?"
+      are_you_want_delete: "Вы уверены, что хотите удалить %{target} %{name}?"
       back: "Назад"
       destroy: "Удалить"
       edit: "Изменить"
@@ -77,6 +77,15 @@ ru:
       product: "продукт"
       shop_section: "раздел"
       section_category: "категория"
+    model:
+      user: "пользователя"
+      order: "заказ"
+      post: "статьи"
+      static: "страницы"
+      brand: "бренда"
+      product: "продукта"
+      shop_section: "раздела"
+      section_category: "категории"
     attributes:
       admin_menu:
         user: "Пользователи"
@@ -88,6 +97,15 @@ ru:
         shop_section: "Разделы"
         section_category: "Категории"
         import_products: "Импортировать продукты"
+      shop_section:
+        name: Название
+        short_url: Короткий адрес
+        list_order: Порядок вывода
+        description: Описание
+      section_category:
+        name: Название
+        description: Описание
+        shop_section_id: Раздел
       welcome:
         title: "Заголовок"
         description: "Инсайд фулл"
@@ -100,6 +118,12 @@ ru:
         created_at: "Дата создания(публикации)"
         author_id: "Автор"
         short_url: "Короткий адрес"
+      static:
+        title: "Заголовок"
+        image: "Превью"
+        short_url: "Короткий адрес"
+        content: "Содержание"
+        list_order: "Порядок следования"
       brand:
         name: "Название"
         logo: "Логотип"
@@ -168,6 +192,7 @@ ru:
         phone: "Телефон"
         address: "Адрес доставки"
         comment: "Комментарий"
+        order_items: "Товары в заказе"
         internal_comment: "Внутренние заметки"
         order_status: "Статус заказа"
         pay_status: "Статус платежа"

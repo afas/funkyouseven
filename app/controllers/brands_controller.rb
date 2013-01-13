@@ -57,7 +57,7 @@ class BrandsController < ApplicationController
     @brand = Brand.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render layout: "editor" }
       format.json { render json: @brand }
     end
   end
@@ -65,6 +65,7 @@ class BrandsController < ApplicationController
   # GET /brands/1/edit
   def edit
     @brand = Brand.find(params[:id])
+    render layout: "editor"
   end
 
   # POST /brands
@@ -77,7 +78,7 @@ class BrandsController < ApplicationController
         format.html { redirect_to @brand, notice: 'Brand was successfully created.' }
         format.json { render json: @brand, status: :created, location: @brand }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", layout: "editor" }
         format.json { render json: @brand.errors, status: :unprocessable_entity }
       end
     end
@@ -93,7 +94,7 @@ class BrandsController < ApplicationController
         format.html { redirect_to @brand, notice: 'Успешно обновлена информация о производетеле.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "edit", layout: "editor" }
         format.json { render json: @brand.errors, status: :unprocessable_entity }
       end
     end

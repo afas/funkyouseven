@@ -22,8 +22,11 @@ class ApplicationController < ActionController::Base
 
     if controller_name == "registrations"
        unless current_user.nil?
-         @my_orders = Order.where("user_id = ?", current_user.id).order("created_at DESC").all
-         @my_orders = Order.order("created_at DESC").all if current_user.admin?
+         if current_user.admin?
+           @my_orders = Order.order("created_at DESC").all
+         else
+           @my_orders = Order.where("user_id = ?", current_user.id).order("created_at DESC").all
+         end
        end
     end
 

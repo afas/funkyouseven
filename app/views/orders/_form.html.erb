@@ -20,7 +20,8 @@
 
     <br/>
     <div class="field">
-      <%= f.label t('activerecord.attributes.order.user') %><br/>
+      <%= f.label t('activerecord.attributes.order.user') %>
+      <br/>
       <%= text_field_tag :user, @order.user.full_name, :disabled => true %>
     </div>
 
@@ -36,15 +37,47 @@
       <%= f.text_area :comment, :class => "span" %>
     </div>
 
+
+
+    <div class="order_item_list">
+      <%= f.label t("activerecord.attributes.order.order_items") %>
+      <br/>
+      <ul>
+        <li>
+          <span></span>
+          <span>Название</span>
+          <span>Размер</span>
+          <span>Количество x Цена</span>
+        </li>
+
+        <% @order.order_items.each do |order_item| %>
+            <li>
+              <span><%= image_tag order_item.product.get_preview.image(:preview_circle) %></span>
+              <span><%= link_to product_title(order_item.product), "/products/#{order_item.product.id}" %></span>
+              <span><%= ProductSize.by_code(order_item.product_size) %></span>
+              <span><%= "#{order_item.product_count} x #{format_price(order_item.product.price)}" %></span>
+            </li>
+        <% end %>
+      </ul>
+      <br/>
+
+      <div class="clear"></div>
+
+      <b>Итого с учетом доставки:</b>
+      <%= format_price(@order.total_price) %>
+    </div>
+
+    <div class="clear"></div>
     <!--<div class="field">-->
-      <%#= f.label t("activerecord.attributes.order.pay_status") %>
-      <!--<br/>-->
-      <%#= f.collection_select :pay_status_id, PayStatus.collection, :code, :name %>
+    <%#= f.label t("activerecord.attributes.order.pay_status") %>
+    <!--<br/>-->
+    <%#= f.collection_select :pay_status_id, PayStatus.collection, :code, :name %>
     <!--</div>-->
 
     <!--<hr>-->
 
     <% if current_user.courier? %>
+        <hr/>
         <div class="field">
           <%= f.label t("activerecord.attributes.order.internal_comment") %>
           <br/>

@@ -35,7 +35,7 @@ class ShopSectionsController < ApplicationController
     @shop_section = ShopSection.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render layout: "editor" }
       format.json { render json: @shop_section }
     end
   end
@@ -43,6 +43,7 @@ class ShopSectionsController < ApplicationController
   # GET /shop_sections/1/edit
   def edit
     @shop_section = ShopSection.find(params[:id])
+    render layout: "editor"
   end
 
   # POST /shop_sections
@@ -55,7 +56,7 @@ class ShopSectionsController < ApplicationController
         format.html { redirect_to @shop_section, notice: 'Shop section was successfully created.' }
         format.json { render json: @shop_section, status: :created, location: @shop_section }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", layout: "editor" }
         format.json { render json: @shop_section.errors, status: :unprocessable_entity }
       end
     end
@@ -71,7 +72,7 @@ class ShopSectionsController < ApplicationController
         format.html { redirect_to @shop_section, notice: 'Shop section was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "edit", layout: "editor" }
         format.json { render json: @shop_section.errors, status: :unprocessable_entity }
       end
     end

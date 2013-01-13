@@ -9,10 +9,15 @@
 
       <div class="my_orders">
         <ul>
+          <li>
+            <a>Время</a>
+            Сумма [Статус] Адрес доставки
+          </li>
           <% @my_orders.each do |order| %>
               <li>
-                <%= link_to Russian::strftime(order.created_at, '%d %B %Y %H:%m'), edit_order_path(order) %>
-                <%= "[" + OrderStatus.by_code(order.order_status_id) + "] " + t("activerecord.attributes.order.delivery") + ": " + order.address %>
+                <%= link_to Russian::strftime(order.created_at, '%d/%m %H:%M'), edit_order_path(order) %>
+                <%= format_price(order.total_price) + " [" + OrderStatus.by_code(order.order_status_id) + "] " + order.address %>
+                <%= link_to('Удалить', order, :confirm => t("backend.actions.are_you_want_delete", :target => "", :name => t("activerecord.model.order") ), :method => :delete, :title => "Удалить", :class => "order_product_delete") if can?(:destroy, Order) %>
               </li>
           <% end %>
         </ul>

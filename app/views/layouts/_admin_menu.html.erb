@@ -4,28 +4,27 @@
         <%= admin_panel %>
       </ul>
       <div class="clear"></div>
-  <% else %>
-      <ul class="admin_menu">
-        <li class="title">
-          Price
-          <div id="order-price" class="basket <%= "hidden" if @basket.products_count == 0 %>">
-            <%= render "basket/order_price" %>
-          </div>
-
-          <ul>
-            <li><%= link_to "Оформить заказ", "/basket" %></li>
-          </ul>
-        </li>
-        <li class="title stuff-title">
-          My stuff
-          <div class="my_basket">
-            <% @basket.items.each_with_index do |basket_item| %>
-                <%= render "products/product_basket_item", :basket_item => basket_item, :cat_item => true, :margin_top => false, :container_class => "" %>
-            <% end %>
-          </div>
-        </li>
-      </ul>
   <% end %>
+  <ul class="admin_menu">
+    <li class="title">
+      Price
+      <div id="order-price" class="basket <%= "hidden" if @basket.products_count == 0 %>">
+        <%= render "basket/order_price" %>
+      </div>
+
+      <ul>
+        <li><%= link_to "Оформить заказ", "/basket" %></li>
+      </ul>
+    </li>
+    <li class="title stuff-title">
+      My stuff
+      <div class="my_basket">
+        <% @basket.items.each_with_index do |basket_item| %>
+            <%= render "products/product_basket_item", :basket_item => basket_item, :cat_item => true, :margin_top => false, :container_class => "" %>
+        <% end %>
+      </div>
+    </li>
+  </ul>
   <div class="about">
     <img src="/assets/logos/fy7-small.png" alt="Wear, Boards, Bikes">
   </div>

@@ -29,7 +29,7 @@ class SectionCategoriesController < ApplicationController
     @section_category = SectionCategory.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render layout: "editor" }
       format.json { render json: @section_category }
     end
   end
@@ -37,6 +37,7 @@ class SectionCategoriesController < ApplicationController
   # GET /section_categories/1/edit
   def edit
     @section_category = SectionCategory.find(params[:id])
+    render layout: "editor"
   end
 
   # POST /section_categories
@@ -49,7 +50,7 @@ class SectionCategoriesController < ApplicationController
         format.html { redirect_to @section_category, notice: 'Section category was successfully created.' }
         format.json { render json: @section_category, status: :created, location: @section_category }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", layout: "editor" }
         format.json { render json: @section_category.errors, status: :unprocessable_entity }
       end
     end
@@ -65,7 +66,7 @@ class SectionCategoriesController < ApplicationController
         format.html { redirect_to @section_category, notice: 'Section category was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "edit", layout: "editor" }
         format.json { render json: @section_category.errors, status: :unprocessable_entity }
       end
     end

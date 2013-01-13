@@ -8,7 +8,7 @@ class OrderStatus
         OrderStatus.new(:name => 'Новый', :code => 0),
         OrderStatus.new(:name => 'Комплектуется', :code => 1),
         OrderStatus.new(:name => 'Доставка', :code => 2),
-        OrderStatus.new(:name => 'Успешно выполнен', :code => 3),
+        OrderStatus.new(:name => 'Выполнен', :code => 3),
         OrderStatus.new(:name => 'Troubles', :code => 4)
     ]
     list

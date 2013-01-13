@@ -33,9 +33,10 @@
 }
 
 .jms-content {
-    clear: both;
-    margin: 34px 100px 0 34px;
-    position: relative;
+    bottom: 55px;
+    left: 55px;
+    position: absolute;
+    width: 400px;
     z-index: 1000;
 }
 
@@ -114,8 +115,10 @@ a.jms-link {
 }
 
 .jms-post .jms-content p {
-    color: #0054FF;
     font-size: 20px;
+    filter: dropshadow(color=#ffffff, offx=1, offy=1);
+    text-shadow: 1px 1px 0px #ffffff;
+    color: #006CFF;
 }
 
 .jms-post .jms-dots {

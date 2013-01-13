@@ -13,23 +13,27 @@ $(document).ready(function () {
             menuElement:document.querySelector('.menu-top'),
             contentsElement:document.querySelector('.page-content'),
             position:Meny.getQuery().p || 'left',
-            height:144,
-            width:480,
+//            height:144,
+            width:431,
             threshold:21
         });
     }
 
-    var jmpressOpts = {
-        animation:{ transitionDuration:'0.8s' }
-    };
 
-    $("#jms-slideshow").jmslideshow($.extend(true, { jmpressOpts:jmpressOpts }, {
-        autoplay:true,
-        height:422,
-        width:630,
-        bgColorSpeed:'0.8s',
-        arrows:false
-    }));
+    if ($("#jms-slideshow").length > 0) {
+        var jmpressOpts = {
+            animation:{ transitionDuration:'0.8s' }
+        };
+
+        $("#jms-slideshow").jmslideshow($.extend(true, { jmpressOpts:jmpressOpts }, {
+            autoplay:true,
+            height:422,
+            width:630,
+//            bgColorSpeed:'0.8s',
+            arrows:false,
+            interval: '4000'
+        }));
+    }
 
     if ($(".size_unit").length > 0) {
         $(".size_unit input[type=text]").click(function () {

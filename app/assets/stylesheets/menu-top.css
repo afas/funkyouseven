@@ -11,6 +11,10 @@
     box-sizing: border-box;
 }
 
+.menu-top .admin_menu {
+    width: 100%;
+}
+
 body.meny-active .menu-top {
     -webkit-box-shadow: 13px 13px 21px 5px rgba(0, 0, 0, 0.8);
     box-shadow: 13px 13px 21px 5px rgba(0, 0, 0, 0.8);

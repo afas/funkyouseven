@@ -60,7 +60,7 @@ class OrdersController < ApplicationController
 
         session[:basket] = nil
 
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Order was successfully created.' }
         format.js { render notice: 'Order was successfully created.' }
         format.json { render json: @order, status: :created, location: @order }
       else
@@ -77,7 +77,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.update_attributes(params[:order])
-        format.html { redirect_to  edit_user_registration_path, notice: 'Order was successfully updated.' }
+        format.html { redirect_to edit_user_registration_path, notice: 'Order was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit", layout: "editor" }
@@ -93,7 +93,7 @@ class OrdersController < ApplicationController
     @order.destroy
 
     respond_to do |format|
-      format.html { redirect_to orders_url }
+      format.html { redirect_to edit_user_registration_path }
       format.json { head :no_content }
     end
   end

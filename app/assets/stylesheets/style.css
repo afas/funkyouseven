@@ -255,7 +255,6 @@ a {
     z-index: 2;
     font-family: "FuturisCRegular";
     font-weight: 400;
-
 }
 
 .menu_left li {
@@ -1015,7 +1014,7 @@ form .label {
 }
 
 /*.ui-effects-transfer .cuselText {*/
-    /*color: red !important;*/
+/*color: red !important;*/
 /*}*/
 
 * html .cuselText {
@@ -1472,6 +1471,10 @@ li.title ul li {
 }
 
 .my_basket .cat_item {
+    margin: 0 40px 30px 0;
+}
+
+.stuff-title .my_basket .cat_item {
     margin-right: 0;
 }
 
@@ -1550,8 +1553,59 @@ li.title ul li {
     position: absolute;
 }
 
+.my_orders ul li, .order_item_list ul li {
+    line-height: 37px;
+    padding: 8px;
+    margin-bottom: 21px;
+}
+
+.order_item_list ul li {
+    height: 80px;
+}
+
+.my_orders ul li:nth-child(odd), .order_item_list ul li:nth-child(odd) {
+    background: rgba(0,0,0,0.1);
+}
+
+.my_orders ul li:first-child, .order_item_list ul li:first-child {
+    border-bottom: 1px solid #11FF17;
+    height: 34px;
+}
+
+.my_orders ul li:first-child, .my_orders ul li:first-child a, .order_item_list ul li:first-child, .order_item_list ul li:first-child a, .order_item_list ul li:first-child span {
+    color: #000000;
+    font-family: "FuturisCRegular";
+    font-weight: 600;
+    font-size: 18px;
+}
+
 .my_orders ul li {
-    margin-bottom: 5px;
+    margin-bottom: 0;
+}
+
+.order_item_list span {
+    width: 21%;
+    padding-right: 3px;
+    line-height: 37px;
+}
+
+.order_item_list span:first-child {
+    width: 15%;
+}
+
+.order_item_list span:last-child {
+    width: 34%;
+}
+
+.my_orders ul li a {
+    display: block;
+    float: left;
+    width: 110px;
+}
+
+.my_orders ul li a.order_product_delete {
+    float: right;
+    width: 70px;
 }
 
 .social-panel, .fb-comments {

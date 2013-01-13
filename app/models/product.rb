@@ -34,10 +34,7 @@ class Product < ActiveRecord::Base
   has_many :size_to_products
 
   has_many :product_to_looks
-
-  #has_many :look_products, :through => :product_to_looks, :source => 'looks'
-  #has_many :looks, :class_name => 'ProductToLook', :foreign_key => 'look_id'
-  #has_many :product_looks, :through => :looks, :source => :product
+  has_many :looks, :through => :product_to_looks
 
   scope :with_images, joins(:product_images).group("product_images.product_id").where("product_images.id != 0")
 

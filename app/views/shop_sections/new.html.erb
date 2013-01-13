@@ -1,5 +1,7 @@
-<h1>New shop_section</h1>
+<div class="center_item">
 
-<%= render 'form' %>
-
-<%= link_to 'Back', shop_sections_path %>
+  <div class="main noborder">
+    <h1><%= t('backend.titles.creating', :model => t('activerecord.model.shop_section')) %></h1>
+    <%= render 'form' %>
+  </div>
+</div>

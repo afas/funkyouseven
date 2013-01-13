@@ -1,4 +1,4 @@
-<%= form_for(@brand) do |f| %>
+<%= form_for(@brand, :html => {:multipart => true}) do |f| %>
     <% if @brand.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@brand.errors.count, "error") %> prohibited this brand from being saved:</h2>
@@ -45,3 +45,9 @@
       <%= f.submit %>
     </div>
 <% end %>
+
+<script language="javascript">
+    $(document).ready(function () {
+        $("#brand_description").markItUp(mySettings);
+    })
+</script>

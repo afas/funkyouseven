@@ -10,7 +10,9 @@ class Order < ActiveRecord::Base
   attr_writer :email, :name, :phone, :user_create
 
   belongs_to :user
+
   has_many :order_items
+  has_many :products, :through => :order_items
 
   scope :by_created, order(:created_at)
   scope :by_updated, order(:updated_at)
@@ -29,12 +31,30 @@ class Order < ActiveRecord::Base
   def add_order_items_from_basket(basket)
     basket.items.each do |item|
       size_to_product = SizeToProduct.find_by_product_id_and_size_id(item.product.id, item.product_size)
-      size_to_product.product_count -= item.product_count
-      size_to_product.save
-
-      order_item = OrderItem.from_basket_item(item)
-      order_items << order_item
+      unless size_to_product.nil?
+        size_to_product.product_count -= item.product_count
+        size_to_product.save
+      else
+        size_to_product = SizeToProduct.new()
+        size_to_product.product_id = item.product.id
+        size_to_product.size_id = item.product_size
+        size_to_product.product_count = 0 - item.product_count
+        size_to_product.save
+      end
+      OrderItem.create_from_basket_item(item, self.id)
     end
+  end
+
+  def products_price
+    order_items.sum { |item| item.product.price * item.product_count }
+  end
+
+  def delivery_price
+    300.to_f
+  end
+
+  def total_price
+    products_price.to_f + delivery_price.to_f
   end
 
   private
