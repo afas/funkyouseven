@@ -1,0 +1,36 @@
+.markItUp .markItUpButton1 a {
+    background-image: url("markitup/paragraph.png");
+}
+.markItUp .markItUpButton2 a {
+    background-image: url("markitup/h3.png");
+}
+.markItUp .markItUpButton3 a {
+    background-image: url("markitup/bold.png");
+}
+.markItUp .markItUpButton4 a {
+    background-image: url("markitup/italic.png");
+}
+.markItUp .markItUpButton5 a {
+    background-image: url("markitup/list-bullet.png");
+}
+.markItUp .markItUpButton6 a {
+    background-image: url("markitup/list-numeric.png");
+}
+.markItUp .markItUpButton7 a {
+    background-image: url("markitup/list-item.png");
+}
+.markItUp .markItUpButton8 a	{
+    background-image: url("markitup/quotes.png");
+}
+.markItUp .markItUpButton9 a {
+    background-image: url("markitup/link.png");
+}
+.markItUp .markItUpButton10 a {
+    background-image: url("markitup/picture.png");
+}
+.markItUp .clean a {
+    background-image: url("markitup/clean.png");
+}
+.markItUp .preview a {
+    background-image: url("markitup/preview.png");
+}

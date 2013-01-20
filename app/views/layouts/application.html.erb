@@ -49,6 +49,12 @@
 </head>
 
 <body>
+<% if @welcome.coming_soon? && !can?(:manage, :all) %>
+    <div id="fullover">
+      <a href="#" title="Coming soon ..."></a>
+    </div>
+<% end %>
+
 <%= render "layouts/admin_menu" %>
 
 <div class="page-content">
@@ -63,12 +69,6 @@
 
 <% unless notice.nil? %>
     <p id="notice"><%= notice %></p>
-<% end %>
-
-<% if controller_name == "welcomes" && !can?(:manage, :all) %>
-    <div id="fullover">
-      <a href="#" title="Coming soon ..."></a>
-    </div>
 <% end %>
 
 <div id="fb-root"></div>

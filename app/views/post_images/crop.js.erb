@@ -1,0 +1,27 @@
+var width, height, original_width, original_height;
+
+original_width = <%= "#{@image.image_geometry(:original).width}" %>;
+original_height = <%= "#{@image.image_geometry(:original).height}" %>;
+
+width = <%= "#{@image.image_geometry(:album_normal).width}" %>;
+height = <%= "#{@image.image_geometry(:album_normal).height}" %>;
+
+var w_ratio = <%= "original_width" %> / width;
+var h_ratio = <%= "original_height" %> / height;
+
+var min_ratio = (w_ratio < h_ratio) ? w_ratio : h_ratio;
+
+var w_select = Math.round(width * min_ratio);
+var h_select = Math.round(height * min_ratio);
+
+$("#default-popup").html("<%= escape_javascript( render( :partial => "post_images/crop", :locals => { :target => @image} ) ) %>");
+//menu
+//Meny.
+
+Avgrund.show("#default-popup");
+initCrop();
+
+//Avgrund.hide();
+//Avgrund.hide();
+//crop_content = $("#crop_content_" + id).remove();
+//crop_content.appendTo('#default-popup');

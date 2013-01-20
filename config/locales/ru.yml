@@ -26,6 +26,8 @@ ru:
       destroy: "Удалить"
       edit: "Изменить"
       show: "Посмотреть"
+      crop: "Обрезать"
+      cancel: "Отменить"
       please_select: "Выберите..."
       success_create: "%{model} успешно создан."
       success_update: "%{model} успешно обновлён."
@@ -40,12 +42,9 @@ ru:
       create: "Создать"
       update: "Обновить"
       submit: "Сохранить"
+      change: "Изменить"
       post: "Отправить"
       order: "Заказать"
-#      create: "Создать %{model}"
-#      update: "Сохранить %{model}"
-#      submit: "Сохранить %{model}"
-
   errors:
     messages:
       cannot_be_blank: "не может быть пустым"
@@ -97,6 +96,8 @@ ru:
         shop_section: "Разделы"
         section_category: "Категории"
         import_products: "Импортировать продукты"
+        price: "Счет"
+        stuff: "Мой стаф"
       shop_section:
         name: Название
         short_url: Короткий адрес
@@ -110,12 +111,13 @@ ru:
         title: "Заголовок"
         description: "Инсайд фулл"
         phone: "Телефон"
+        coming_soon: "Закрыть сайт"
       post:
         title: "Заголовок"
         description: "Анонс"
         content: "Содержание статьи"
         video_emb: "Embed code видео ролика [width=637]"
-        created_at: "Дата создания(публикации)"
+        created_at: "Дата публикации"
         author_id: "Автор"
         short_url: "Короткий адрес"
       static:
@@ -160,9 +162,11 @@ ru:
         role: "Роль в системе"
         email: "E-mail"
         password: "Пароль"
-        password_new: "Новый пароль (Если хотите изменить пароль)"
+        change_password: "Изменение пароля"
+        password_new: "Новый пароль"
         password_confirmation: "Подтверждение пароля"
-        current_password: "Текущий пароль (введите для сохранения изменений)"
+        current_password_for_changes: "Текущий пароль (введите для сохранения изменений)"
+        current_password: "Текущий пароль"
         name: "Имя"
         surname: "Фамилия"
         nickname: "Никнейм"
@@ -186,6 +190,7 @@ ru:
         go_order: "Оформить заказ"
         to_basket: "В корзину"
       order:
+        title: "Информация о заказе"
         user: "Клиент"
         email: "Ваш e-mail"
         name: "Имя"

@@ -6,25 +6,28 @@
       <div class="clear"></div>
   <% end %>
   <ul class="admin_menu">
-    <li class="title">
-      Price
-      <div id="order-price" class="basket <%= "hidden" if @basket.products_count == 0 %>">
-        <%= render "basket/order_price" %>
-      </div>
+    <% unless @basket.items.empty? %>
+        <li class="title">
+          <%= t("activerecord.attributes.admin_menu.price") %>
+          <div id="order-price" class="basket <%= "hidden" if @basket.products_count == 0 %>">
+            <%= render "basket/order_price" %>
+          </div>
 
-      <ul>
-        <li><%= link_to "Оформить заказ", "/basket" %></li>
-      </ul>
-    </li>
-    <li class="title stuff-title">
-      My stuff
-      <div class="my_basket">
-        <% @basket.items.each_with_index do |basket_item| %>
-            <%= render "products/product_basket_item", :basket_item => basket_item, :cat_item => true, :margin_top => false, :container_class => "" %>
-        <% end %>
-      </div>
-    </li>
+          <ul>
+            <li><%= link_to "Оформить заказ", "/basket" %></li>
+          </ul>
+        </li>
+        <li class="title stuff-title">
+          <%= t("activerecord.attributes.admin_menu.stuff") %>
+          <div class="my_basket">
+            <% @basket.items.each_with_index do |basket_item| %>
+                <%= render "products/product_basket_item", :basket_item => basket_item, :cat_item => true, :margin_top => false, :container_class => "" %>
+            <% end %>
+          </div>
+        </li>
+    <% end %>
   </ul>
+  <div class="clear"></div>
   <div class="about">
     <img src="/assets/logos/fy7-small.png" alt="Wear, Boards, Bikes">
   </div>

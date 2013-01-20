@@ -56,7 +56,7 @@ class StaticsController < ApplicationController
 
     respond_to do |format|
       if @static.save
-        format.html { redirect_to @static, notice: 'Static was successfully created.' }
+        format.html { redirect_to show_static_path(@static.short_url), notice: 'Static was successfully created.' }
         format.json { render json: @static, status: :created, location: @static }
       else
         format.html { render action: "new", layout: "editor" }
@@ -72,7 +72,7 @@ class StaticsController < ApplicationController
 
     respond_to do |format|
       if @static.update_attributes(params[:static])
-        format.html { redirect_to @static, notice: 'Static was successfully updated.' }
+        format.html { redirect_to show_static_path(@static.short_url), notice: 'Static was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit", layout: "editor" }
@@ -88,7 +88,7 @@ class StaticsController < ApplicationController
     @static.destroy
 
     respond_to do |format|
-      format.html { redirect_to statics_url }
+      format.html { redirect_to root }
       format.json { head :no_content }
     end
   end

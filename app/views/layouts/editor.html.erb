@@ -26,8 +26,10 @@
 </head>
 
 <body class="body_editor">
+<%= render "layouts/popup" if can?(:create, :Post) %>
 <%= render "layouts/admin_menu" if can?(:create, :Post) %>
-<div class="page-content">
+
+<div class="page-content avgrund-contents">
   <div class="wrapper">
     <%= render "layouts/head" %>
     <div id="content" class="content_item">

@@ -97,8 +97,8 @@ form input[type="text"] {
 body {
     background: #fff;
     line-height: 1;
-    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
-    /*font-family: 'FuturisCRegular';*/
+    font-family: "Helvetica", "Arial", sans-serif;
+    /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
 }
 
 a {
@@ -144,15 +144,14 @@ a {
 
 #header {
     float: left;
-    margin-bottom: 7px;
-    min-height: 221px;
+    min-height: 214px;
     position: relative;
     width: 100%;
     z-index: 21;
 }
 
 #fullover {
-    background: url(coming-soon.png) no-repeat scroll 50% 50% rgba(255, 255, 255, 0.89);
+    background: url(coming-soon.png) no-repeat scroll 50% 0 rgba(255,255,255,0.89);
     height: 100%;
     left: 0;
     position: fixed;
@@ -206,10 +205,11 @@ a {
     color: #000000;
     float: left;
     font-size: 13px;
-    height: 159px;
+    height: 150px;
     line-height: 18px;
     margin: 20px 0 0;
     width: 245px;
+    font-family: "FuturisCRegular";
 }
 
 .info a, .basket-icon a {
@@ -272,7 +272,7 @@ a {
     font-size: 20px;
     float: left;
     color: #000000;
-    padding-bottom: 10px;
+    padding-bottom: 11px;
     position: relative;
 }
 
@@ -302,7 +302,7 @@ a {
 .sub_menu li {
     background: #fff;
     margin: 0;
-    padding-right: 20px;
+    padding-right: 13px;
     float: left;
 }
 
@@ -313,6 +313,10 @@ a {
     font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
     font-size: 12px;
     background: none;
+}
+
+.sub_menu li a {
+    padding-bottom: 34px;
 }
 
 li.current ul li.current a {
@@ -367,6 +371,13 @@ li.current ul li.current a {
     margin-right: 0px !important;
 }
 
+.center h2 {
+    color: #000000;
+    font-family: "FuturisCRegular";
+    font-size: 21px;
+    font-weight: 600;
+}
+
 .column {
     width: 300px;
     float: left;
@@ -381,7 +392,7 @@ li.current ul li.current a {
 .link_img {
     float: left;
     width: 100%;
-    margin-bottom: 11px;
+    margin-bottom: 15px;
 }
 
 .link_img img {
@@ -389,9 +400,6 @@ li.current ul li.current a {
 }
 
 .title {
-    /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
-    /*font-weight: bold;*/
-
     font-family: 'FuturisCBold';
     font-size: 20px;
     color: #000000;
@@ -405,7 +413,7 @@ li.current ul li.current a {
     font-size: 18px;
     float: left;
     width: 100%;
-    margin: 5px 0 0;
+    margin: 7px 0 0;
 }
 
 .cat .cusel span {
@@ -427,26 +435,45 @@ li.current ul li.current a {
 }
 
 .about {
-    width: 100%;
-    float: left;
+    color: #000000;
+    font-family: 'FuturisCRegular';
+    font-size: 18px;
+    height: 345px;
+    line-height: 18px;
     text-align: center;
-    padding-top: 20px;
-    height: 330px;
+    width: 100%;
 }
 
 .about p {
-    font-size: 18px;
-    line-height: 18px;
-    color: #000;
-    margin: 15px 0;
+    margin: 17px 0;
+}
+
+.about img {
+    width: 89px;
+    height: 74px;
+    display: block;
+    margin: 20px auto 0;
 }
 
 .about span {
-    /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
-    /*font-weight: bold;*/
-
     font-family: 'FuturisCBold';
     font-size: 14px;
+}
+
+.welcome-description img {
+    margin: 0 auto;
+    display: table-caption;
+}
+
+.welcome-description textarea {
+    display: block;
+    margin: 0 auto;
+    height: 240px !important;
+    width: 300px !important;
+    text-align: center;
+    font-family: 'FuturisCRegular';
+    font-size: 18px !important;
+    line-height: 18px !important;
 }
 
 .slide_second .caption {
@@ -489,12 +516,26 @@ li.current ul li.current a {
     font-size: 13px;
     color: #000;
     float: left;
+    font-family: "FuturisCRegular";
 }
 
 .block {
-    width: 100%;
     float: left;
-    margin: 15px 0 20px 0;
+    padding: 8px 0;
+}
+
+.user_properties .block {
+    border-top: 1px solid #000000;
+    margin: 55px 0 0;
+    width: 100%;
+}
+
+
+.block h2 {
+    color: #000000;
+    font-family: "FuturisCRegular";
+    font-size: 21px;
+    font-weight: 600;
 }
 
 .info_block {
@@ -505,10 +546,10 @@ li.current ul li.current a {
 
 .img_box {
     float: left;
-    width: 100%;
     height: 200px;
+    margin-bottom: 9px;
     position: relative;
-    margin-bottom: 8px;
+    width: 100%;
 }
 
 .img_box span {
@@ -521,9 +562,6 @@ li.current ul li.current a {
 }
 
 .block_title {
-    /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
-    /*font-weight: bold;*/
-
     font-family: 'FuturisCBold';
     font-size: 18px;
     line-height: 20px;
@@ -534,11 +572,12 @@ li.current ul li.current a {
     color: #006cff !important;
 }
 
-.block p, .info_block p, .field label span {
+.block p, .info_block p {
+    color: #000000;
+    font-family: 'FuturisCRegular';
     font-size: 14px;
-    line-height: 21px;
-    color: #000;
-    /*margin-top: 5px;*/
+    line-height: 14px;
+    padding-top: 7px;
 }
 
 .all {
@@ -551,23 +590,28 @@ li.current ul li.current a {
 
 form input[type="text"], form input[type="number"] {
     border: 1px solid #D5D5D5;
-    font-size: 21px;
+    font-size: 15px;
     height: 34px;
     line-height: 28px;
     margin-bottom: 15px;
-    padding: 0 5px;
+    padding: 0;
     width: 100%;
     box-sizing: border-box;
 }
 
+form input[type="file"] {
+    margin-bottom: 15px;
+}
+
 form textarea {
     border: 1px solid #D5D5D5;
-    font-size: 21px;
-    line-height: 28px;
+    font-size: 15px;
+    line-height: 25px;
     margin-bottom: 15px;
-    padding: 0 3px;
+    /*padding: 0 3px;*/
     width: 100%;
-    box-sizing: border-box;
+    height: 320px;
+    /*box-sizing: border-box;*/
 }
 
 .title-100 {
@@ -580,15 +624,9 @@ form textarea {
 
 .field .span {
     color: #666666;
-    /*float: left;*/
     font-size: 20px;
     line-height: 24px;
-    /*margin-bottom: 50px;*/
     height: 144px;
-
-    /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
-    /*font-weight: bold;*/
-
     font-family: 'FuturisCRegular';
     width: 100%;
     box-sizing: border-box;
@@ -596,12 +634,8 @@ form textarea {
 
 form .title {
     color: #000000;
-
-    /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
-    /*font-weight: bold;*/
     font-weight: normal;
     font-family: 'FuturisCBold';
-
     font-size: 35px;
     line-height: 38px;
     height: 80px;
@@ -620,8 +654,6 @@ form .title {
 
 form .welcome_description {
     color: #000000;
-    /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
-
     font-family: 'FuturisCRegular';
     font-size: 35px;
     font-weight: normal;
@@ -684,9 +716,6 @@ form .label {
 }
 
 #footer  .menu_left li:hover a, #footer  .menu_right li:hover a {
-    /*background: none;*/
-    /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
-
     font-family: 'FuturisCRegular';
 }
 
@@ -723,7 +752,12 @@ form .label {
 
 .cat_item {
     width: 300px;
-    margin: 0 40px 30px 0;
+    margin: 0 40px 39px 0;
+}
+
+.cat-min-height a.link_img {
+    height: 355px;
+    overflow: hidden;
 }
 
 .no_margin {
@@ -760,7 +794,6 @@ form .label {
     width: 660px;
     float: left;
     border-right: 1px solid #cccccc;
-    /*min-height: 1800px;*/
 }
 
 .main {
@@ -771,18 +804,14 @@ form .label {
 }
 
 .main h1 {
-    /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
-    /*font-weight: bold;*/
-    font-family: 'FuturisCBold';
-    font-weight: normal;
-    font-size: 35px;
     color: #000000;
-    line-height: 38px;
+    font-family: 'FuturisCBold';
+    font-size: 28px;
+    font-weight: normal;
+    line-height: 55px;
 }
 
 .main h3 {
-    /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
-    /*font-weight: normal;*/
     font-family: 'FuturisCRegular';
     font-weight: bold;
 
@@ -855,21 +884,20 @@ form .label {
 }
 
 .title_magazine {
-    width: 100%;
-    float: left;
     color: #000000;
+    float: left;
     font-size: 24px;
-    text-align: center;
-    margin: 15px 0 0;
     line-height: 14px;
+    margin: 8px 0;
     position: relative;
+    text-align: center;
+    width: 100%;
     z-index: 999;
 }
 
 .title_magazine p {
-    font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;
-    font-weight: bold;
-    /*font-family: 'FuturisCBold';*/
+    font-family: 'FuturisCBold';
+    text-transform: uppercase;
 }
 
 .title_magazine span {
@@ -882,7 +910,7 @@ form .label {
     border-bottom: 1px solid #000000;
     float: left;
     margin-bottom: 20px;
-    min-height: 623px;
+    min-height: 648px;
 }
 
 .description {
@@ -894,8 +922,6 @@ form .label {
 }
 
 .description h1 {
-    /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
-    /*font-weight: bold;*/
     font-weight: normal;
     font-family: 'FuturisCBold';
 
@@ -919,9 +945,6 @@ form .label {
 }
 
 .description p span {
-    /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
-    /*font-weight: bold;*/
-
     font-family: 'FuturisCBold';
 }
 
@@ -967,6 +990,7 @@ form .label {
 
 .cusel-scroll-wrap span {
     font-size: 12px !important;
+    width: 100%;
 }
 
 .cusel,
@@ -984,8 +1008,6 @@ form .label {
     font-size: 13px;
     height: 24px;
     line-height: 24px !important;
-    /*max-width: 190px;*/
-    /*min-width: 50px;*/
     position: relative;
     z-index: 1;
     float: left;
@@ -1013,10 +1035,6 @@ form .label {
     font-size: 12px;
 }
 
-/*.ui-effects-transfer .cuselText {*/
-/*color: red !important;*/
-/*}*/
-
 * html .cuselText {
     height: 24px;
 }
@@ -1029,6 +1047,7 @@ form .label {
     margin: 0;
     padding: 0 15px 0 8px;
     white-space: nowrap;
+    color: #000;
 }
 
 .cusel span:hover,
@@ -1148,9 +1167,6 @@ form .label {
 .product_selects {
     min-height: 180px;
     border: 1px dashed #D5D5D5;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0 5px;
     margin-bottom: 13px;
     background-color: #FFFFFF;
 }
@@ -1255,10 +1271,6 @@ form .looks {
     margin-bottom: 20px;
 }
 
-.title_basket {
-    margin-bottom: 20px;
-}
-
 .cat_item form {
     width: 100%;
     margin: 0;
@@ -1350,10 +1362,7 @@ form .looks {
     float: left;
     width: 100%;
     margin-bottom: 5px;
-}
-
-form label {
-    margin-bottom: 0;
+    font-family: "FuturisCRegular";
 }
 
 .feedback label span, .block span, .info_block span, .field label span {
@@ -1382,9 +1391,6 @@ form label {
     padding: 5px;
     height: 77px;
     margin-bottom: 15px;
-    resize: vertical;
-    font-size: 12px;
-    line-height: 18px;
 }
 
 .actions {
@@ -1397,7 +1403,6 @@ form label {
     height: 32px;
     cursor: pointer;
     border: 0;
-    /*float: left;*/
     font-size: 12px;
     color: #fff;
     margin: 0 0 0 95px;
@@ -1407,17 +1412,6 @@ form label {
     margin-left: 0;
 }
 
-/*.admin_menu, .sub_menu {*/
-/*background: #ffffff;*/
-/*}*/
-
-/*.admin_menu li, .sub_menu li {*/
-/*cursor: pointer;*/
-/*list-style: none;*/
-/*float: left;*/
-/*margin: 0;*/
-/*}*/
-
 .sub_menu {
     float: left;
     padding-top: 15px;
@@ -1426,7 +1420,8 @@ form label {
 }
 
 .sub_menu li .cusel {
-    margin-top: -6px;
+    margin: -6px 9px 0 0;
+    padding-bottom: 28px;
 }
 
 .sub_menu li.current a {
@@ -1536,10 +1531,6 @@ li.title ul li {
     padding: 12px 0 0;
 }
 
-.admin_menu li.title ul li a:hover {
-    /*padding: 4px 0 0;*/
-}
-
 #order_address {
     height: 55px;
 }
@@ -1554,29 +1545,24 @@ li.title ul li {
 }
 
 .my_orders ul li, .order_item_list ul li {
-    line-height: 37px;
+    font-size: 13px;
+    line-height: 21px;
     padding: 8px;
-    margin-bottom: 21px;
-}
-
-.order_item_list ul li {
-    height: 80px;
 }
 
 .my_orders ul li:nth-child(odd), .order_item_list ul li:nth-child(odd) {
-    background: rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .my_orders ul li:first-child, .order_item_list ul li:first-child {
     border-bottom: 1px solid #11FF17;
-    height: 34px;
+    height: 21px;
 }
 
 .my_orders ul li:first-child, .my_orders ul li:first-child a, .order_item_list ul li:first-child, .order_item_list ul li:first-child a, .order_item_list ul li:first-child span {
     color: #000000;
-    font-family: "FuturisCRegular";
-    font-weight: 600;
-    font-size: 18px;
+    font-family: "FuturisCBold";
+    font-size: 13px;
 }
 
 .my_orders ul li {
@@ -1587,6 +1573,10 @@ li.title ul li {
     width: 21%;
     padding-right: 3px;
     line-height: 37px;
+}
+
+.order_item_list li:first-child span {
+    line-height: 21px;
 }
 
 .order_item_list span:first-child {
@@ -1644,18 +1634,40 @@ li.title ul li {
     min-width: 80px;
 }
 
+form .cusel {
+    margin-bottom: 15px;
+}
+
 #cuselFrame-product_welcome_position_id {
     width: 190px !important;
 }
 
-/*#cuselFrame-sex_id {*/
-/*min-width: 55px !important;*/
-/*}*/
-/**/
 #cuselFrame-career_id, #cuselFrame-user_career, #cuselFrame-product_size_id {
     width: 100px !important;
 }
 
 #cuselFrame-user_role {
     width: 121px !important;
+}
+
+.field img {
+    margin-bottom: 15px;
+}
+
+.noborder form .field label span {
+    font-size: 13px;
+    line-height: 13px;
+}
+
+#cuselFrame-post_author_id {
+    max-width: 170px;
+}
+
+.avgrund-active .menu-top {
+    opacity: 0;
+}
+
+#preview {
+    margin: 55px auto 0;
+    /*margin-top: 89px;*/
 }

@@ -19,12 +19,9 @@
 
     <div class="field welcome-description">
       <%= f.label :description %>
-      <center>
-        <%= image_tag "logos/fy7-small.png" %>
-        <br/>
-      </center>
+      <%= image_tag "logos/fy7-small.png" %>
       <%= f.text_area :description, :class => "span" %>
-
+      <br/>
     </div>
     <div class="field">
       <%= f.label :mail %>
@@ -36,14 +33,12 @@
       <br/>
       <%= f.text_field :phone %>
     </div>
+    <div class="field">
+      <%= f.label :coming_soon %>
+      <br/>
+      <%= f.check_box :coming_soon %>
+    </div>
     <div class="actions">
       <%= f.submit %>
     </div>
 <% end %>
-
-
-<script language="javascript">
-    $(document).ready(function () {
-        $("#welcome_description").markItUp(mySettings);
-    })
-</script>

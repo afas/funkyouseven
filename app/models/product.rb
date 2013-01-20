@@ -38,9 +38,10 @@ class Product < ActiveRecord::Base
 
   scope :with_images, joins(:product_images).group("product_images.product_id").where("product_images.id != 0")
 
-  scope :not_archive_or_positive_count, includes(:size_to_products).where("products.archive = ? OR size_to_products.product_count > 0 AND products.archive = ?", false, true)
-  scope :valid_products, with_images.not_archive_or_positive_count.where("products.price NOT NULL").order("products.updated_at DESC")
+  scope :not_archive_or_positive_count, includes(:size_to_products).where("products.archive = ? OR size_to_products.product_count > 0", false)
+  scope :valid_products, with_images.not_archive_or_positive_count.where("products.price NOT NULL")
 
+  scope :archive, where("products.archive = ?", true).order("products.updated_at DESC")
   scope :not_publish, order("products.updated_at DESC").limit(8)
   #scope :not_publish, includes(:size_to_products).where("products.price IS NULL OR products.shop_section_id IS NULL OR products.section_category_id IS NULL OR size_to_products.product_count IS NULL").order("created_at DESC")
   scope :shop_side_bar, valid_products.order("products.created_at DESC").limit(2)

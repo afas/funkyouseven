@@ -45,7 +45,11 @@ module ApplicationHelper
     create_path = send("new_#{classname}_path")
     links += "<li>" + link_to('Создать', create_path, :title => "Создать") + "</li>" if can?(:create, object)
 
-    links += "<li>" + link_to("Импорт", shop_import_catalog_path, :title => "Запустить импорт") + "</li>" if classname == "product"
+    if classname == "product"
+      links += "<li>" + link_to("Импорт", shop_import_catalog_path, :title => "Запустить импорт") + "</li>"
+      links += "<li>" + link_to("Не опубликованные", shop_not_publish_path, :title => "Не допущенные к публикации") + "</li>"
+      links += "<li>" + link_to("Архив", shop_archive_path, :title => "Архив") + "</li>"
+    end
 
     links += "</ul></li>"
 

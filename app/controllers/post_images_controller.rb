@@ -26,6 +26,10 @@ class PostImagesController < ApplicationController
     @image.delete
   end
 
+  def crop
+    @image = PostImage.find(params[:id])
+  end
+
   def update
     image = PostImage.find(params[:id])
 

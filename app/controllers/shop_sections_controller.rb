@@ -53,7 +53,7 @@ class ShopSectionsController < ApplicationController
 
     respond_to do |format|
       if @shop_section.save
-        format.html { redirect_to @shop_section, notice: 'Shop section was successfully created.' }
+        format.html { redirect_to shop_section_products_path(@shop_section.short_url), notice: 'Shop section was successfully created.' }
         format.json { render json: @shop_section, status: :created, location: @shop_section }
       else
         format.html { render action: "new", layout: "editor" }
@@ -69,7 +69,7 @@ class ShopSectionsController < ApplicationController
 
     respond_to do |format|
       if @shop_section.update_attributes(params[:shop_section])
-        format.html { redirect_to @shop_section, notice: 'Shop section was successfully updated.' }
+        format.html { redirect_to shop_section_products_path(@shop_section.short_url), notice: 'Shop section was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit", layout: "editor" }
@@ -85,7 +85,7 @@ class ShopSectionsController < ApplicationController
     @shop_section.destroy
 
     respond_to do |format|
-      format.html { redirect_to shop_sections_url }
+      format.html { redirect_to root_path }
       format.json { head :no_content }
     end
   end

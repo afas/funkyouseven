@@ -11,6 +11,13 @@ gem 'russian'
 gem 'sqlite3'
 gem 'will_paginate'
 
+gem 'jcrop-rails'
+gem 'markitup-rails'
+
+#gem "carrierwave"
+#gem "mini_magick"
+#gem 'jbuilder'
+
 #gem 'libv8', '~> 3.11.8'
 #gem 'execjs'
 

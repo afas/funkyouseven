@@ -1,24 +1,21 @@
 <ul class="menu_left">
   <% @menu_left.each do |shop_section| %>
-      <li <%= "class='current' shop_section_id='#{shop_section.id}'" if !@shop_section.nil? && shop_section == @shop_section %>>
+      <li class="<%= :current if shop_section == @shop_section %>">
         <%= link_to shop_section.name, shop_section_products_path(shop_section.short_url) %>
       </li>
-  <% end %>
-  <% if !current_user.nil? && current_user.admin? %>
-      <li><%= link_to "Новые", shop_not_publish_path %></li>
-  <% end %>
+  <% end unless @menu_left.empty? %>
 </ul>
 
 <ul class="menu_right">
   <% @menu_right.each do |item| %>
-      <li <%= "class='current'" if !@static.nil? && item == @static %>>
+      <li class="<%= :current if item == @static %>">
         <%= link_to item.title, "/#{item.short_url}" %>
       </li>
-  <% end %>
+  <% end unless @menu_right.empty? %>
 </ul>
 <div class="line"></div>
 
-<% unless @shop_section.nil? || action_name == "new" || action_name == "edit" %>
+<% unless ["new", "edit"].include?(action_name) || @shop_section.nil? %>
     <ul class="sub_menu">
       <% if @shop_section.short_url != "brands" %>
           <li>
@@ -32,21 +29,27 @@
       <% end %>
 
       <% @shop_section.section_categories.each do |section_category| %>
-          <li <%= "class='current' section_category_id='#{section_category.id}'" if !@section_category.nil? && section_category == @section_category %>>
+          <li class="<%= :current if section_category == @section_category %>">
             <%= link_to section_category.name, section_category_products_path(@shop_section.short_url, section_category.short_url) %>
           </li>
       <% end unless @shop_section.section_categories.empty? %>
     </ul>
 <% end %>
 
-<% if !@brand.nil? && controller.action_name != "edit" && controller.action_name != "new" %>
+<% if controller.controller_name == "brands" %>
     <ul class="sub_menu">
-      <li>
-        <%= collection_select(:sex, :id, Sex.collection, :code, :name, {:include_blank => "Пол", :selected => (@user_settings["sex"])}, {:onchange => "setSex()"}) %>
-      </li>
-      <li>
-        <%= collection_select(:career, :id, Career.collection, :code, :name, {:include_blank => "Вид спорта", :selected => (@user_settings["career"])}, {:onchange => "setCareer()"}) %>
-      </li>
+      <% if controller.action_name == "show" %>
+          <li>
+            <%= collection_select(:sex, :id, Sex.collection, :code, :name, {:include_blank => "Пол", :selected => (@user_settings["sex"])}, {:onchange => "setSex()"}) %>
+          </li>
+          <li>
+            <%= collection_select(:career, :id, Career.collection, :code, :name, {:include_blank => "Вид спорта", :selected => (@user_settings["career"])}, {:onchange => "setCareer()"}) %>
+          </li>
+      <% end %>
+      <% if controller.action_name == "index" %>
+          <li><a></a></li>
+      <% end %>
     </ul>
 <% end %>
+
 

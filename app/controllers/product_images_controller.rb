@@ -26,6 +26,10 @@ class ProductImagesController < ApplicationController
     @image.delete
   end
 
+  def crop
+    @image = ProductImage.find(params[:id])
+  end
+
   def update
     image = ProductImage.find(params[:id])
 

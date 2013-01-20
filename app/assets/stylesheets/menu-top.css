@@ -32,13 +32,3 @@ body.meny-active, body.meny-active wrapper.div {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-
-.welcome-description .markItUp {
-    width: 321px;
-    margin: 5px auto;
-}
-
-#welcome_description {
-    padding: 13px 0;
-    width: 300px;
-}

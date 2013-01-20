@@ -30,6 +30,15 @@ class ProductsController < ApplicationController
     end
   end
 
+  def archive
+    @products = Product.archive
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @products }
+    end
+  end
+
   def funk_yoo_shot
     @products = Product.not_publish
 
@@ -75,7 +84,7 @@ class ProductsController < ApplicationController
 
     @page = (params[:page] || 1).to_i
 
-    @products = Product.where(condition).valid_products.paginate(:page => @page)
+    @products = Product.where(condition).valid_products.order("products.updated_at DESC").paginate(:page => @page)
     @more_products = Product.where(condition).valid_products.all.size() - Product.per_page * @page
     @more_products = nil if @more_products <= 0
 
@@ -120,7 +129,7 @@ class ProductsController < ApplicationController
 
     @page = (params[:page] || 1).to_i
 
-    @products = Product.where(condition).valid_products.paginate(:page => @page)
+    @products = Product.where(condition).valid_products.order("products.updated_at DESC").paginate(:page => @page)
     @more_products = Product.where(condition).valid_products.all.size() - Product.per_page * @page
     @more_products = nil if @more_products <= 0
 
@@ -167,7 +176,7 @@ class ProductsController < ApplicationController
 
     @page = 1
 
-    @products = Product.where(condition).valid_products.paginate(:page => @page)
+    @products = Product.where(condition).valid_products.order("products.updated_at DESC").paginate(:page => @page)
     @more_products = Product.where(condition).valid_products.all.size() - Product.per_page * @page
     @more_products = nil if @more_products <= 0
 
@@ -210,7 +219,7 @@ class ProductsController < ApplicationController
 
     @page = 1
 
-    @products = Product.where(condition).valid_products.paginate(:page => @page)
+    @products = Product.where(condition).valid_products.order("products.updated_at DESC").paginate(:page => @page)
     @more_products = Product.where(condition).valid_products.all.size() - Product.per_page * @page
     @more_products = nil if @more_products <= 0
 

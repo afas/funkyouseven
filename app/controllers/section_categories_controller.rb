@@ -47,7 +47,7 @@ class SectionCategoriesController < ApplicationController
 
     respond_to do |format|
       if @section_category.save
-        format.html { redirect_to @section_category, notice: 'Section category was successfully created.' }
+        format.html { redirect_to section_category_products_path(@section_category.shop_section.short_url, @section_category.short_url), notice: 'Section category was successfully created.' }
         format.json { render json: @section_category, status: :created, location: @section_category }
       else
         format.html { render action: "new", layout: "editor" }
@@ -63,7 +63,7 @@ class SectionCategoriesController < ApplicationController
 
     respond_to do |format|
       if @section_category.update_attributes(params[:section_category])
-        format.html { redirect_to @section_category, notice: 'Section category was successfully updated.' }
+        format.html { redirect_to section_category_products_path(@section_category.shop_section.short_url, @section_category.short_url), notice: 'Section category was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit", layout: "editor" }
@@ -79,7 +79,7 @@ class SectionCategoriesController < ApplicationController
     @section_category.destroy
 
     respond_to do |format|
-      format.html { redirect_to section_categories_url }
+      format.html { redirect_to root_path }
       format.json { head :no_content }
     end
   end

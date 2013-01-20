@@ -3,7 +3,8 @@ class SectionCategory < ActiveRecord::Base
 
   belongs_to :shop_section
   has_many :products
-  #default_scope order(:name)
+
+  default_scope order(:name)
 
   before_save :generate_short_url
 

@@ -1,8 +1,13 @@
 /*
  *= require style
  *= require fileuploader
- *= require markitup
- *= require markitup.skin
+
  *= require gmaps4rails
  *= require menu-top
+
+*= require jcrop
+*= require avgrund
+
+*= require markitup-bs
+*= require markitup-macosx
 */

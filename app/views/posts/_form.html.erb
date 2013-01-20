@@ -19,10 +19,10 @@
     <div class="field">
       <%= f.label :author_id %>
       <br/>
-      <% if @post.new_record? && !current_user.nil? %>
-          <%= f.collection_select(:author_id, User.all, :id, :nickname || :name, :value => current_user.id, :promt => false) %>
+      <% if @post.new_record? %>
+          <%= f.collection_select(:author_id, User.all, :id, :name || :email, :value => current_user.id, :promt => false) %>
       <% else %>
-          <%= f.collection_select(:author_id, User.all, :id, :nickname || :name, :promt => false) %>
+          <%= f.collection_select(:author_id, User.all, :id, :name || :email, :promt => false) %>
       <% end %>
     </div>
     <div class="field">
@@ -38,7 +38,7 @@
     <div class="field">
       <%= f.label :content %>
       <br/>
-      <%= f.text_area :content %>
+      <%= f.text_area :content, :class => :markdown_field %>
     </div>
     <div class="field">
       <%= render :partial => 'post_images/files_upload', :locals => {:post => @post} %>
@@ -55,9 +55,3 @@
       <%= f.submit %>
     </div>
 <% end %>
-
-<script language="javascript">
-    $(document).ready(function () {
-        $("#post_content").markItUp(mySettings);
-    })
-</script>

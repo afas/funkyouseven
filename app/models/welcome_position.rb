@@ -5,11 +5,11 @@ class WelcomePosition
 
   def self.collection
     list = [
-        WelcomePosition.new(:name => 'Топ слайдер', :code => 0),
-        WelcomePosition.new(:name => 'Слева от ыбаута', :code => 1),
-        WelcomePosition.new(:name => 'Две позиции под ыбаутом', :code => 2),
-        WelcomePosition.new(:name => 'Слайдер #2', :code => 3),
-        WelcomePosition.new(:name => 'Last', :code => 4)
+        WelcomePosition.new(:name => 'Первый слайдер', :code => 0),
+        WelcomePosition.new(:name => 'Под слайдером', :code => 1),
+        WelcomePosition.new(:name => 'Под описанием', :code => 2),
+        WelcomePosition.new(:name => 'Второй слайдер', :code => 3),
+        WelcomePosition.new(:name => 'Самый низ', :code => 4)
     ]
     list
   end

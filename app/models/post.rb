@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
   attr_writer :preview_id, :emb_checked
   attr_reader :preview_id, :emb_checked
 
-  default_scope order("created_at DESC")
+  #default_scope order("created_at DESC")
   scope :side_bar, order("created_at DESC").limit(3)
   scope :article_side_bar, lambda { |post| where("id <> ?", post.id).order("created_at DESC").limit(3) }
   scope :magazine_list, order("created_at DESC")

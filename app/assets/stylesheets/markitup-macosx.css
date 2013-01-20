@@ -11,57 +11,63 @@
 }
 
 .markItUp {
-    /*width:635px;*/
-    margin: 5px 0 5px 0;
-    border: 5px solid #F5F5F5;
-    width: 100%;
-    box-sizing: border-box;
+    width: 637px;
+    margin-bottom: 15px;
 }
 
 .markItUpContainer {
-    border: 1px solid #3C769D;
-    background: #FFF url(bg-container.png) repeat-x top left;
-    padding: 5px 5px 2px 5px;
-    font: 11px Verdana, Arial, Helvetica, sans-serif;
+    width: 637px;
 }
 
 .markItUpEditor {
-    font: 12px 'Courier New', Courier, monospace;
-    padding: 5px;
-    border: 3px solid #3C769D;
-    /*width: 100%;*/
-    width: 609px;
-    box-sizing: border-box;
-    height: 555px;
-    background: #FFF url(bg-editor.png) no-repeat;
+    border-style: none solid solid;
+    border-width: medium 1px 1px;
     clear: both;
-    line-height: 18px;
+    display: block;
+    font-size: 13px;
+    height: 320px;
+    line-height: 21px;
+    margin: 0;
     overflow: auto;
-
+    padding: 5px 0;
+    width: 637px;
 }
 
 .markItUpPreviewFrame {
     overflow: auto;
     background-color: #FFFFFF;
-    border: 1px solid #3C769D;
-    width: 100%;
-    box-sizing: border-box;
-    height: 300px;
-    margin: 5px 0;
+    width: 637px;
+    height: 350px;
+    padding: 5px 0;
+    margin-top: 5px;
+    border: 1px solid #D5D5D5;
+}
+
+.markItUpHeader {
+    width: 630px;
+    padding: 10px 0px 0px 9px;
+    height: 25px;
+    background-image: url(markitup/bg-header.png);
+
+    -webkit-border-radius: 8px 8px 0px 0px;
+    border-radius: 8px 8px 0px 0px;
+
+    -webkit-box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, 0.5);
 }
 
 .markItUpFooter {
-    width: 100%;
-    cursor: n-resize;
+    width: 0;
+    display: none;
 }
 
 .markItUpResizeHandle {
+    margin: 0px 12px 5px auto;
     overflow: hidden;
-    width: 22px;
-    height: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    background-image: url(handle.png);
+    width: 12px;
+    height: 12px;
+    position: relative;
+    background-image: url(markitup/handle.png);
     cursor: n-resize;
 }
 
@@ -73,16 +79,36 @@
     position: relative;
 }
 
-.markItUpHeader ul li ul {
-    display: none;
-}
-
 .markItUpHeader ul li:hover > ul {
     display: block;
 }
 
+.markItUpHeader ul .markItUpDropMenu {
+    background: transparent url(markitup/menu.png) no-repeat 115% 50%;
+    margin-right: 5px;
+}
+
 .markItUpHeader ul .markItUpDropMenu li {
     margin-right: 0px;
+}
+
+/* next rows of buttons */
+.markItUpHeader ul ul {
+    display: none;
+    position: absolute;
+    top: 18px;
+    left: 0px;
+    background: #FFF;
+    border: 1px solid #000;
+}
+
+.markItUpHeader ul ul li {
+    float: none;
+    border-bottom: 1px solid #000;
+}
+
+.markItUpHeader ul ul .markItUpDropMenu {
+    background: #FFF url(markitup/submenu.png) no-repeat 100% 50%;
 }
 
 .markItUpHeader ul .markItUpSeparator {
@@ -99,23 +125,6 @@
     margin: 0px;
 }
 
-/* next rows of buttons */
-.markItUpHeader ul ul {
-    display: none;
-    position: absolute;
-    top: 18px;
-    left: 0px;
-    background: #F5F5F5;
-    border: 1px solid #3C769D;
-    height: inherit;
-}
-
-.markItUpHeader ul ul li {
-    float: none;
-    border-bottom: 1px solid #3C769D;
-}
-
-/* next rows of buttons */
 .markItUpHeader ul ul ul {
     position: absolute;
     top: -1px;
@@ -147,5 +156,5 @@
 
 .markItUpHeader ul ul a:hover {
     color: #FFF;
-    background-color: #3C769D;
+    background-color: #3875D7;
 }

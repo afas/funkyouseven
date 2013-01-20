@@ -1,0 +1,15 @@
+<div id="crop_content">
+  <%= image_tag target.image.url(:original), :id => "crop_content" %>
+
+  <div style="width: <%= target.image_geometry(:album_normal).width %>px; height: <%= target.image_geometry(:album_normal).height %>px; overflow: hidden; border: #cccccc 1px solid;">
+    <%= image_tag target.image.url(:original), :id => "preview" %>
+  </div>
+
+  <%= form_for target, :url => crop_post_image_path(target.id), :remote => true do |f| %>
+      <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
+          <%= f.hidden_field attribute, :id => "#{attribute}" %>
+      <% end %>
+      <%= f.submit t("backend.actions.crop") %>
+  <% end %>
+  <button onclick="javascript:closeDialog();">Close</button>
+</div>

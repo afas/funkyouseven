@@ -17,7 +17,7 @@
               <li>
                 <%= link_to Russian::strftime(order.created_at, '%d/%m %H:%M'), edit_order_path(order) %>
                 <%= format_price(order.total_price) + " [" + OrderStatus.by_code(order.order_status_id) + "] " + order.address %>
-                <%= link_to('Удалить', order, :confirm => t("backend.actions.are_you_want_delete", :target => "", :name => t("activerecord.model.order") ), :method => :delete, :title => "Удалить", :class => "order_product_delete") if can?(:destroy, Order) %>
+                <%= link_to('Удалить', order, :confirm => t("backend.actions.are_you_want_delete", :target => "", :name => t("activerecord.model.order")), :method => :delete, :title => "Удалить", :class => "order_product_delete") if can?(:destroy, Order) %>
               </li>
           <% end %>
         </ul>
@@ -32,7 +32,7 @@
   <!--<p>Список последних, по виду спорта</p>-->
 </div>
 
-<div class="sidebar">
+<div class="sidebar user_properties">
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, :class => "feedback"}) do |f| %>
       <%= devise_error_messages! %>
 
@@ -79,26 +79,34 @@
       <label><%= t("activerecord.attributes.user.email") %></label>
       <%= f.email_field :email, :class => "input", :editable => false %>
 
-      <label><span>*</span><%= t("activerecord.attributes.user.current_password") %></label>
+      <label><span>*</span><%= t("activerecord.attributes.user.current_password_for_changes") %></label>
       <%= f.password_field :current_password, :class => "input" %>
-
-      <br/>
-
-      <label><%= t("activerecord.attributes.user.password_new") %></label>
-      <%= f.password_field :password, :class => "input" %>
-
-      <label><%= t("activerecord.attributes.user.password_confirmation") %></label>
-      <%= f.password_field :password_confirmation, :class => "input" %>
 
       <%= f.submit t("helpers.submit.submit"), :class => "submit" %>
   <% end %>
 
   <div class="block">
-    <h3><%= t("activerecord.attributes.user.delete_account") %></h3>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, :class => "feedback"}) do |f| %>
+        <%= devise_error_messages! %>
+        <h2><%= t("activerecord.attributes.user.change_password") %></h2><br/>
 
+        <label><span>*</span><%= t("activerecord.attributes.user.current_password") %></label>
+        <%= f.password_field :current_password, :class => "input" %>
+
+        <label><%= t("activerecord.attributes.user.password_new") %></label>
+        <%= f.password_field :password, :class => "input" %>
+
+        <label><%= t("activerecord.attributes.user.password_confirmation") %></label>
+        <%= f.password_field :password_confirmation, :class => "input" %>
+
+        <%= f.submit t("helpers.submit.change"), :class => "submit" %>
+    <% end %>
+  </div>
+
+  <div class="block">
+    <h2><%= t("activerecord.attributes.user.delete_account") %></h2>
     <p>
-      <%= t("activerecord.attributes.user.unhappy") %> <%= link_to t("activerecord.attributes.user.delete_account_action"), registration_path(resource_name), :confirm => t("backend.actions.are_you_sure"), :method => :delete %>
-      .
+      <%= t("activerecord.attributes.user.unhappy") %> <%= link_to t("activerecord.attributes.user.delete_account_action"), registration_path(resource_name), :confirm => t("backend.actions.are_you_sure"), :method => :delete %>.
     </p>
   </div>
 </div>

@@ -1,4 +1,7 @@
 Funkyouseven::Application.routes.draw do
+  devise_for :users
+
+  post "markdown/preview"
 
   match '/size_to_product_count/:product_id/:size_id/:product_count', :to => 'size_to_products#size_to_product_count', :as => :size_to_product_count
 
@@ -21,24 +24,26 @@ Funkyouseven::Application.routes.draw do
 
   resources :orders
 
-  devise_for :users
 
+  resources :shop_sections
   resources :section_categories
+  resources :brands
 
   match '/shop/not_publish' => 'products#not_publish', :as => :shop_not_publish
+  match '/shop/archive' => 'products#archive', :as => :shop_archive
   match '/shop/import_catalog' => 'products#import_catalog', :as => :shop_import_catalog
   match '/shop/brands' => 'brands#index', :as => :shop_brands
   match '/shop/:shop_section' => 'products#index', :as => :shop_section_products
   match '/shop/:shop_section/:section_category' => 'products#index', :as => :section_category_products
-  resources :shop_sections
 
-  resources :brands
-
+  match '/product_images/crop/:id' => 'product_images#crop', :as => :crop_product_image
+  #match '/product_images/process/:id' => 'product_images#crop', :as => :crop_product_image
   match '/product_images/update/:id/:cover/:preview/:title' => 'product_images#update'
   match '/product_images/destroy/:id' => 'product_images#destroy'
   match '/product_images/upload' => 'product_images#upload'
   resources :product_images
 
+  match '/post_images/crop/:id' => 'post_images#crop', :as => :crop_post_image
   match '/post_images/update/:id/:cover/:preview/:title' => 'post_images#update'
   match '/post_images/destroy/:id' => 'post_images#destroy'
   match '/post_images/upload' => 'post_images#upload'
@@ -47,13 +52,13 @@ Funkyouseven::Application.routes.draw do
   match '/magazine' => 'posts#index'
   match '/magazine/:short_url' => 'posts#show', :as => :magazine_post
 
-  match '/access_denied' => 'error#access_denied', :as => :access_denied
-  match '/not_found' => 'error#not_found', :as => :not_found
-
-  match '/:short_url' => 'statics#show'
+  match '/:short_url' => 'statics#show', :as => :show_static
   resources :statics
+
   resources :welcomes
 
   root :to => 'welcomes#home'
 
+  match '/access_denied' => 'error#access_denied', :as => :access_denied
+  match '/not_found' => 'error#not_found', :as => :not_found
 end

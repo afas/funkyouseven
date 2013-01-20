@@ -41,7 +41,7 @@ class BrandsController < ApplicationController
 
     @page = (params[:page] || 1).to_i
 
-    @products = Product.where(condition).valid_products.paginate(:page => @page)
+    @products = Product.where(condition).valid_products.order("products.updated_at DESC").paginate(:page => @page)
     @more_products = Product.where(condition).valid_products.all.size() - Product.per_page * @page
     @more_products = nil if @more_products <= 0
 

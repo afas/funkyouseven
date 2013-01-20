@@ -23,29 +23,33 @@
       <%= f.label :archive %>
       <%= f.check_box :archive %>
 
-      <div class="clear-8"></div>
-
       <%= f.label :title_color %>
       <%= f.collection_select(:title_color, MyColor.collection, :code, :name) %>
 
+      <%= f.label :sex_id %>
+      <%= f.collection_select(:sex_id, Sex.collection, :code, :name, {:include_blank => "не установлен"}) %>
+
+      <div class="clear-8"></div>
+
       <%= f.label :brand_id %>
       <%= f.collection_select(:brand_id, Brand.all, :id, :name, {:include_blank => "не установлен"}) %>
+
 
       <%= f.label :career_id %>
       <%= f.collection_select(:career_id, Career.collection, :code, :name, {:include_blank => "не установлен"}) %>
 
       <div class="clear-8"></div>
 
+
       <%= f.label :shop_section_id %>
       <%= f.collection_select(:shop_section_id, ShopSection.all, :id, :name, {:include_blank => "не установлен"}) %>
+
 
       <%= f.label :section_category_id %>
       <%= f.collection_select(:section_category_id, SectionCategory.all, :id, :name, {:include_blank => "не установлен"}) %>
 
       <div class="clear-8"></div>
 
-      <%= f.label :sex_id %>
-      <%= f.collection_select(:sex_id, Sex.collection, :code, :name, {:include_blank => "не установлен"}) %>
 
       <%= f.label :welcome_position_id %>
       <%= f.collection_select(:welcome_position_id, WelcomePosition.collection, :code, :name, {:include_blank => "не установлен"}) %>
