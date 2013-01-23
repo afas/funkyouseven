@@ -1,5 +1,5 @@
 <div id="crop_content">
-  <%= image_tag target.image.url(:original), :id => "crop_content" %>
+  <%= image_tag target.image.url(:original), :id => "crop_image" %>
 
   <div style="width: <%= target.image_geometry(:slider).width %>px; height: <%= target.image_geometry(:slider).height %>px; overflow: hidden; border: #cccccc 1px solid;">
     <%= image_tag target.image.url(:original), :id => "preview" %>
@@ -11,5 +11,5 @@
       <% end %>
       <%= f.submit t("backend.actions.crop") %>
   <% end %>
-  <button onclick="javascript:closeDialog();">Close</button>
+  <button onclick="javascript:closeDialog();">Закрыть</button>
 </div>

@@ -151,7 +151,7 @@ a {
 }
 
 #fullover {
-    background: url(coming-soon.png) no-repeat scroll 50% 0 rgba(255,255,255,0.89);
+    background: url(coming-soon.png) no-repeat scroll 50% 0 rgba(255, 255, 255, 0.89);
     height: 100%;
     left: 0;
     position: fixed;
@@ -238,6 +238,12 @@ a {
 
 .basket-icon a {
     font-size: 13px;
+
+    /*color: #000000;*/
+    font-family: 'FuturisCRegular';
+    font-size: 14px;
+    line-height: 14px;
+    /*padding: 13px 0;*/
 }
 
 .menu_left {
@@ -530,10 +536,15 @@ li.current ul li.current a {
     width: 100%;
 }
 
-
 .block h2 {
     color: #000000;
     font-family: "FuturisCRegular";
+    color: #000000;
+    font-family: 'FuturisCRegular';
+    font-size: 14px;
+    line-height: 14px;
+    padding: 13px 0;
+
     font-size: 21px;
     font-weight: 600;
 }
@@ -577,7 +588,7 @@ li.current ul li.current a {
     font-family: 'FuturisCRegular';
     font-size: 14px;
     line-height: 14px;
-    padding-top: 7px;
+    padding: 13px 0;
 }
 
 .all {
@@ -1195,7 +1206,7 @@ form .label {
     border: 1px dashed #D5D5D5;
     width: 100%;
     box-sizing: border-box;
-    padding: 0px 5px;
+    padding: 5px 0;
     background-color: #FFFFFF;
 }
 
@@ -1333,6 +1344,10 @@ form .looks {
 .basket p {
     float: left;
     margin-top: 7px;
+
+    color: #000000;
+    font-family: "FuturisCRegular";
+    font-size: 16px;
 }
 
 .basket span {
@@ -1357,7 +1372,7 @@ form .looks {
 
 .feedback label, form label {
     font-size: 13px;
-    font-weight: bold;
+    /*font-weight: bold;*/
     color: #000000;
     float: left;
     width: 100%;
@@ -1421,7 +1436,7 @@ form .looks {
 
 .sub_menu li .cusel {
     margin: -6px 9px 0 0;
-    padding-bottom: 28px;
+    /*padding-bottom: 28px;*/
 }
 
 .sub_menu li.current a {
@@ -1670,4 +1685,15 @@ form .cusel {
 #preview {
     margin: 55px auto 0;
     /*margin-top: 89px;*/
+}
+
+#crop_content input[type="submit"], #crop_content button {
+    background: url("button.png") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 13px;
+    height: 32px;
+    margin: 34px 0 0 250px;
+    width: 113px;
 }

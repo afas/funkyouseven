@@ -61,7 +61,7 @@
 	margin: -500px 0 0 -500px;
 	visibility: hidden;
 	opacity: 0;
-	z-index: 2;
+	z-index: 20000;
 	padding: 20px;
 
 	background: white;

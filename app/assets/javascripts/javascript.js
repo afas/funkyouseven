@@ -133,24 +133,28 @@ $(document).ready(function () {
 
 //    Avgrund.show("#default-popup");
 
-var menu, croppable_image_id, current_width, current_height;
-
+var menu, croppable_image_id, current_width, current_height, width, height, original_width, original_height;
 
 function initCrop() {
 //    croppable_image_id = id;
 //    crop_content = $("#crop_content").remove();
 //    crop_content.appendTo('#default-popup');
 
-    current_width = eval("original_width");
-    current_height = eval("original_height");
+//    current_width = eval("original_width");
+//    current_height = eval("original_height");
 
-    $("#cropbox").Jcrop({
+
+    $("#crop_image").Jcrop({
         onChange:update_crop,
         onSelect:update_crop,
         setSelect:[Math.floor(0.5 * (current_width - w_select)), Math.floor(0.5 * (current_height - h_select)), w_select, h_select],
-        minSize:[width, height],
+//        minSize:[width, height],
         aspectRatio:width / height
     });
+}
+
+function closeDialog() {
+    Avgrund.hide();
 }
 
 function update_crop(coords) {

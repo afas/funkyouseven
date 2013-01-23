@@ -1,15 +1,15 @@
-var width, height, original_width, original_height;
-
-original_width = <%= "#{@image.image_geometry(:original).width}" %>;
-original_height = <%= "#{@image.image_geometry(:original).height}" %>;
+current_width = <%= "#{@image.image_geometry(:original).width}" %>;
+current_height = <%= "#{@image.image_geometry(:original).height}" %>;
 
 width = <%= "#{@image.image_geometry(:slider).width}" %>;
 height = <%= "#{@image.image_geometry(:slider).height}" %>;
 
-var w_ratio = <%= "original_width" %> / width;
-var h_ratio = <%= "original_height" %> / height;
+var w_ratio = current_width / width;
+var h_ratio = current_height / height;
 
 var min_ratio = (w_ratio < h_ratio) ? w_ratio : h_ratio;
+
+//alert(w_ratio);
 
 var w_select = Math.round(width * min_ratio);
 var h_select = Math.round(height * min_ratio);
