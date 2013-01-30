@@ -4,6 +4,7 @@
 //= require jquery.ui
 //= require jquery.cusel
 //= require menu-top
+//= require avgrund
 
 //= require jmpress.min
 //= require jquery.jmslideshow

@@ -13,9 +13,6 @@
               <span><%= magazine_date(@magazine_numbers[@magazine_numbers.size - current_number].created) %></span>
             </div>
         <% end %>
-
-
         <%= render "posts/post_preview_item", :target => post, :second => true, :show_date => true, :no_margin => (i+1)%3 == 0 ? true : false %>
-
     <% end %>
 <% end %>

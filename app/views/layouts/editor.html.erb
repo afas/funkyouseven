@@ -26,9 +26,9 @@
 </head>
 
 <body class="body_editor">
-<%= render "layouts/popup" if can?(:create, :Post) %>
-<%= render "layouts/admin_menu" if can?(:create, :Post) %>
-
+<%= render "layouts/popup" %>
+<%= render "layouts/admin_menu" %>
+<div class="menu-top-arrow"></div>
 <div class="page-content avgrund-contents">
   <div class="wrapper">
     <%= render "layouts/head" %>
@@ -38,9 +38,6 @@
     <%= render "layouts/footer" %>
   </div>
 </div>
-<% unless notice.nil? %>
-    <p id="notice"><%= notice %></p>
-<% end %>
 <div id="fb-root"></div>
 <%= yield :scripts %>
 </body>

@@ -16,7 +16,9 @@
     padding-top: 45px;
     text-align: center;
     width: 100%;
-    font-weight: bold;
+    font-family: 'FuturisCRegular';
+
+    /*font-weight: bold;*/
 }
 
 .qq-upload-button-hover, .qq-upload-button-focus, .qq-upload-drop-area {
@@ -124,7 +126,7 @@
 }
 
 .image-upload-preview:nth-child(even) {
-    padding-right: 37px;
+    margin-right: 37px;
 }
 
 .image-upload-preview label {

@@ -5,9 +5,10 @@
  *= require gmaps4rails
  *= require menu-top
 
-*= require jcrop
-*= require avgrund
+ *= require ios-checkboxes
+ *= require jcrop
+ *= require avgrund
 
-*= require markitup-bs
-*= require markitup-macosx
+ *= require markitup-bs
+ *= require markitup-macosx
 */

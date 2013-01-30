@@ -1,15 +1,15 @@
 <div id="crop_content">
   <%= image_tag target.image.url(:original), :id => "crop_image" %>
 
-  <div style="width: <%= target.image_geometry(:slider).width %>px; height: <%= target.image_geometry(:slider).height %>px; overflow: hidden; border: #cccccc 1px solid;">
-    <%= image_tag target.image.url(:original), :id => "preview" %>
-  </div>
+  <!--<div style="width: <%#= Utils.style_geometry(@image, :full).width %>px; height: <%#= Utils.style_geometry(@image, :full).height %>px; overflow: hidden; border: 1px dashed #D5D5D5;">-->
+    <!--<%#= image_tag target.image.url(:original), :id => "preview" %>-->
+  <!--</div>-->
 
   <%= form_for target, :url => crop_product_image_path(target.id), :remote => true do |f| %>
       <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
           <%= f.hidden_field attribute, :id => "#{attribute}" %>
       <% end %>
-      <%= f.submit t("backend.actions.crop") %>
+      <%= f.submit t("backend.actions.crop"), :onclick => "javascript:cursorWait();" %>
   <% end %>
-  <button onclick="javascript:closeDialog();">Закрыть</button>
+  <button onclick="javascript:closeModal();">Закрыть</button>
 </div>

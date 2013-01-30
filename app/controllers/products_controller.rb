@@ -231,6 +231,8 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
 
+    @basket.add_last_item(@product)
+
     @shop_section = @product.shop_section
     @section_category = @product.section_category
 

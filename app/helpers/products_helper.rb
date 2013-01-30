@@ -5,6 +5,10 @@ module ProductsHelper
     number_to_currency(price, :precision => 0, :unit => "p.")
   end
 
+  def product_title_position(product)
+    "style=left:#{product.title_x}px;top:#{product.title_y}px";
+  end
+
   def product_title(product, container = false)
     unless container
       title = product.title.gsub("{", "")

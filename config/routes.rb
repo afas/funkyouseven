@@ -37,7 +37,6 @@ Funkyouseven::Application.routes.draw do
   match '/shop/:shop_section/:section_category' => 'products#index', :as => :section_category_products
 
   match '/product_images/crop/:id' => 'product_images#crop', :as => :crop_product_image
-  #match '/product_images/process/:id' => 'product_images#crop', :as => :crop_product_image
   match '/product_images/update/:id/:cover/:preview/:title' => 'product_images#update'
   match '/product_images/destroy/:id' => 'product_images#destroy'
   match '/product_images/upload' => 'product_images#upload'

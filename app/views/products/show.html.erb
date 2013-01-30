@@ -1,7 +1,7 @@
 <%= meta_tags (@product) %>
 
 <div class="main_item">
-  <div class="description">
+  <div class="description <%= 'use-backround' if @product.use_background? %>">
     <form>
       <h1><%= raw product_title(@product, "span") %></h1>
       <%= raw "<h2>" + number_to_currency(@product.price.round, :precision => 0, :unit => "p.") + (@product.look && !@product.discount.nil? ? "(-" + @product.discount.to_s + "%)" : "") + "</h2>" unless @product.price.nil? %>

@@ -49,15 +49,16 @@
 </head>
 
 <body>
-<% if @welcome.coming_soon? && !can?(:manage, :all) %>
+<% if !can?(:manage, :all) && @welcome.coming_soon? && controller_name != "sessions" %>
     <div id="fullover">
       <a href="#" title="Coming soon ..."></a>
     </div>
 <% end %>
 
+<%= render "layouts/popup" %>
 <%= render "layouts/admin_menu" %>
-
-<div class="page-content">
+<div class="menu-top-arrow"></div>
+<div class="page-content avgrund-contents">
   <div class="wrapper">
     <%= render "layouts/head" %>
     <div id="content">
@@ -66,10 +67,6 @@
     <%= render "layouts/footer" %>
   </div>
 </div>
-
-<% unless notice.nil? %>
-    <p id="notice"><%= notice %></p>
-<% end %>
 
 <div id="fb-root"></div>
 

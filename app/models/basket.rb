@@ -1,12 +1,17 @@
 class Basket
-  attr_reader :items
+  attr_reader :items, :last_items
 
   def initialize
     @items = []
+    @last_items = []
   end
 
   def products_count
     @items.size
+  end
+
+  def add_last_item(product)
+    @last_items.insert(0, product) unless @last_items.include?(product)
   end
 
   def add_product(product, size_id)
@@ -23,8 +28,8 @@ class Basket
   def remove_product(product, size_id)
     current_item = @items.detect { |item| item.product == product and item.product_size == size_id }
     if current_item
-        @items.delete_if { |item| item.product == product and item.product_size == size_id}
-        current_item = nil
+      @items.delete_if { |item| item.product == product and item.product_size == size_id }
+      current_item = nil
     end
     current_item
   end
@@ -45,7 +50,7 @@ class Basket
   end
 
   def update_size(product_count, product, size_id)
-    current_item = @items.detect {|item| item.product.eql?(product) && item.product_count == product_count && item.initial_size == 55}
+    current_item = @items.detect { |item| item.product.eql?(product) && item.product_count == product_count && item.initial_size == 55 }
     current_item.set_size(size_id) unless current_item.nil?
     current_item
   end

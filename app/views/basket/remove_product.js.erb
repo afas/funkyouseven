@@ -1,13 +1,13 @@
-$("#<%= @basket_item_id %>").toggle("shake", {distance:13, times:2}, 300, function () {
-    $("#<%= @basket_item_id %>").animate({marginLeft:-1000}, 800, function () {
+$("#<%= @basket_item_id %>").effect("shake", {distance:13, times:2}, 1597, function () {
+    $("#<%= @basket_item_id %>").animate({marginLeft:-1000}, 1000, function () {
         $("#<%= @basket_item_id %>").remove();
+        <% if @basket.items.empty? %>
+        $(".basket-icon").hide();
+        $("#order-price").hide();
+        $("#order_comment").val("");
+        $(".my_basket").html('<%= escape_javascript(content_tag "ol", raw(t("activerecord.attributes.basket.empty"))) %>');
+        <% else %>
+        $('#order-price').html('<%= escape_javascript(render(:partial => 'basket/order_price')) %>');
+        <% end %>
     });
 });
-
-<% if @basket.products_count == 0 %>
-    $(".basket-icon").hide();
-    $("#order-price").hide();
-    $("#order_comment").val("");
-<% else %>
-    $('#order-price').html('<%= escape_javascript(render(:partial => 'basket/order_price')) %>');
-<% end %>

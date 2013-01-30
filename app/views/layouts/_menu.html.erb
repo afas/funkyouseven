@@ -46,7 +46,7 @@
             <%= collection_select(:career, :id, Career.collection, :code, :name, {:include_blank => "Вид спорта", :selected => (@user_settings["career"])}, {:onchange => "setCareer()"}) %>
           </li>
       <% end %>
-      <% if controller.action_name == "index" %>
+      <% if controller.action_name == "index" || controller.action_name == "show" %>
           <li><a></a></li>
       <% end %>
     </ul>

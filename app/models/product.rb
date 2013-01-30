@@ -20,7 +20,10 @@ class Product < ActiveRecord::Base
                   :price,
                   :season,
                   :preview_id,
+                  :title_x,
+                  :title_y,
                   :look,
+                  :use_background,
                   :discount
 
   attr_writer :preview_id

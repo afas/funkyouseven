@@ -11,20 +11,28 @@
         </div>
     <% end %>
 
+    <div class="field product-cover-preview">
+      <%= image_tag @product.get_cover.image.url(:slider) %>
+
+      <%= f.hidden_field :title_x %>
+      <%= f.hidden_field :title_y %>
+
+      <div <%= product_title_position(@product) %> id="product_cover_title" class="draggable">
+        <%= link_to raw(product_title(@product, "span") + "<p>" + format_price(@product.price) + "</p>"), "#" unless @product.new_record? %>
+      </div>
+    </div>
+
     <div class="field">
       <label><span>*</span><%= t("activerecord.attributes.product.title") %></label>
-      <%= f.text_area :title, :class => "title" %>
+      <%= f.text_area :title, :class => "title", :onkeyup => "update_title_preview()" %>
     </div>
 
     <div class="field product_selects">
-      <%= f.label :look %>
-      <%= f.check_box :look, :onchange => "updateProductLook(#{@product.id});" %>
-
-      <%= f.label :archive %>
-      <%= f.check_box :archive %>
-
       <%= f.label :title_color %>
-      <%= f.collection_select(:title_color, MyColor.collection, :code, :name) %>
+      <%= f.collection_select(:title_color, MyColor.collection, :code, :name, {}, {:onchange => "update_title_preview()"}) %>
+
+      <%= f.label :use_background %>
+      <%= f.check_box :use_background %>
 
       <%= f.label :sex_id %>
       <%= f.collection_select(:sex_id, Sex.collection, :code, :name, {:include_blank => "не установлен"}) %>
@@ -39,8 +47,6 @@
       <%= f.collection_select(:career_id, Career.collection, :code, :name, {:include_blank => "не установлен"}) %>
 
       <div class="clear-8"></div>
-
-
       <%= f.label :shop_section_id %>
       <%= f.collection_select(:shop_section_id, ShopSection.all, :id, :name, {:include_blank => "не установлен"}) %>
 
@@ -49,7 +55,11 @@
       <%= f.collection_select(:section_category_id, SectionCategory.all, :id, :name, {:include_blank => "не установлен"}) %>
 
       <div class="clear-8"></div>
+      <%= f.label :look %>
+      <%= f.check_box :look, :onchange => "updateProductLook(#{@product.id});" %>
 
+      <%= f.label :archive %>
+      <%= f.check_box :archive %>
 
       <%= f.label :welcome_position_id %>
       <%= f.collection_select(:welcome_position_id, WelcomePosition.collection, :code, :name, {:include_blank => "не установлен"}) %>
@@ -83,10 +93,8 @@
       <% @looks.each do |look| %>
           <div class="looks">
             <%= image_tag look.get_cover.image.url(:preview_circle) %>
-            <%= image_tag look.get_preview.image.url(:preview_circle) %>
-            <br/>
             <%= check_box :look, :product, :id => "#{@product.id}-#{look.id}", :checked => @product.into_look(look), :onchange => "processProductToLook(#{@product.id}, #{look.id})" %>
-            <%= raw product_title(look, "span") %>
+            <%= raw product_title(look) %>
           </div>
       <% end unless @looks.nil? %>
     </div>

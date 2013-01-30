@@ -1,28 +1,19 @@
-current_width = <%= "#{@image.image_geometry(:original).width}" %>;
-current_height = <%= "#{@image.image_geometry(:original).height}" %>;
+current_width = <%= Utils.file_geometry(@image, :original).width %>;
+current_height = <%= Utils.file_geometry(@image, :original).height %>;
 
-width = <%= "#{@image.image_geometry(:slider).width}" %>;
-height = <%= "#{@image.image_geometry(:slider).height}" %>;
+width = <%= Utils.style_geometry(@image, :full).width %>;
+height = <%= Utils.style_geometry(@image, :full).height %>;
 
 var w_ratio = current_width / width;
 var h_ratio = current_height / height;
 
 var min_ratio = (w_ratio < h_ratio) ? w_ratio : h_ratio;
 
-//alert(w_ratio);
-
 var w_select = Math.round(width * min_ratio);
 var h_select = Math.round(height * min_ratio);
 
 $("#default-popup").html("<%= escape_javascript( render( :partial => "product_images/crop", :locals => { :target => @image} ) ) %>");
-//menu
-//Meny.
 
-Avgrund.show("#default-popup");
+openModal("#default-popup");
 
 initCrop();
-
-//Avgrund.hide();
-//Avgrund.hide();
-//crop_content = $("#crop_content_" + id).remove();
-//crop_content.appendTo('#default-popup');

@@ -5,7 +5,7 @@ class ProductImagesController < ApplicationController
     #raise CanCan::AccessDenied unless can?(:create_upload, object_type.classify.constantize)
     #model = "#{object_type.classify}Image".constantize
 
-    filename = params[:qqfile]
+    filename = "#{Utils.generate_name}#{File.extname(params[:qqfile])}"
     file = File.open("/tmp/#{filename}", 'wb')
     file.write(request.body.read)
     file.close
@@ -28,6 +28,15 @@ class ProductImagesController < ApplicationController
 
   def crop
     @image = ProductImage.find(params[:id])
+    unless params[:product_image].nil?
+      @image.crop_x = params[:product_image][:crop_x] unless params[:product_image][:crop_x].nil?
+      @image.crop_y = params[:product_image][:crop_y] unless params[:product_image][:crop_y].nil?
+      @image.crop_w = params[:product_image][:crop_w] unless params[:product_image][:crop_w].nil?
+      @image.crop_h = params[:product_image][:crop_h] unless params[:product_image][:crop_h].nil?
+      Utils.reprocess_image(@image)
+
+      render :action => :crop_finish
+    end
   end
 
   def update

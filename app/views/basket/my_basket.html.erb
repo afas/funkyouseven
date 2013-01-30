@@ -6,6 +6,8 @@
   <% @basket.items.each_with_index do |basket_item| %>
       <%= render "products/product_basket_item", :basket_item => basket_item, :cat_item => true, :margin_top => false, :container_class => "" %>
   <% end %>
+
+  <%= content_tag "ol", raw(t("activerecord.attributes.basket.empty")) if @basket.items.empty? %>
 </div>
 
 <div class="sidebar">

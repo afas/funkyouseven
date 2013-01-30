@@ -11,8 +11,9 @@ gem 'russian'
 gem 'sqlite3'
 gem 'will_paginate'
 
+gem 'ios-checkboxes'
 gem 'jcrop-rails'
-gem 'markitup-rails'
+gem 'markitup-rails', '~> 0.2.2'
 
 #gem "carrierwave"
 #gem "mini_magick"
@@ -28,4 +29,4 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.0.2'

@@ -1,0 +1,6 @@
+<div class="preview_small">
+  <div class="preview_circle" style="background: url('<%= product.get_cover().image.url(:preview_circle) %>') no-repeat scroll 0 0 transparent;">
+  </div>
+  <%= link_to raw(product_title(product, "span")), product %>
+  <span><%= number_to_currency(product.price.round, :precision => 0, :unit => "p.") unless product.price.nil? %></span>
+</div>

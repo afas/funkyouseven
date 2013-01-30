@@ -1,19 +1,16 @@
 class PostImage < ActiveRecord::Base
   attr_accessible :post_id, :title, :cover, :image, :image_content_type, :image_file_name, :image_file_size
-
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
-  after_update :reprocess_image, :if => :cropping?
 
   belongs_to :post
 
   has_attached_file :image,
                     :styles => {
                         :preview_item => "300x200#",
-                        :album_normal => "638x422#",
-                        :big => "979x614#",
-                        :original => "1000x900>"
+                        :album_normal => {:geometry => "638x400#", :processors => [:cropper]},
+                        :big => {:geometry => "980x614#", :processors => [:cropper]},
+                        :original => "1500x1500>"
                     },
-                    :processors => [:cropper],
                     :default_url => "/post_images/default.jpg",
                     :url => "/post_images/:id/:style_:basename.:extension"
 
@@ -22,20 +19,7 @@ class PostImage < ActiveRecord::Base
 
   default_scope order("image_order, id")
 
-
   def cropping?
     !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
   end
-
-  def image_geometry(style = :album_normal)
-    @geometry ||= {}
-    @geometry[style] ||= Paperclip::Geometry.from_file(image.path(style))
-  end
-
-  private
-
-  def reprocess_image
-    image.reprocess!
-  end
-
 end

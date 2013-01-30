@@ -30,27 +30,29 @@ $(document).ready(function () {
         $("textarea.markdown_field").markItUp(mySettings);
     }
 
-    if ($("#notice").length > 0) {
-        setTimeout(function () {
-            $("#notice").animate({top:-144}, 555, function () {
-                $("#notice").remove();
-            });
-        }, 2000);
-    }
-
     if ($(".menu-top").length > 0) {
         menu = Meny.create({
             menuElement:document.querySelector('.menu-top'),
             contentsElement:document.querySelector('.page-content'),
             position:Meny.getQuery().p || 'left',
-            threshold:13,
+            threshold:5,
             width:431,
-//            position:POSITION_L,
-//            threshold:40000,
-            overlap:34,
+            overlap:0,
             transitionDuration:'0.5s',
             transitionEasing:'ease'
         });
+    }
+
+    if ($(".draggable").length > 0) {
+        $(".draggable").draggable({
+            stop:function () {
+                update_title_coords();
+            }
+        });
+    }
+
+    if ($("#notice").length > 0) {
+        openModal("#default-popup");
     }
 
     if ($("#jms-slideshow").length > 0) {
@@ -76,6 +78,17 @@ $(document).ready(function () {
     if ($(".cat_item form input[type=text]").length > 0) {
         $(".cat_item form input[type=text]").click(function () {
             $(this).select();
+        });
+    }
+
+    if ($("input[type=checkbox]").length > 0) {
+        $("input[type=checkbox]").iphoneStyle({
+            onChange:function (e) {
+                eval($(e).parent().children("input[type=checkbox]").attr("onchange"));
+            }
+//            ,
+//            checkedLabel: $(this).attr("class"),
+//            uncheckedLabel: $(this).attr("class")
         });
     }
 
@@ -136,25 +149,30 @@ $(document).ready(function () {
 var menu, croppable_image_id, current_width, current_height, width, height, original_width, original_height;
 
 function initCrop() {
-//    croppable_image_id = id;
-//    crop_content = $("#crop_content").remove();
-//    crop_content.appendTo('#default-popup');
-
-//    current_width = eval("original_width");
-//    current_height = eval("original_height");
-
-
     $("#crop_image").Jcrop({
+        boxWidth:800,
         onChange:update_crop,
         onSelect:update_crop,
-        setSelect:[Math.floor(0.5 * (current_width - w_select)), Math.floor(0.5 * (current_height - h_select)), w_select, h_select],
+//        setSelect:[Math.floor(0.5 * (current_width - w_select)), Math.floor(0.5 * (current_height - h_select)), w_select, h_select],
 //        minSize:[width, height],
         aspectRatio:width / height
     });
 }
 
-function closeDialog() {
+function openModal(id) {
+    Avgrund.show(id);
+}
+
+function closeModal() {
     Avgrund.hide();
+}
+
+function cursorWait() {
+    $('body').css('cursor', 'wait');
+}
+
+function cursorAuto() {
+    $('body').css('cursor', 'auto');
 }
 
 function update_crop(coords) {
@@ -184,6 +202,25 @@ function updateProductLook(look_id) {
         $(".for_look").hide();
         $(".not_for_look").show();
     }
+}
+
+function update_title_coords() {
+    product_title_x = parseInt($("#product_cover_title").css("left"));
+    product_title_y = parseInt($("#product_cover_title").css("top"));
+
+    $("#product_title_x").val(product_title_x);
+    $("#product_title_y").val(product_title_y);
+}
+
+function update_title_preview() {
+    title = $("#product_title").val();
+    color = $("#product_title_color").val();
+    price = parseInt($("#product_price").val());
+
+    title = title.replace("{", "<span style='color:" + color + ";'>");
+    title = title.replace("}", "</span>");
+
+    $("#product_cover_title").html("<a href='#'>" + title + "<p>" + price + " p.</p></a>");
 }
 
 function split(val) {
@@ -231,7 +268,7 @@ function setCareer() {
 function checkHref() {
     href = $("#add_product_button").attr("href");
     if (href == "#") {
-        $("#cuselFrame-product_size_id").toggle("shake", {distance:34, times:2}, 300);
+        $("#cuselFrame-product_size_id").effect("shake", {distance:13, times:2}, 1597);
         return false;
     } else {
         $.get(href);

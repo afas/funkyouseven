@@ -112,34 +112,34 @@ a {
 }
 
 #notice {
-    font-size: 13pt;
-    padding: 34px 0;
-    background: url("bgeditor.png") repeat scroll 50% 50% #EEEEEE;
+    /*font-size: 13pt;*/
+    /*padding: 34px 0;*/
+    /*background: url("bgeditor.png") repeat scroll 50% 50% #EEEEEE;*/
     /*background: none repeat scroll 0 0 rgba(255, 255, 255, 0.89);*/
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    color: #000000;
+    /*border: 1px solid rgba(0, 0, 0, 0.2);*/
+    /*color: #000000;*/
 
-    text-shadow: 0px 1px 1px #11FF17;
-    filter: dropshadow(color = #11FF17, offx = 0, offy = 1);
+    /*text-shadow: 0px 1px 1px #11FF17;*/
+    /*filter: dropshadow(color = #11FF17, offx = 0, offy = 1);*/
 
-    left: 51%;
-    margin-left: -210px;
+    /*left: 51%;*/
+    /*margin-left: -210px;*/
 
     /*top: 55px;*/
-    top: 50%;
-    margin-top: -34px;
+    /*top: 50%;*/
+    /*margin-top: -34px;*/
 
-    position: absolute;
-    text-align: center;
-    width: 400px;
-    z-index: 1000;
+    /*position: absolute;*/
+    /*text-align: center;*/
+    /*width: 400px;*/
+    /*z-index: 1000;*/
 
-    -webkit-border-radius: 47px;
-    -moz-border-radius: 47px;
-    border-radius: 47px;
+    /*-webkit-border-radius: 47px;*/
+    /*-moz-border-radius: 47px;*/
+    /*border-radius: 47px;*/
 
-    -webkit-box-shadow: 2px 5px 8px 5px rgba(0, 0, 0, 0.3);
-    box-shadow: 2px 5px 8px 5px rgba(0, 0, 0, 0.3);
+    /*-webkit-box-shadow: 2px 5px 8px 5px rgba(0, 0, 0, 0.3);*/
+    /*box-shadow: 2px 5px 8px 5px rgba(0, 0, 0, 0.3);*/
 }
 
 #header {
@@ -213,7 +213,7 @@ a {
 }
 
 .info a, .basket-icon a {
-    color: #11ff17;
+    color: #006CFF;
 }
 
 .basket-icon {
@@ -527,7 +527,7 @@ li.current ul li.current a {
 
 .block {
     float: left;
-    padding: 8px 0;
+    padding: 5px 0;
 }
 
 .user_properties .block {
@@ -925,11 +925,21 @@ form .label {
 }
 
 .description {
-    margin: 23px 0 0 25px;
-    width: 310px;
     float: left;
+    height: 627px;
+    padding: 21px 0 0 21px;
     position: relative;
+    width: 279px;
     z-index: 999;
+}
+
+.description .cusel {
+    margin: 0;
+
+}
+
+.use-backround {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
 }
 
 .description h1 {
@@ -1182,6 +1192,12 @@ form .label {
     background-color: #FFFFFF;
 }
 
+.product_selects .iPhoneCheckContainer {
+    display: block;
+    float: left;
+    margin: 11px 6px 0 0;
+}
+
 .product_selects label, .product_selects .cusel, .product_sizes label {
     display: block;
     float: left;
@@ -1199,15 +1215,59 @@ form .label {
 }
 
 .product_selects label {
-    margin: 17px 5px 0 0;
+    margin: 17px 5px 0;
+}
+
+.product-cover-preview {
+    position: relative;
+    height: 440px;
+}
+
+.product-cover-preview img, .product-cover-preview #product_cover_title {
+    position: absolute;
+}
+
+.product-cover-preview img {
+    width: 638px;
+    height: 422px;
+}
+
+#product_cover_title {
+    width: 400px;
+    display: block;
+}
+
+#product_cover_title span {
+    float: none;
+    font-size: 50px !important;
+}
+
+#product_cover_title a {
+    color: #000000;
+    font-family: 'FuturisCBold';
+    font-size: 50px;
+    line-height: 60px;
+    text-transform: uppercase;
+    word-wrap: break-word;
+}
+
+#product_cover_title p {
+    color: #000000;
+    font-family: 'BrushScriptStdRegular';
+    font-size: 30px;
+    font-weight: normal;
+    margin: 0;
+    position: relative;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    text-transform: none;
 }
 
 .product_sizes {
-    border: 1px dashed #D5D5D5;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 5px 0;
     background-color: #FFFFFF;
+    border: 1px dashed #D5D5D5;
+    margin: 0 0 5px;
+    padding: 5px 0;
+    width: 100%;
 }
 
 form .looks {
@@ -1221,7 +1281,7 @@ form .looks {
 }
 
 .product_sizes label {
-    margin: 8px 0 3px;
+    /*margin: 8px 0 3px;*/
 }
 
 .size_unit label {
@@ -1461,6 +1521,10 @@ li.title ul li {
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
 }
 
+.admin_menu li.title {
+    text-shadow: 2px 1px 0 #FFFFFF;
+}
+
 .stuff-title {
     line-height: 47px;
 }
@@ -1473,6 +1537,21 @@ li.title ul li {
 
 .my_basket {
     float: right;
+}
+
+#content .my_basket ol {
+    font-family: 'FuturisCRegular';
+    color: #666666;
+    float: left;
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 21px;
+    list-style: decimal;
+    padding-left: 34px;
+}
+
+#content .my_basket ol li {
+    padding: 0 0 13px 21px;
 }
 
 #content .my_basket {
@@ -1528,7 +1607,7 @@ li.title ul li {
 }
 
 #order-price span {
-    color: #11FF17;
+    color: #006CFF;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
@@ -1684,7 +1763,40 @@ form .cusel {
 
 #preview {
     margin: 55px auto 0;
-    /*margin-top: 89px;*/
+}
+
+.image-upload-preview {
+    position: relative;
+}
+
+.image-upload-preview .preview_params {
+    position: absolute;
+    right: 13px;
+    top: 13px;
+    text-align: right;
+}
+
+.image-upload-preview .preview_params label {
+    float: right;
+}
+
+.image-upload-preview #preview {
+    margin: 13px;
+}
+
+.image-upload-preview .crop_action {
+    display: inline-block;
+    width: 42px;
+    height: 34px;
+    background: url("crop-action.png") no-repeat scroll 0 0 transparent;
+    margin-right: 8px;
+}
+
+.image-upload-preview .destroy_action {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    background: url("destroy-action.png") no-repeat scroll 0 0 transparent;
 }
 
 #crop_content input[type="submit"], #crop_content button {
@@ -1694,6 +1806,111 @@ form .cusel {
     cursor: pointer;
     font-size: 13px;
     height: 32px;
-    margin: 34px 0 0 250px;
+    /*margin: 34px 0 0 250px;*/
     width: 113px;
+    position: absolute;
+    bottom: 34px;
+}
+
+#crop_content input[type="submit"] {
+    left: 34%;
+}
+
+#crop_content button {
+    right: 34%;
+}
+
+.jcrop-holder {
+    margin-bottom: 34px;
+}
+
+.iPhoneCheckContainer {
+    margin: 5px 0;
+}
+
+.preview_params .iPhoneCheckContainer {
+    float: right;
+}
+
+.iPhoneCheckContainer label {
+    padding-top: 3px !important;
+    margin: 0;
+}
+
+.iPhoneCheckContainer label span {
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 17px;
+    white-space: nowrap;
+}
+
+.iPhoneCheckContainer .iPhoneCheckLabelOn span {
+    color: white;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+    margin-top: 4px !important;
+}
+
+.iPhoneCheckContainer .iPhoneCheckLabelOff span {
+    float: none;
+
+    color: #8B8B8B;
+    text-align: right;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.6);
+}
+
+.last_viewed {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.preview_small {
+    display: inline-block;
+    padding: 13px;
+}
+
+.preview_small:nth-child(odd) {
+    background: url("bgeditor.png") repeat scroll 50% 50% #EEEEEE;
+}
+
+.preview_small .preview_circle {
+    border-radius: 80px 80px 80px 80px;
+    box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.5) inset;
+    cursor: pointer;
+    float: left;
+    height: 80px;
+    margin: 0 21px 13px 0;
+    overflow: hidden;
+    width: 80px;
+
+}
+
+.preview_small a {
+    font-family: 'FuturisCBold' !important;
+}
+
+.preview_small a, .preview_small span {
+    width: 175px;
+    float: left;
+    font-size: 21px !important;
+    line-height: 21px !important;
+    margin: 0;
+    padding: 0 0 8px 0 !important;
+    text-align: left;
+}
+
+#error_explanation {
+    border: 1px dashed red;
+    font-family: "Courier New";
+    font-size: 14px;
+    line-height: 21px;
+    margin: 0 0 21px;
+    padding: 13px;
+}
+
+#error_explanation h2 {
+    color: #000000;
+    font-family: 'FuturisCRegular';
+    font-size: 21px;
+    line-height: 21px;
+    margin-bottom: 13px;
 }

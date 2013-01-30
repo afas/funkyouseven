@@ -1,3 +1,4 @@
-$(".my_basket").html("<%= raw I18n.t("activerecord.attributes.order.created_ok") %>");
 $(".basket-icon").hide();
 $("#order-price").hide();
+$("#order_comment").val("");
+$(".my_basket").html('<%= escape_javascript(content_tag "ol", raw(t("activerecord.attributes.order.created_ok"))) %>');

@@ -36,7 +36,9 @@ class BasketController < ApplicationController
   def remove_product
     @basket_item_id = ""
     product = Product.find(params[:product_id].to_i)
+
     basket_item = @basket.remove_product(product, params[:size_id].to_i)
+
     @basket_item_id = "#{product.id}-#{params[:size_id]}" if basket_item.nil?
 
     render :layout => false

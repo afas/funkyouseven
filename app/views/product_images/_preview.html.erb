@@ -1,14 +1,24 @@
 <div id="<%= "product_image_#{target.id}" %>" class="image-upload-preview">
+  <div class="preview_params">
+    <%= link_to "", crop_product_image_path(target.id), :class => "crop_action", :title => t('backend.actions.crop'), :remote => true %>
+    <%= link_to "", product_image_path(:id => target.id, :authenticity_token => form_authenticity_token), :class => "destroy_action", :title => t('backend.actions.destroy'), :confirm => "Вы уверены?", :method => :delete, :remote => true %>
+    <div class="clear"></div>
+    <br/>
+
+    <%= label :cover, "Обложка" %>
+    <br/>
+    <%= check_box_tag :cover, target.cover, target.cover, :class => "upload_cover", :onchange => "updateStuffImage(#{target.id}, 'product')" %>
+    <div class="clear"></div>
+
+    <%= label :preview, "Превью (список)" %>
+    <br/>
+    <%= check_box_tag :preview, target.preview, target.preview, :class => "upload_preview", :onchange => "updateStuffImage(#{target.id}, 'product')" %>
+  </div>
+
   <%= hidden_field_tag :product_id, target.product_id, :class => "upload_product_id" %>
   <%= image_tag target.image.url(:preview_item), :class => "upload_preview" %>
   <br/>
   <%= label :title, "Заголовок фото" %>
   <br/>
   <%= text_field_tag :title, target.title, :class => "upload_title", :onkeyup => "javascript:updateStuffImage(#{target.id}, 'product')" %>
-  <br/>
-  <%= label :cover, "Обложка" %><%= check_box_tag :cover, target.cover, target.cover, :class => "upload_cover", :onchange => "javascript:updateStuffImage(#{target.id}, 'product')" %>
-  / <%= label :preview, "Превью (список)" %> <%= check_box_tag :preview, target.preview, target.preview, :class => "upload_preview", :onchange => "javascript:updateStuffImage(#{target.id}, 'product')" %>
-  <br/>
-  <%= link_to t('backend.actions.crop'), crop_product_image_path(target.id), :remote => true %>
-  / <%= link_to t('backend.actions.destroy'), "/product_images/destroy/#{target.id}", :remote => true %>
 </div>

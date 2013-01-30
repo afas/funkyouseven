@@ -3,7 +3,6 @@
     max-width: 638px;
     min-width: 638px;
     margin: 0 auto 20px;
-    /*min-width: 640px;*/
     position: relative;
     width: 638px;
     display: inline-block;
@@ -12,8 +11,6 @@
 .jms-wrapper {
     background-clip: padding-box;
     background-color: #FFFFFF;
-    /*border: 10px solid rgba(255, 255, 255, 0.898);*/
-    /*box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);*/
     height: 422px;
     min-width: 638px;
     outline: medium none;
@@ -33,11 +30,11 @@
 }
 
 .jms-content {
-    bottom: 55px;
-    left: 55px;
     position: absolute;
     width: 400px;
     z-index: 1000;
+    top: 34px;
+    left: 34px;
 }
 
 .jms-content a {
@@ -53,6 +50,7 @@
     font-family: 'BrushScriptStdRegular';
     font-size: 30px;
     color: #000000;
+    text-transform: none;
 }
 
 .step h3 {
@@ -116,7 +114,7 @@ a.jms-link {
 
 .jms-post .jms-content p {
     font-size: 20px;
-    filter: dropshadow(color=#ffffff, offx=1, offy=1);
+    filter: dropshadow(color = #ffffff, offx = 1, offy = 1);
     text-shadow: 1px 1px 0px #ffffff;
     color: #006CFF;
 }
@@ -126,26 +124,27 @@ a.jms-link {
 }
 
 .jms-dots span {
-    background: none repeat scroll 0 0 #000000;
-    border-radius: 50% 50% 50% 50%;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1) inset, 1px 1px 1px rgba(255, 255, 255, 0.3);
+    background: url("pagination.png") repeat scroll 0 0 transparent;
+    /*border-radius: 50% 50% 50% 50%;*/
+    /*box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1) inset, 1px 1px 1px rgba(255, 255, 255, 0.3);*/
     cursor: pointer;
     display: inline-block;
-    height: 12px;
+    height: 11px;
     margin: 3px;
     position: relative;
-    width: 12px;
+    width: 11px;
 }
 
-.jms-dots span.jms-dots-current:after {
-    background: -moz-linear-gradient(center top, #FFFFFF 0%, #F6F6F6 47%, #EDEDED 100%) repeat scroll 0 0 transparent;
-    border-radius: 50% 50% 50% 50%;
-    content: "";
-    height: 8px;
-    left: 2px;
-    position: absolute;
-    top: 2px;
-    width: 8px;
+.jms-dots span.jms-dots-current {
+    background: url("pagination.png") repeat scroll 11px 0 transparent;
+    /*background: -moz-linear-gradient(center top, #FFFFFF 0%, #F6F6F6 47%, #EDEDED 100%) repeat scroll 0 0 transparent;*/
+    /*border-radius: 50% 50% 50% 50%;*/
+    /*content: "";*/
+    height: 11px;
+    /*left: 2px;*/
+    /*position: absolute;*/
+    /*top: 2px;*/
+    width: 11px;
 }
 
 .jms-arrows {
