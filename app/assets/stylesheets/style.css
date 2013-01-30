@@ -103,7 +103,8 @@ body {
 
 a {
     text-decoration: none;
-    color: #11FF17;
+    color: #006CFF;
+    /*color: #11FF17;*/
 }
 
 .wrapper {
@@ -1649,7 +1650,8 @@ li.title ul li {
 }
 
 .my_orders ul li:first-child, .order_item_list ul li:first-child {
-    border-bottom: 1px solid #11FF17;
+    border-bottom: 1px solid #006CFF;
+    /*border-bottom: 1px solid #11FF17;*/
     height: 21px;
 }
 
