@@ -1,14 +1,13 @@
 <div id="header">
   <!--<div id="parallax" >-->
-    <%#= image_tag "logos/parallax/blue-center.png", :class => "parallax-layer" %>
-    <%#= image_tag "logos/parallax/blue-left.png", :class => "parallax-layer" %>
-    <%#= image_tag "logos/parallax/blue-right.png", :class => "parallax-layer" %>
-    <%#= image_tag "logos/parallax/blue-top.png", :class => "parallax-layer" %>
+  <%#= image_tag "logos/parallax/blue-center.png", :class => "parallax-layer" %>
+  <%#= image_tag "logos/parallax/blue-left.png", :class => "parallax-layer" %>
+  <%#= image_tag "logos/parallax/blue-right.png", :class => "parallax-layer" %>
+  <%#= image_tag "logos/parallax/blue-top.png", :class => "parallax-layer" %>
   <!--</ul>-->
 
   <%= link_to "", root_url, :class => "logo #{LogoClass.class_by_controller(controller_name)}" %>
   <span class="<%= "logo_part #{LogoClass.class_by_controller(controller_name)}" %>"></span>
-
 
   <%= render "layouts/info" %>
 
@@ -16,3 +15,8 @@
   <div class="clear"></div>
   <%= render "layouts/menu" %>
 </div>
+
+<script type="text/javascript">
+    var onLoadPhrase = '<%= t("activerecord.attributes.pagination.on_load") %>';
+    var onPaginateFinishPhrase = '<%= t("activerecord.attributes.pagination.on_finish") %>';
+</script>

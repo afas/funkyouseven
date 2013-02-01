@@ -98,49 +98,17 @@ body {
     background: #fff;
     line-height: 1;
     font-family: "Helvetica", "Arial", sans-serif;
-    /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
 }
 
 a {
     text-decoration: none;
     color: #006CFF;
-    /*color: #11FF17;*/
+    font-family: "FuturisCRegular";
 }
 
 .wrapper {
     width: 980px;
     margin: 0 auto;
-}
-
-#notice {
-    /*font-size: 13pt;*/
-    /*padding: 34px 0;*/
-    /*background: url("bgeditor.png") repeat scroll 50% 50% #EEEEEE;*/
-    /*background: none repeat scroll 0 0 rgba(255, 255, 255, 0.89);*/
-    /*border: 1px solid rgba(0, 0, 0, 0.2);*/
-    /*color: #000000;*/
-
-    /*text-shadow: 0px 1px 1px #11FF17;*/
-    /*filter: dropshadow(color = #11FF17, offx = 0, offy = 1);*/
-
-    /*left: 51%;*/
-    /*margin-left: -210px;*/
-
-    /*top: 55px;*/
-    /*top: 50%;*/
-    /*margin-top: -34px;*/
-
-    /*position: absolute;*/
-    /*text-align: center;*/
-    /*width: 400px;*/
-    /*z-index: 1000;*/
-
-    /*-webkit-border-radius: 47px;*/
-    /*-moz-border-radius: 47px;*/
-    /*border-radius: 47px;*/
-
-    /*-webkit-box-shadow: 2px 5px 8px 5px rgba(0, 0, 0, 0.3);*/
-    /*box-shadow: 2px 5px 8px 5px rgba(0, 0, 0, 0.3);*/
 }
 
 #header {
@@ -303,11 +271,11 @@ a {
 }
 
 .menu_left li.current ul {
-    display: block;
+    /*display: block;*/
 }
 
 .sub_menu li {
-    background: #fff;
+    /*background: #fff;*/
     margin: 0;
     padding-right: 13px;
     float: left;
@@ -369,6 +337,14 @@ li.current ul li.current a {
     z-index: 0;
 }
 
+#full_list {
+    float: left;
+    position: relative;
+    width: 100%;
+    z-index: 10;
+    /*clear: both;*/
+}
+
 .center {
     float: left;
     width: 640px;
@@ -390,16 +366,10 @@ li.current ul li.current a {
     float: left;
 }
 
-.cat {
-    float: left;
-    width: 100%;
-    margin-bottom: 40px;
-}
-
 .link_img {
     float: left;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 13px;
 }
 
 .link_img img {
@@ -412,10 +382,19 @@ li.current ul li.current a {
     color: #000000;
     line-height: 21px;
     /*width: 190px;*/
-    display: inline-block;
+    /*display: inline-block;*/
+    /*margin-bottom: 11px;*/
 }
 
-.cat span {
+.submit, input[type='submit'], button {
+    font-family: 'FuturisCRegular';
+}
+
+.product_preview {
+    margin-bottom: 21px;
+}
+
+.list_preview #product_cover_title a p {
     font-family: 'BrushScriptStdRegular';
     font-size: 18px;
     float: left;
@@ -448,7 +427,8 @@ li.current ul li.current a {
     height: 345px;
     line-height: 18px;
     text-align: center;
-    width: 100%;
+    width: 300px;
+    margin-bottom: 0 !important;
 }
 
 .about p {
@@ -518,6 +498,12 @@ li.current ul li.current a {
     z-index: 999;
 }
 
+#fix-here {
+    width: 300px;
+    position: relative;
+    z-index: 999;
+}
+
 .title_sidebar {
     width: 100%;
     font-size: 13px;
@@ -528,7 +514,15 @@ li.current ul li.current a {
 
 .block {
     float: left;
-    padding: 5px 0;
+}
+
+.post_preview {
+    width: 300px;
+    margin-right: 40px;
+}
+
+.post_preview:nth-child(3n) {
+    margin-right: 0;
 }
 
 .user_properties .block {
@@ -593,11 +587,16 @@ li.current ul li.current a {
 }
 
 .all {
-    background: url(all.png) no-repeat;
-    width: 113px;
-    height: 32px;
+    background: url("all.png") no-repeat scroll 0 0 transparent;
+    color: #FFFFFF;
     float: left;
-    margin: 15px 0 20px 94px;
+    font-size: 13px;
+    font-weight: 600;
+    height: 32px;
+    line-height: 32px;
+    margin: 0 0 20px 94px;
+    padding-left: 18px;
+    width: 96px;
 }
 
 form input[type="text"], form input[type="number"] {
@@ -763,8 +762,14 @@ form .label {
 }
 
 .cat_item {
+    float: left;
+    margin-bottom: 34px;
     width: 300px;
-    margin: 0 40px 39px 0;
+    margin-right: 40px;
+}
+
+.cat_item:nth-child(3n) {
+    margin-right: 0;
 }
 
 .cat-min-height a.link_img {
@@ -785,15 +790,17 @@ form .label {
 }
 
 .more {
-    background: url(more.png) no-repeat;
-    width: 213px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    color: #000;
-    text-align: center;
-    line-height: 32px;
+    background: url("more.png") no-repeat scroll 0 0 transparent;
+    bottom: 0;
+    color: #000000;
     float: left;
+    font-family: "FuturisCRegular";
+    font-size: 13px;
+    line-height: 32px;
     margin: 34px 0 34px 385px;
+    position: absolute;
+    text-align: center;
+    width: 213px;
 }
 
 .big_img {
@@ -883,12 +890,6 @@ form .label {
 
 .new {
     margin: 15px 0 0;
-}
-
-.block_second {
-    width: 300px;
-    float: left;
-    margin: 15px 40px 0 0;
 }
 
 .no_margin_left {
@@ -1219,9 +1220,63 @@ form .label {
     margin: 17px 5px 0;
 }
 
-.product-cover-preview {
+.list_small_preview {
+    width: 300px;
+    /*position: relative;*/
+}
+
+.list_small_preview span {
+    /*float: left;*/
+    font-family: 'BrushScriptStdRegular';
+    font-size: 18px;
+    margin: 5px 0 0;
+    /*width: 100%;*/
+}
+
+/*.list_small_preview img {*/
+/*float: left;*/
+/*font-family: 'BrushScriptStdRegular';*/
+/*font-size: 18px;*/
+/*margin: 5px 0 0;*/
+/*width: 100%;*/
+/*}*/
+
+.list_big_preview {
+    width: 640px;
     position: relative;
-    height: 440px;
+}
+
+.big_preview_title {
+    position: absolute;
+}
+
+.big_preview_title a {
+    color: #000000;
+    font-family: 'FuturisCBold';
+    font-size: 50px;
+    line-height: 40px;
+    text-transform: uppercase;
+    word-wrap: break-word;
+}
+
+.big_preview_title a p {
+    color: #000000;
+    font-family: 'BrushScriptStdRegular';
+    font-size: 30px;
+    text-transform: none;
+}
+
+.column .list_preview {
+    margin-bottom: 36px;
+}
+
+.list_preview {
+    margin-bottom: 55px;
+}
+
+.product-cover-preview {
+    height: 422px;
+    width: 638px;
 }
 
 .product-cover-preview img, .product-cover-preview #product_cover_title {
@@ -1341,6 +1396,7 @@ form .looks {
     color: #000000;
     text-transform: uppercase;
     margin-bottom: 20px;
+    height: 55px;
 }
 
 .cat_item form {
@@ -1473,7 +1529,7 @@ form .looks {
     text-align: center;
 }
 
-.submit, .actions input[type='submit'] {
+.submit, .actions input[type='submit'], .notice button {
     background: url(button.png) no-repeat;
     width: 113px;
     height: 32px;
@@ -1484,7 +1540,7 @@ form .looks {
     margin: 0 0 0 95px;
 }
 
-.actions input[type='submit'] {
+.actions input[type='submit'], .notice button {
     margin-left: 0;
 }
 
@@ -1772,9 +1828,11 @@ form .cusel {
 }
 
 .image-upload-preview .preview_params {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
     position: absolute;
-    right: 13px;
-    top: 13px;
+    right: 0;
+    top: 0;
+    padding: 13px;
     text-align: right;
 }
 
@@ -1915,4 +1973,12 @@ form .cusel {
     font-size: 21px;
     line-height: 21px;
     margin-bottom: 13px;
+}
+
+.new_user .actions {
+    text-align: left;
+}
+
+.masonry {
+    padding-bottom: 117px;
 }

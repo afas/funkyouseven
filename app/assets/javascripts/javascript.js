@@ -1,4 +1,68 @@
+var $page_container, menu, croppable_image_id, current_width, current_height, width, height, original_width, original_height;
+
 $(document).ready(function () {
+
+
+    if ($('#fix-here').length > 0) {
+        right = (window.screen.width - 980) / 2
+
+        var fixedElement = $('#fix-here').offset();
+        scrolled = $(window).scroll(function () {
+            var winScrolled = $(this).scrollTop();
+            if (winScrolled > fixedElement.top - 10) {
+                $('#fix-here').css({'position':'fixed', 'top':'10px', 'right':right + 'px'})
+            }
+            else {
+                $('#fix-here').css({'position':'static'})
+//            $('#fix-here').css({'position':'relative', 'top':'auto', 'right':'auto'})
+            }
+        });
+    }
+
+
+    if ($('#products_and_other').length == 1) {
+        $('#products_and_other').masonry({
+            itemSelector:'.list_preview',
+            columnWidth:300,
+            gutterWidth:40
+        });
+    }
+
+    if ($('#full_list').length == 1) {
+        $page_container = $('#full_list');
+
+        $page_container.imagesLoaded(function () {
+            $page_container.masonry({
+                itemSelector:'.list_preview',
+                isAnimated:true,
+//                isAnimated:!Modernizr.csstransitions,
+//                isRTL:true,
+                isFitWidth:true,
+                columnWidth:300,
+                gutterWidth:40
+            });
+        });
+
+        $page_container.infinitescroll({
+                navSelector:'#page-nav',
+                nextSelector:'#page-nav a',
+                itemSelector:'.list_preview',
+                loading:{
+                    img:'/assets/preloader-34.png',
+                    msgText:onLoadPhrase,
+                    finishedMsg:onPaginateFinishPhrase
+                }
+            },
+            function (newElements) {
+                var $newElems = $(newElements).css({ opacity:0 });
+                $newElems.imagesLoaded(function () {
+                    $newElems.animate({ opacity:1 });
+                    $page_container.masonry('appended', $newElems, true);
+                });
+            }
+        );
+    }
+
 
     if ($(".markdown_field").length > 0) {
         mySettings = {
@@ -35,7 +99,7 @@ $(document).ready(function () {
             menuElement:document.querySelector('.menu-top'),
             contentsElement:document.querySelector('.page-content'),
             position:Meny.getQuery().p || 'left',
-            threshold:5,
+            threshold:21,
             width:431,
             overlap:0,
             transitionDuration:'0.5s',
@@ -86,9 +150,6 @@ $(document).ready(function () {
             onChange:function (e) {
                 eval($(e).parent().children("input[type=checkbox]").attr("onchange"));
             }
-//            ,
-//            checkedLabel: $(this).attr("class"),
-//            uncheckedLabel: $(this).attr("class")
         });
     }
 
@@ -107,46 +168,37 @@ $(document).ready(function () {
     }
 });
 
-//var _gaq = _gaq || [];
-//_gaq.push(['_setAccount', 'UA-31898771-1']);
-//_gaq.push(['_trackPageview']);
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-31898771-1']);
+_gaq.push(['_trackPageview']);
 
-//(function () {
-//    var ga = document.createElement('script');
-//    ga.type = 'text/javascript';
-//    ga.async = true;
-//    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-//    var s = document.getElementsByTagName('script')[0];
-//    s.parentNode.insertBefore(ga, s);
-//})();
+(function () {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+})();
 
-//(function (d, s, id) {
-//    var js, fjs = d.getElementsByTagName(s)[0];
-//    if (d.getElementById(id)) return;
-//    js = d.createElement(s);
-//    js.id = id;
-//    js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=423133141046951";
-//    fjs.parentNode.insertBefore(js, fjs);
-//}(document, 'script', 'facebook-jssdk'));
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=423133141046951";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 
-//!function (d, s, id) {
-//    var js, fjs = d.getElementsByTagName(s)[0];
-//    if (!d.getElementById(id)) {
-//        js = d.createElement(s);
-//        js.id = id;
-//        js.src = "//platform.twitter.com/widgets.js";
-//        fjs.parentNode.insertBefore(js, fjs);
-//    }
-//}(document, "script", "twitter-wjs");
-
-//    $(".menu-top").addClass();
-//    menu.stop();
-//    menu.close();
-//    menu.undelegate();
-
-//    Avgrund.show("#default-popup");
-
-var menu, croppable_image_id, current_width, current_height, width, height, original_width, original_height;
+!function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }
+}(document, "script", "twitter-wjs");
 
 function initCrop() {
     $("#crop_image").Jcrop({
@@ -354,4 +406,16 @@ function onKeyUpSizeCount(e, product_id, size_code) {
     if ((keynum > 47 && keynum < 58 || keynum > 95 && keynum < 106) && product_count >= 0) {
         $.get("/size_to_product_count/" + product_id + "/" + size_code + "/" + product_count);
     }
+}
+
+function xy(x) {
+    o = document.getElementById(x);
+    var l = o.offsetLeft;
+    var t = o.offsetTop;
+    while (o = o.offsetParent)
+        l += o.offsetLeft;
+    o = document.getElementById(x);
+    while (o = o.offsetParent)
+        t += o.offsetTop;
+    return [l, t];
 }

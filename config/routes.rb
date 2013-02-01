@@ -7,6 +7,8 @@ Funkyouseven::Application.routes.draw do
 
   resources :posts
 
+  match '/products/all/page/:page', :to => "products#all_by_page", :as => :all_products_by_page
+
   match '/products/section/:section/sex/:sex', :to => "products#sex", :as => :products_by_sex
   match '/products/section/:section/career/:career', :to => "products#career", :as => :products_by_career
   match '/products/section/:section/page/:page', :to => "products#page", :as => :products_by_page
@@ -48,7 +50,7 @@ Funkyouseven::Application.routes.draw do
   match '/post_images/upload' => 'post_images#upload'
   resources :post_images
 
-  match '/magazine' => 'posts#index'
+  match '/magazine' => 'posts#index', :as => :magazine
   match '/magazine/:short_url' => 'posts#show', :as => :magazine_post
 
   match '/:short_url' => 'statics#show', :as => :show_static

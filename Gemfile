@@ -10,6 +10,7 @@ gem 'paperclip'
 gem 'russian'
 gem 'sqlite3'
 gem 'will_paginate'
+gem 'masonry-rails'
 
 gem 'ios-checkboxes'
 gem 'jcrop-rails'

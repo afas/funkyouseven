@@ -1,6 +1,6 @@
-<div id="default-popup" class="avgrund-popup">
-  <% unless notice.nil? %>
-      <p id="notice"><%= notice %></p>
-  <% end %>
+<div id="default-popup" class="avgrund-popup <%= :notice unless notice.nil? %>">
+  <%= content_tag(:p, notice, :id => "notice") unless notice.nil? %>
+  <br/>
+  <%= content_tag(:button, "Ок/Закрыть", :onclick => "closeModal();") %>
 </div>
 <div class="avgrund-cover"></div>

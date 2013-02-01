@@ -9,6 +9,8 @@
 //= require jmpress.min
 //= require jquery.jmslideshow
 //= require modernizr.custom
+//= require masonry/jquery.masonry
+//= require masonry/jquery.infinitescroll.min
 
 //= require javascript
 

@@ -33,30 +33,28 @@
     <% end %>
   </ul>
 </div>
+<div class="clear"></div>
+
 
 <%#= @product.brand_id %>
 <%#= @product.sex_id %>
 <%#= @product.career_id %>
 
-<% if @product.look %>
-    <div class="relaited">Товары в сете</div>
-    <% @product.products.each_with_index do |product, i| %>
-        <%= render "products/product_preview_item", :product => product, :cat_item => true, :margin_top => false, :container_class => (i+1)%3 == 0 ? "no_margin" : "" %>
-    <% end %>
-    <% if @product.products.empty? %>
-        <p><%= t("activerecord.attributes.product.products_empty") %></p>
-    <% end %>
-    <div class="clear"></div>
+<div id="products_and_other">
+  <% if @product.look %>
+      <div class="relaited">Товары в сете</div>
+      <%= render "products/page", :target => @product.products %>
+      <% if @product.products.empty? %>
+          <p><%= t("activerecord.attributes.product.products_empty") %></p>
+      <% end %>
+      <div class="clear"></div>
 
-    <div class="relaited">Еще сеты</div>
-    <% @more_looks.each_with_index do |product, i| %>
-        <%= render "products/product_preview_item", :product => product, :cat_item => true, :margin_top => false, :container_class => (i+1)%3 == 0 ? "no_margin" : "" %>
-    <% end %>
-    <div class="clear"></div>
-<% end %>
+      <div class="relaited">Еще сеты</div>
+      <%= render "products/page", :target => @more_looks %>
+      <div class="clear"></div>
+  <% end %>
 
-<div class="relaited">Похожие товары</div>
-<% @related_products.each_with_index do |product, i| %>
-    <%= render "products/product_preview_item", :product => product, :cat_item => true, :margin_top => false, :container_class => (i+1)%3 == 0 ? "no_margin" : "" %>
-<% end %>
-<div class="clear"></div>
+  <div class="relaited">Похожие товары</div>
+  <%= render "products/page", :target => @related_products %>
+  <div class="clear"></div>
+</div>

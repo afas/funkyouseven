@@ -1,4 +1,4 @@
-<div class="block<%= " block_second" if second %><%= " no_margin" if no_margin %>">
+<div class="block post_preview">
   <div class="img_box">
     <%= link_to raw("#{image_tag(target.get_preview.image.url(:preview_item), :alt => target.title, :width => 300, :height => 200)}#{'<span></span>' if target.video_emb?}"), magazine_post_path(target.short_url) %>
   </div>
@@ -10,5 +10,3 @@
       <div class="date_magazine"><%= Russian::strftime(target.created_at, "%d %B") %></div>
   <% end %>
 </div>
-
-<%= raw "<div class='clear'></div>" if no_margin %>

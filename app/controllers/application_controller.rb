@@ -3,11 +3,18 @@ class ApplicationController < ActionController::Base
 
   before_filter :default_data
   before_filter :find_cart, :except => :destroy
+  before_filter :user_settings, :except => :destroy
+
 
   rescue_from NotFound, :with => :not_found
   rescue_from ActiveRecord::RecordNotFound, :with => :not_found
 
   private
+
+  def user_settings
+    session[:user_settings] ||= Hash.new()
+    @user_settings = session[:user_settings]
+  end
 
   def find_cart
     session[:basket] ||= Basket.new

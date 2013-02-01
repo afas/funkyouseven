@@ -1,8 +1,6 @@
 class ProductsController < ApplicationController
   load_and_authorize_resource
 
-  before_filter :user_settings, :except => :destroy
-
   rescue_from NotFound, :with => :not_found
   rescue_from ActiveRecord::RecordNotFound, :with => :not_found
 
@@ -13,7 +11,7 @@ class ProductsController < ApplicationController
 
     Product.import()
 
-    @wear_imported = ShopSection.find_by_short_url("wear").last_product_number - wear_last_product_number
+    @wear_imported = ShopSection.find_by_short_url("we.morear").last_product_number - wear_last_product_number
     @gear_imported = ShopSection.find_by_short_url("gear").last_product_number - gear_last_product_number
     @equipment_imported = ShopSection.find_by_short_url("equipment").last_product_number - equipment_last_product_number
 
@@ -92,6 +90,26 @@ class ProductsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @products }
     end
+  end
+
+  def all_by_page
+    condition = "0 = 0"
+
+    unless @user_settings["sex"].nil?
+      condition += " and products.sex_id = #{@user_settings["sex"]}"
+    end
+
+    unless @user_settings["career"].nil?
+      condition += " and products.career_id = #{@user_settings["career"]}"
+    end
+
+    @page = (params[:page] || 1).to_i
+
+    @products = Product.where(condition).valid_products.order("products.updated_at DESC").paginate(:page => @page)
+    @more_products = Product.where(condition).valid_products.all.size() - Product.per_page * @page
+    @more_products = nil if @more_products <= 0
+
+    render :layout => false
   end
 
   def page
@@ -312,13 +330,6 @@ class ProductsController < ApplicationController
       format.html { redirect_to products_url }
       format.json { head :no_content }
     end
-  end
-
-  private
-
-  def user_settings
-    session[:user_settings] ||= Hash.new()
-    @user_settings = session[:user_settings]
   end
 
 end

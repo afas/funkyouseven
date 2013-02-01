@@ -1,0 +1,17 @@
+<div class="list_preview list_small_preview">
+  <% style = ""
+     if image_height == :big
+       image_style = :preview_item_higher
+       style = "height: 435px; overflow: hidden;"
+     else
+       image_style = :preview_item
+       if image_height == :small
+         style = "height: 344px; overflow: hidden;"
+       end
+     end %>
+
+  <%= link_to image_tag(product.get_preview.image.url(image_style), :alt => product.title), product, :class => :link_img, :style => style %>
+  <%= link_to raw(product_title(product)), product, :class => "title" %>
+  <br/>
+  <span><%= number_to_currency(product.price.round, :precision => 0, :unit => "p.") unless product.price.nil? %></span>
+</div>

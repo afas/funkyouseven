@@ -1,0 +1,8 @@
+<div class="list_preview">
+  <div class="list_big_preview">
+    <%= image_tag product.get_cover.image.url(:slider) %>
+    <div <%= product_title_position(product) %> class="big_preview_title">
+      <%= link_to raw(product_title(product, 'span') + content_tag(:p, format_price(product.price))), product, :class => "title" %>
+    </div>
+  </div>
+</div>

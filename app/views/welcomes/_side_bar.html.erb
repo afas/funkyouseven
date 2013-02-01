@@ -1,13 +1,15 @@
 <div class="sidebar">
-  <% if @articles_sidebar.size > 0 %>
+  <% unless @articles_sidebar.empty? %>
       <div class="title_sidebar">
         Журнал
       </div>
       <% @articles_sidebar.each do |post| %>
-          <%= render "posts/post_preview_item", :target => post, :second => false, :show_date => false, :no_margin => false %>
+          <%= render "posts/post_preview_item", :target => post, :second => false, :show_date => false %>
       <% end %>
-      <%= link_to "", "/magazine", :class => "all" %>
   <% end %>
+  <%= link_to "Все посты", magazine_path, :class => "all" unless @articles_sidebar.empty? %>
+</div>
 
+<div id="fix-here" class="sidebar">
   <%= render "layouts/social_wigets" %>
 </div>

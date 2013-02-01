@@ -39,7 +39,9 @@ body.meny-active .menu-top {
 
 body.meny-active, body.meny-active wrapper.div {
     overflow-y: auto;
-    background: url(bg_dotted.png) repeat scroll 50% 50% #EEEEEE;
+    background-color: #D5D5D5;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGklEQVQIW2NkYGD4D8SMQAwGcAY2AbBKDBUAVuYCBQPd34sAAAAASUVORK5CYII=");
+    background-repeat: repeat;
 }
 
 .page-content {

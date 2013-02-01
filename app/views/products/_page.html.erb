@@ -1,4 +1,3 @@
-<% @products.each_with_index do |product, i| %>
-    <%= render "products/product_preview_item", :product => product, :cat_item => true, :margin_top => false, :container_class => (i+1)%3 == 0 ? "no_margin" : "" %>
+<% target.each_with_index do |product, i| %>
+    <%= render (i+1)%8 == 0 ? "products/product_big_preview_item" : "products/product_preview_item", :product => product %>
 <% end %>
-<%= link_to "Показать еще #{@more_products < Product.per_page ? @more_products : Product.per_page} из #{@more_products}", products_by_page_path(@section, @page + 1), :class => "more", :remote => true unless @more_products.nil? %>

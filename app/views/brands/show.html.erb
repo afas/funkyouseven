@@ -2,10 +2,9 @@
 
 <%= render "brands/brand_preview_item", :brand => @brand, :container_class => "no_margin", :with_description => true %>
 <div class="clear"></div>
-<div id="brand_products">
-  <% @products.each_with_index do |product, i| %>
-      <%= render "products/product_preview_item", :product => product, :cat_item => true, :margin_top => false, :container_class => (i+1)%3 == 0 ? "no_margin" : "" %>
-  <% end %>
-  <div class="clear"></div>
-  <%= link_to "Показать еще #{@more_products < Product.per_page ? @more_products : Product.per_page} из #{@more_products}", products_by_page_path(@section, @page + 1), :class => "more", :remote => true unless @more_products.nil? %>
+<div id="full_list">
+  <%= render "products/page", :target => @products %>
+  <nav id="page-nav">
+    <%= link_to "next page", products_by_page_path(@section, @page + 1), :remote => true unless @more_products.nil? %>
+  </nav>
 </div>

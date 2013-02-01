@@ -22,6 +22,8 @@
       </div>
     </div>
 
+    <div class="clear-8"></div>
+
     <div class="field">
       <label><span>*</span><%= t("activerecord.attributes.product.title") %></label>
       <%= f.text_area :title, :class => "title", :onkeyup => "update_title_preview()" %>
@@ -78,7 +80,7 @@
 
     <div class="field">
       <label><span>*</span><%= t("activerecord.attributes.product.price") %></label>
-      <%= f.text_field :price, :class => "price" %>
+      <%= f.text_field :price, :class => "price", :onkeyup => "update_title_preview()" %>
     </div>
 
     <div class="field">

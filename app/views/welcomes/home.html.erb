@@ -4,24 +4,24 @@
   <%= render "welcomes/slider", :target => @top_slider unless @top_slider.empty? %>
 
   <div class="column">
-    <%= render "products/product_preview_item", :product => @about_left, :cat_item => false, :margin_top => false, :container_class => "cat-min-height" unless @about_left.nil? %>
-    <%= render "products/product_preview_item", :product => @about_bottom.first, :cat_item => false, :margin_top => false, :container_class => "" unless @about_bottom.empty? %>
+    <%= render "products/product_top_preview_item", :image_height => :small, :product => @about_left unless @about_left.nil? %>
+    <%= render "products/product_top_preview_item", :image_height => :normal, :product => @about_bottom.first unless @about_bottom.empty? %>
   </div>
-
   <div class="column column_second">
     <%= render "welcomes/inside" %>
-    <%= render "products/product_preview_item", :product => @about_bottom.last, :cat_item => true, :margin_top => false, :container_class => "" unless @about_bottom.empty? %>
+    <%= render "products/product_top_preview_item", :image_height => :big, :product => @about_bottom.last unless @about_bottom.empty? %>
   </div>
+  <div class="clear"></div>
 
-  <%#= render "welcomes/slider", :target => @bottom_slider unless @bottom_slider.empty? %>
+  <div id="full_list">
+    <%= render "products/product_big_preview_item", :product => @bottom_slider[rand(@bottom_slider.size)] unless @bottom_slider.empty? %>
+    <%= render "products/product_preview_item", :product => @last[rand(@last.size)] %>
+    <%= render "products/product_preview_item", :product => @last[rand(@last.size)] %>
 
-  <!--<div class="column">-->
-    <%#= render "products/product_preview_item", :product => @last[rand(@last.size)], :cat_item => false, :margin_top => false, :container_class => "" unless @last.empty? %>
-  <!--</div>-->
-
-  <!--<div class="column column_second">-->
-    <%#= render "products/product_preview_item", :product => @last[rand(@last.size)], :cat_item => false, :margin_top => false, :container_class => "" unless @last.empty? %>
-  <!--</div>-->
+    <nav id="page-nav">
+      <%= link_to "next page", all_products_by_page_path(2), :remote => true %>
+    </nav>
+  </div>
 </div>
 
 <%= render "welcomes/side_bar" %>
