@@ -1,18 +1,12 @@
-<% unless @magazine_numbers.empty? %>
-    <div class="title_magazine">
-      <% current_number = @magazine_numbers.size %>
-      <p><%= current_number %> НОМЕР</p>
-      <span><%= magazine_date(@magazine_numbers[@magazine_numbers.size - current_number].created) %></span>
-    </div>
+<div id="full_list" class="magazine_list">
+  <div class="list_preview title_magazine">
+    <p><%= @cover_magazine.year_number %> НОМЕР</p>
+    <span><%= magazine_date(@cover_magazine.release_date) %></span>
+  </div>
 
-    <% @articles.each_with_index do |post, i| %>
-        <% if post != @articles.first && post.created_at.strftime("%Y%m") != @articles[i-1].created_at.strftime("%Y%m") %>
-            <% current_number = current_number - 1 %>
-            <div class="title_magazine">
-              <p><%= current_number %> НОМЕР</p>
-              <span><%= magazine_date(@magazine_numbers[@magazine_numbers.size - current_number].created) %></span>
-            </div>
-        <% end %>
-        <%= render "posts/post_preview_item", :target => post, :second => true, :show_date => true %>
-    <% end %>
-<% end %>
+  <%= render "posts/magazine_cover", :target => @cover_magazine, :article => @cover_magazine.main_article %>
+
+  <% @cover_magazine.articles.each do |post| %>
+      <%= render "posts/post_preview_item", :target => post, :show_date => true %>
+  <% end %>
+</div>

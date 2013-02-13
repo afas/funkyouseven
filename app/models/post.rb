@@ -1,16 +1,18 @@
 class Post < ActiveRecord::Base
+  attr_accessible :author_id, :content, :description, :short_url, :title, :created_at, :preview_id, :video_emb, :main_article, :cover_id
+
+  attr_writer :preview_id, :emb_checked
+  attr_reader :preview_id, :emb_checked
+
   self.per_page = 6
 
   belongs_to :author, :class_name => 'User'
+  belongs_to :cover_magazine#, :foreign_key => :cover_id# :class_name => 'Cover'
+
   has_many :post_images
 
   validates_presence_of :title, :description, :content, :author_id
   validates_uniqueness_of :title, :short_url
-
-  attr_accessible :author_id, :content, :description, :short_url, :title, :created_at, :preview_id, :video_emb
-
-  attr_writer :preview_id, :emb_checked
-  attr_reader :preview_id, :emb_checked
 
   #default_scope order("created_at DESC")
   scope :side_bar, order("created_at DESC").limit(3)
@@ -25,6 +27,7 @@ class Post < ActiveRecord::Base
 
   def initialize(*args)
     super
+    self.cover_id = CoverMagazine.all.first().id if self.new_record?
     self.preview_id = rand(99999999)+99999999 if self.preview_id.nil? && self.new_record?
   end
 

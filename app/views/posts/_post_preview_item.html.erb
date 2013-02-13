@@ -1,6 +1,6 @@
-<div class="block post_preview">
+<div class="block list_preview list_small_preview">
   <div class="img_box">
-    <%= link_to raw("#{image_tag(target.get_preview.image.url(:preview_item), :alt => target.title, :width => 300, :height => 200)}#{'<span></span>' if target.video_emb?}"), magazine_post_path(target.short_url) %>
+    <%= link_to raw("#{image_tag(target.get_preview.image.url(:preview_item), :alt => target.title, :width => 300)}#{'<span></span>' if target.video_emb?}"), magazine_post_path(target.short_url) %>
   </div>
   <%= link_to raw("<span>#{target.author.full_name}:</span> #{target.title}"), magazine_post_path(target.short_url), :class => "block_title" %>
   <p>

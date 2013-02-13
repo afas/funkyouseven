@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  title_html_data: MyText
+  release_date: 2013-02-12
+  year_number: 1
+  sequence_number: 1
+  subject: MyText
+  subject_html_data: MyText
+  columns: MyText
+  columns_html_data: MyText
+  special: MyText
+  special_html_data: MyText
+  cover_html: MyText
+  cover_css: MyText
+  cover_js: MyText
+
+two:
+  title: MyString
+  title_html_data: MyText
+  release_date: 2013-02-12
+  year_number: 1
+  sequence_number: 1
+  subject: MyText
+  subject_html_data: MyText
+  columns: MyText
+  columns_html_data: MyText
+  special: MyText
+  special_html_data: MyText
+  cover_html: MyText
+  cover_css: MyText
+  cover_js: MyText

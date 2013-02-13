@@ -40,9 +40,11 @@
 <%#= @product.sex_id %>
 <%#= @product.career_id %>
 
-<div id="products_and_other">
+<div id="full_list">
   <% if @product.look %>
       <div class="relaited">Товары в сете</div>
+      <div class="clear"></div>
+
       <%= render "products/page", :target => @product.products %>
       <% if @product.products.empty? %>
           <p><%= t("activerecord.attributes.product.products_empty") %></p>
@@ -50,11 +52,19 @@
       <div class="clear"></div>
 
       <div class="relaited">Еще сеты</div>
+      <div class="clear"></div>
+
       <%= render "products/page", :target => @more_looks %>
       <div class="clear"></div>
   <% end %>
 
-  <div class="relaited">Похожие товары</div>
-  <%= render "products/page", :target => @related_products %>
+  <div class="relaited">Товары в этой категории</div>
   <div class="clear"></div>
+
+  <%= render "products/page", :target => @related_products %>
+
+  <nav id="page-nav">
+    <%= link_to "", products_by_page_path(@product.shop_section.short_url, @page + 1), :remote => true unless @more_products.nil? %>
+  </nav>
+
 </div>

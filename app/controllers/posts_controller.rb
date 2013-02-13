@@ -5,10 +5,6 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @magazine_numbers = Post.find_by_sql("SELECT DISTINCT strftime('%Y%m', created_at) created from posts ORDER BY created DESC")
-    @articles = Post.magazine_list.paginate(:page => params[:page])
-    @articles_sidebar = Post.side_bar
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
@@ -100,7 +96,11 @@ class PostsController < ApplicationController
 
   def find_static
     @static = Static.find_by_short_url("magazine")
+
+    if current_user || current_user.redactor?
+      @cover_magazine = CoverMagazine.last_number_admin.first
+    else
+      @cover_magazine = CoverMagazine.last_number.first
+    end
   end
-
-
 end

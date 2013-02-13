@@ -1,0 +1,49 @@
+<h1>Listing cover_magazines</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Title html data</th>
+    <th>Release date</th>
+    <th>Year number</th>
+    <th>Sequence number</th>
+    <th>Subject</th>
+    <th>Subject html data</th>
+    <th>Columns</th>
+    <th>Columns html data</th>
+    <th>Special</th>
+    <th>Special html data</th>
+    <th>Cover html</th>
+    <th>Cover css</th>
+    <th>Cover js</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cover_magazines.each do |cover_magazine| %>
+  <tr>
+    <td><%= cover_magazine.title %></td>
+    <td><%= cover_magazine.title_html_data %></td>
+    <td><%= cover_magazine.release_date %></td>
+    <td><%= cover_magazine.year_number %></td>
+    <td><%= cover_magazine.sequence_number %></td>
+    <td><%= cover_magazine.subject %></td>
+    <td><%= cover_magazine.subject_html_data %></td>
+    <td><%= cover_magazine.columns %></td>
+    <td><%= cover_magazine.columns_html_data %></td>
+    <td><%= cover_magazine.special %></td>
+    <td><%= cover_magazine.special_html_data %></td>
+    <td><%= cover_magazine.cover_html %></td>
+    <td><%= cover_magazine.cover_css %></td>
+    <td><%= cover_magazine.cover_js %></td>
+    <td><%= link_to 'Show', cover_magazine %></td>
+    <td><%= link_to 'Edit', edit_cover_magazine_path(cover_magazine) %></td>
+    <td><%= link_to 'Destroy', cover_magazine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cover magazine', new_cover_magazine_path %>

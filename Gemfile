@@ -15,6 +15,7 @@ gem 'masonry-rails'
 gem 'ios-checkboxes'
 gem 'jcrop-rails'
 gem 'markitup-rails', '~> 0.2.2'
+gem 'bootstrap-colorpicker-rails'
 
 #gem "carrierwave"
 #gem "mini_magick"

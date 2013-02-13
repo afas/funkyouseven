@@ -1,0 +1,2 @@
+module CoverMagazinesHelper
+end

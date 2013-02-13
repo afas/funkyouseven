@@ -254,12 +254,21 @@ class ProductsController < ApplicationController
     @shop_section = @product.shop_section
     @section_category = @product.section_category
 
-    @related_products = Product.valid_products.limit(6)
-
-    @shop_section = @product.shop_section
-    @section_category = @product.section_category
-
     @more_looks = Product.more_looks(@product.id)
+
+    @page = (params[:page] || 1).to_i
+    condition = "0 = 0"
+
+    unless @shop_section.nil?
+      condition += " and products.shop_section_id = #{@shop_section.id}"
+      condition += " and products.section_category_id = #{@section_category.id}" unless @section_category.nil?
+      condition += " and products.sex_id = #{@user_settings["sex"]}" unless @user_settings["sex"].nil?
+      condition += " and products.career_id = #{@user_settings["career"]}" unless @shop_section.short_url == "wear" || @user_settings["career"].nil?
+    end
+
+    @related_products = Product.where(condition).valid_products.order("products.updated_at DESC").paginate(:page => @page)
+    @more_products = Product.where(condition).valid_products.all.size() - Product.per_page * @page
+    @more_products = nil if @more_products <= 0
 
     respond_to do |format|
       format.html # show.html.erb
@@ -267,8 +276,8 @@ class ProductsController < ApplicationController
     end
   end
 
-  # GET /products/new
-  # GET /products/new.json
+# GET /products/new
+# GET /products/new.json
   def new
     @product = Product.new
     @looks = Product.all_looks
@@ -279,7 +288,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  # GET /products/1/edit
+# GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
     @looks = Product.all_looks
@@ -287,8 +296,8 @@ class ProductsController < ApplicationController
     render layout: "editor"
   end
 
-  # POST /products
-  # POST /products.json
+# POST /products
+# POST /products.json
   def create
     @product = Product.new(params[:product])
 
@@ -304,8 +313,8 @@ class ProductsController < ApplicationController
     end
   end
 
-  # PUT /products/1
-  # PUT /products/1.json
+# PUT /products/1
+# PUT /products/1.json
   def update
     @product = Product.find(params[:id])
 
@@ -320,8 +329,8 @@ class ProductsController < ApplicationController
     end
   end
 
-  # DELETE /products/1
-  # DELETE /products/1.json
+# DELETE /products/1
+# DELETE /products/1.json
   def destroy
     @product = Product.find(params[:id])
     @product.destroy

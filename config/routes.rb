@@ -1,14 +1,16 @@
 Funkyouseven::Application.routes.draw do
   devise_for :users
 
-  post "markdown/preview"
+  post 'markdown/preview'
 
   match '/size_to_product_count/:product_id/:size_id/:product_count', :to => 'size_to_products#size_to_product_count', :as => :size_to_product_count
+
+  match '/cover_magazines/new_from_post/:post_id', :to => "cover_magazines#new_from_post", :as => :create_cover_magazine_from_post
+  resources :cover_magazines
 
   resources :posts
 
   match '/products/all/page/:page', :to => "products#all_by_page", :as => :all_products_by_page
-
   match '/products/section/:section/sex/:sex', :to => "products#sex", :as => :products_by_sex
   match '/products/section/:section/career/:career', :to => "products#career", :as => :products_by_career
   match '/products/section/:section/page/:page', :to => "products#page", :as => :products_by_page
@@ -25,7 +27,6 @@ Funkyouseven::Application.routes.draw do
   match '/basket' => 'basket#my_basket', :as => :my_basket
 
   resources :orders
-
 
   resources :shop_sections
   resources :section_categories

@@ -68,6 +68,7 @@ module ApplicationHelper
       #when "brands"
       #  output += admin_partial(@product, "product")
       when "posts"
+        output += admin_partial(@cover_magazine, "cover_magazine")
         output += admin_partial(@post, "post")
       when "statics"
         output += admin_partial(@static, "static")

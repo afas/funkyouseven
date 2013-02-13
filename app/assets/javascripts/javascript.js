@@ -1,11 +1,9 @@
-var $page_container, menu, croppable_image_id, current_width, current_height, width, height, original_width, original_height;
+var $page_container, menu, current_width, current_height, width, height, original_width, original_height, current_cover_param, cover_params;
 
 $(document).ready(function () {
 
-
     if ($('#fix-here').length > 0) {
         right = (window.screen.width - 980) / 2
-
         var fixedElement = $('#fix-here').offset();
         scrolled = $(window).scroll(function () {
             var winScrolled = $(this).scrollTop();
@@ -14,23 +12,47 @@ $(document).ready(function () {
             }
             else {
                 $('#fix-here').css({'position':'static'})
-//            $('#fix-here').css({'position':'relative', 'top':'auto', 'right':'auto'})
             }
         });
     }
 
+    if ($('#font_color').length > 0) {
+        $('#font_color').colorpicker();
+    }
 
-    if ($('#products_and_other').length == 1) {
-        $('#products_and_other').masonry({
-            itemSelector:'.list_preview',
-            columnWidth:300,
-            gutterWidth:40
+    if ($('.range_slider').length > 0) {
+        $('.range_slider').each(function () {
+            id = $(this).attr("id");
+            min = $(this).attr("min");
+            max = $(this).attr("max");
+            initRangeSlider(id, min, max);
+        });
+    }
+
+    if ($(".draggable").length > 0) {
+        $(".magazine_cover .draggable").draggable({
+            stop:function (event, ui) {
+                initCoverWigetsData();
+            }
+        }).bind("click", function () {
+                console.log("Initialise data click");
+
+                class_name = $(this).attr("class").split(' ')[0];
+                attr_name = class_name.split('_')[2];
+                current_cover_param = attr_name;
+
+                initCoverWigetsData();
+            });
+
+        $(".product-cover-preview .draggable").draggable({
+            stop:function () {
+                update_title_coords();
+            }
         });
     }
 
     if ($('#full_list').length == 1) {
         $page_container = $('#full_list');
-
         $page_container.imagesLoaded(function () {
             $page_container.masonry({
                 itemSelector:'.list_preview',
@@ -104,14 +126,6 @@ $(document).ready(function () {
             overlap:0,
             transitionDuration:'0.5s',
             transitionEasing:'ease'
-        });
-    }
-
-    if ($(".draggable").length > 0) {
-        $(".draggable").draggable({
-            stop:function () {
-                update_title_coords();
-            }
         });
     }
 
@@ -200,13 +214,129 @@ _gaq.push(['_trackPageview']);
     }
 }(document, "script", "twitter-wjs");
 
+
+function refreshWigetsData() {
+
+//    cover_params
+
+    param_style = "";
+
+    font_size = $(".magazine_cover_" + current_cover_param).css("font-size");
+    if (font_size) {
+        console.log("Widget set font size", font_size);
+        param_style += "font-size:" + font_size + "px;"
+
+        min = $("#font_size").attr("min");
+        max = $("#font_size").attr("max");
+        initRangeSlider("font_size", min, max, font_size);
+    }
+
+    angle = $(".magazine_cover_" + current_cover_param).css('transform');
+    if (angle) {
+        console.log("Widget set text angle", angle);
+
+        param_style += "transform:rotate(" + angle + "deg);";
+        param_style += "-webkit-transform:rotate(" + angle + "deg);";
+        param_style += "-moz-transform:rotate(" + angle + "deg);";
+        param_style += "-o-transform:rotate(" + angle + "deg);";
+        param_style += "-ms-transform:rotate(" + angle + "deg);";
+        param_style += "filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=" + angle + ");";
+
+        min = $("#text_angle").attr("min");
+        max = $("#text_angle").attr("max");
+        initRangeSlider("text_angle", min, max, angle);
+    }
+    $(".cover_magazine_" + current_cover_param + "_html_data").val();
+    update_html_data();
+}
+
+function initRangeSlider(id, min, max, current) {
+    $("#" + id).slider({
+        min:min,
+        max:max,
+        step:1,
+        value:current,
+        slide:function (event, ui) {
+            update_slide_data(id, ui.value);
+        }
+    });
+}
+
+function update_slide_data(id, value = false) {
+    eval("update_" + id + "(" + value + ");");
+
+
+    refreshWigetsData();
+//    update_html_data();
+}
+
+function update_font_size(value) {
+//    console.log("Change widget font size, value:" + value);
+    $(".magazine_cover_" + current_cover_param).css("font-size", value);
+    $(".cover_magazine_" + current_cover_param + "_font_data").val(font_data);
+}
+
+function update_text_angle(angle) {
+    $(".magazine_cover_" + current_cover_param).css('transform', 'rotate(' + angle + 'deg)');
+    $(".magazine_cover_" + current_cover_param).css('-webkit-transform', 'rotate(' + angle + 'deg)');
+    $(".magazine_cover_" + current_cover_param).css('-moz-transform', 'rotate(' + angle + 'deg)');
+    $(".magazine_cover_" + current_cover_param).css('-o-transform', 'rotate(' + angle + 'deg)');
+    $(".magazine_cover_" + current_cover_param).css('-ms-transform', 'rotate(' + angle + 'deg)');
+    $(".magazine_cover_" + current_cover_param).css('filter', 'progid:DXImageTransform.Microsoft.BasicImage(rotation=' + angle + ')');
+}
+
+function update_font_data(font_data = false) {
+    font_data = $("#font_data").val();
+    $("head").prepend(
+        "<style type=\"text/css\">" +
+            "@font-face {" +
+            "font-family: coverMagazineTitle;" +
+            "font-style: normal;" +
+            "font-weight: 400;" +
+            "src: url(\"" + font_data + "\");" +
+            "}" +
+            "</style>");
+
+    $(".magazine_cover_" + current_cover_param).css("font-family", "coverMagazineTitle");
+}
+
+//    style = "transform:rotate(" + angle + "deg);" +
+//        "-webkit-transform:rotate(" + angle + "deg);" +
+//        "-moz-transform:rotate(" + angle + "deg);" +
+//        "-o-transform:rotate(" + angle + "deg);" +
+//        "-ms-transform:rotate(" + angle + "deg);" +
+//        "filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=" + angle + ");"
+
+//function update_model_html_data() {
+//    console.log("Update html data CUR STYLE STRING: " + style);
+//    style = $(".magazine_cover_" + current_cover_param).attr("style");
+//    $("#cover_magazine_" + current_cover_param + "_html_data").val(style);
+//}
+
+function update_title_coords() {
+    product_title_x = parseInt($("#product_cover_title").css("left"));
+    product_title_y = parseInt($("#product_cover_title").css("top"));
+
+    $("#product_title_x").val(product_title_x);
+    $("#product_title_y").val(product_title_y);
+}
+
+function update_title_preview() {
+    title = $("#product_title").val();
+    color = $("#product_title_color").val();
+    price = parseInt($("#product_price").val());
+
+    title = title.replace("{", "<span style='color:" + color + ";'>");
+    title = title.replace("}", "</span>");
+
+    $("#product_cover_title").html("<a href='#'>" + title + "<p>" + price + " p.</p></a>");
+}
+
 function initCrop() {
     $("#crop_image").Jcrop({
         boxWidth:800,
         onChange:update_crop,
         onSelect:update_crop,
-//        setSelect:[Math.floor(0.5 * (current_width - w_select)), Math.floor(0.5 * (current_height - h_select)), w_select, h_select],
-//        minSize:[width, height],
         aspectRatio:width / height
     });
 }
@@ -254,25 +384,6 @@ function updateProductLook(look_id) {
         $(".for_look").hide();
         $(".not_for_look").show();
     }
-}
-
-function update_title_coords() {
-    product_title_x = parseInt($("#product_cover_title").css("left"));
-    product_title_y = parseInt($("#product_cover_title").css("top"));
-
-    $("#product_title_x").val(product_title_x);
-    $("#product_title_y").val(product_title_y);
-}
-
-function update_title_preview() {
-    title = $("#product_title").val();
-    color = $("#product_title_color").val();
-    price = parseInt($("#product_price").val());
-
-    title = title.replace("{", "<span style='color:" + color + ";'>");
-    title = title.replace("}", "</span>");
-
-    $("#product_cover_title").html("<a href='#'>" + title + "<p>" + price + " p.</p></a>");
 }
 
 function split(val) {

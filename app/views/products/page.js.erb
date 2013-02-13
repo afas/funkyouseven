@@ -1,1 +1,1 @@
-$(".more").replaceWith("<%= escape_javascript(render("products/page")) %>");
+$(".more").replaceWith("<%= escape_javascript(render("products/page", :target => @products)) %>");

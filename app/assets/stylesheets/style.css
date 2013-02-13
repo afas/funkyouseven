@@ -516,13 +516,8 @@ li.current ul li.current a {
     float: left;
 }
 
-.post_preview {
+.post_preview_small {
     width: 300px;
-    margin-right: 40px;
-}
-
-.post_preview:nth-child(3n) {
-    margin-right: 0;
 }
 
 .user_properties .block {
@@ -583,7 +578,7 @@ li.current ul li.current a {
     font-family: 'FuturisCRegular';
     font-size: 14px;
     line-height: 14px;
-    padding: 13px 0;
+    padding: 8px 0;
 }
 
 .all {
@@ -819,7 +814,7 @@ form .label {
     border-bottom: 1px solid #000000;
     float: left;
     padding-bottom: 15px;
-    width: 637px;
+    width: 640px;
 }
 
 .main h1 {
@@ -901,10 +896,10 @@ form .label {
     float: left;
     font-size: 24px;
     line-height: 14px;
-    margin: 8px 0;
+    margin: 8px 0 !important;
     position: relative;
     text-align: center;
-    width: 100%;
+    width: 980px;
     z-index: 999;
 }
 
@@ -1007,6 +1002,22 @@ form .label {
     z-index: 3000;
 }
 
+#cuselFrame-cover_magazine_release_date_3i {
+    min-width: 35px !important;
+    width: 38px !important;
+}
+
+#cuselFrame-cover_magazine_release_date_2i {
+    min-width: 35px !important;
+    width: 75px !important;
+}
+
+#cuselFrame-cover_magazine_release_date_1i {
+    min-width: 35px !important;
+    width: 50px !important;
+}
+
+#cuselFrame-cover_magazine_release_date_3i, #cuselFrame-cover_magazine_release_date_2i, #cuselFrame-cover_magazine_release_date_1i,
 #cuselFrame-post_created_at_3i, #cuselFrame-post_created_at_2i, #cuselFrame-post_created_at_1i {
     margin-right: 13px;
 }
@@ -1220,6 +1231,17 @@ form .label {
     margin: 17px 5px 0;
 }
 
+.post_selects {
+    min-height: 100px;
+}
+
+.cover_magazine_from_post {
+    display: block;
+    float: left;
+    line-height: 8px;
+    margin: 15px 8px 0 -8px;
+}
+
 .list_small_preview {
     width: 300px;
     /*position: relative;*/
@@ -1272,6 +1294,12 @@ form .label {
 
 .list_preview {
     margin-bottom: 55px;
+    /*margin-right: 40px;*/
+    float: left;
+}
+
+.list_preview:nth-child(3n) {
+    margin-right: 0;
 }
 
 .product-cover-preview {
@@ -1385,9 +1413,6 @@ form .looks {
 }
 
 .relaited {
-    /*font-family: Verdana, Helvetica, "Lucida Grande", Arial, sans-serif;;*/
-    /*font-weight: bold;*/
-
     font-family: 'FuturisCBold';
     float: left;
     width: 100%;
@@ -1981,4 +2006,245 @@ form .cusel {
 
 .masonry {
     padding-bottom: 117px;
+}
+
+.third {
+    float: left;
+    margin-right: 20px;
+    width: 200px;
+}
+
+div.vertical_block div.third:nth-of-type(3n) {
+    margin-right: 0;
+}
+
+.half {
+    float: left;
+    margin-right: 40px;
+    width: 300px;
+}
+
+div.vertical_block div.half:nth-of-type(even) {
+    margin-right: 0;
+}
+
+.new_cover_magazine textarea {
+    height: 144px;
+}
+
+/* UI SLIDER */
+/* UI SLIDER */
+.ui-widget-header a {
+    color: #222222;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: url("handle.png") repeat-x scroll 50% 50% #E6E6E6;
+    border: 1px solid #006CFF;
+    color: #555555;
+    font-weight: normal;
+}
+
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {
+    color: #555555;
+    text-decoration: none;
+}
+
+.ui-widget-content {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #D5D5D5;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+    background: url("handle.png") repeat-x scroll 50% 50% #DADADA;
+    border: 1px solid #006CFF;
+    color: #212121;
+    font-weight: normal;
+}
+
+.ui-state-hover a, .ui-state-hover a:hover, .ui-state-hover a:link, .ui-state-hover a:visited {
+    color: #212121;
+    text-decoration: none;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+    background: url("handle.png") repeat-x scroll 50% 50% #FFFFFF;
+    border: 1px solid #AAAAAA;
+    color: #212121;
+    font-weight: normal;
+}
+
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
+    color: #212121;
+    text-decoration: none;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+    background: url("handle.png") repeat-x scroll 50% 50% #FBF9EE;
+    border: 1px solid #FCEFA1;
+    color: #363636;
+}
+
+.ui-state-highlight a, .ui-widget-content .ui-state-highlight a, .ui-widget-header .ui-state-highlight a {
+    color: #363636;
+}
+
+.ui-slider {
+    position: relative;
+    text-align: left;
+}
+
+.ui-slider .ui-slider-handle {
+    cursor: default;
+    height: 1.2em;
+    position: absolute;
+    width: 1.2em;
+    z-index: 2;
+}
+
+.ui-slider .ui-slider-range {
+    background-position: 0 0;
+    border: 0 none;
+    display: block;
+    font-size: 0.7em;
+    position: absolute;
+    z-index: 1;
+}
+
+.ui-slider.ui-state-disabled .ui-slider-handle, .ui-slider.ui-state-disabled .ui-slider-range {
+    filter: inherit;
+}
+
+.ui-slider-horizontal {
+    height: 0.8em;
+}
+
+.ui-slider-horizontal .ui-slider-handle {
+    margin-left: -0.6em;
+    top: -0.3em;
+}
+
+.ui-slider-horizontal .ui-slider-range {
+    height: 100%;
+    top: 0;
+}
+
+.ui-slider-horizontal .ui-slider-range-min {
+    left: 0;
+}
+
+.ui-slider-horizontal .ui-slider-range-max {
+    right: 0;
+}
+
+.ui-slider-vertical {
+    height: 100px;
+    width: 0.8em;
+}
+
+.ui-slider-vertical .ui-slider-handle {
+    left: -0.3em;
+    margin-bottom: -0.6em;
+    margin-left: 0;
+}
+
+.ui-slider-vertical .ui-slider-range {
+    left: 0;
+    width: 100%;
+}
+
+.ui-slider-vertical .ui-slider-range-min {
+    bottom: 0;
+}
+
+.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
+    border-top-left-radius: 4px;
+}
+
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {
+    border-top-right-radius: 4px;
+}
+
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {
+    border-bottom-left-radius: 4px;
+}
+
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+    border-bottom-right-radius: 4px;
+}
+
+.ui-widget-overlay {
+    background: url("bg-editor.png") repeat-x scroll 50% 50% #AAAAAA;
+    opacity: 0.3;
+}
+
+.ui-widget-shadow {
+    background: url("bg-editor.png") repeat-x scroll 50% 50% #AAAAAA;
+    border-radius: 8px 8px 8px 8px;
+    margin: -8px 0 0 -8px;
+    opacity: 0.3;
+    padding: 8px;
+}
+
+/* UI SLIDER */
+/* UI SLIDER */
+
+.magazine_list .list_preview {
+    margin-bottom: 21px;
+}
+
+.magazine_cover {
+    position: relative;
+    width: 640px;
+    min-height: 720px;
+    border: 1px solid #CCC;
+}
+
+.magazine_cover .magazine_cover_background,
+.magazine_cover .magazine_cover_title,
+.magazine_cover .magazine_cover_subject,
+.magazine_cover .magazine_cover_special,
+.magazine_cover .magazine_cover_columns {
+    position: absolute;
+    cursor: pointer;
+}
+
+.magazine_cover_title {
+    font-family: "coverMagazineTitle";
+    font-size: 55px;
+    line-height: 55px;
+    color: #000000;
+}
+
+.magazine_cover_subject {
+    font-family: FuturisCRegular;
+    font-size: 34px;
+    line-height: 34px;
+    color: #006CFF;
+}
+
+.magazine_cover_special {
+    font-family: FuturisCBold;
+    font-size: 34px;
+    line-height: 34px;
+    color: #ff4200;
+}
+
+.magazine_cover_columns {
+    font-family: FuturisCBold;
+    font-size: 34px;
+    line-height: 34px;
+    color: #11FF17;
+}
+
+#cover_magazine_subject {
+    height: 100px;
+}
+
+#cover_magazine_special {
+    height: 80px;
+}
+
+#cover_magazine_columns {
+    height: 80px;
 }
