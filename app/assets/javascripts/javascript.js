@@ -24,7 +24,7 @@ $(document).ready(function () {
             id = $(this).attr("id");
             min = $(this).attr("min");
             max = $(this).attr("max");
-            initRangeSlider(id, min, max);
+            initRangeSlider(id, min, max, 0);
         });
     }
 
@@ -256,7 +256,7 @@ function initWigetData() {
     initRangeSlider("text_angle", min, max, angle);
 }
 
-function initRangeSlider(id, min, max, current = 0) {
+function initRangeSlider(id, min, max) {
     $("#" + id).slider({
         min:min,
         max:max,
@@ -299,7 +299,7 @@ function initColorpicker(color) {
     });
 }
 
-function update_slide_data(id, value = false) {
+function update_slide_data(id, value) {
     eval("update_" + id + "(" + value + ");");
     refreshWigetData();
 }
@@ -321,7 +321,7 @@ function update_text_angle(angle) {
     $(".magazine_cover_" + current_cover_param).css('filter', 'progid:DXImageTransform.Microsoft.BasicImage(rotation=' + angle + ')');
 }
 
-function update_font_data(font_data = false) {
+function update_font_data() {
     font_data = $("#font_data").val();
     font_face_name = "coverMagazineTitle" + parseInt(100 * Math.random());
     $("head").prepend(
