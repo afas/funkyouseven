@@ -1,23 +1,22 @@
-var $page_container, menu, current_width, current_height, width, height, original_width, original_height, current_cover_param, cover_params;
+var page_container,
+    menu, current_width,
+    current_height, width, height,
+    current_cover_param = null;
 
 $(document).ready(function () {
 
     if ($('#fix-here').length > 0) {
-        right = (window.screen.width - 980) / 2
+        right = (window.innerWidth - 994) / 2;
         var fixedElement = $('#fix-here').offset();
         scrolled = $(window).scroll(function () {
             var winScrolled = $(this).scrollTop();
-            if (winScrolled > fixedElement.top - 10) {
+            if (winScrolled > fixedElement.top - 55) {
                 $('#fix-here').css({'position':'fixed', 'top':'10px', 'right':right + 'px'})
             }
             else {
                 $('#fix-here').css({'position':'static'})
             }
         });
-    }
-
-    if ($('#font_color').length > 0) {
-        $('#font_color').colorpicker();
     }
 
     if ($('.range_slider').length > 0) {
@@ -30,42 +29,32 @@ $(document).ready(function () {
     }
 
     if ($(".draggable").length > 0) {
-        $(".magazine_cover .draggable").draggable({
-            stop:function (event, ui) {
-                initCoverWigetsData();
-            }
-        }).bind("click", function () {
-                console.log("Initialise data click");
+        $(".magazine_cover .draggable").mousedown(function () {
+            class_name = $(this).attr("class").split(' ')[0];
+            attr_name = class_name.split('_')[2];
 
-                class_name = $(this).attr("class").split(' ')[0];
-                attr_name = class_name.split('_')[2];
+            if (attr_name != current_cover_param) {
                 current_cover_param = attr_name;
-
-                initCoverWigetsData();
-            });
-
-        $(".product-cover-preview .draggable").draggable({
-            stop:function () {
-                update_title_coords();
+                initWigetData();
             }
         });
+
+        $(".instrumental-dock").draggable({});
     }
 
     if ($('#full_list').length == 1) {
-        $page_container = $('#full_list');
-        $page_container.imagesLoaded(function () {
-            $page_container.masonry({
+        page_container = $('#full_list');
+        page_container.imagesLoaded(function () {
+            page_container.masonry({
                 itemSelector:'.list_preview',
                 isAnimated:true,
-//                isAnimated:!Modernizr.csstransitions,
-//                isRTL:true,
                 isFitWidth:true,
                 columnWidth:300,
                 gutterWidth:40
             });
         });
 
-        $page_container.infinitescroll({
+        page_container.infinitescroll({
                 navSelector:'#page-nav',
                 nextSelector:'#page-nav a',
                 itemSelector:'.list_preview',
@@ -79,7 +68,7 @@ $(document).ready(function () {
                 var $newElems = $(newElements).css({ opacity:0 });
                 $newElems.imagesLoaded(function () {
                     $newElems.animate({ opacity:1 });
-                    $page_container.masonry('appended', $newElems, true);
+                    page_container.masonry('appended', $newElems, true);
                 });
             }
         );
@@ -215,42 +204,59 @@ _gaq.push(['_trackPageview']);
 }(document, "script", "twitter-wjs");
 
 
-function refreshWigetsData() {
-
-//    cover_params
-
+function refreshWigetData() {
     param_style = "";
 
-    font_size = $(".magazine_cover_" + current_cover_param).css("font-size");
-    if (font_size) {
-        console.log("Widget set font size", font_size);
-        param_style += "font-size:" + font_size + "px;"
+    color = $(".magazine_cover_" + current_cover_param).css("color");
+    param_style += "color:" + color + "; ";
 
+    left_px = $(".magazine_cover_" + current_cover_param).css("left");
+    param_style += "left:" + left_px + "; ";
+
+    top_px = $(".magazine_cover_" + current_cover_param).css("top");
+    param_style += "top:" + top_px + "; ";
+
+    font_size = parseInt($(".magazine_cover_" + current_cover_param).css("font-size"));
+    param_style += "font-size:" + font_size + "px; ";
+
+    angle = getRotationDegrees();
+    param_style += "transform:rotate(" + angle + "deg);";
+    param_style += "-webkit-transform:rotate(" + angle + "deg);";
+    param_style += "-moz-transform:rotate(" + angle + "deg);";
+    param_style += "-ms-transform:rotate(" + angle + "deg);";
+    param_style += "-o-transform:rotate(" + angle + "deg);";
+    param_style += "filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=" + angle + "); ";
+
+    $("#cover_magazine_" + current_cover_param + "_html_data").attr("value", param_style);
+}
+
+function initWigetData() {
+    console.log("Init Data");
+    $(".magazine_cover .draggable").draggable({
+        stop:function (event, ui) {
+            refreshWigetData();
+        }
+    });
+
+    color = $(".magazine_cover_" + current_cover_param).css("color");
+    if (color) {
+        initColorpicker(color)
+    }
+
+    font_size = parseInt($(".magazine_cover_" + current_cover_param).css("font-size"));
+    if (font_size) {
         min = $("#font_size").attr("min");
         max = $("#font_size").attr("max");
         initRangeSlider("font_size", min, max, font_size);
     }
 
-    angle = $(".magazine_cover_" + current_cover_param).css('transform');
-    if (angle) {
-        console.log("Widget set text angle", angle);
-
-        param_style += "transform:rotate(" + angle + "deg);";
-        param_style += "-webkit-transform:rotate(" + angle + "deg);";
-        param_style += "-moz-transform:rotate(" + angle + "deg);";
-        param_style += "-o-transform:rotate(" + angle + "deg);";
-        param_style += "-ms-transform:rotate(" + angle + "deg);";
-        param_style += "filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=" + angle + ");";
-
-        min = $("#text_angle").attr("min");
-        max = $("#text_angle").attr("max");
-        initRangeSlider("text_angle", min, max, angle);
-    }
-    $(".cover_magazine_" + current_cover_param + "_html_data").val();
-    update_html_data();
+    angle = getRotationDegrees();
+    min = $("#text_angle").attr("min");
+    max = $("#text_angle").attr("max");
+    initRangeSlider("text_angle", min, max, angle);
 }
 
-function initRangeSlider(id, min, max, current) {
+function initRangeSlider(id, min, max, current = 0) {
     $("#" + id).slider({
         min:min,
         max:max,
@@ -262,18 +268,48 @@ function initRangeSlider(id, min, max, current) {
     });
 }
 
+function initColorpicker(color) {
+    color = rgb2hex(color);
+
+    if ($.jPicker.List.length > 0) {
+        $.jPicker.List.length = 0;
+        $('span.jPicker').remove();
+    }
+
+    $('#font_color').val(color);
+    $('#font_color').jPicker({
+        window:{
+            expandable:true
+//            , alphaSupport:true
+        },
+        images:{
+            clientPath:'/assets/jpicker/'
+        },
+        localization:{
+            text:{
+                title:'Выберите цвет',
+                newColor:'новый',
+                currentColor:'текущий',
+                ok:'ОК',
+                cancel:'Отмена'
+            }
+        }
+    }, function (color, context) {
+        update_slide_data("font_color", "'#" + color.val('hex') + "'")
+    });
+}
+
 function update_slide_data(id, value = false) {
     eval("update_" + id + "(" + value + ");");
+    refreshWigetData();
+}
 
-
-    refreshWigetsData();
-//    update_html_data();
+function update_font_color(color) {
+    $(".magazine_cover_" + current_cover_param).css("color", color);
 }
 
 function update_font_size(value) {
-//    console.log("Change widget font size, value:" + value);
     $(".magazine_cover_" + current_cover_param).css("font-size", value);
-    $(".cover_magazine_" + current_cover_param + "_font_data").val(font_data);
 }
 
 function update_text_angle(angle) {
@@ -287,31 +323,20 @@ function update_text_angle(angle) {
 
 function update_font_data(font_data = false) {
     font_data = $("#font_data").val();
+    font_face_name = "coverMagazineTitle" + parseInt(100 * Math.random());
     $("head").prepend(
         "<style type=\"text/css\">" +
             "@font-face {" +
-            "font-family: coverMagazineTitle;" +
+            "font-family: " + font_face_name + ";" +
             "font-style: normal;" +
             "font-weight: 400;" +
             "src: url(\"" + font_data + "\");" +
             "}" +
             "</style>");
 
-    $(".magazine_cover_" + current_cover_param).css("font-family", "coverMagazineTitle");
+    $(".magazine_cover_title").css("font-family", font_face_name);
+    $("#cover_magazine_" + current_cover_param + "_font_data").val(font_data);
 }
-
-//    style = "transform:rotate(" + angle + "deg);" +
-//        "-webkit-transform:rotate(" + angle + "deg);" +
-//        "-moz-transform:rotate(" + angle + "deg);" +
-//        "-o-transform:rotate(" + angle + "deg);" +
-//        "-ms-transform:rotate(" + angle + "deg);" +
-//        "filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=" + angle + ");"
-
-//function update_model_html_data() {
-//    console.log("Update html data CUR STYLE STRING: " + style);
-//    style = $(".magazine_cover_" + current_cover_param).attr("style");
-//    $("#cover_magazine_" + current_cover_param + "_html_data").val(style);
-//}
 
 function update_title_coords() {
     product_title_x = parseInt($("#product_cover_title").css("left"));
@@ -384,6 +409,43 @@ function updateProductLook(look_id) {
         $(".for_look").hide();
         $(".not_for_look").show();
     }
+}
+
+function rgb2hex(rgb) {
+    if (rgb.search("rgb") == -1) {
+        return rgb;
+    } else {
+        rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
+        function hex(x) {
+            return ("0" + parseInt(x).toString(16)).slice(-2);
+        }
+
+        return hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+    }
+}
+
+function getRotationDegrees() {
+    var matrix = 'none';
+    matrix = $(".magazine_cover_" + current_cover_param).css("-webkit-transform") ||
+        $(".magazine_cover_" + current_cover_param).css("-moz-transform") ||
+        $(".magazine_cover_" + current_cover_param).css("-ms-transform") ||
+        $(".magazine_cover_" + current_cover_param).css("-o-transform") ||
+        $(".magazine_cover_" + current_cover_param).css("transform");
+
+    if (matrix !== 'none') {
+        var values = matrix.split('(')[1].split(')')[0].split(',');
+        var a = values[0];
+        var b = values[1];
+        var angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
+
+        if (angle < 0) {
+            angle += 360;
+        }
+    } else {
+        var angle = 0;
+    }
+
+    return angle;
 }
 
 function split(val) {
@@ -529,4 +591,8 @@ function xy(x) {
     while (o = o.offsetParent)
         t += o.offsetTop;
     return [l, t];
+}
+
+function goUrl(href) {
+    window.location = href;
 }

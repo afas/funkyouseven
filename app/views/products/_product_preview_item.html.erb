@@ -1,5 +1,5 @@
 <div class="list_preview list_small_preview">
-  <%= link_to image_tag(product.get_preview.image.url([:preview_item_higher, :preview_item][rand(2)]), :alt => product.title), product %>
+  <%= link_to image_tag(product.get_preview.image.url([:preview_item_higher, :preview_item][rand(2)]), :alt => product.title), product, :class => "link_img" %>
   <%= link_to raw(product_title(product)), product, :class => "title" %>
   <br/>
   <span><%= number_to_currency(product.price.round, :precision => 0, :unit => "p.") unless product.price.nil? %></span>

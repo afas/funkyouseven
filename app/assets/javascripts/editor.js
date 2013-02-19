@@ -12,7 +12,7 @@
 //= require jcrop
 //= require avgrund
 //= require jquery.ui
-//= require bootstrap-colorpicker
+//= require jpicker
 
 //= require markitup
 //= require markitup-html

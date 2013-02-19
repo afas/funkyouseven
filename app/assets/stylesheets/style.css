@@ -505,11 +505,12 @@ li.current ul li.current a {
 }
 
 .title_sidebar {
-    width: 100%;
-    font-size: 13px;
-    color: #000;
+    color: #000000;
     float: left;
     font-family: "FuturisCRegular";
+    font-size: 13px;
+    margin-bottom: 5px;
+    width: 100%;
 }
 
 .block {
@@ -571,6 +572,7 @@ li.current ul li.current a {
 
 .block_title span {
     color: #006cff !important;
+    font-family: 'FuturisCBold' !important;
 }
 
 .block p, .info_block p {
@@ -578,7 +580,7 @@ li.current ul li.current a {
     font-family: 'FuturisCRegular';
     font-size: 14px;
     line-height: 14px;
-    padding: 8px 0;
+    padding-top: 8px;
 }
 
 .all {
@@ -589,7 +591,7 @@ li.current ul li.current a {
     font-weight: 600;
     height: 32px;
     line-height: 32px;
-    margin: 0 0 20px 94px;
+    margin: 0 0 21px 94px;
     padding-left: 18px;
     width: 96px;
 }
@@ -603,6 +605,7 @@ form input[type="text"], form input[type="number"] {
     padding: 0;
     width: 100%;
     box-sizing: border-box;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.1);
 }
 
 form input[type="file"] {
@@ -618,6 +621,7 @@ form textarea {
     width: 100%;
     height: 320px;
     /*box-sizing: border-box;*/
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.1);
 }
 
 .title-100 {
@@ -880,7 +884,7 @@ form .label {
     color: #000000;
     font-size: 11px;
     font-style: italic;
-    margin: 5px 0 0;
+    margin: 8px 0 0;
 }
 
 .new {
@@ -1004,7 +1008,7 @@ form .label {
 
 #cuselFrame-cover_magazine_release_date_3i {
     min-width: 35px !important;
-    width: 38px !important;
+    width: 35px !important;
 }
 
 #cuselFrame-cover_magazine_release_date_2i {
@@ -1288,18 +1292,18 @@ form .label {
     text-transform: none;
 }
 
-.column .list_preview {
-    margin-bottom: 36px;
-}
-
 .list_preview {
-    margin-bottom: 55px;
-    /*margin-right: 40px;*/
-    float: left;
+    margin-bottom: 34px;
 }
 
 .list_preview:nth-child(3n) {
     margin-right: 0;
+}
+
+.sidebar .list_preview {
+    margin-bottom: 21px;
+    /*margin-right: 40px;*/
+    float: left;
 }
 
 .product-cover-preview {
@@ -1554,15 +1558,32 @@ form .looks {
     text-align: center;
 }
 
-.submit, .actions input[type='submit'], .notice button {
-    background: url(button.png) no-repeat;
-    width: 113px;
-    height: 32px;
+.jPicker .Button input,
+.submit, .actions input[type='submit'],
+.notice button {
+    /*background: url(button.png) no-repeat;*/
+    /*width: 113px;*/
+    /*height: 32px;*/
+    /*cursor: pointer;*/
+    /*border: 0;*/
+    /*font-size: 12px;*/
+    /*color: #fff;*/
+    /*margin: 0 0 0 95px;*/
+
+    -webkit-border-radius: 34px;
+    border-radius: 34px;
+
+    border-style: none;
+
+    background: #000000;
+
+    height: 34px;
     cursor: pointer;
-    border: 0;
-    font-size: 12px;
-    color: #fff;
-    margin: 0 0 0 95px;
+    margin: 0 34px 13px 0;
+    padding: 0 34px;
+
+    color: #ffffff;
+
 }
 
 .actions input[type='submit'], .notice button {
@@ -2028,6 +2049,21 @@ div.vertical_block div.half:nth-of-type(even) {
     margin-right: 0;
 }
 
+.half_column {
+    width: 144px;
+    float: left;
+}
+
+span.jPicker {
+    margin-right: 3px;
+}
+
+#font_color {
+    border: 1px solid #FFFFFF;
+    height: 22px;
+    width: 70px;
+}
+
 .new_cover_magazine textarea {
     height: 144px;
 }
@@ -2039,8 +2075,8 @@ div.vertical_block div.half:nth-of-type(even) {
 }
 
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
-    background: url("handle.png") repeat-x scroll 50% 50% #E6E6E6;
-    border: 1px solid #006CFF;
+    /*background: url("handle.png") repeat-x scroll 50% 50% #E6E6E6;*/
+    /*border: 5px solid transparent;*/
     color: #555555;
     font-weight: normal;
 }
@@ -2051,13 +2087,13 @@ div.vertical_block div.half:nth-of-type(even) {
 }
 
 .ui-widget-content {
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid #D5D5D5;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.1);
+    /*border: 1px solid #006CFF;*/
 }
 
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
-    background: url("handle.png") repeat-x scroll 50% 50% #DADADA;
-    border: 1px solid #006CFF;
+    /*background: url("handle.png") repeat-x scroll 50% 50% #DADADA;*/
+    /*border: 2px solid #006CFF;*/
     color: #212121;
     font-weight: normal;
 }
@@ -2068,8 +2104,8 @@ div.vertical_block div.half:nth-of-type(even) {
 }
 
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
-    background: url("handle.png") repeat-x scroll 50% 50% #FFFFFF;
-    border: 1px solid #AAAAAA;
+    /*background: url("handle.png") repeat-x scroll 50% 50% #FFFFFF;*/
+    /*border: 2px solid #AAAAAA;*/
     color: #212121;
     font-weight: normal;
 }
@@ -2085,21 +2121,33 @@ div.vertical_block div.half:nth-of-type(even) {
     color: #363636;
 }
 
-.ui-state-highlight a, .ui-widget-content .ui-state-highlight a, .ui-widget-header .ui-state-highlight a {
-    color: #363636;
-}
+/*.ui-state-highlight a, .ui-widget-content .ui-state-highlight a, .ui-widget-header .ui-state-highlight a {*/
+/*color: #363636;*/
+/*}*/
 
 .ui-slider {
     position: relative;
     text-align: left;
 }
 
+.ui-slider .ui-state-hover {
+    background: rgba(0, 108, 255, 0.5) !important;
+}
+
+.ui-slider .ui-state-active {
+    background: rgba(0, 108, 255, 0.5) !important;
+}
+
 .ui-slider .ui-slider-handle {
-    cursor: default;
-    height: 1.2em;
+    margin-left: -11px;
+
+    cursor: pointer;
+    height: 21px;
     position: absolute;
-    width: 1.2em;
+    width: 21px;
     z-index: 2;
+    background: #006cff;
+    border-radius: 21px;
 }
 
 .ui-slider .ui-slider-range {
@@ -2116,12 +2164,12 @@ div.vertical_block div.half:nth-of-type(even) {
 }
 
 .ui-slider-horizontal {
-    height: 0.8em;
+    height: 8px;
+    margin-top: 8px;
 }
 
 .ui-slider-horizontal .ui-slider-handle {
-    margin-left: -0.6em;
-    top: -0.3em;
+    top: -7px;
 }
 
 .ui-slider-horizontal .ui-slider-range {
@@ -2137,42 +2185,6 @@ div.vertical_block div.half:nth-of-type(even) {
     right: 0;
 }
 
-.ui-slider-vertical {
-    height: 100px;
-    width: 0.8em;
-}
-
-.ui-slider-vertical .ui-slider-handle {
-    left: -0.3em;
-    margin-bottom: -0.6em;
-    margin-left: 0;
-}
-
-.ui-slider-vertical .ui-slider-range {
-    left: 0;
-    width: 100%;
-}
-
-.ui-slider-vertical .ui-slider-range-min {
-    bottom: 0;
-}
-
-.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
-    border-top-left-radius: 4px;
-}
-
-.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {
-    border-top-right-radius: 4px;
-}
-
-.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {
-    border-bottom-left-radius: 4px;
-}
-
-.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
-    border-bottom-right-radius: 4px;
-}
-
 .ui-widget-overlay {
     background: url("bg-editor.png") repeat-x scroll 50% 50% #AAAAAA;
     opacity: 0.3;
@@ -2181,7 +2193,7 @@ div.vertical_block div.half:nth-of-type(even) {
 .ui-widget-shadow {
     background: url("bg-editor.png") repeat-x scroll 50% 50% #AAAAAA;
     border-radius: 8px 8px 8px 8px;
-    margin: -8px 0 0 -8px;
+    /*margin: -8px 0 0 -8px;*/
     opacity: 0.3;
     padding: 8px;
 }
@@ -2189,15 +2201,10 @@ div.vertical_block div.half:nth-of-type(even) {
 /* UI SLIDER */
 /* UI SLIDER */
 
-.magazine_list .list_preview {
-    margin-bottom: 21px;
-}
-
 .magazine_cover {
     position: relative;
-    width: 640px;
-    min-height: 720px;
-    border: 1px solid #CCC;
+    width: 630px;
+    min-height: 400px;
 }
 
 .magazine_cover .magazine_cover_background,
@@ -2207,6 +2214,12 @@ div.vertical_block div.half:nth-of-type(even) {
 .magazine_cover .magazine_cover_columns {
     position: absolute;
     cursor: pointer;
+}
+
+.magazine_cover .magazine_cover_title sup,
+.magazine_cover .magazine_cover_special sup,
+.magazine_cover .magazine_cover_columns sup {
+    line-height: 0;
 }
 
 .magazine_cover_title {
@@ -2247,4 +2260,16 @@ div.vertical_block div.half:nth-of-type(even) {
 
 #cover_magazine_columns {
     height: 80px;
+}
+
+.instrumental-dock {
+    cursor: pointer;
+    z-index: 10000;
+    position: absolute;
+    top: 60px;
+    left: 680px;
+    border: 1px solid #CCCCCC;
+    padding: 21px;
+    width: 255px;
+    background: url("handle.png") no-repeat scroll center 13px rgba(0, 0, 0, 0.1);
 }

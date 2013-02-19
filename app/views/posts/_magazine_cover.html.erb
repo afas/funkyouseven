@@ -11,16 +11,16 @@
   <div class="magazine_cover">
     <%= image_tag target.get_cover.image.url(:album_normal), :alt => target.title, :class => "magazine_cover_background" unless target.main_article.nil? %>
     <div class="magazine_cover_title" style="<%= raw target.title_html_data %>">
-      <%= raw target.title %>
+      <%= raw format_title(target.title, magazine_post_path(target.main_article.short_url)) %>
     </div>
     <div class="magazine_cover_subject" style="<%= raw target.subject_html_data %>">
       <%= raw target.subject %>
     </div>
     <div class="magazine_cover_special" style="<%= raw target.special_html_data %>">
-      <%= raw target.special %>
+      <%= raw format_html_data(target.special, true) %>
     </div>
     <div class="magazine_cover_columns" style="<%= raw target.columns_html_data %>">
-      <%= raw target.columns %>
+      <%= raw format_html_data(target.columns, true) %>
     </div>
   </div>
 </div>

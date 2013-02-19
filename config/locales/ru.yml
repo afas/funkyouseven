@@ -239,9 +239,9 @@ ru:
         title_html_data: ""
         font_data: "Исходник шрифта "
         font_style: "Стиль"
-        font_size: "Размер"
+        font_size: "Размер [0..100px]"
         font_color: "Цвет"
-        angle: "Угол наклона"
+        angle: "Угол наклона [0..360°]"
       order_mailer:
         new_order_subject: "Funk You 7 Shop - Заказ сформирован"
         new_order_content: "Ваш заказ сформирован. Статус исполнения заказа и пр. наблюдаем в личном кабинете."

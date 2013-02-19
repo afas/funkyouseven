@@ -11,62 +11,25 @@
         </div>
     <% end %>
 
-    <div class="vertical_block">
-      <div class="field half">
-        <%= label_tag :font_style, t("activerecord.attributes.cover_magazine.font_style") %>
-        <br/>
-        <%= text_field_tag :font_style %>
-        <br/>
-        <%= label_tag :font_data, raw(t("activerecord.attributes.cover_magazine.font_data") + link_to("(data:font)", "https://typekit.com/fonts?classification=decorative", :target => "_href")) %>
-        <br/>
-        <%= text_field_tag :font_data, "", :onkeyup => "update_slide_data('font_data');" %>
-        <br/>
-      </div>
-
-      <div class="field half">
-        <%= label_tag :font_color, t("activerecord.attributes.cover_magazine.font_color") %>
-        <br/>
-        <%= text_field_tag :font_color %>
-        <br/>
-
-        <%= label_tag :font_size, t("activerecord.attributes.cover_magazine.font_size") %>
-        <br/>
-
-        <div id="font_size" class="range_slider" min="13" max="89"></div>
-        <br/>
-
-        <%= label_tag :angle, t("activerecord.attributes.cover_magazine.angle") %>
-        <br/>
-
-        <div id="text_angle" class="range_slider" min="0" max="360"></div>
-        <br/>
-
-      </div>
-    </div>
-    <div class="clear-8"></div>
-
     <div class="magazine_cover">
+
       <%= image_tag @cover_magazine.get_cover().image.url(:album_normal), :alt => @cover_magazine.title, :class => "magazine_cover_background" unless @cover_magazine.main_article.nil? %>
+
       <div class="magazine_cover_title draggable" style="<%= raw @cover_magazine.title_html_data %>" font_data="<%= raw @cover_magazine.title_font_data %>">
-        <%= raw @cover_magazine.title %>
+        <%= raw format_title(@cover_magazine.title) %>
       </div>
       <div class="magazine_cover_subject draggable" style="<%= raw @cover_magazine.subject_html_data %>">
         <%= raw @cover_magazine.subject %>
       </div>
       <div class="magazine_cover_special draggable" style="<%= raw @cover_magazine.special_html_data %>">
-        <%= raw @cover_magazine.special %>
+        <%= raw format_html_data(@cover_magazine.special) %>
       </div>
-      <div class="magazine_cover_columns draggable" style="<%= raw @cover_magazine.columns_html_data %>">
-        <%= raw @cover_magazine.columns %>
+      <div class="magazine_cover_columns  draggable" style="<%= raw @cover_magazine.columns_html_data %>">
+        <%= raw format_html_data(@cover_magazine.columns) %>
       </div>
     </div>
-    <br/>
+    <div class="clear-8"></div>
 
-    <div class="field">
-      <%= f.label :title %>
-      <br/>
-      <%= f.text_field :title %>
-    </div>
 
     <div class="vertical_block">
       <div class="field third">
@@ -84,6 +47,12 @@
         <br/>
         <%= f.number_field :sequence_number %>
       </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :title %>
+      <br/>
+      <%= f.text_field :title %>
     </div>
 
     <div class="field">
@@ -118,11 +87,36 @@
     <!--<%#= f.text_area :cover_js %>-->
     <!--</div>-->
 
+    <div class="clear-8"></div>
+
     <%= f.hidden_field :title_html_data %>
     <%= f.hidden_field :title_font_data %>
     <%= f.hidden_field :subject_html_data %>
     <%= f.hidden_field :columns_html_data %>
     <%= f.hidden_field :special_html_data %>
+
+    <div class="instrumental-dock draggable">
+      <%= label_tag :font_color, t("activerecord.attributes.cover_magazine.font_color") %>
+      <br/>
+      <%= text_field_tag :font_color, "000000" %>
+      <br/>
+
+      <%= label_tag :font_size, t("activerecord.attributes.cover_magazine.font_size") %>
+      <br/>
+
+      <div id="font_size" class="range_slider" min="0" max="144"></div>
+      <br/>
+
+      <%= label_tag :angle, t("activerecord.attributes.cover_magazine.angle") %>
+      <br/>
+
+      <div id="text_angle" class="range_slider" min="0" max="360"></div>
+      <br/>
+
+      <%= label_tag :font_data, raw(t("activerecord.attributes.cover_magazine.font_data") + link_to("(data:font)", "https://typekit.com/fonts?classification=decorative", :target => "_href")) %>
+      <br/>
+      <%= text_field_tag :font_data, @cover_magazine.title_font_data, :onkeyup => "update_slide_data('font_data');" %>
+    </div>
 
     <div class="actions">
       <%= f.submit %>
@@ -131,7 +125,7 @@
 
 <style type="text/css">
     @font-face {
-        font-family: "coverMagazineTitle";
+        font-family: coverMagazineTitle;
         font-style: normal;
         font-weight: 400;
         src: url("<%= @cover_magazine.title_font_data %>");
