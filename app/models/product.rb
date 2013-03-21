@@ -31,7 +31,7 @@ class Product < ActiveRecord::Base
 
   belongs_to :brand
   belongs_to :shop_section
-  belongs_to :section_category
+  belongs_to :section_category, :counter_cache => true
 
   has_many :product_images
   has_many :size_to_products

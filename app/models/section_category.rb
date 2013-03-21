@@ -2,7 +2,7 @@ class SectionCategory < ActiveRecord::Base
   attr_accessible :description, :name, :shop_section_id, :short_url
 
   belongs_to :shop_section
-  has_many :products
+  has_many :products, :dependent => :destroy
 
   default_scope where("products_count > 0").order(:name)
 
