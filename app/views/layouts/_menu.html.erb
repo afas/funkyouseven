@@ -33,6 +33,12 @@
             <%= link_to section_category.name, section_category_products_path(@shop_section.short_url, section_category.short_url) %>
           </li>
       <% end unless @shop_section.section_categories.empty? %>
+
+      <% @shop_section.empty_section_categories.each do |section_category| %>
+          <li class="<%= :current if section_category == @section_category %>">
+            <%= link_to "#{section_category.name}(0)", section_category_products_path(@shop_section.short_url, section_category.short_url) %>
+          </li>
+      <% end if current_user && current_user.admin? %>
     </ul>
 <% end %>
 

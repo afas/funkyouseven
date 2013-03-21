@@ -1,12 +1,31 @@
 <div id="full_list" class="magazine_list">
-  <div class="list_preview title_magazine">
-    <p><%= @cover_magazine.year_number %> НОМЕР</p>
-    <span><%= magazine_date(@cover_magazine.release_date) %></span>
-  </div>
+  <% if @cover_magazine && !@cover_magazine.articles.empty? %>
+      <div class="list_preview title_magazine">
+        <p><%= @cover_magazine.year_number %> НОМЕР</p>
+        <span><%= magazine_date(@cover_magazine.release_date) %></span>
+      </div>
+      <%= render "posts/magazine_cover", :target => @cover_magazine, :article => @cover_magazine.main_article unless @cover_magazine.main_article.nil? %>
 
-  <%= render "posts/magazine_cover", :target => @cover_magazine, :article => @cover_magazine.main_article %>
+      <% @cover_magazine.articles.each do |post| %>
+          <%= render "posts/post_preview_item", :target => post, :show_date => true %>
+      <% end %>
+  <% else %>
+      <div class="list_preview title_magazine">
+        <p>Нет готовых выпусков журнала</p>
+        <span>А если вы напишете - могут быть.</span>
+        <br>
+        <br>
+      </div>
+  <% end %>
 
-  <% @cover_magazine.articles.each do |post| %>
-      <%= render "posts/post_preview_item", :target => post, :show_date => true %>
+  <% if current_user && current_user.admin? && !@without_magazine.empty? %>
+      <div class="list_preview title_magazine">
+        <p>Статьи не вошедшие в номер</p>
+        <span>Помоги статье найти ее номер</span>
+      </div>
+
+      <% @without_magazine.each do |post| %>
+          <%= render "posts/post_preview_item", :target => post, :show_date => true %>
+      <% end %>
   <% end %>
 </div>

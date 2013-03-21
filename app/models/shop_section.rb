@@ -9,4 +9,8 @@ class ShopSection < ActiveRecord::Base
   has_many :products
   has_many :section_categories
 
+  def empty_section_categories
+    SectionCategory.unscoped.where("products_count = ? and shop_section_id = ?", 0, self.id).all
+  end
+
 end

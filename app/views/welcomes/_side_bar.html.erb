@@ -10,6 +10,9 @@
   <%= link_to "Все посты", magazine_path, :class => "all" unless @articles_sidebar.empty? %>
 </div>
 
-<div id="fix-here" class="sidebar">
-  <%= render "layouts/social_wigets" %>
+
+<div class="sidebar">
+  <div id="fix-here">
+    <%= render "layouts/social_wigets" %>
+  </div>
 </div>

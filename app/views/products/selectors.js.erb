@@ -1,5 +1,5 @@
 if ($('#brand_products').length > 0) {
-    $('#brand_products').html("<%= escape_javascript(render("products/page")) %>");
+    $('#brand_products').html("<%= escape_javascript(render "products/page", :target => @products) %>");
 } else {
-    $('#content').html("<%= escape_javascript(render("products/page")) %>");
+    $('#content').html("<%= escape_javascript(render "products/page", :target => @products) %>");
 }

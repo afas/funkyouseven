@@ -12,7 +12,6 @@
     <% end %>
 
     <div class="magazine_cover">
-
       <%= image_tag @cover_magazine.get_cover().image.url(:album_normal), :alt => @cover_magazine.title, :class => "magazine_cover_background" unless @cover_magazine.main_article.nil? %>
 
       <div class="magazine_cover_title draggable" style="<%= raw @cover_magazine.title_html_data %>" font_data="<%= raw @cover_magazine.title_font_data %>">

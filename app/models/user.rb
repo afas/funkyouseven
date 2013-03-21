@@ -16,13 +16,12 @@ class User < ActiveRecord::Base
 #                    :default_url =>  "/user_avatar/default.png",
                     :url =>  "/user_avatar/:id/:style_:basename.:extension"
 
-#  validates_attachment_presence :avatar, :message => I18n.t("paperclip.errors.presence")
   validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png', 'image/gif'], :message => I18n.t("paperclip.errors.content_type")
 
   default_scope order(:surname, :name)
 
   def full_name
-    "#{self.name} #{self.surname}"
+    "#{self.name} #{self.nickname} #{self.surname}"
   end
 
   def admin?

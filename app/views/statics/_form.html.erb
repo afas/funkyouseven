@@ -23,7 +23,7 @@
       <%= f.text_field :title %>
     </div>
     <div class="field">
-      <%= f.label :content %>
+      <%= f.label "#{t("activerecord.attributes.static.content")}; #{t("activerecord.attributes.static.video_emb")}" %>
       <br/>
       <%= f.text_area :content, :class => :markdown_field %>
     </div>

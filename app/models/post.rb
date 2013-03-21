@@ -7,7 +7,8 @@ class Post < ActiveRecord::Base
   self.per_page = 6
 
   belongs_to :author, :class_name => 'User'
-  belongs_to :cover_magazine#, :foreign_key => :cover_id# :class_name => 'Cover'
+  belongs_to :cover_magazine
+  #, :foreign_key => :cover_id# :class_name => 'Cover'
 
   has_many :post_images
 
@@ -17,7 +18,8 @@ class Post < ActiveRecord::Base
   #default_scope order("created_at DESC")
   scope :side_bar, order("created_at DESC").limit(3)
   scope :article_side_bar, lambda { |post| where("id <> ?", post.id).order("created_at DESC").limit(3) }
-  scope :magazine_list, order("created_at DESC")
+  #scope :magazine_list, order("created_at DESC")
+  scope :without_magazine, where(:cover_id => 0).order("created_at DESC")
 
   before_save :generate_short_url
 
@@ -27,7 +29,7 @@ class Post < ActiveRecord::Base
 
   def initialize(*args)
     super
-    self.cover_id = CoverMagazine.all.first().id if self.new_record?
+    self.cover_id = CoverMagazine.all.first().id if self.new_record? && !CoverMagazine.all.first().nil?
     self.preview_id = rand(99999999)+99999999 if self.preview_id.nil? && self.new_record?
   end
 

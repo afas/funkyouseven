@@ -35,36 +35,28 @@
 </div>
 <div class="clear"></div>
 
+<% if @product.look %>
+    <div class="relaited">Товары в сете</div>
+    <div class="clear"></div>
 
-<%#= @product.brand_id %>
-<%#= @product.sex_id %>
-<%#= @product.career_id %>
+    <%= render "products/page", :target => @product.products %>
+    <% if @product.products.empty? %>
+        <p><%= t("activerecord.attributes.product.products_empty") %></p>
+    <% end %>
+    <div class="clear"></div>
+
+    <div class="relaited">Еще сеты</div>
+    <div class="clear"></div>
+
+    <%= render "products/page", :target => @more_looks %>
+    <div class="clear"></div>
+<% else %>
+    <div class="relaited">Товары в этой категории</div>
+<% end %>
 
 <div id="full_list">
-  <% if @product.look %>
-      <div class="relaited">Товары в сете</div>
-      <div class="clear"></div>
-
-      <%= render "products/page", :target => @product.products %>
-      <% if @product.products.empty? %>
-          <p><%= t("activerecord.attributes.product.products_empty") %></p>
-      <% end %>
-      <div class="clear"></div>
-
-      <div class="relaited">Еще сеты</div>
-      <div class="clear"></div>
-
-      <%= render "products/page", :target => @more_looks %>
-      <div class="clear"></div>
-  <% end %>
-
-  <div class="relaited">Товары в этой категории</div>
-  <div class="clear"></div>
-
   <%= render "products/page", :target => @related_products %>
-
-  <nav id="page-nav">
-    <%= link_to "", products_by_page_path(@product.shop_section.short_url, @page + 1), :remote => true unless @more_products.nil? %>
-  </nav>
-
+  <!--<nav id="page-nav">-->
+    <!--<%#= link_to "", products_by_page_path(@product.shop_section.short_url, @page + 1), :remote => true unless @more_products.nil? %>-->
+  <!--</nav>-->
 </div>

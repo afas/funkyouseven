@@ -15,7 +15,7 @@
       <%= f.label :cover_id %>
       <%= f.collection_select(:cover_id, CoverMagazine.all, :id, :title, :promt => false) %>
 
-      <%= link_to "+", create_cover_magazine_from_post_path(@post.id || 0), :class => "cover_magazine_from_post", :title => t('backend.titles.creating', :model => t('activerecord.model.cover_magazine')), :remote => true %>
+      <%#= link_to "+", create_cover_magazine_from_post_path(@post.id || 0), :class => "cover_magazine_from_post", :title => t('backend.titles.creating', :model => t('activerecord.model.cover_magazine')), :remote => true %>
 
       <%= f.label :main_article %>
       <%= f.check_box :main_article %>
@@ -24,9 +24,9 @@
 
       <%= f.label :author_id %>
       <% if @post.new_record? %>
-          <%= f.collection_select(:author_id, User.all, :id, :name || :email, :value => current_user.id, :promt => false) %>
+          <%= f.collection_select(:author_id, User.all, :id, :nickname, :value => current_user.id, :promt => false) %>
       <% else %>
-          <%= f.collection_select(:author_id, User.all, :id, :name || :email, :promt => false) %>
+          <%= f.collection_select(:author_id, User.all, :id, :nickname, :promt => false) %>
       <% end %>
 
       <%= f.label :created_at %>
@@ -44,7 +44,7 @@
       <%= f.text_area :description, :class => "span" %>
     </div>
     <div class="field">
-      <%= f.label :content %>
+      <%= f.label "#{t("activerecord.attributes.post.content")}; #{t("activerecord.attributes.post.video_emb")}" %>
       <br/>
       <%= f.text_area :content, :class => :markdown_field %>
     </div>

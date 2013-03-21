@@ -1,8 +1,8 @@
 #encoding: utf-8
 class Order < ActiveRecord::Base
-  acts_as_gmappable
+  acts_as_gmappable :validation => false
 
-  self.per_page = 12
+  self.per_page = 13
 
   attr_accessible :address, :comment, :internal_comment, :order_status_id, :pay_status_id, :user_id, :email, :name, :phone, :latitude, :longitude, :gmaps, :user_create
 
@@ -62,15 +62,14 @@ class Order < ActiveRecord::Base
   def check_user_registration
     #пользователь не установлен
     unless self.user_id
-      user = User.find_by_email(self.email)
+      user = User.find_last_by_email(self.email)
       #пользователь не авторизован
-      if self.user.nil?
+      unless user
         password = Devise.friendly_token.first(7)
 
         user = User.create(:email => self.email,
                            :password => password,
-                           :password_confirmation => password,
-                           :name => self.name,
+                           :nickname => self.name || self.email.split("@")[0].titleize,
                            :phone => self.phone,
                            :address => self.address,
                            :role => 3
@@ -78,7 +77,7 @@ class Order < ActiveRecord::Base
         self.user_create = true
       end
 
-      self.user = user
+      self.user_id = user.id
     end
   end
 end

@@ -6,12 +6,11 @@ var page_container,
 $(document).ready(function () {
 
     if ($('#fix-here').length > 0) {
-        right = (window.innerWidth - 994) / 2;
         var fixedElement = $('#fix-here').offset();
         scrolled = $(window).scroll(function () {
             var winScrolled = $(this).scrollTop();
             if (winScrolled > fixedElement.top - 55) {
-                $('#fix-here').css({'position':'fixed', 'top':'10px', 'right':right + 'px'})
+                $('#fix-here').css({'position':'fixed', 'top':'10px'})
             }
             else {
                 $('#fix-here').css({'position':'static'})
@@ -59,7 +58,7 @@ $(document).ready(function () {
                 nextSelector:'#page-nav a',
                 itemSelector:'.list_preview',
                 loading:{
-                    img:'/assets/preloader-34.png',
+                    img:'/assets/skate.png',
                     msgText:onLoadPhrase,
                     finishedMsg:onPaginateFinishPhrase
                 }
@@ -261,7 +260,7 @@ function initRangeSlider(id, min, max) {
         min:min,
         max:max,
         step:1,
-        value:current,
+//        value:current,
         slide:function (event, ui) {
             update_slide_data(id, ui.value);
         }

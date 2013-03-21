@@ -500,7 +500,7 @@ li.current ul li.current a {
 
 #fix-here {
     width: 300px;
-    position: relative;
+    position: absolute;
     z-index: 999;
 }
 
@@ -509,7 +509,7 @@ li.current ul li.current a {
     float: left;
     font-family: "FuturisCRegular";
     font-size: 13px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     width: 100%;
 }
 
@@ -718,7 +718,7 @@ form .label {
     width: 100%;
     position: relative;
     height: 121px;
-    margin: 60px 0 0;
+    margin: 100px 0 0;
 }
 
 #footer .menu_left, #footer .menu_right {
@@ -1425,13 +1425,14 @@ form .looks {
     color: #000000;
     text-transform: uppercase;
     margin-bottom: 20px;
-    height: 55px;
+    height: 13px;
 }
 
 .cat_item form {
-    width: 100%;
-    margin: 0;
+    clear: both;
+    display: block;
     float: left;
+    margin: 0;
 }
 
 .cat_item form label {
@@ -1549,7 +1550,7 @@ form .looks {
     border: 1px solid #d5d5d5;
     width: 100%;
     box-sizing: border-box;
-    padding: 5px;
+    padding: 5px 0;
     height: 77px;
     margin-bottom: 15px;
 }
@@ -1664,6 +1665,22 @@ li.title ul li {
 
 .my_basket .cat_item {
     margin: 0 40px 30px 0;
+}
+
+.my_basket .cat_item .title {
+    display: block;
+    float: left;
+    margin-bottom: 7px;
+    max-width: 211px;
+}
+
+.my_basket .cat_item span.stuff-price {
+    color: #006CFF;
+    display: block;
+    float: right;
+    font-family: 'BrushScriptStdRegular';
+    font-size: 18px;
+    line-height: 21px;
 }
 
 .stuff-title .my_basket .cat_item {

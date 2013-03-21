@@ -14,8 +14,8 @@
     <div class="field">
       <%= f.label t("activerecord.attributes.order.order_status") %>
       <br/>
-      <%= f.collection_select :order_status_id, OrderStatus.collection, :code, :name if current_user.courier? %>
-      <%= OrderStatus.by_code(@order.order_status_id) unless current_user.courier? %>
+      <%= f.collection_select :order_status_id, OrderStatus.collection, :code, :name if current_user && current_user.courier? %>
+      <%= OrderStatus.by_code(@order.order_status_id) unless current_user && current_user.courier? %>
     </div>
 
     <br/>

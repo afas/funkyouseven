@@ -1,4 +1,15 @@
-<%= raw t("activerecord.attributes.order_mailer.new_order_content") %><br/><br/>
-<%# @order.order_items.each do |order_item| %>
-    <%#= render "products/product_basket_item" %>
-<%# end %>
+<p><%= t("activerecord.attributes.order_mailer.new_order_content") %></p>
+<h3>Состав заказа</h3>
+<ol>
+  <% @order.order_items.each do |order_item| %>
+      <li>
+        <%= link_to image_tag("http://funkyoy7.ru/#{order_item.product.get_preview.image.url(:preview_circle)}", :alt => product_title(order_item.product)), "http://funkyoy7.ru/products/#{order_item.product.id}" %> <%= link_to "#{product_title(order_item.product)}, #{order_item} #{format_price(order_item.price)}, ", "http://funkyoy7.ru/products/#{order_item.product.id}" %>
+        <span><%= ProductSize.by_code(order_item.product_size) %></span>
+        <span><%= "#{order_item.product_count} x #{format_price(order_item.product.price)}" %></span>
+      </li>
+  <% end %>
+</ol>
+
+<br/>
+<hr>
+<%= link_to t("site_name"), root_url %>

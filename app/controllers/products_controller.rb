@@ -47,9 +47,7 @@ class ProductsController < ApplicationController
 
   def index
     @section = :shop
-
     condition = ""
-
     unless params[:shop_section].nil?
       @shop_section = ShopSection.find_by_short_url(params[:shop_section])
       unless @shop_section.nil?
@@ -107,7 +105,7 @@ class ProductsController < ApplicationController
 
     @products = Product.where(condition).valid_products.order("products.updated_at DESC").paginate(:page => @page)
     @more_products = Product.where(condition).valid_products.all.size() - Product.per_page * @page
-    @more_products = nil if @more_products <= 0
+    #@more_products = nil if @more_products <= 0
 
     render :layout => false
   end

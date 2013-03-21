@@ -10,6 +10,12 @@ class CoverMagazine < ActiveRecord::Base
   def initialize(*args)
     super
     if self.new_record?
+
+      self.title = I18n.t("activerecord.attributes.cover_magazine.title")
+      self.subject = I18n.t("activerecord.attributes.cover_magazine.subject")
+      self.special = I18n.t("activerecord.attributes.cover_magazine.special")
+      self.columns = I18n.t("activerecord.attributes.cover_magazine.columns")
+
       self.sequence_number = 1 + CoverMagazine.last_number.first().sequence_number unless CoverMagazine.last_number.empty?
       self.year_number = 1 + CoverMagazine.last_number.first().year_number unless CoverMagazine.last_number.empty?
     end

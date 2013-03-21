@@ -7,11 +7,13 @@ module PostsHelper
 
   def format_html_data(data, links = false)
     output = ""
-    partials = data.split(";")
 
+    return if data.empty?
+
+    partials = data.split(";")
     partials.each do |partial|
       title = partial.split("{")[0]
-      if links
+      if links && !partial.split("{")[1].nil?
         href = partial.split("{")[1].gsub("}", "")
         output += raw "<sup onClick='goUrl(\"#{href}\")'>#{title}</sup> "
       else

@@ -1,14 +1,11 @@
 #infscr-loading {
-    background: url("/assets/bgeditor.png") repeat scroll 0 0 transparent;
-    border: 2px solid rgba(0, 0, 0, 0.6);
-    border-radius: 40px 40px 40px 40px;
     bottom: 0;
-    color: #000000;
-    height: 64px;
+    height: 80px;
     margin: 34px 0 34px 340px;
     opacity: 1;
     padding: 0 16px;
     position: absolute;
+    width: 270px;
     z-index: 1000;
 }
 
@@ -21,9 +18,23 @@
     color: rgba(0, 0, 0, 0.698);
     float: left;
     font-family: "FuturisCRegular";
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
-    line-height: 67px;
-    margin-left: 15px;
+    line-height: 22px;
+    position: absolute;
+    text-align: center;
     text-transform: uppercase;
+    width: 275px;
+}
+
+#rear-roll {
+    position: absolute;
+    bottom: 2px;
+    left: 68px;
+}
+
+#front-roll {
+    position: absolute;
+    bottom: 2px;
+    right: 68px;
 }

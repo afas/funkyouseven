@@ -51,12 +51,15 @@ class OrdersController < ApplicationController
         @order.add_order_items_from_basket(@basket)
 
         if @order.user_create
-          UserMailer.new_user_from_order(@order.user).deliver
-        end
-
-        unless current_user.nil?
+          UserMailer.new_user_from_order(@order).deliver
+        else
           OrderMailer.new_order(@order).deliver
         end
+
+        #unless current_user.nil?
+        #else
+        #  OrderMailer.new_order(@order).deliver
+        #end
 
         session[:basket] = nil
 

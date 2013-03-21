@@ -1,3 +1,25 @@
-<%= raw t("activerecord.attributes.user_mailer.new_user_from_order_content") %>
-<%= raw "<br/><b>#{t("activerecord.attributes.user.email")}:</b> #{@user.email}<br/>" %>
-<%= raw "<b>#{t("activerecord.attributes.user.password")}:</b> #{@user.password}" %>
+<p><%= t("activerecord.attributes.user_mailer.new_user_from_order_content") %></p>
+<%= "<b>#{t("activerecord.attributes.user.email")}:</b> #{@user.email}" %>. Для завершения регистрации на сайте вам необходимо задать личный пароль, для входа на сайт, пройдя <%= link_to 'по этой ссылке', edit_password_url(@user, :reset_password_token => @user.reset_password_token) %>
+
+<h3>Состав заказа</h3>
+<ol>
+  <% @order.order_items.each do |order_item| %>
+      <li>
+        <%= link_to(image_tag(order_item.product.get_preview.image.url(:preview_circle), :alt => order_item.product.title), order_item.product) %>
+
+        <%= link_to "#{order_item.product.title}", order_item.product %>
+
+        <span><%= ProductSize.by_code(order_item.product_size) %></span>
+        <span><%= "#{order_item.product_count} x #{order_item.product.price} p." %></span>
+
+      </li>
+  <% end %>
+</ol>
+
+<p>
+  <b>Итого с учетом доставки:</b><span><%= @order.total_price %> р.</span>
+</p>
+
+<br/>
+<hr>
+<%= link_to t("site_name"), root_url %>
