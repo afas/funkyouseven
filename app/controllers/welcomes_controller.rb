@@ -9,7 +9,8 @@ class WelcomesController < ApplicationController
     @about_left = Product.valid_products.where(:welcome_position_id => 1).order("random()").first
     @about_bottom = Product.valid_products.where(:welcome_position_id => 2).order("random()").limit(2).all
     @bottom_slider = Product.valid_products.where(:welcome_position_id => 3).order("random()").limit(3).all
-    @last = Product.valid_products.where(:welcome_position_id => 4).order("random()").limit(2).all
+    #@last = Product.valid_products.where(:welcome_position_id => 4).order("random()").limit(2).all
+    @last = Product.valid_products.order("random()").limit(2).all
 
     respond_to do |format|
       format.html # home.html.erb
