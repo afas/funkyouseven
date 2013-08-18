@@ -51,7 +51,8 @@ class OrdersController < ApplicationController
         @order.add_order_items_from_basket(@basket)
 
         if @order.user_create
-          UserMailer.new_user_from_order(@order).deliver
+          #UserMailer.new_user_from_order(@order).deliver
+          User.find(@order.user_id).send_reset_password_instructions
         else
           OrderMailer.new_order(@order).deliver
         end
@@ -60,7 +61,6 @@ class OrdersController < ApplicationController
         #else
         #  OrderMailer.new_order(@order).deliver
         #end
-
         session[:basket] = nil
 
         format.html { redirect_to root_url, notice: 'Order was successfully created.' }

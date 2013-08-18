@@ -4,7 +4,7 @@ class SectionCategory < ActiveRecord::Base
   belongs_to :shop_section
   has_many :products, :dependent => :destroy
 
-  default_scope where("products_count > 0").order(:name)
+  #default_scope where("products_count > 0").order(:name)
 
   #default_scope lambda { |admin|
   #  where("products_count > 0").order(:name) unless admin
